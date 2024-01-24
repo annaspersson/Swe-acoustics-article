@@ -1863,7 +1863,14 @@ p.50_80 <- p %+%
   summarise(across(c(F0, F1, F2, F3, Duration), ~ mean(.x)))) +
   guides(shape = "none")
 
-cowplot::plot_grid(p.20_50, p.35_65, p.50, p.50_80, labels = c("A", "B", "C", "D"), ncol = 2)
+(p.20_50 + p.35_65) / (p.50 + p.50_80) +
+  plot_annotation(tag_levels = list(c("A", "B", "C", "D"))) +
+  plot_layout(
+    guides = "collect") & 
+  theme(legend.position = "right",
+        legend.justification = "right",
+        legend.margin = margin(0, 0, 0, 0, unit = "pt"),
+        plot.tag = element_text(face = "bold"))
 ```
 
 ### Mean cue values across talkers {#sec:SI-mean-cues}
@@ -2001,7 +2008,14 @@ p.är <- p +
   gghighlight::gghighlight(category %in% c("[æː]", "[æ]")) + guides(shape = "none") + theme(axis.title.x = element_blank(), axis.title.y = element_blank())
 p.ör <- p +
   gghighlight::gghighlight(category %in% c("[œː]", "[œ]")) + guides(shape = "none") + theme(axis.title.x = element_blank(), axis.title.y = element_blank())
-cowplot::plot_grid(p.I, p.Y, p.e, p.U, p.ö, p.A, p.o, p.u, p.är, p.ör, ncol = 2)
+
+(p.I + p.Y) / (p.e + p.U) / (p.ö + p.ör) / (p.är + p.A) + (p.o + p.u) +
+  plot_layout(
+    guides = "collect") &
+  theme(legend.position = "right",
+        legend.justification = "right",
+        legend.margin = margin(0, 0, 0, 0, unit = "pt"),
+        plot.tag = element_text(face = "bold"))
 ```
 
 ### Talker-specific vowel plots {#sec:SI-talker-specific}
