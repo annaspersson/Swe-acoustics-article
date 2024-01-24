@@ -1,0 +1,1 @@
+These scripts add or repair information in our phonetic (vowel) databases. For example, some of these scripts conduct outlier correction or add additional information, or change variable names. Each script is named after the database that it repairs (see data/phonetic vowel statistics/ subfolders).
