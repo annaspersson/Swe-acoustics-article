@@ -652,24 +652,6 @@ m.F3.paired <- mgcv::bam(F3 ~ Gender + Quantity * vowel_pair + s(Location, by = 
                            s(Talker, category, bs = "re"),
                          # + s(Location, Talker,  by = category, bs = "fs", k = 5, m=1)
                          data = d.model)
-
-m.F1 <- mgcv::bam(F1 ~ category + Gender + Quantity + s(Location, by = category, k = 5) 
-                  + s(Talker, bs = "re")  
-                  + s(Talker, category, bs = "re")
-                    # + s(Location, Talker,  by = category, bs = "fs", k = 5, m=1)
-                    , data = d.model)
-
-m.F2 <- mgcv::bam(F2 ~ category + Gender + Quantity + s(Location, by = category, k = 5) 
-                  + s(Talker, bs = "re")  
-                  + s(Talker, category, bs = "re")
-                    # + s(Location, Talker,  by = category, bs = "fs", k = 5, m=1)
-                    , data = d.model)
-
-m.F3 <- mgcv::bam(F3 ~ category + Gender + Quantity + s(Location, by = category, k = 5) 
-                  + s(Talker, bs = "re")  
-                  + s(Talker, category, bs = "re")
-                    # + s(Location, Talker,  by = category, bs = "fs", k = 5, m=1)
-                    , data = d.model)
 ```
 ```{r}
 # Run GAMMs predicting F1, F2, F3 separately from the long categories
@@ -802,8 +784,6 @@ itsadug::plot_smooth(m.F3.long, view = "Location", plot_all = "category", col = 
 ```{r m-F3-short, fig.width=base.width*3, fig.height=base.height*2.5, out.width='40%', fig.align='center', fig.cap="(ref:m-F3-short)"}
 itsadug::plot_smooth(m.F3.short, view = "Location", plot_all = "category", col = c("#1B9E77", "#D95F02", "#7570B3"))
 ```
-
-<!--add analyses of other vowels-->
 
 In SI \@ref(sec:SI-talker-specific), the long vowels are plotted by talker to investigate the extent to which talkers in the SwehVd database produce overlapping [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] (Figures \@ref(fig:SI-talker-specific-female), \@ref(fig:SI-talker-specific-male)). In general, most talkers produce these two vowels very close in F1-F2 space, with a slight separation in F2-F3 space. However, for some talkers, there is a continued overlap even when considering F3, which suggests either a need for additional cues for a stable category distinction, or a possible merger in process. For reference, one talker of each type are displayed in Figure \@ref(fig:swe-merge). 
 
@@ -943,7 +923,34 @@ d.SwehVd.vowel_pairs %>%
 
 All long-short vowel pairs display spectral differences in F1-F2. In fact, as indicated in Figure \@ref(fig:swe-vowels), formant differences are apparent for *all* vowel pairs, even for some category distinctions for which duration has been found to be the primary cue---[`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("ɛ")`], [`r linguisticsdown::cond_cmpl("øː")`] - [`r linguisticsdown::cond_cmpl("ø")`], [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("ɪ")`], and [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("ɔ")`] [e.g., @behne-kirk1997; @haddingkoch1964; @kuronen2000] (see also Figure \@ref(fig:SI-long-short) in SI). The vowel pairs that display larger spectral differences along F1-F2 are [`r linguisticsdown::cond_cmpl("ʉː")`] - [`r linguisticsdown::cond_cmpl("ɵ")`] and [`r linguisticsdown::cond_cmpl("ɑː")`] - [`r linguisticsdown::cond_cmpl("a")`] [in line with e.g., @fant1983; @kuronen2000], but also [`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("ɛ")`], which contrasts with previous studies. The large spectral differences in [`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("ɛ")`] are presumably due to [`r linguisticsdown::cond_cmpl("ɛː")`] being produced very low in the SwehVd materials, which leads to a gap along the top-left to bottom-left diagonal between [`r linguisticsdown::cond_cmpl("eː")`] and [`r linguisticsdown::cond_cmpl("ɛ")`]. Overall, F2 appears to carry more of the qualitative variation between the long and short vowel phonemes, as there is more separation between categories in the pairwise combination of F2 and duration (Figure \@ref(fig:swe-vowels-all-cues), rightmost column, third row).
 
-These qualitative observations were confirmed by running the GAMMs <!--edit this--> for each of the vowel pairs in Figure \@ref(fig:duration-densities) and each of the three formants, predicting formant from vowel with time-points as smoothing functions and talkers as random effects. The GAMMs suggested that all F1-F2 differences between vowel pairs were significant ($p < .038$), with the exception of [`r linguisticsdown::cond_cmpl("æː")`] - [`r linguisticsdown::cond_cmpl("æ")`] ($p > .09$) predicting F1, thus confirming their overlap in height (Figure \@ref(fig:swe-vowels)). 
+The effect of F1, F2 and F3 on all vowels was modeled in three separate GAMMs, with gender, quantity and category and their interaction as independent variables, and time-points as smoothing function. Random slopes and intercepts for talker was included, category was difference coded. Tables \@ref(tab:m.F1), \@ref(tab:m.F2) and \@ref(tab:m.F3) summarise the three GAMMs, and suggest main effect of category on both F1 ($\bar\beta$ = , se = , $p < .82$) and F2 ($\bar\beta$ = , se = , $p < .82$), with the exception of [`r linguisticsdown::cond_cmpl("æː")`] - [`r linguisticsdown::cond_cmpl("æ")`] ($p > .09$) predicting F1, thus confirming their overlap in height (Figure \@ref(fig:swe-vowels)).
+
+```{r}
+# Rename contrast labels
+d.model$category <- factor(d.model$category, labels = c("[ɪ]", "[iː]", "[ʏ]", "[yː]", "[ɵ]", "[ʉː]", "[ɛ]", "[eː]", "[ɛː]", "[æ]", "[æː]", "[ø]", "[øː]", "[œ]", "[œː]", "[a]", "[ɑː]", "[ɔ]", "[oː]", "[ʊ]", "[uː]"))
+
+m.F1 <- mgcv::bam(F1 ~ category + Gender + Quantity + s(Location, by = category, k = 5) 
+                  + s(Talker, bs = "re")  
+                  + s(Talker, category, bs = "re")
+                    # + s(Location, Talker,  by = category, bs = "fs", k = 5, m=1)
+                    , data = d.model)
+
+m.F2 <- mgcv::bam(F2 ~ category + Gender + Quantity + s(Location, by = category, k = 5) 
+                  + s(Talker, bs = "re")  
+                  + s(Talker, category, bs = "re")
+                    # + s(Location, Talker,  by = category, bs = "fs", k = 5, m=1)
+                    , data = d.model)
+
+m.F3 <- mgcv::bam(F3 ~ category + Gender + Quantity + s(Location, by = category, k = 5) 
+                  + s(Talker, bs = "re")  
+                  + s(Talker, category, bs = "re")
+                    # + s(Location, Talker,  by = category, bs = "fs", k = 5, m=1)
+                    , data = d.model)
+#summary(m.F1)
+# Code kept for reproducibility
+gamtabs(m.F1, caption='Model summary, coefficients for parametric and smooth terms', label = "tab:m.F1")
+gamtabs(m.F2, caption='Model summary, coefficients for parametric and smooth terms', label = "tab:m.F2")
+```
 
 Only half of the vowel pairs displayed significant differences in F3: for [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("ɪ")`], [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʏ")`], [`r linguisticsdown::cond_cmpl("eː")`] - [`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("ɛ")`], [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("ɔ")`], [`r linguisticsdown::cond_cmpl("ʉː")`] - [`r linguisticsdown::cond_cmpl("ɵ")`] distinctions, all $ps < .007$. This is expected given that vowel category distinctions overall rely less on the higher formants. For the rounded vowels, the long vowels overall displayed lower F3 values than their short counterparts, hence more lip-rounding, in line with previous research (For [`r linguisticsdown::cond_cmpl("uː")`] - [`r linguisticsdown::cond_cmpl("ʊ")`], and [`r linguisticsdown::cond_cmpl("øː")`] - [`r linguisticsdown::cond_cmpl("ø")`], these differences were numerical.) [e.g., @hadding1976; @stalhammar1973]. However, the opposite pattern was found for the [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("ɔ")`] and the [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʏ")`] vowel pairs, indicating that [`r linguisticsdown::cond_cmpl("ʏ")`] and [`r linguisticsdown::cond_cmpl("ɔ")`] are more rounded than their long counterparts.<!--check these last values och automatisera-->
 
@@ -1260,7 +1267,7 @@ rm(d.model.all.vowels)
 
 Figure \@ref(fig:trajectories) displays the formant trajectories across all 5 time-points for the long and the short vowels. There is movement across time-points for the majority of vowels. The scope and direction however vary. Across vowels, the movement is the largest moving from vowel mid-point to 80% into the vowel, as indicated by the length of the line from category label to end of arrow. Most vowels move towards the center of the space, resulting in a backing of the front vowels and fronting of the back vowels.<!--jmfr detta med kuronen: häd lowers, sopa raises--> In terms of vertical movements, all vowels, high and low, seem to rise with the exception of [`r linguisticsdown::cond_cmpl("eː")`] and [`r linguisticsdown::cond_cmpl("oː")`].
 
-<!--change to gamm-->The directionality and systematicity of formant movements in F1-F2 space was confirmed by separate linear mixed effect regressions for each vowel and each formant (F1, F2), with formant as dependent variable and time-point as predictor, and the interaction of time-point and talker as random effects. The regression models indicated a significant and systematic upward movement along F1 from mid-point to 80% into the vowel for the following vowels---[`r linguisticsdown::cond_cmpl("ʉː")`], [`r linguisticsdown::cond_cmpl("æː")`], [`r linguisticsdown::cond_cmpl("ɑː")`], [`r linguisticsdown::cond_cmpl("uː")`], [`r linguisticsdown::cond_cmpl("ɛ")`], [`r linguisticsdown::cond_cmpl("æ")`], [`r linguisticsdown::cond_cmpl("ø")`], [`r linguisticsdown::cond_cmpl("œ")`], [`r linguisticsdown::cond_cmpl("a")`], [`r linguisticsdown::cond_cmpl("ɔ")`], and [`r linguisticsdown::cond_cmpl("ɵ")`] (all $ps < .0392$), and a downward movement for [`r linguisticsdown::cond_cmpl("eː")`], [`r linguisticsdown::cond_cmpl("oː")`] and [`r linguisticsdown::cond_cmpl("ʊ")`] (all $ps < .033$). For F2, the results indicated a significant backward movement for [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("ʉː")`], [`r linguisticsdown::cond_cmpl("eː")`], [`r linguisticsdown::cond_cmpl("ɛː")`], [`r linguisticsdown::cond_cmpl("ɛ")`], [`r linguisticsdown::cond_cmpl("øː")`], [`r linguisticsdown::cond_cmpl("ø")`] and [`r linguisticsdown::cond_cmpl("æː")`] (all $ps < .019$), and a significant movement towards the front for [`r linguisticsdown::cond_cmpl("œː")`], [`r linguisticsdown::cond_cmpl("oː")`], [`r linguisticsdown::cond_cmpl("ʊ")`], [`r linguisticsdown::cond_cmpl("ɔ")`], [`r linguisticsdown::cond_cmpl("œ")`], [`r linguisticsdown::cond_cmpl("ɵ")`], [`r linguisticsdown::cond_cmpl("æ")`], [`r linguisticsdown::cond_cmpl("a")`] (all $ps < .03$). <!--check these pvalues-->
+<!--check the gamms-->The directionality and systematicity of formant movements in F1-F2 space was confirmed by the GAMMs. For F1, there was a significant and systematic upward movement from mid-point to 80% into the vowel for the following vowels---[`r linguisticsdown::cond_cmpl("ʉː")`], [`r linguisticsdown::cond_cmpl("æː")`], [`r linguisticsdown::cond_cmpl("ɑː")`], [`r linguisticsdown::cond_cmpl("uː")`], [`r linguisticsdown::cond_cmpl("ɛ")`], [`r linguisticsdown::cond_cmpl("æ")`], [`r linguisticsdown::cond_cmpl("ø")`], [`r linguisticsdown::cond_cmpl("œ")`], [`r linguisticsdown::cond_cmpl("a")`], [`r linguisticsdown::cond_cmpl("ɔ")`], and [`r linguisticsdown::cond_cmpl("ɵ")`] (all $ps < .0392$), and a downward movement for [`r linguisticsdown::cond_cmpl("eː")`], [`r linguisticsdown::cond_cmpl("oː")`] and [`r linguisticsdown::cond_cmpl("ʊ")`] (all $ps < .033$). For F2, the results indicated a significant backward movement for [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("ʉː")`], [`r linguisticsdown::cond_cmpl("eː")`], [`r linguisticsdown::cond_cmpl("ɛː")`], [`r linguisticsdown::cond_cmpl("ɛ")`], [`r linguisticsdown::cond_cmpl("øː")`], [`r linguisticsdown::cond_cmpl("ø")`] and [`r linguisticsdown::cond_cmpl("æː")`] (all $ps < .019$), and a significant movement towards the front for [`r linguisticsdown::cond_cmpl("œː")`], [`r linguisticsdown::cond_cmpl("oː")`], [`r linguisticsdown::cond_cmpl("ʊ")`], [`r linguisticsdown::cond_cmpl("ɔ")`], [`r linguisticsdown::cond_cmpl("œ")`], [`r linguisticsdown::cond_cmpl("ɵ")`], [`r linguisticsdown::cond_cmpl("æ")`], [`r linguisticsdown::cond_cmpl("a")`] (all $ps < .03$). <!--check these pvalues-->
 
 The trajectory patterns were not unambiguously consistent, which might suggest some uncertainty around the measurement estimates. However, there was nevertheless a general tendency of movement towards a more central vowel quality in most of the vowels, both long and short, as well as a clear diphthongization in [`r linguisticsdown::cond_cmpl("eː")`] and [`r linguisticsdown::cond_cmpl("oː")`], which replicates previous work [e.g., @eklund1997; @elert2000; @pelzer-boersma2019]. The high vowels [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("ʉː")`] and [`r linguisticsdown::cond_cmpl("uː")`] tend to be realized with an offglide [e.g., @bleckert1987; @elert2000]. This would generate a falling F1 for all four vowels, a rising F2 for [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] and a falling F2 for [`r linguisticsdown::cond_cmpl("ʉː")`] and [`r linguisticsdown::cond_cmpl("uː")`]. These predictions were borne out for F1 in all cases, but for F2, only for [`r linguisticsdown::cond_cmpl("ʉː")`]. [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] display very little movement along F2, whereas [`r linguisticsdown::cond_cmpl("uː")`] moves towards a more central quality, possibly indicating diphthongization ending in [`r linguisticsdown::cond_cmpl("ə")`] rather than a consonantal offglide.
 
