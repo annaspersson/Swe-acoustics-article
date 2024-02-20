@@ -136,11 +136,11 @@ base_size = 10
 \setcounter{page}{1}
 
 # Introduction {#sec:intro}
-The relatively dense Swedish vowel space consists of 21 categories that differ in spectral cues (formant frequencies) and temporal cues (duration). Besides a systematic quantity distinction that results in long and short vowel pairs (i.e., allophony by structural position) [@riad2014], Swedish vowels are also characterized by different levels of lip-rounding, and contextually conditioned allophones to /`r linguisticsdown::cond_cmpl("ɛ")`/ and /`r linguisticsdown::cond_cmpl("ø")`/ in position before /r/ or retroflex segments, making the Swedish vowel space rather complex typologically. Given the crowdedness of the space, and resulting category overlap for some vowels, previous work has stressed the importance of additional cues besides the two primary determinants to vowel identity cross-linguistically---the first two formants, F1 and F2 [e.g., @joos1948; @Ladefoged1957; @nearey-assmann1986; @peterson1961]. For instance, the third formant (F3) for rounded vs. unrounded categories, as well as formant dynamics for several neighboring categories. This paper investigates the acoustic characteristics of modern-day Swedish vowels in two studies that aim to contribute to our understanding of language-specific and langue-general patterns of vowel acoustics. The variety investigated is Central Swedish, the regional standard variety of Swedish spoken in an area around and beyond Stockholm (eastern Svealand), including Mälardalssvenska, Sveamål, Uppsvenska, Mellansvenska [see e.g., @bruce2009; @elert1994; @riad2014].^[For the reader unfamiliar with Central Swedish, Section XXX provides an overview of the acoustics of Central Swedish vowel space.] The first study presents a comprehensive description of the primary acoustic cues to vowel identity, using a recently released database of *h*-VOWEL-*d* (short: hVd) words, recorded by 44 male and female talkers of Central Swedish, the SwehVd database [@persson-jaeger2023]. The second study assesses whether the Central Swedish vowel space have been submitted to changes over the last generation, by comparing the acoustics of SwehVd against that of 8 talkers of the same variety recorded in 1999 [e.g., @eriksson2004].
+The relatively dense Swedish vowel space consists of 21 categories that differ in spectral cues (formant frequencies) and temporal cues (duration). Besides a systematic quantity distinction that results in long and short vowel pairs (i.e., allophony by structural position) [@riad2014], Swedish vowels are also characterized by different levels of lip-rounding, and contextually conditioned allophones to /`r linguisticsdown::cond_cmpl("ɛ")`/ and /`r linguisticsdown::cond_cmpl("ø")`/ in position before /r/ or retroflex segments, making the Swedish vowel space rather complex typologically. Given the crowdedness of the space, and resulting category overlap for some vowels, previous work has stressed the importance of additional cues besides the two primary determinants to vowel identity cross-linguistically---the first two formants, F1 and F2 [e.g., @joos1948; @Ladefoged1957; @nearey-assmann1986; @peterson1961]. For instance, the third formant (F3) for rounded vs. unrounded categories, as well as formant dynamics for several neighboring categories. This paper investigates the acoustic characteristics of modern-day Swedish vowels in two studies that aim to contribute to our understanding of language-specific and langue-general patterns of vowel acoustics. The variety investigated is Central Swedish, the regional standard variety of Swedish spoken in an area around and beyond Stockholm (eastern Svealand), including Mälardalssvenska, Sveamål, Uppsvenska, Mellansvenska [see e.g., @bruce2009; @elert1994; @riad2014].^[For the reader unfamiliar with Central Swedish, Section \@ref(sec:sweVowels) provides an overview of the acoustics of Central Swedish vowel space.] The first study presents a comprehensive description of the primary acoustic cues to vowel identity, using a recently released database of *h*-VOWEL-*d* (short: hVd) words, recorded by 44 male and female talkers of Central Swedish, the SwehVd database [@persson-jaeger2023]. The second study assesses whether the Central Swedish vowel space have been submitted to changes over the last generation, by comparing the acoustics of SwehVd against that of 8 talkers of the same variety recorded in 1999 [e.g., @eriksson2004].
 
 Existing descriptions of the entire Central Swedish vowel space of 21 categories rest on recordings made in the mid- or late $20^{th}$ century [e.g., @eklund1997; @engstrand1999; @fant1969]. The most recent mapping of the *entire* space was done by @kuronen2000, who used recordings from 1982 [@leinonen1982]. @leinonen2010's comprehensive study on dialectal (and social) variation also used the SweDia reference talkers of Standard Swedish for comparison, but left out XX categories for phonological reasons...<!--add here--> Over the last two decades, the majority of studies on Central Swedish vowels have instead focused on sub-parts of the space, such as the long vowels for studies on diphthongization [e.g., @pelzer-boersma2019], or zooming in on two categories for merger studies [@wenner2010], or on a single category, such the damped [`r linguisticsdown::cond_cmpl("ɨː")`] [@schotz2011]. A summary of a selection of previous work on Central Swedish vowels is presented in Table \@ref(tab:SI-previous-work) in the Supplementary Information (SI). These studies all provide detailed mappings of different parts of the space, and contribute with important insights into ongoing processes of vowel shifts. However, given their focus on subsets of the space, acoustic mappings of the modern-day Central Swedish vowel space *in its entirety* are largely lacking. In addition, most previous studies differ in the materials used, in terms of the size of the database (e.g., number of talkers, number of repetitions per vowel), the demographics of talkers (e.g., male/female talkers, region of origin), and phonological contexts used for recording. For instance, the majority of previous studies have either not held the phonetic context constant across vowels, or have investigated vowel production out of context or in different CVC contexts (Table \@ref(tab:SI-previous-work)). This diversity restricts comparison across studies on Swedish, as well as cross-linguistically.
 
-The choice of materials and methodological approach adopted in the current paper aims at expanding on and complementing previous work for a comprehensive picture of modern-day Central Swedish vowels. The first study provides an up-to-date acoustic description of the entire Central Swedish vowel space of 21 categories, using the SwehVd database [@persson-jaeger2023]. The use of an hVd database minimizes coarticulatory effects from the surrounding phonetic context, and increase cross-linguistic comparability [e.g., @hillenbrand1995; @Peterson1952]. The main spectral and temporal cues to vowel identity are reported in static analyses [following e.g., @engstrand1999; @fant1969], as well as dynamic analyses, given the well documented importance of formant dynamics on vowel production and perception [e.g., @assmann-katz2005; @eklund1997; @hillenbrand-nearey1999; @kuronen2000; @nearey-assmann1986]. In contrast with previous work investigating the dynamics of Central Swedish vowels, the present study includes analyses of both long and short vowels. General additive mixed models (GAMMs) are implemented to model formant dynamics. GAMMs are increasingly used in phonetic research, due to their suitability in modelling complex phonetic patterns without having to rely on simplifying assumptions, e.g., that vowels can be reduced to a single F1-F2 point estimate [@refs]. The use of GAMMs to model formant dynamics and assess the relative weight of different acoustic cues for vowel identity, complements previous work on Central Swedish that have primarily used visual inspection and formant measurements (Table \@ref(tab:SI-previous-work)).<!--what did leinonen use??--> 
+The choice of materials and methodological approach adopted in the current paper aims at expanding on and complementing previous work for a comprehensive picture of modern-day Central Swedish vowels. The first study provides an up-to-date acoustic description of the entire Central Swedish vowel space of 21 categories, using the SwehVd database [@persson-jaeger2023]. The use of an hVd database minimizes coarticulatory effects from the surrounding phonetic context, and increase cross-linguistic comparability [e.g., @hillenbrand1995; @Peterson1952]. The main spectral and temporal cues to vowel identity are reported in static analyses [following e.g., @engstrand1999; @fant1969], as well as dynamic analyses, given the well documented importance of formant dynamics on vowel production and perception [e.g., @assmann-katz2005; @eklund1997; @hillenbrand-nearey1999; @kuronen2000; @nearey-assmann1986]. In contrast with previous work investigating the dynamics of Central Swedish vowels, the present study includes analyses of both long and short vowels. General additive mixed models (GAMMs) are implemented to model formant dynamics. GAMMs are increasingly used in phonetic research, due to their suitability in modelling complex phonetic patterns without having to rely on simplifying assumptions, e.g., that vowels can be reduced to a single F1-F2 point estimate [@soskuthy2021]. The use of GAMMs to model formant dynamics and assess the relative weight of different acoustic cues for vowel identity, complements previous work on Central Swedish that have primarily used visual inspection and formant measurements (Table \@ref(tab:SI-previous-work)).<!--what did leinonen use??--> 
 
 Figure \@ref(fig:swe-vowels) shows the vowel space as represented by the talkers in SwehVd. Compared to many established descriptions of Central Swedish [e.g., @eklund1997; @engstrand1999; @fant1969; @kuronen2000; @riad2014], Figure \@ref(fig:swe-vowels) indicates changes in the phonetic realization of the Central Swedish vowels, similar to those found in @pelzer-boersma2019: for instance, [`r linguisticsdown::cond_cmpl("eː")`] is produced substanitally higher, [`r linguisticsdown::cond_cmpl("ɛː")`] has lowered, while [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] have centralized<!--, presumably because they were produced with a buzzing off-glide sound, as the 'damped' [`r linguisticsdown::cond_cmpl("ɨː")`]-->. The aim of the second study is to assess the scope and spread of these changes over the last generation, by comparing the acoustic characteristics of SwehVd against vowel data from a database of 8 (female = 4) talkers of Central Swedish recorded in 1999 as part of the SweDia dialect project [e.g., @eriksson2004]. Potential vowel shifts are assessed qualitatively by visualizations, and quantitatively using a distance metric, the orthogonal projection ratio [@stevens-schiel2019].
 
@@ -191,7 +191,6 @@ d.SwehVd.exclusions <-
 # Exclude talkers that failed to produce *hodd* altogether + the mispronounced words by remaining talkers. This approach results in exclusion of an additional two talkers, given that they only did five recordings for each vowel. Also exclude measurements at 20 and 80% into the vowel, and all /hädd/ words since they are a duplicate of "[ɛ]" - the short allophone to /e/ neutralizes with the short allophone to /ɛ/. Also exclude all NAs in F0s.
 d.SwehVd.forStudy <-
   d.SwehVd %>%
-  #Use the mid-point for comparability with Kuronen?????????????????
   filter(Transcribed_vowel == "targeted", Word != "hädd", !is.na(F0), Unreliable_measurement == FALSE) %>%
   select(-Transcribed_vowel) %>%
   rename(timepoint = Location) %>%
@@ -235,6 +234,13 @@ d.SwehVd.forStudy.long <-
    relocate(Talker, Age, Gender, Normalization.Type, fold_type, category, Quantity, Token)
 
 d.SwehVd.forStudy.long.static <- d.SwehVd.forStudy.long %>%
+  filter(Normalization.Type %in% c("no normalization (Hz)", "Nearey's uniform scaling (log)"), timepoint %in% c(35, 50, 65)) %>%
+  # Get the  mean F1-F2 across the five time points
+  group_by(Normalization.Type, Talker, Gender, category, Token, Word, Quantity) %>%
+  summarise(across(c(F0, F1, F2, F3, Duration), ~ mean(.x))) %>%
+  ungroup()
+
+d.SwehVd.forStudy.long.dynamic <- d.SwehVd.forStudy.long %>%
   filter(Normalization.Type %in% c("no normalization (Hz)", "Nearey's uniform scaling (log)"))
 ```
 
@@ -242,11 +248,6 @@ d.SwehVd.forStudy.long.static <- d.SwehVd.forStudy.long %>%
 
 ```{r swe-vowels, fig.width=base.width*4.5, fig.height=base.height*3, out.width='80%', fig.align='center', fig.cap="(ref:swe-vowels)"}
 p <- d.SwehVd.forStudy.long.static %>%
-  filter(Normalization.Type %in% c("no normalization (Hz)", "Nearey's uniform scaling (log)"), timepoint %in% c(35, 50, 65)) %>%
-  # Get the geometric mean F1-F2 across the five time points
-  group_by(Normalization.Type, Talker, Gender, category, Token, Quantity) %>%
-  summarise(across(c(F1, F2, F3, Duration), ~ mean(.x))) %>%
-  ungroup() %>%
   ggplot(
     aes(
       x = F2,
@@ -288,11 +289,11 @@ Central Swedish is furthermore defined by three levels of lip-rounding, where th
 
 The 9 long-short vowel pairs differ systematically in duration, with short-long vowel to vowel ratios reported to be on average .65-.67 for Central Swedish [e.g., @elert1964; @kuronen2000; @strangert2001]. However, spectral cues also convey information for vowel pair distinctions, with previous studies finding F2 to carry most of the durational variation [e.g., @kuronen2000; @lindblom1963]. The largest spectral differences between long and short vowel pairs have been found for [`r linguisticsdown::cond_cmpl("ʉː")`] - [`r linguisticsdown::cond_cmpl("ɵ")`], and [`r linguisticsdown::cond_cmpl("ɑː")`] - [`r linguisticsdown::cond_cmpl("a")`], and the smallest differences for [`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("ɛ")`], [`r linguisticsdown::cond_cmpl("øː")`] - [`r linguisticsdown::cond_cmpl("ø")`] [e.g., @kuronen2000]. Perceptual studies have confirmed that duration is primary cue to [`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("ɛ")`] and [`r linguisticsdown::cond_cmpl("øː")`] - [`r linguisticsdown::cond_cmpl("ø")`], but also to [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("ɪ")`], and [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("ɔ")`] [e.g., @behne-kirk1997; @haddingkoch1964]. The extent to which *all* vowel pairs are more or less dependent on duration is less known. For a extensive phonological study on the Swedish quantity system, see @schaeffler2005.<!--add here-->
 
-Several of the long vowels in Central Swedish tend to diphthongize in their phonetic realization. This diphthongization is prosodically conditioned and is the strongest in stressed vowels [e.g., @bleckert1987; @leinonen2010].^[In general, true phonological diphthongs are not considered part of the phonological inventory of Central Swedish [@eliasson2022].] Previous studies have characterized the diphthongal glide in the later part of the long vowels as either a centralization of the vowel segment towards [`r linguisticsdown::cond_cmpl("ə")`] or a more open quality, or as a consonantal offglide [e.g., @elert1981; @elert2000; @fant1969; @fant1971; @kuronen2000; @mcallister1974; @pelzer-boersma2019; @riad2014]. Results are inconclusive as to how widespread diphthongization is across the vowel space, and what direction it takes. Most work has however found substantial diphthongization towards a more open quality for the mid and mid-high vowels [`r linguisticsdown::cond_cmpl("eː")`], [`r linguisticsdown::cond_cmpl("øː")`] and [`r linguisticsdown::cond_cmpl("oː")`] [e.g., @eklund1997; @elert2000; @fant1969; @pelzer-boersma2019]. In addition, results have shown that diphthongization cues category distinctions for several of the high vowels ([`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("ʉː")`], and [`r linguisticsdown::cond_cmpl("uː")`]) [e.g., @fant1971; @kuronen2000]. For instance, @kuronen2000 concluded that [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("eː")`], and [`r linguisticsdown::cond_cmpl("uː")`] - [`r linguisticsdown::cond_cmpl("oː")`], differed in formant patterns only at later time-points of the vowel for some talkers in his study. He also found that the contrast between [`r linguisticsdown::cond_cmpl("ɛː")`] and [`r linguisticsdown::cond_cmpl("æː")`] was maintained solely by trajectory movements. Of importance for the present study, less is known about the formant dynamics in the short vowels, given the almost exclusive focus on the long vowels in studies on diphthongization.
+Several of the long vowels in Central Swedish tend to diphthongize in their phonetic realization. Diphthongization is prosodically conditioned and is the strongest in stressed vowels [e.g., @bleckert1987; @leinonen2010].^[In general, true phonological diphthongs are not considered part of the phonological inventory of Central Swedish [@eliasson2022].] Previous studies have characterized the diphthongal glide in the later part of the long vowels as either a centralization of the vowel segment towards [`r linguisticsdown::cond_cmpl("ə")`] or a more open quality, or as a consonantal offglide [e.g., @elert1981; @elert2000; @fant1969; @fant1971; @kuronen2000; @mcallister1974; @pelzer-boersma2019; @riad2014]. Results are inconclusive as to how widespread diphthongization is across the vowel space, and what direction it takes. Most work has however found substantial diphthongization towards a more open quality for the mid and mid-high vowels [`r linguisticsdown::cond_cmpl("eː")`], [`r linguisticsdown::cond_cmpl("øː")`] and [`r linguisticsdown::cond_cmpl("oː")`] [e.g., @eklund1997; @elert2000; @fant1969; @pelzer-boersma2019]. In addition, results have shown that diphthongization cues category distinctions for several of the high vowels ([`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("ʉː")`], and [`r linguisticsdown::cond_cmpl("uː")`]) [e.g., @fant1971; @kuronen2000]. For instance, @kuronen2000 concluded that [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("eː")`], and [`r linguisticsdown::cond_cmpl("uː")`] - [`r linguisticsdown::cond_cmpl("oː")`], differed in formant patterns only at later time-points of the vowel for some talkers in his study. He also found that the contrast between [`r linguisticsdown::cond_cmpl("ɛː")`] and [`r linguisticsdown::cond_cmpl("æː")`] was maintained solely by trajectory movements. Of importance for the present study, less is known about the formant dynamics in the short vowels, given the almost exclusive focus on the long vowels in studies on diphthongization.
 
-Some talkers of Central Swedish realize [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("ʉː")`] and [`r linguisticsdown::cond_cmpl("uː")`] with a consonantal offglide, where the end-point of [`r linguisticsdown::cond_cmpl("iː")`] is described as a palatal approximant [`r linguisticsdown::cond_cmpl("j")`], the end-point of [`r linguisticsdown::cond_cmpl("yː")`] a voiced labio-palatal approximant [`r linguisticsdown::cond_cmpl("ɥ")`], the end-point of [`r linguisticsdown::cond_cmpl("ʉː")`] and [`r linguisticsdown::cond_cmpl("uː")`] a voiced bilabial fricative [`r linguisticsdown::cond_cmpl("β")`] [e.g., @hammarstrom-norman1957; @mcallister1974]. Furthermore, both [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] can be damped and produced with a buzzing sound, phonetically realized as [`r linguisticsdown::cond_cmpl("ɨː")`]. This [`r linguisticsdown::cond_cmpl("ɨː")`] is found in several dialects across Sweden, both in rural areas and in the cities of Gothenburg and Stockholm [e.g., @bjorsten-engstrand1999; @engstrand2000; @gross2020; @riad2014]. In work on Swedish dialectology, it is often referred to as the Viby-i, and in the Stockholm area, as the Lidingö-i. Acoustically, it manifests primarily as a lowering of F2, thus a more centralized position in the F1-F2 space.
+Some talkers of Central Swedish realize [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("ʉː")`] and [`r linguisticsdown::cond_cmpl("uː")`] with a consonantal offglide, where the end-point of [`r linguisticsdown::cond_cmpl("iː")`] is described as a palatal approximant [`r linguisticsdown::cond_cmpl("j")`], the end-point of [`r linguisticsdown::cond_cmpl("yː")`] a voiced labio-palatal approximant [`r linguisticsdown::cond_cmpl("ɥ")`], the end-point of [`r linguisticsdown::cond_cmpl("ʉː")`] and [`r linguisticsdown::cond_cmpl("uː")`] a voiced bilabial fricative [`r linguisticsdown::cond_cmpl("β")`] [e.g., @hammarstrom-norman1957; @mcallister1974]. Furthermore, both [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] can be damped and produced with a buzzing sound, phonetically realized as [`r linguisticsdown::cond_cmpl("ɨː")`]. The damped [`r linguisticsdown::cond_cmpl("ɨː")`] is found in several dialects across Sweden, both in rural areas and in the cities of Gothenburg and Stockholm [e.g., @bjorsten-engstrand1999; @engstrand2000; @gross2020; @riad2014]. In work on Swedish dialectology, it is often referred to as the Viby-i, and in the Stockholm area, as the Lidingö-i. Acoustically, it manifests primarily as a lowering of F2, thus a more centralized position in the F1-F2 space.
 
-From previous research, we know the Central Swedish vowel space as a dense space of 21 categories. Static analyses have mapped out the space primarily along F1 and F2, but also concluded the importance of F3 for lip-rounding and duration for long-short vowel pair distinctions. Formant dynamics has furthermore been found to cue several long vowels, but little is known about its importance for the short vowels. In addition, phenomena such as the lowering of [`r linguisticsdown::cond_cmpl("ɛː")`], and the centralization of [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] have been reported in several studies [@refs], however, they have often been studied using a limited number of talkers [but see @pelzer-boersma2019] and without comparing against their short counterparts or against the entire vowel space. This study submits the entire vowel space to the same analyses, using a fairly large corpus of hVd words, for a comprehensive and hopefully more complete picture of modern-day Central Swedish vowels, while assessing the scope and spread of some previously reported changes in the space.
+From previous research, we know the Central Swedish vowel space as a dense space of 21 categories. Static analyses have mapped out the space primarily along F1 and F2, but also concluded the importance of F3 for lip-rounding and duration for long-short vowel pair distinctions. Formant dynamics has furthermore been found to cue several long vowels, but little is known about its importance for the short vowels. In addition, phenomena such as the lowering of [`r linguisticsdown::cond_cmpl("ɛː")`], and the centralization of [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] have been reported in previous work [e.g., @leinonen2010; @schotz2011; @refs], however, they have often been studied using a limited number of talkers [but see @pelzer-boersma2019] and without comparing against their short counterparts or against the entire vowel space. The present study submits the entire vowel space to the same analyses, using a fairly large corpus of hVd words, for a comprehensive and hopefully more complete picture of modern-day Central Swedish vowels, while assessing the scope and spread of some previously reported changes in the space.
 
 Next, the general methods shared by both studies are presented.
 
@@ -317,8 +318,8 @@ d.SweDia2000 %<>%
   select(-c(cumulative_probability_F1F2, mean_F1F2, cov_F1F2))
 
 d.SweDia2000.forStudy <- d.SweDia2000 %>%
-  # Remove bisyllabic word and ÄRR as this category is only recorded by 2 talkers
-  filter(!is.na(F0), Word != "flytta", category != "[æ]") %>%
+  # Remove ÄRR as this category is only recorded by 2 talkers
+  filter(!is.na(F0), category != "[æ]") %>%
   rename(timepoint = Location) %>%
   group_by(Database, Talker, Age, Gender, category, Word, Token, Trial, timepoint, Quantity) %>%
   summarise(across(c(F0, F1, F2, F3, Duration), ~ geometric.mean(.x))) %>%
@@ -358,49 +359,48 @@ d.SweDia2000.forStudy.long <-
    relocate(Talker, Age, Gender, Normalization.Type, fold_type, category, Quantity, Token)
 
 d.Swehvd.Swedia <- d.SweDia2000.forStudy.long %>%
+  filter(Normalization.Type %in% c("no normalization (Hz)", "Nearey's uniform scaling (log)"), timepoint %in% c(35, 50, 65)) %>%
+  group_by(Database, Normalization.Type, Talker, category, Token, Word, Quantity) %>%
+  summarise(across(c(F0, F1, F2, F3), ~mean(.x))) %>%
      rbind(d.SwehVd.forStudy.long.static %>%
              # Remove the ÄRR category as this is not present in all talkers in SweDia2000
-             filter(category != "[æ]"))
+             filter(category != "[æ]") %>%
+             mutate(
+               Database = "SwehVd"))
 ```
 
 # General methods {#sec:methods}
 ## Measuring acoustic cues to vowel identity
-Following most vowel descriptions, this study reports acoustic measurements and visualizations of the first three formants (F1, F2, F3). While fundamental frequency (F0) is not considered an important cue to vowel identity in itself, it is known to vary between languages, dialects and speech styles [@refs] and is therefore also reported.^[For demonstrations that F0 can, however, have strong *in*direct effects on vowel categorization, see @barreda-nearey2012.] Measurements of vowel duration are included to capture the systematic quantity distinction between long-short vowel pairs in Central Swedish.
+Following most vowel descriptions, this study reports acoustic measurements and visualizations of the first three formants (F1, F2, F3). While fundamental frequency (F0) is not considered an important cue to vowel identity in itself, it is known to vary between languages, dialects and speech styles [e.g., @jacewicz-fox2018; @mennen2012; @refs] and is therefore also reported.^[For demonstrations that F0 can, however, have strong *in*direct effects on vowel categorization, see @barreda-nearey2012.] Measurements of vowel duration are included to capture the systematic quantity distinction between long-short vowel pairs in Central Swedish.
 
-The Swedish version of the Montreal Forced Aligner developed by @young2021 was used to obtain estimates of word and segment boundaries. The boundaries were then manually corrected by the author (an L1-talker of Swedish). The formant analysis was carried out in Praat [@boersma-weenink2022], using the Burg algorithm to extract estimates of the first three formants (F1-F3) at five time-points of the vowel (20, 35, 50, 65, 80% into the vowel), while vowel duration and F0 were extracted across the entire vowel segment. The following parameterization of the Burg algorithm was used: <!--shorten this down-->
+The Swedish version of the Montreal Forced Aligner developed by @young2021 was used to obtain estimates of word and segment boundaries. The boundaries were then manually corrected by the author (an L1-talker of Swedish). The formant analysis was carried out in Praat [@boersma-weenink2022], using the Burg algorithm to extract estimates of the first three formants (F1-F3) at five time-points of the vowel (20, 35, 50, 65, 80% into the vowel), while vowel duration and F0 were extracted across the entire vowel segment. The Burg algorithm was parameterized with a time step of 0.01 seconds, a window length of 0.025 seconds, and pre-emphasis was applied from 50 Hz. The maximum number of formants was set to 5, with a formant ceiling of 5500 Hz for the female talkers, and 5000 Hz for the male talkers.
 
-  * Time step (s): 0.01
-  * Max. number of formants: 5
-  * Formant ceiling (Hz): 5500 (for the female talkers), 5000 (for the male talkers)
-  * Window length (s): 0.025
-  * Pre-emphasis from (Hz): 50
-
-In order to correct for measurement errors in the automatic extraction of cues, the joint multivariate distribution of the five extracted cues (F0, F1, F2, F3 and duration) was estimated for each distinct combination of talker and vowel. This facilitated the identification of outliers relative to the joint distribution of the five cues for that vowel and talker. Points that fell outside of the $0.5th$ to the $99.5th$ quantile of the multivariate Gaussian distribution for each vowel were identified, examined for measurement errors, and subsequently corrected. This followed the approach employed in @persson-jaeger2023, and strikes a middle-ground between the ideal (manual correction of all tokens) and feasibility.
+In order to correct for measurement errors in the automatic extraction of cues, the joint multivariate distribution of the five extracted cues (F0, F1, F2, F3 and duration) was estimated for each distinct combination of talker and vowel. The identification of outliers was thus relative to the joint distribution of the five cues for that vowel and talker. Points that fell outside of the $0.5th$ to the $99.5th$ quantile of the multivariate Gaussian distribution for each vowel were identified, examined for measurement errors, and subsequently corrected. This followed the approach employed in @persson-jaeger2023, and strikes a middle-ground between the ideal (manual correction of all tokens) and feasibility.
 
 ### Vowel normalization
 The raw formant values were transformed into a vowel normalized space using Nearey's uniform scaling account [@nearey1978] (formant measurements in Hertz are presented in the SI, Section \@ref(sec:SI-raw)). Vowel normalization is used in vowel production and perception studies as a means to account for phonetically irrelevant talker-specific variation, such as adjusting for differences in anatomical structure (e.g., vocal tract size) [for reviews see e.g., @barreda-nearey2018; @johnson-sjerps2021; @stilp2020]. In vowel production studies such as the present, normalization is primarily used as a methodological tool rather than a cognitive model of speech perception. The effect of normalization on the SwehVd data is visualized in Figure \@ref(fig:swe-vowels). Transforming the formant data into Nearey's uniform scaling space thus reduces differences in F1 and F2 due to physiology, which can result in increased category separability (compare left and right panel of Figure \@ref(fig:swe-vowels)). Previous work on Swedish has analyzed vowel data using primarily Bark-transformed data [@fant1983; @kuronen2000; @schotz2011; @wenner2010], Mel-transformed data [@lindblom1963], Lobanov-normalized inputs to principal component analysis [@gross2020], or unnormalized raw Hertz [@bjorsten-engstrand1999; @fant1969; @pelzer-boersma2019]. The choice of Nearey's uniform scaling in the present study was motivated by its previous use in socio-phonetic research to describe and compare languages and varieties [e.g., @labov2001; @labov-boberg2005], and by its plausibility as perceptual model of how we come to achieve robust cross-talker perception, as it has provided a good fit against both production [e.g., @persson-jaeger2023; @syrdal1985] and perception data [e.g., @barreda2021; @persson2024]. Furthermore, its implementation closely resembles Vocal Tract Length normalization used in automatic speech recognition applications [e.g., @gouvea-stern1997].
 
 ## Datasets {#sec:datasets}
-### The SwehVd database {#sec:swehvd}
+### The SwehVd database {#sec:swehVd}
 The SwehVd database is a corpus of Swedish hVd word recordings, collected by Anna Persson and Maryann Tan (Stockholm University) in 2020-2024, and previously described in @persson-jaeger2023. All recordings, annotations, and acoustic measurements are available on an OSF separate from the paper, at <https://osf.io/ruxnb/>. For this paper, an updated version of the database has been released, including an additional 20 male talkers. 
 SwehVd was collected with the goal to characterize the contemporary Central Swedish spoken in the Greater Stockholm area, within and across talkers. It covers the entire monophthong inventory of Central Swedish, including all nine long vowels (*hid*, *hyd*, *hud*, *hed*, *häd*, *höd*, *had*, *håd*, *hod*), eight short vowels (*hidd*, *hydd*, *hudd*, *hedd*, *hädd*, *hödd*, *hadd*, *hådd*, *hodd*), and four additional allophones in the position before retroflex segments (*härd*, *härr*, *hörd*, *hörr*). SwehVd focuses on a single regional variety, providing high resolution within and across talkers for this variety with N = 10 recordings of each hVd word (for a total of 220 recordings for the 22 different hVd words) from each of the N = `r n_distinct(d.SwehVd$Talker)` talkers (N = `r nrow(d.SwehVd %>% filter(Gender == "female") %>% distinct(Talker))` female), a total N of tokens = `r nrow(d.SwehVd %>% distinct(Talker, category, Token))`. All talkers in the database were L1 talkers of Swedish, born and raised in the Greater Stockholm area or surroundings (provinces of Södermanland, Uppland), of 20-40 years of age (mean age = `r mean(d.SwehVd$Age) %>% round(digits = 0)`; SD = `r sd(d.SwehVd$Age) %>% round(digits = 2)`).
 
-For the vast majority of talkers in the SwehVd, *hädd* productions elicited the same vowel as *hedd* (see SI, Figure \@ref(fig:SI-hedd)). This confirms the commonly held assumption that the short allophone of /e/ neutralizes with the short allophone of /`r linguisticsdown::cond_cmpl("ɛ")`/ in Central Swedish. In order to have a balanced number of tokens for each category, all *hädd* words were excluded from the subsetted SwehVd materials used in this study. Recordings of which the talker did not produce the targeted vowel were also excluded.^[The SwehVd database contains information on both targeted category and what category was actually produced.] This left data from `r n_distinct(d.SwehVd$Talker)` L1 talkers (N=`r (d.SwehVd %>% filter(Gender == "female") %>% summarise(n_distinct(Talker)) %>% pull())` female talkers), with on average `r d.SwehVd.forStudy %>% filter(timepoint == 50) %>% group_by(category) %>% tally() %>% summarise(x = mean(n)) %>% pull() %>% round(digits = 0)` (SD = `r d.SwehVd.forStudy %>% filter(timepoint == 50) %>% group_by(category) %>% tally() %>% summarise(x = sd(n)) %>% pull() %>% round(digits = 1)`) tokens per vowel (range = `r d.SwehVd.forStudy %>% filter(timepoint == 50) %>% group_by(category) %>% tally() %>% summarise(x = min(n)) %>% pull() %>% round(digits = 0)` to `r d.SwehVd.forStudy %>% filter(timepoint == 50) %>% group_by(category) %>% tally() %>% summarise(x = max(n)) %>% pull() %>% round(digits = 0)`), for a total of `r nrow(d.SwehVd.forStudy %>% filter(timepoint == 50))` observations. For more details on the recruitment, recording, pre-processing, segmentation and annotation procedure, see @persson-jaeger2023.
+For the vast majority of talkers in the SwehVd, *hädd* productions elicited the same vowel as *hedd* (see SI, Figure \@ref(fig:SI-hedd)), which confirms the commonly held assumption that the short allophone of /e/ neutralizes with the short allophone of /`r linguisticsdown::cond_cmpl("ɛ")`/ in Central Swedish. In order to have a balanced number of tokens for each category, all *hädd* words were excluded from the subsetted SwehVd materials used in this study. Recordings of which the talker did not produce the targeted vowel were also excluded.^[The SwehVd database contains information on both targeted category and what category was actually produced.] This left data from `r n_distinct(d.SwehVd$Talker)` L1 talkers (N=`r (d.SwehVd %>% filter(Gender == "female") %>% summarise(n_distinct(Talker)) %>% pull())` female talkers), with on average `r d.SwehVd.forStudy %>% filter(timepoint == 50) %>% group_by(category) %>% tally() %>% summarise(x = mean(n)) %>% pull() %>% round(digits = 0)` (SD = `r d.SwehVd.forStudy %>% filter(timepoint == 50) %>% group_by(category) %>% tally() %>% summarise(x = sd(n)) %>% pull() %>% round(digits = 1)`) tokens per vowel (range = `r d.SwehVd.forStudy %>% filter(timepoint == 50) %>% group_by(category) %>% tally() %>% summarise(x = min(n)) %>% pull() %>% round(digits = 0)` to `r d.SwehVd.forStudy %>% filter(timepoint == 50) %>% group_by(category) %>% tally() %>% summarise(x = max(n)) %>% pull() %>% round(digits = 0)`), for a total of `r nrow(d.SwehVd.forStudy %>% filter(timepoint == 50))` observations. For more details on the recruitment, recording, pre-processing, segmentation and annotation procedure, see @persson-jaeger2023.
 
 ### Reference materials - SweDia
-The materials used for comparison is a database of N = `r n_distinct(d.SweDia2000.forStudy$Talker)` L1 talkers (N = `r nrow(d.SweDia2000.forStudy %>% filter(Gender == "female") %>% distinct(Talker))` female) of Central Swedish that were recorded as reference talkers of standard Swedish for the SweDia dialect database [e.g., @eriksson2004]. All talkers were L1 talkers of Swedish, born and raised in the Greater Stockholm area or surroundings (provinces of Södermanland, Uppland), of 20-40 years of age (mean age = `r mean(d.SweDia2000.forStudy$Age, na.rm = T) %>% round(digits = 0)`; SD = `r sd(d.SweDia2000.forStudy$Age, na.rm = T) %>% round(digits = 2)`). The talkers were recorded reading a list of mono- and bisyllabic words containing all 21 vowels of Central Swedish (for the complete wordlist used for recording, see Table \@ref(tab:word-list) in SI). 
+The materials used for comparison is a database of N = `r n_distinct(d.SweDia2000.forStudy$Talker)` L1 talkers (N = `r nrow(d.SweDia2000.forStudy %>% filter(Gender == "female") %>% distinct(Talker))` female) of Central Swedish that were recorded as reference talkers of standard Swedish for the SweDia dialect database [e.g., @eriksson2004]. All talkers were L1 talkers of Swedish, born and raised in the Greater Stockholm area or surroundings (provinces of Södermanland, Uppland), of 20-40 years of age (mean age = `r mean(d.SweDia2000.forStudy$Age, na.rm = T) %>% round(digits = 0)`; SD = `r sd(d.SweDia2000.forStudy$Age, na.rm = T) %>% round(digits = 2)`). The talkers were recorded reading a list of 41 words containing all 21 vowels of Central Swedish (for the complete wordlist used for recording, see Table \@ref(tab:word-list) in SI). Even though two of the words were bi-syllabic (*leta*, *flytta*), the target vowels extracted ([`r linguisticsdown::cond_cmpl("eː")`], [`r linguisticsdown::cond_cmpl("ʏ")`]) had primary stress and were thus included in this study. The rest of the words were all monosyllabic.
 
-For the current purpose of serving as a reference point for the SwehVd materials, a subset of the SweDia database was used by excluding all bisyllabic words<!--is this the case?--> and all [`r linguisticsdown::cond_cmpl("æ")`] vowels, as this vowel was recorded by only two of the female talkers (leaving a total N of tokens = `r nrow(d.SweDia2000.forStudy %>% distinct(Talker, category, Token))`). The variability in the number of repetitions recorded for each vowel across the 8 talkers was substantial.^[Three to 8 repetitions of [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("ʉː")`], [`r linguisticsdown::cond_cmpl("ɵ")`], [`r linguisticsdown::cond_cmpl("eː")`], [`r linguisticsdown::cond_cmpl("æː")`], [`r linguisticsdown::cond_cmpl("ø")`], [`r linguisticsdown::cond_cmpl("œː")`], [`r linguisticsdown::cond_cmpl("œ")`], [`r linguisticsdown::cond_cmpl("ɑː")`], [`r linguisticsdown::cond_cmpl("a")`], [`r linguisticsdown::cond_cmpl("oː")`], [`r linguisticsdown::cond_cmpl("uː")`], [`r linguisticsdown::cond_cmpl("ʊ")`], 6 repetitions of [`r linguisticsdown::cond_cmpl("ɪ")`], [`r linguisticsdown::cond_cmpl("ʏ")`], [`r linguisticsdown::cond_cmpl("ʏ")`], [`r linguisticsdown::cond_cmpl("ɛ")`], 3 to 14 repetitions of [`r linguisticsdown::cond_cmpl("øː")`], [`r linguisticsdown::cond_cmpl("ɔ")`], [`r linguisticsdown::cond_cmpl("ɛː")`] per talker.] The phonological contexts used were the same across talkers (with two exceptions, see Table \@ref(tab:word-list)) but differed across categories. Importantly, none of the contexts were hVd. In order to (begin to) account for the difference in phonological context between datasets, a conservative approach was adopted in the statistical analyses by including word as random effect in the regression models in Study 2.
+For the current purpose of serving as a reference point for the SwehVd materials, a subset of the SweDia database was used by excluding all [`r linguisticsdown::cond_cmpl("æ")`] vowels, as this vowel was recorded by only two of the female talkers. The two bisyllabic words used  (leaving a total N of tokens = `r nrow(d.SweDia2000.forStudy %>% distinct(Talker, category, Token))`). The variability in the number of repetitions recorded for each vowel across the 8 talkers was substantial.^[Three to 8 repetitions of [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("ʉː")`], [`r linguisticsdown::cond_cmpl("ɵ")`], [`r linguisticsdown::cond_cmpl("eː")`], [`r linguisticsdown::cond_cmpl("æː")`], [`r linguisticsdown::cond_cmpl("ø")`], [`r linguisticsdown::cond_cmpl("œː")`], [`r linguisticsdown::cond_cmpl("œ")`], [`r linguisticsdown::cond_cmpl("ɑː")`], [`r linguisticsdown::cond_cmpl("a")`], [`r linguisticsdown::cond_cmpl("oː")`], [`r linguisticsdown::cond_cmpl("uː")`], [`r linguisticsdown::cond_cmpl("ʊ")`], 6 repetitions of [`r linguisticsdown::cond_cmpl("ɪ")`], [`r linguisticsdown::cond_cmpl("ʏ")`], [`r linguisticsdown::cond_cmpl("ʏ")`], [`r linguisticsdown::cond_cmpl("ɛ")`], 3 to 14 repetitions of [`r linguisticsdown::cond_cmpl("øː")`], [`r linguisticsdown::cond_cmpl("ɔ")`], [`r linguisticsdown::cond_cmpl("ɛː")`] per talker.] The phonological contexts used were the same across talkers (with two exceptions, see Table \@ref(tab:word-list)) but differed across categories. Importantly, none of the contexts were hVd. In order to (begin to) account for the difference in phonological context between datasets, a conservative approach was adopted in the statistical analyses by including word as random effect in the regression models in Study 2.
 For details on the recruitment, recording, pre-processing and annotation procedure in the SweDia materials, see @eriksson2004.
 
 # Study 1: Static and dynamic analyses of the spectral and temporal properties of Central Swedish {#sec:swehVd-static}
 ## Methods
-The spectral acoustics of SwehVd were described in static and dynamic analyses of F0, F1, F2 and F3. The static analyses presented formant measurements at the steady state of the vowel, at vowel mid-point, while the dynamic analyses reported formant measurements at all five time-points.^[The choice of time-point for extracting formants, or whether to average across several time-points, affects the acoustic characterizations given how formants move across the vowel segment. The SI presents evaluations of the effect of different measurement points. For increased comparability across studies in this paper, vowel mid-point was selected for both studies.] Formant dynamics was furthermore modeled by generalized additive mixed models (GAMMs; see below). The materials used in Study 1 is presented in Section \@ref(sec:swehVd).
+The spectral acoustics of SwehVd were described in static and dynamic analyses of F0, F1, F2 and F3. The static analyses presented formant measurements at the steady state of the vowel, by averaging across the three mid-points, while the dynamic analyses reported formant measurements at all five time-points.^[The choice of time-point for extracting formants, or whether to average across several time-points, affects the acoustic characterizations given how formants move across the vowel segment. The SI presents evaluations of the effect of different measurement points. For increased comparability across studies in this paper, the steady state of the vowel was selected for both studies.] Formant dynamics was furthermore modeled by generalized additive mixed models (GAMMs; see below). The materials used in Study 1 is presented in Section \@ref(sec:swehVd).
 
 ### Generalized additive mixed models
-The objective of modelling formant dynamics is to investigate patterns in the data and assess the un/certainty by which we can predict acoustic cues from categorical or continuous predictors. We would thus want to know to what extent vowels can be distinguished by acoustic cues we believe them to differ by, while accounting for by-talker variability and fluctuations in formants across the vowel segment. Dynamic phonetic data, such as formant trajectories, tend to exhibit fluctuations and variability across the signal. A dynamic analysis of this type of data often involves comparisons across formant trajectories as a function of predictors, such as word contexts, talkers, etc. This means that the analysis has not only have a temporal structure (formant measurements at different time-points), but also a hierarchical structure, as individual measurements are grouped into contours that in turn are grouped by words (hVd) and talkers. Both the complex dependencies generated by this structure as well as the non-monotonic behavior of formants, cannot easily be captured by traditional parametric methods, such as linear regression [e.g., @soskuthy2021]. GAMMs allow for complex models that can accomodate nonlinear relationships between predictors and response variables, and their use of smooth functions can provide more nuanced representations of these relationships. Much like other mixed models, GAMMs allow for the inclusion of random effects, which permits the model to account for dependencies in the grouped data. Given that mixed models furthermore explicitly model the different sources of variability within and between groups, they can provide more precise estimates of parameters and reduce the risk of overfitting. GAMMs have previously been used in studies on vowels in different English varieties, e.g., on /u/-fronting in Derby English [@soskuthy2018], on the front vowel system of Southern American English [@renwick-stanley2020], but to the best of my knowledge, they have yet not be implemented in studies of Swedish vowels.
+The objective of modelling formant dynamics is to investigate patterns in the data and assess the un/certainty by which we can predict acoustic cues from categorical or continuous predictors. We would thus want to know to what extent vowels can be distinguished by acoustic cues we believe them to differ by, while accounting for by-talker variability and fluctuations in formants across the vowel segment. Dynamic phonetic data, such as formant trajectories, tend to exhibit fluctuations and variability across the signal. A dynamic analysis of this type of data often involves comparisons across formant trajectories as a function of predictors, such as word contexts, talkers, etc. Thus, the analysis has not only have a temporal structure (formant measurements at different time-points), but also a hierarchical structure, as individual measurements are grouped into contours that in turn are grouped by words (hVd) and talkers. Both the complex dependencies generated by this structure as well as the non-monotonic behavior of formants, cannot easily be captured by traditional parametric methods, such as linear regression [e.g., @soskuthy2021]. GAMMs allow for complex models that can accomodate nonlinear relationships between predictors and response variables, and their use of smooth functions can provide more nuanced representations of these relationships. Much like other mixed models, GAMMs allow for the inclusion of random effects, which permits the model to account for dependencies in the grouped data. Given that mixed models furthermore explicitly model the different sources of variability within and between groups, they can provide more precise estimates of parameters and reduce the risk of overfitting. GAMMs have previously been used in studies on vowels in different English varieties, e.g., on /u/-fronting in Derby English [@soskuthy2018], on the front vowel system of Southern American English [@renwick-stanley2020], but to the best of my knowledge, they have yet not be implemented in studies of Swedish vowels.
 
-In the present study, GAMMs were used for assessing the formant dynamics in both subsets of the vowel space, contrasting some categories against each other, as well as the entire vowel space of 21 vowels. This was done separately for each of the formants, which necessarily meant committing to the simplifying assumption of cue independence. Previous work has shown that acoustic cues tend to co-vary [@refs]. For vowels, this is the case for F1 and F2, as shown by the shape and orientation of ellipses in Figure \@ref(fig:swe-vowels-by-quantity).
+In the present study, GAMMs were used for assessing the formant dynamics in subsets of the vowel space---contrasting some categories against each other, as well as the entire vowel space of 21 vowels. The GAMMs were fit separately for each of the formants, which necessarily meant committing to the simplifying assumption of cue independence. Previous work has shown that acoustic cues tend to co-vary [for a review, see @schertz-clare2019; @perception-book]. For vowels, this is the case for F1 and F2, as shown by the shape and orientation of ellipses in Figure \@ref(fig:swe-vowels-by-quantity).
 
 The \texttt{bam()} function from the \texttt{R} package \texttt{mgcv} was implemented to fit the GAMMs.
 
@@ -415,10 +415,7 @@ d.F2d <- read_csv2('../../data/final-d.csv')
 # Vowel plot by quantity
 p.normalized <- d.SwehVd.forStudy.long.static %>%
   # Filter down to test folds
-  filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(35, 50, 65)) %>%
-  # Get the geometric mean F1-F2 across the five time points
-  group_by(Normalization.Type, Talker, Gender, category, Token, Quantity) %>%
-  summarise(across(c(F1, F2, F3, Duration), ~ mean(.x))) %>%
+  filter(Normalization.Type == "Nearey's uniform scaling (log)") %>%
   ggplot(
     aes(
       x = F2, 
@@ -479,9 +476,9 @@ d.cue.values <- d.SwehVd %>%
 
 ## Results
 ### Static spectral and temporal cues to vowel identity
-Figure \@ref(fig:swe-vowels-by-quantity), left panel, visualizes the long vowels along the two primary cues to vowel identity, F1-F2.^[The SI presents the mean cue values for the male and female talkers, Tables \@ref(tab:SI-cue-values-long) and \@ref(tab:SI-cue-values-short). As expected, the male talkers have lower formant values and lower F0s than the female talkers (average F0 across long and short categories for female talkers = `r round(d.cue.values %>% filter(Gender == "female") %>% ungroup() %>% summarise(mean = mean(F0.mean)) %>% pull(mean), digits = 0)`, for male talkers = `r round(d.cue.values %>% filter(Gender == "male") %>% ungroup() %>% summarise(mean = mean(F0.mean)) %>% pull(mean), digits = 0)`), which reflect the average differences in anatomical structure. The differences are however not as substantial as in work on other languages [for work on language-specific gender differences, see e.g., @henton2005; @mennen2012].] Four vowels cluster in the high front part of the space. The mid-high [`r linguisticsdown::cond_cmpl("eː")`] occupies a substantially higher position than in many previous descriptions, and is also the most fronted vowel [c.f., @fant1969; @kuronen2000; but see @engstrand2000; @pelzer-boersma2019]. The high [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] are more mid-central than front, and almost completely overlapping. There is a rather long gap between [`r linguisticsdown::cond_cmpl("ʉː")`] and the back vowel [`r linguisticsdown::cond_cmpl("uː")`], which is at about the same height as [`r linguisticsdown::cond_cmpl("eː")`]. Located slightly below [`r linguisticsdown::cond_cmpl("uː")`] is the mid-high back vowel [`r linguisticsdown::cond_cmpl("oː")`], partly overlapping [`r linguisticsdown::cond_cmpl("uː")`]. [`r linguisticsdown::cond_cmpl("øː")`] occupies the mid center part of the space, together with its contextually conditioned allophone [`r linguisticsdown::cond_cmpl("œː")`], placed slightly higher and further back. The low [`r linguisticsdown::cond_cmpl("ɑː")`] occupies the mid back location. [`r linguisticsdown::cond_cmpl("æː")`] is the lowest vowel in the space, placed lower and slightly further back from the main allophone [`r linguisticsdown::cond_cmpl("ɛː")`]. The long allophones of /`r linguisticsdown::cond_cmpl("ø")`/ are relatively separated from each other, whereas the long allophones of /`r linguisticsdown::cond_cmpl("ɛ")`/ display more overlap.
+Figure \@ref(fig:swe-vowels-by-quantity), left panel, visualizes the long vowels along the two primary cues to vowel identity, F1-F2.^[The SI presents the mean cue values for the male and female talkers, Tables \@ref(tab:SI-cue-values-long) and \@ref(tab:SI-cue-values-short). As expected, the male talkers have lower formant values and lower F0s than the female talkers (average F0 across long and short categories for female talkers = `r round(d.cue.values %>% filter(Gender == "female") %>% ungroup() %>% summarise(mean = mean(F0.mean)) %>% pull(mean), digits = 0)`, for male talkers = `r round(d.cue.values %>% filter(Gender == "male") %>% ungroup() %>% summarise(mean = mean(F0.mean)) %>% pull(mean), digits = 0)`), which reflect the average differences in anatomical structure. The differences are however not as substantial as in work on other languages [for work on language-specific gender differences, see e.g., @henton2005; @mennen2012].] Four vowels cluster in the high front part of the space. The mid-high [`r linguisticsdown::cond_cmpl("eː")`] occupies a substantially higher position than in many previous descriptions, and is also the most fronted vowel [c.f., @fant1969; @kuronen2000; but see @engstrand2000; @pelzer-boersma2019]. The high [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] are more mid-central than front, and almost completely overlapping. There is a rather long gap between [`r linguisticsdown::cond_cmpl("ʉː")`] and the back vowel [`r linguisticsdown::cond_cmpl("uː")`], which is at about the same height as [`r linguisticsdown::cond_cmpl("eː")`]. Located slightly below [`r linguisticsdown::cond_cmpl("uː")`] is the mid-high back vowel [`r linguisticsdown::cond_cmpl("oː")`], partly overlapping [`r linguisticsdown::cond_cmpl("uː")`]. The mid [`r linguisticsdown::cond_cmpl("øː")`] occupies the center part of the space, together with its contextually conditioned allophone [`r linguisticsdown::cond_cmpl("œː")`], placed slightly higher and further back. The low [`r linguisticsdown::cond_cmpl("ɑː")`] occupies the mid back location. The front [`r linguisticsdown::cond_cmpl("æː")`] is the lowest vowel in the space, placed lower and slightly further back from the main allophone [`r linguisticsdown::cond_cmpl("ɛː")`]. The long allophones of /`r linguisticsdown::cond_cmpl("ø")`/ are relatively separated from each other, whereas the long allophones of /`r linguisticsdown::cond_cmpl("ɛ")`/ display more overlap.
 
-The short vowels, Figure \@ref(fig:swe-vowels-by-quantity) right panel, present a slightly more compact space, however with increased category separability and less category overlap [c.f., @riad2014]. [`r linguisticsdown::cond_cmpl("ɪ")`] is the most fronted high vowel, followed closely by the partly overlapping [`r linguisticsdown::cond_cmpl("ʏ")`]. These vowels are more fronted than their long counterparts, which does not replicate previous studies on Central Swedish including both the long and short vowels [e.g., @fant1971; @kuronen2000].<!--check leinonen--> Between [`r linguisticsdown::cond_cmpl("ʏ")`] and [`r linguisticsdown::cond_cmpl("ɵ")`], there is a substantial gap---[`r linguisticsdown::cond_cmpl("ɵ")`] is thus clearly more central than its long counterpart [`r linguisticsdown::cond_cmpl("ʉː")`]. The top-right corner vowel is [`r linguisticsdown::cond_cmpl("ʊ")`]. The mid-high part of the space is quite crowded, with three closely located front and center vowels, [`r linguisticsdown::cond_cmpl("ɛ")`], [`r linguisticsdown::cond_cmpl("ø")`] and [`r linguisticsdown::cond_cmpl("œ")`], and one mid back vowel [`r linguisticsdown::cond_cmpl("ɔ")`]. The lower-mid vowels [`r linguisticsdown::cond_cmpl("æ")`] and [`r linguisticsdown::cond_cmpl("a")`] are front and center, respectively. The contextually conditioned allophones of /`r linguisticsdown::cond_cmpl("ɛ")`/ and /`r linguisticsdown::cond_cmpl("ø")`/ occupy similar positions as their long counterparts. That is, the short [`r linguisticsdown::cond_cmpl("æ")`] is located below and further back in relation to [`r linguisticsdown::cond_cmpl("ɛ")`], and [`r linguisticsdown::cond_cmpl("œ")`] slightly above and further back in relation to [`r linguisticsdown::cond_cmpl("ø")`]. However, the distance between the short [`r linguisticsdown::cond_cmpl("ɛ")`] and [`r linguisticsdown::cond_cmpl("æ")`] is larger than for the long [`r linguisticsdown::cond_cmpl("ɛː")`] and [`r linguisticsdown::cond_cmpl("æː")`], [`r linguisticsdown::cond_cmpl("ɛ")`] being mid while [`r linguisticsdown::cond_cmpl("æ")`] being clearly low.
+The short vowels, Figure \@ref(fig:swe-vowels-by-quantity) right panel, present a slightly more compact space, however with increased category separability and less category overlap [c.f., @riad2014]. The high [`r linguisticsdown::cond_cmpl("ɪ")`] is the most fronted vowel, followed closely by the partly overlapping [`r linguisticsdown::cond_cmpl("ʏ")`]. These vowels are more fronted than their long counterparts, which does not replicate previous studies on Central Swedish including both the long and short vowels [e.g., @fant1971; @kuronen2000].<!--check leinonen--> Between [`r linguisticsdown::cond_cmpl("ʏ")`] and [`r linguisticsdown::cond_cmpl("ɵ")`], there is a substantial gap---[`r linguisticsdown::cond_cmpl("ɵ")`] is thus clearly more central than its long counterpart [`r linguisticsdown::cond_cmpl("ʉː")`]. The top-right corner vowel is [`r linguisticsdown::cond_cmpl("ʊ")`]. The mid-high part of the space is quite crowded, with three closely located front and center vowels, [`r linguisticsdown::cond_cmpl("ɛ")`], [`r linguisticsdown::cond_cmpl("ø")`] and [`r linguisticsdown::cond_cmpl("œ")`], and one mid back vowel [`r linguisticsdown::cond_cmpl("ɔ")`]. The lower-mid vowels [`r linguisticsdown::cond_cmpl("æ")`] and [`r linguisticsdown::cond_cmpl("a")`] are front and center, respectively. The contextually conditioned allophones of /`r linguisticsdown::cond_cmpl("ɛ")`/ and /`r linguisticsdown::cond_cmpl("ø")`/ occupy similar positions as their long counterparts. That is, the short [`r linguisticsdown::cond_cmpl("æ")`] is located below and further back in relation to [`r linguisticsdown::cond_cmpl("ɛ")`], and [`r linguisticsdown::cond_cmpl("œ")`] slightly above and further back in relation to [`r linguisticsdown::cond_cmpl("ø")`]. However, the distance between the short [`r linguisticsdown::cond_cmpl("ɛ")`] and [`r linguisticsdown::cond_cmpl("æ")`] is larger than for the long [`r linguisticsdown::cond_cmpl("ɛː")`] and [`r linguisticsdown::cond_cmpl("æː")`], [`r linguisticsdown::cond_cmpl("ɛ")`] being mid while [`r linguisticsdown::cond_cmpl("æ")`] being clearly low.
 
 (ref:swe-vowels-all-cues) The SwehVd vowel data shown for all pairwise combinations of five cues: F0, F1, F2, F3 and duration. Panels on the diagonal show marginal cue densities of all five cues. The off-diagonal panels show category means across talkers, represented by points and with bivariate Gaussian 95% probability mass ellipses in the upper panels, and represented by vowel labels and with points for each recording in the lower panels. Note that, unlike in Figure \@ref(fig:swe-vowels), axis directions are not reversed.
 
@@ -489,11 +486,7 @@ The short vowels, Figure \@ref(fig:swe-vowels-by-quantity) right panel, present 
 p.matrix.cues <-
   d.SwehVd.forStudy.long.static %>%
   filter(F3 > .4) %>%
-  filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(35, 50, 65)) %>%
-  # Get the geometric mean across all five time points for the five cues
-  group_by(Talker, category, Token, Quantity) %>%
-  summarise(across(c(F0, F1, F2, F3, Duration), ~ mean(.x, na.rm = T))) %>%
-  ungroup() %>%
+  filter(Normalization.Type == "Nearey's uniform scaling (log)") %>%
   ggplot(
     aes(
       x = .panel_x,
@@ -543,138 +536,6 @@ p.matrix.cues <-
 p.matrix.cues
 ```
 
-```{r message=FALSE}
-# Select dataframe with all timepoints
-d.SwehVd.vowel_pairs <- d.SwehVd.forStudy.long %>%
-  select(-starts_with("formant")) %>%
-  #filter(F3 > .25) %>%
-  filter(Normalization.Type == "Nearey's uniform scaling (log)")  %>%
-  mutate(
-    vowel_pair = case_when(category %in% c("[ɪ]", "[iː]") ~ "ɪ - iː",
-                           category %in% c("[ʏ]", "[yː]") ~ "ʏ - yː",
-                           category %in% c("[ɵ]", "[ʉː]") ~ "ɵ - ʉː",
-                           category %in% c("[ɛ]", "[eː]", "[ɛː]") ~ "ɛ - eː, ɛː",
-                           category %in% c("[æ]", "[æː]") ~ "æ - æː",
-                           category %in% c("[ø]", "[øː]") ~ "ø - øː",
-                           category %in% c("[œ]", "[œː]") ~ "œ - œː",
-                           category %in% c("[a]", "[ɑː]") ~ "a - ɑː",
-                           category %in% c("[ɔ]", "[oː]") ~ "ɔ - oː",
-                           category %in% c("[ʊ]", "[uː]") ~ "ʊ - uː"),
-    #Reorder vowel_pairs to match the leves in category
-    vowel_pair = factor(vowel_pair, 
-                        levels = c("ɪ - iː", "ʏ - yː", "ɵ - ʉː", "ɛ - eː, ɛː", "æ - æː", "ø - øː", "œ - œː", "a - ɑː", "ɔ - oː", "ʊ - uː")),
-    category = factor(category, levels = levels.vowel.IPA.swe)) %>%
-  mutate(across(c(Talker, Quantity, Gender), ~ factor(.x)))
-
-# Dataframe for running GAMMs
-d.model <- d.SwehVd.vowel_pairs %>%
-  filter(Normalization.Type == "Nearey's uniform scaling (log)")
-
-# Difference code the vowel pair variable
-contrasts(d.model$category) <- MASS::contr.sdif(21)
-
-m.F1.paired <- mgcv::bam(F1 ~ Gender + Quantity * vowel_pair + s(timepoint, by = category, k = 5) + 
-                           s(Talker, bs = "re") +
-                           s(Talker, category, bs = "re"),
-                         # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
-                         data = d.model)
-
-m.F2.paired <- mgcv::bam(F2 ~ Gender + Quantity * vowel_pair + s(timepoint, by = category, k = 5) + 
-                           s(Talker, bs = "re") +
-                           s(Talker, category, bs = "re"),
-                         # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
-                         data = d.model)
-
-m.F3.paired <- mgcv::bam(F3 ~ Gender + Quantity * vowel_pair + s(timepoint, by = category, k = 5) + 
-                           s(Talker, bs = "re") +
-                           s(Talker, category, bs = "re"),
-                         # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
-                         data = d.model)
-```
-```{r}
-# Run GAMMs predicting F1, F2, F3 separately from the long categories
-# With talkers as random effects
-# m.F1.long <- mgcv::bam(F1 ~ category + s(timepoint, by = category, k = 5) 
-#                     + s(Talker, category, bs = "re")
-#                     # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
-#                     , data = d.model %>% filter(Quantity == "long"))
-# 
-# m.F2.long <- mgcv::bam(F2 ~ category + s(timepoint, by = category, k = 5) 
-#                     + s(Talker, category, bs = "re")
-#                     # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
-#                     , data = d.model %>% filter(Quantity == "long"))
-# 
-# m.F3.long <- mgcv::bam(F3 ~ category + s(timepoint, by = category, k = 5) 
-#                     + s(Talker, category, bs = "re")
-#                     # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
-#                     , data = d.model %>% filter(Quantity == "long"))
-# 
-# m.duration.long <- mgcv::bam(Duration ~ category + s(timepoint, by = category, k = 5) 
-#                     + s(Talker, category, bs = "re")
-#                     # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
-#                     , data = d.model %>% filter(Quantity == "long"))
-#summary(m.duration.long)
-```
-```{r message=FALSE}
-# Run separate models for the high front vowels, long and short
-d.F3.long <- d.SwehVd.vowel_pairs %>%
-  filter(Normalization.Type == "Nearey's uniform scaling (log)", category %in% c("[iː]","[yː]", "[ʉː]")) %>%
-  mutate(category = factor(category, levels = c("[iː]","[yː]", "[ʉː]")))
-
-# Difference code the vowel pair variable
-contrasts(d.F3.long$category) <- MASS::contr.sdif(3)
-
-# Rename contrast labels
-d.F3.long$category <- factor(d.F3.long$category, labels = c("[iː]","[yː]", "[ʉː]"))
-
-d.F3.short <- d.SwehVd.vowel_pairs %>%
-  filter(Normalization.Type == "Nearey's uniform scaling (log)", category %in% c("[ɪ]", "[ʏ]", "[ɵ]")) %>%
-  mutate(category = factor(category, levels = c("[ɪ]", "[ʏ]", "[ɵ]")))
-
-# Difference code the vowel pair variable
-contrasts(d.F3.short$category) <- MASS::contr.sdif(3)
-
-d.F3.short$category <- factor(d.F3.short$category, labels = c("[ɪ]", "[ʏ]", "[ɵ]"))
-
-m.F3.long <- mgcv::bam(F3 ~ category + Gender + s(timepoint, by = category, k = 5) 
-                  + s(Talker, bs = "re")  
-                  + s(Talker, category, bs = "re")
-                    # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
-                    , data = d.F3.long)
-
-m.F2.long <- mgcv::bam(F2 ~ category + Gender + s(timepoint, by = category, k = 5) 
-                  + s(Talker, bs = "re")  
-                  + s(Talker, category, bs = "re")
-                    # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
-                    , data = d.F3.long)
-
-m.F1.long <- mgcv::bam(F1 ~ category + Gender + s(timepoint, by = category, k = 5) 
-                  + s(Talker, bs = "re")  
-                  + s(Talker, category, bs = "re")
-                    # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
-                    , data = d.F3.long)
-
-m.F3.short <- mgcv::bam(F3 ~ category + Gender + s(timepoint, by = category, k = 5) 
-                  + s(Talker, bs = "re")  
-                  + s(Talker, category, bs = "re")
-                    # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
-                    , data = d.F3.short)
-
-# With talkers as random effects
-# m.F3.long <- mgcv::bam(F3 ~ category + s(timepoint, by = category, k = 5) 
-#             + s(Talker, category, bs = "re")
-#             # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
-#           , data = d.model.F3.long)
-# 
-# m.F3.short <- mgcv::bam(F3 ~ category + s(timepoint, by = category, k = 5) 
-#             + s(Talker, category, bs = "re")
-#             # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
-#           , data = d.model.F3.short)
-# Code kept for reproducibility
-#gamtabs(m.F3.long, caption='Model summary, coefficients for parametric and smooth terms', label = "tab:m.F3.long")
-#gamtabs(m.F3.short, caption='Model summary, coefficients for parametric and smooth terms', label = "tab:m.F3.short")
-```
-
 For the pairwise combinations of the five spectral and temporal cues---F0, F1, F2, F3 and duration, see Figure \@ref(fig:swe-vowels-all-cues) (see Figure \@ref(fig:SI-swe-vowels-all-cues-hz) for the same plot in raw Hertz). The densities along the diagonal suggest that F0 carries the least information about vowel identity, exhibiting less between-category separation than all other cues. This is not surprising given that F0 is not considered an important cue to vowel identity.
 
 As is to be expected, vowels differing in quality are most separated in the F1-F2 panels. The F1-F3 and F3-F2 panels both display increased separation between the neighbouring [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʉː")`] and [`r linguisticsdown::cond_cmpl("ɪ")`] - [`r linguisticsdown::cond_cmpl("ʏ")`], compared to when plotted along F1-F2, which points to the importance of F3 for rounded vowels. Interestingly, the almost complete overlap between [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] in F1-F2 space overall remains when F3 is considered, even if some individual differences in the amount of overlap exist. Most talkers produce these two vowels very close in F1-F2 space, and only slightly separated in F2-F3 space, while others display a continued overlap when considering F3. This would seem to suggest that F3 might carry less importance as distinctive feature for [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] than previously established, indicating either a need for additional cues for a stable category distinction, or a possible merger in process [c.f., @fant1959; @fant1969]. For reference, one talker of each type are displayed in Figure \@ref(fig:swe-merge).
@@ -683,10 +544,7 @@ As is to be expected, vowels differing in quality are most separated in the F1-F
 
 ```{r swe-merge, fig.width=base.width*2.5, fig.height=base.height*2.5, out.width='80%', fig.align='center', fig.cap="(ref:swe-merge)", message=FALSE}
 p.merge <- d.SwehVd.forStudy.long.static %>%
-  filter(Normalization.Type == "Nearey's uniform scaling (log)", Quantity == "long", Talker %in% c("SW_005", "SW_015"), timepoint %in% c(35, 50, 65)) %>%
-  # Get the geometric mean across all five time points for the five cues
-  group_by(Normalization.Type, Talker, category, Token, Quantity) %>%
-  summarise(across(c(F0, F1, F2, F3, Duration), ~ mean(.x, na.rm = T))) %>%
+  filter(Normalization.Type == "Nearey's uniform scaling (log)", Quantity == "long", Talker %in% c("SW_005", "SW_015")) %>%
   ggplot(
     aes(
       x = F2, 
@@ -716,10 +574,7 @@ p.merge <- d.SwehVd.forStudy.long.static %>%
   facet_wrap(~ Talker, ncol=2) 
 
 p.merge.F3 <-  d.SwehVd.forStudy.long.static %>%
-  filter(Normalization.Type == "Nearey's uniform scaling (log)", Quantity == "long", Talker %in% c("SW_005", "SW_015"), timepoint %in% c(35, 50, 65)) %>%
-  # Get the geometric mean across all five time points for the five cues
-  group_by(Normalization.Type, Talker, category, Token, Quantity) %>%
-  summarise(across(c(F0, F1, F2, F3, Duration), ~ mean(.x, na.rm = T))) %>%
+  filter(Normalization.Type == "Nearey's uniform scaling (log)", Quantity == "long", Talker %in% c("SW_005", "SW_015")) %>%
   ggplot(
     aes(
       x = F2, 
@@ -754,55 +609,33 @@ p.merge / p.merge.F3 + theme(axis.title.x = element_blank()) +
         plot.tag = element_text(face = "bold"))
 ```
 
-```{r}
-# d.model <- d.SwehVd.forStudy.long.static %>%
-#   filter(Normalization.Type %in% c("no normalization (Hz)", "Nearey2 (log)")) %>%
-#   mutate(across(c(Quantity, category), factor))
-
-# model.F3 <- glmer(category ~ F3 + (1 | Talker), family = binomial, data = d.model %>% filter(Normalization.Type == "no normalization (Hz)"))
-# summary(model.F3)
-
-# mgcv
-# F3 ~ category + s(timepoint, by = category). ----corresponds to a simple lmr without random factors.
-# s = smooth
-# bam(F3 ~ category  + s(timepoint, by = category, k = 5))
-# k = max degrees of freedom, base curves
-# plot_smooth(m1, view = "timepoint", plot_all = "category")
-# plot_diff(m1, view = "timepoint", comp = list(category = c())
-```
-
-```{r}
-# Run GAMMs predicting F1, F2, F3 separately from the short categories
-# With talkers as random effects
-m.F1.short <- mgcv::bam(F1 ~ category + s(timepoint, by = category, k = 5)
-                    + s(Talker, category, bs = "re")
-                    # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
-                    , data = d.model %>% filter(Quantity == "short"))
-
-m.F2.short <- mgcv::bam(F2 ~ category + s(timepoint, by = category, k = 5)
-                    + s(Talker, category, bs = "re")
-                    # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
-                    , data = d.model %>% filter(Quantity == "short"))
-
-m.F3.short <- mgcv::bam(F3 ~ category + s(timepoint, by = category, k = 5)
-                    + s(Talker, category, bs = "re")
-                    # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
-                    , data = d.model %>% filter(Quantity == "short"))
-
-m.duration.short <- mgcv::bam(Duration ~ category + s(timepoint, by = category, k = 5)
-                    + s(Talker, category, bs = "re")
-                    # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
-                    , data = d.model %>% filter(Quantity == "short"))
-
-#summary(m.F1.short)
-```
-
 As expected, long-short vowel pairs differ systematically in duration (Figure \@ref(fig:duration-densities)). For each vowel pair, the duration densities are overlapping but with two clearly separable peaks (mean duration for the long vowels = `r round(d.SwehVd.forStudy.long %>% filter(Quantity == "long") %>% summarise(mean(Duration)) %>% pull(), digits = 2)` ms, SD = `r round(d.SwehVd.forStudy.long %>% filter(Quantity == "long") %>% summarise(sd(Duration)) %>% pull(), digits = 2)`; mean duration for the short vowels = `r round(d.SwehVd.forStudy.long %>% filter(Quantity == "short") %>% summarise(mean(Duration)) %>% pull(), digits = 2)` ms, SD = `r round(d.SwehVd.forStudy.long %>% filter(Quantity == "short") %>% summarise(sd(Duration)) %>% pull(), digits = 2)`). Overall, the short vowels display less variability in duration than the long vowels, a common pattern for measures with a lower bound.
 
 (ref:duration-densities) Category densities along duration illustrates systematic differences in duration between the long and short vowel pairs.
 
 ```{r duration-densities, fig.width= base.width * 4, fig.height = base.height * 2.5, fig.align='center', out.width='95%', fig.cap="(ref:duration-densities)"}
+# Generate dataframe with vowel pairs
+d.SwehVd.vowel_pairs <- d.SwehVd.forStudy.long.dynamic %>%
+  select(-starts_with("formant")) %>%
+  #filter(F3 > .25) %>%
+  filter(Normalization.Type == "Nearey's uniform scaling (log)")  %>%
+  mutate(
+    vowel_pair = case_when(category %in% c("[ɪ]", "[iː]") ~ "ɪ - iː",
+                           category %in% c("[ʏ]", "[yː]") ~ "ʏ - yː",
+                           category %in% c("[ɵ]", "[ʉː]") ~ "ɵ - ʉː",
+                           # Do three sets for the three-way contrast
+                           category %in% c("[ɛ]", "[eː]") ~ "ɛ - eː",
+                           category %in% c("[ɛ]", "[ɛː]") ~ "ɛ - ɛː",
+                           category %in% c("[ɛ]", "[eː]", "[ɛː]") ~ "ɛ - eː, ɛː",
+                           category %in% c("[æ]", "[æː]") ~ "æ - æː",
+                           category %in% c("[ø]", "[øː]") ~ "ø - øː",
+                           category %in% c("[œ]", "[œː]") ~ "œ - œː",
+                           category %in% c("[a]", "[ɑː]") ~ "a - ɑː",
+                           category %in% c("[ɔ]", "[oː]") ~ "ɔ - oː",
+                           category %in% c("[ʊ]", "[uː]") ~ "ʊ - uː"))
+
 d.SwehVd.vowel_pairs %>%
+  filter(!vowel_pair %in% c()) %>%
   ggplot(
     aes(Duration, fill = factor(category))) +
   geom_density(alpha = .5) +
@@ -823,7 +656,7 @@ Figure \@ref(fig:trajectories) displays the formant trajectories across all 5 ti
 (ref:trajectories) The trajectory of all vowels across the five time points, along F1-F2. The arrow indicates the direction of the trajectory and ends at the final time-point, at 80% into the vowel. The vowel label is placed at the third time-point, at vowel mid-point (50%). The first (20%), second (35%) and forth (65%) time-points are represented by points.
 
 ```{r trajectories, fig.width=base.width*3.5, fig.height=base.height*2, out.width='90%', fig.align='center', fig.cap="(ref:trajectories)"}
-p.trajectories <- d.SwehVd.forStudy.long %>%
+p.trajectories <- d.SwehVd.forStudy.long.dynamic %>%
   filter(Normalization.Type == "Nearey's uniform scaling (log)") %>%
   mutate(timepoint = as.character(timepoint)) %>%
   group_by(Talker, category, timepoint, Quantity) %>%
@@ -874,21 +707,102 @@ p.trajectories
 #ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=300)
 ```
 
-In terms of directionality, there was a general tendency of movement towards a more central vowel quality in most of the vowels, both long and short, as well as a clear diphthongization in [`r linguisticsdown::cond_cmpl("eː")`] and [`r linguisticsdown::cond_cmpl("oː")`], which replicates previous work [e.g., @eklund1997; @elert2000; @pelzer-boersma2019]. According to previous studies [e.g., @bleckert1987; @elert2000], the high vowels [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("ʉː")`] and [`r linguisticsdown::cond_cmpl("uː")`] tend to be realized with an offglide. This would generate a falling F1 for all four vowels, a rising F2 for [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] and a falling F2 for [`r linguisticsdown::cond_cmpl("ʉː")`] and [`r linguisticsdown::cond_cmpl("uː")`]. These predictions were borne out for F1 in all cases, but for F2, only for [`r linguisticsdown::cond_cmpl("ʉː")`]. [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] display very little movement along F2, whereas [`r linguisticsdown::cond_cmpl("uː")`] moves towards a more central quality, possibly indicating diphthongization ending in [`r linguisticsdown::cond_cmpl("ə")`] rather than a consonantal offglide. 
+In terms of directionality, there was a general tendency of movement towards a more central vowel quality in most of the vowels, both long and short, as well as a clear diphthongization in [`r linguisticsdown::cond_cmpl("eː")`] and [`r linguisticsdown::cond_cmpl("oː")`], which replicates previous work [e.g., @eklund1997; @elert2000; @pelzer-boersma2019]. According to previous studies [e.g., @bleckert1987; @elert2000], the high vowels [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("ʉː")`] and [`r linguisticsdown::cond_cmpl("uː")`] tend to be realized with an offglide, which would generate a falling F1 for all four vowels, a rising F2 for [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] and a falling F2 for [`r linguisticsdown::cond_cmpl("ʉː")`] and [`r linguisticsdown::cond_cmpl("uː")`]. These predictions were borne out for F1 in all cases, but for F2, only for [`r linguisticsdown::cond_cmpl("ʉː")`]. Both [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] display very little movement along F2, whereas [`r linguisticsdown::cond_cmpl("uː")`] moves towards a more central quality, possibly indicating diphthongization ending in [`r linguisticsdown::cond_cmpl("ə")`] rather than a consonantal offglide. 
 
 Figure \@ref(fig:trajectories) further demonstrates that several neighbouring categories either start at different locations but end up in the same, or start at similar locations but travel in different directions. For instance, [`r linguisticsdown::cond_cmpl("uː")`] - [`r linguisticsdown::cond_cmpl("oː")`] and [`r linguisticsdown::cond_cmpl("eː")`] - [`r linguisticsdown::cond_cmpl("iː")`] are quite closely located at earlier time-points, but differ substantially towards the end of the vowel segment, while the [`r linguisticsdown::cond_cmpl("ɛː")`]-[`r linguisticsdown::cond_cmpl("æː")`], [`r linguisticsdown::cond_cmpl("øː")`]-[`r linguisticsdown::cond_cmpl("œː")`] and [`r linguisticsdown::cond_cmpl("ø")`]-[`r linguisticsdown::cond_cmpl("œ")`] pairs start at different locations but end up in approximately the same. Finally, the formant trajectories suggest that the empty spots identified in the vowel space under a static analysis (Figure \@ref(fig:swe-vowels)), may indeed be occupied when vowel dynamics is considered. This is especially true for [`r linguisticsdown::cond_cmpl("eː")`] that travels from the mid-high front to the mid center of the space as the signal unfolds---down to a position closer to its short counterpart, [`r linguisticsdown::cond_cmpl("ɛ")`]. Given the amount of overlap when static spectral cues are considered (Figure \@ref(fig:swe-vowels)), formant dynamics is likely highly informative for several of these distinctions.
 
 #### Models of formant dynamics
-The formant dynamics of the vowels were modelled separately for each cue and each set of long and short vowels...<!--add here to model explanation-->
+The formant dynamics of the vowels were modeled separately for each cue and each set of long and short vowels...<!--add here to model explanation-->
 
 ```{r}
-# Model all cues
-d.model.all.cues <- d.SwehVd %>%
-  filter(Transcribed_vowel == "targeted") %>%
-  mutate(across(c(Talker, category), ~ factor(.x)),
-         across(starts_with("F"), ~ log(.x), .names = "{.col}_log"))
+# Run GAMMs predicting F1, F2, F3 separately from the long and short categories
+# Dataframe for running GAMMs on long vowels
+d.model.long <- d.SwehVd.forStudy.long.dynamic %>%
+  select(-starts_with("formant")) %>%
+  filter(Normalization.Type == "Nearey's uniform scaling (log)", category %in% levels.vowel.IPA.swe.long) %>%
+  mutate(
+    category = factor(category, levels = levels.vowel.IPA.swe.long)) %>%
+  mutate(across(c(Talker, Quantity, Gender), ~ factor(.x)))
 
-contrasts(d.model.all.cues$category) <- MASS::contr.sdif(21)
+# Difference code the vowel variable
+contrasts(d.model.long$category) <- MASS::contr.sdif(11)
+
+# Dataframe for running GAMMs on short vowels
+d.model.short <- d.SwehVd.forStudy.long.dynamic %>%
+  select(-starts_with("formant")) %>%
+  filter(Normalization.Type == "Nearey's uniform scaling (log)", category %in% levels.vowel.IPA.swe.short) %>%
+  mutate(
+    category = factor(category, levels = levels.vowel.IPA.swe.short)) %>%
+  mutate(across(c(Talker, Quantity, Gender), ~ factor(.x)))
+
+# Difference code the vowel variable
+contrasts(d.model.short$category) <- MASS::contr.sdif(10)
+
+m.F1.long <- mgcv::bam(F1 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                       + s(Talker, bs = "re")  
+                       + s(Talker, category, bs = "re"),
+                       # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                       data = d.model.long)
+
+m.F2.long <- mgcv::bam(F2 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                       + s(Talker, bs = "re")  
+                       + s(Talker, category, bs = "re"),
+                       # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                       data = d.model.long)
+
+m.F3.long <- mgcv::bam(F3 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                       + s(Talker, bs = "re")  
+                       + s(Talker, category, bs = "re"),
+                       # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                       data = d.model.long)
+
+m.F1.short <- mgcv::bam(F1 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                        + s(Talker, bs = "re")  
+                        + s(Talker, category, bs = "re"),
+                        # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                        data = d.model.short)
+
+m.F2.short <- mgcv::bam(F2 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                        + s(Talker, bs = "re")  
+                        + s(Talker, category, bs = "re"),
+                        # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                        data = d.model.short)
+
+m.F3.short <- mgcv::bam(F3 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                        + s(Talker, bs = "re")  
+                        + s(Talker, category, bs = "re"),
+                        # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                        data = d.model.long)
+
+# Code kept for reproducibility
+#gamtabs(m.F3.long, caption='Model summary, coefficients for parametric and smooth terms', label = "tab:m.F3.long")
+#gamtabs(m.F3.short, caption='Model summary, coefficients for parametric and smooth terms', label = "tab:m.F3.short")
+```
+
+```{r}
+# CODE KEPT FROM DISCUSSIONS W M GUBIAN??
+# d.model <- d.SwehVd.forStudy.long.static %>%
+#   filter(Normalization.Type %in% c("no normalization (Hz)", "Nearey2 (log)")) %>%
+#   mutate(across(c(Quantity, category), factor))
+
+# model.F3 <- glmer(category ~ F3 + (1 | Talker), family = binomial, data = d.model %>% filter(Normalization.Type == "no normalization (Hz)"))
+# summary(model.F3)
+
+# mgcv
+# F3 ~ category + s(timepoint, by = category). ----corresponds to a simple lmr without random factors.
+# s = smooth
+# bam(F3 ~ category  + s(timepoint, by = category, k = 5))
+# k = max degrees of freedom, base curves
+# plot_smooth(m1, view = "timepoint", plot_all = "category")
+# plot_diff(m1, view = "timepoint", comp = list(category = c())
+
+# Model all cues
+# d.model.all.cues <- d.SwehVd %>%
+#   filter(Transcribed_vowel == "targeted") %>%
+#   mutate(across(c(Talker, category), ~ factor(.x)),
+#          across(starts_with("F"), ~ log(.x), .names = "{.col}_log"))
+# 
+# contrasts(d.model.all.cues$category) <- MASS::contr.sdif(21)
 # m <- lmerTest::lmer(F2~ timepoint + (1 + timepoint | Talker), data = d.SwehVd %>% filter(category == "[iː]", Transcribed_vowel == "targeted"))
 # summary(m)
 
@@ -900,100 +814,7 @@ contrasts(d.model.all.cues$category) <- MASS::contr.sdif(21)
 
 # m.allcues.2 <- mgcv::bam(category ~ F0_log + F1_log + F2_log + F3_log + Duration + s(timepoint, by = category, k = 5), data = d.model.all.cues)
 # summary(m1)
-```
-```{r message=FALSE}
-# Rename contrast labels
-d.model$category <- factor(d.model$category, labels = c("[ɪ]", "[iː]", "[ʏ]", "[yː]", "[ɵ]", "[ʉː]", "[ɛ]", "[eː]", "[ɛː]", "[æ]", "[æː]", "[ø]", "[øː]", "[œ]", "[œː]", "[a]", "[ɑː]", "[ɔ]", "[oː]", "[ʊ]", "[uː]"))
 
-m.F1 <- mgcv::bam(F1 ~ category + Gender + Quantity + s(timepoint, by = category, k = 5) 
-                  + s(Talker, bs = "re")  
-                  + s(Talker, category, bs = "re")
-                    # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
-                    , data = d.model)
-
-m.F2 <- mgcv::bam(F2 ~ category + Gender + Quantity + s(timepoint, by = category, k = 5) 
-                  + s(Talker, bs = "re")  
-                  + s(Talker, category, bs = "re")
-                    # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
-                    , data = d.model)
-
-m.F3 <- mgcv::bam(F3 ~ category + Gender + Quantity + s(timepoint, by = category, k = 5) 
-                  + s(Talker, bs = "re")  
-                  + s(Talker, category, bs = "re")
-                    # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
-                    , data = d.model)
-#summary(m.F1)
-# Code kept for reproducibility
-#gamtabs(m.F1, caption='Model summary, coefficients for parametric and smooth terms', label = "tab:m.F1")
-#gamtabs(m.F2, caption='Model summary, coefficients for parametric and smooth terms', label = "tab:m-F2")
-```
-
-(ref:m-F1) Fitted smooths for GAMM and 95% confidence intervals for [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`] and [`r linguisticsdown::cond_cmpl("ʉː")`], respectively.<!--add empirical data points on top of the smooths-->
-
-```{r m-F1, message=FALSE, fig.width=base.width*3, fig.height=base.height*2.5, out.width='60%', fig.align='center', fig.cap="(ref:m-F1)"}
-itsadug::plot_smooth(m.F1, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#FB9A99", "#A6CEE3", "#B2DF8A"), print.summary = FALSE, cond = list(category = c("[iː]", "[yː]", "[eː]", "[oː]", "[uː]")))
-```
-
-(ref:m-F2) Fitted smooths of GAMM for predicting F1 and 95% confidence intervals for [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`] and [`r linguisticsdown::cond_cmpl("ʉː")`], respectively.
-
-```{r m-F2, message=FALSE, fig.width=base.width*3, fig.height=base.height*2.5, out.width='60%', fig.align='center', fig.cap="(ref:m-F2)"}
-itsadug::plot_smooth(m.F2, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#FB9A99", "#A6CEE3", "#B2DF8A"), print.summary = FALSE, cond = list(category = c("[iː]", "[yː]", "[eː]", "[oː]", "[uː]")))
-```
-
-```{r m-F2-2, message=FALSE, fig.width=base.width*3, fig.height=base.height*2.5, out.width='60%', fig.align='center', fig.cap="(ref:m-F2-2)"}
-itsadug::plot_smooth(m.F2, view = "timepoint", plot_all = "category", col = c("#E7298A", "#A6D854", "#FFD92F", "#E5C494", "#E6AB02", "#A6761D"), print.summary = FALSE, cond = list(category = c("[ɛː]", "[æː]", "[øː]", "[œː]", "[ø]", "[œ]")))
-```
-
-```{r}
-# # Keep code for reproducibility.
-# d.SwehVd %<>%
-#   filter(Transcribed_vowel == "targeted") %>%
-#   mutate(timepoint = factor(timepoint))
-# contrasts(d.SwehVd$timepoint) <- MASS::contr.sdif(5)
-# 
-# m <- lmerTest::lmer(F2~ timepoint + (1 + timepoint | Talker), data = d.SwehVd %>% filter(category == "[ʊ]"))
-# summary(m)
-```
-
-##### Long-short vowel pair distinctions
-The effect of F1, F2 and F3 on all vowel pairs was modeled in three separate GAMMs, with gender, quantity and category and their interaction as independent variables, and time-points as smoothing function. Random slopes and intercepts for talker was included, category was difference coded. Tables \@ref(tab:m-F1), \@ref(tab:m-F2) and \@ref(tab:m-F3) summarise the three GAMMs, and suggest main effect of category on both F1 ($\bar\beta$ = , se = , $p < .82$) and F2 ($\bar\beta$ = , se = , $p < .82$), with the exception of [`r linguisticsdown::cond_cmpl("æː")`] - [`r linguisticsdown::cond_cmpl("æ")`] ($p > .09$) predicting F1, thus confirming their overlap in height (Figure \@ref(fig:swe-vowels)).
-
-Only half of the vowel pairs displayed significant differences in F3: for [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("ɪ")`], [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʏ")`], [`r linguisticsdown::cond_cmpl("eː")`] - [`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("ɛ")`], [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("ɔ")`], [`r linguisticsdown::cond_cmpl("ʉː")`] - [`r linguisticsdown::cond_cmpl("ɵ")`] distinctions, all $ps < .007$. This is expected given that vowel category distinctions overall rely less on the higher formants. For the rounded vowels, the long vowels overall displayed lower F3 values than their short counterparts, hence more lip-rounding, in line with previous research [e.g., @hadding1976; @stalhammar1973]. For [`r linguisticsdown::cond_cmpl("uː")`] - [`r linguisticsdown::cond_cmpl("ʊ")`], and [`r linguisticsdown::cond_cmpl("øː")`] - [`r linguisticsdown::cond_cmpl("ø")`], these differences were numerical. However, the opposite pattern was found for the [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("ɔ")`] and the [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʏ")`] vowel pairs, indicating that [`r linguisticsdown::cond_cmpl("ʏ")`] and [`r linguisticsdown::cond_cmpl("ɔ")`] are more rounded than their long counterparts.<!--check these last values och automatisera-->
-
-The results thus seem to suggest that the extent to which *all* long-short Central Swedish vowel pairs are more or less dependent on duration varies somewhat between pairs. For instance, no statistically significant differences in spectral cues were found for [`r linguisticsdown::cond_cmpl("æː")`] - [`r linguisticsdown::cond_cmpl("æ")`], suggesting duration dependencies, while for all other vowel pairs, significant differences in at least one spectral cue were found.
-
-```{r}
-# Dataframe for running GAMMs predicting F1, F2, F3 separately from the *all* categories
-d.model.all.vowels <- d.SwehVd.forStudy.long %>%
-  select(-starts_with("formant")) %>%
-  #filter(F3 > .25) %>%
-  filter(Normalization.Type == "Nearey's uniform scaling (log)") %>% 
-  mutate(
-    Talker = as.factor(Talker),
-    category = factor(category, levels = levels.vowel.IPA.swe))
-
-# With talkers as random effects
-m.F1 <- mgcv::bam(F1 ~ category + s(timepoint, by = category, k = 5)
-                    + s(Talker, category, bs = "re")
-                    # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
-                    , data = d.model.all.vowels)
-
-m.F2 <- mgcv::bam(F2 ~ category + s(timepoint, by = category, k = 5)
-                    + s(Talker, category, bs = "re")
-                    # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
-                    , data = d.model.all.vowels)
-
-m.F3 <- mgcv::bam(F3 ~ category + s(timepoint, by = category, k = 5)
-                    + s(Talker, category, bs = "re")
-                    # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
-                    , data = d.model.all.vowels)
-
-m.duration <- mgcv::bam(Duration ~ category + s(timepoint, by = category, k = 5)
-                    + s(Talker, category, bs = "re")
-                    # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
-                    , data = d.model.all.vowels)
-
-#summary(m.F2)
 # plot_smooth(m.F1, view = "timepoint")
 # plot_diff(m.F1, view = "timepoint", comp=list(category=c("[ʉː]", "[ʊ]")))
 
@@ -1020,13 +841,143 @@ m.duration <- mgcv::bam(Duration ~ category + s(timepoint, by = category, k = 5)
 #   guides(linetype = "none", color = "none", fill = "none") +
 #   facet_wrap(factor(rounding, levels = c("inrounded", "outrounded", "no rounding")) ~ Quantity, ncol = 2)
 ```
-```{r}
-rm(d.model.all.vowels)
+
+(ref:m-F1) Fitted smooths for GAMM and 95% confidence intervals for [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`] and [`r linguisticsdown::cond_cmpl("ʉː")`], respectively.<!--add empirical data points on top of the smooths-->
+
+```{r m-F1, message=FALSE, fig.width=base.width*3, fig.height=base.height*2.5, out.width='60%', fig.align='center', fig.cap="(ref:m-F1)"}
+itsadug::plot_smooth(m.F1, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#FB9A99", "#A6CEE3", "#B2DF8A"), print.summary = FALSE, cond = list(category = c("[iː]", "[yː]", "[eː]", "[oː]", "[uː]")))
 ```
+
+(ref:m-F2) Fitted smooths of GAMM for predicting F1 and 95% confidence intervals for [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`] and [`r linguisticsdown::cond_cmpl("ʉː")`], respectively.
+
+```{r m-F2, message=FALSE, fig.width=base.width*3, fig.height=base.height*2.5, out.width='60%', fig.align='center', fig.cap="(ref:m-F2)"}
+itsadug::plot_smooth(m.F2, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#FB9A99", "#A6CEE3", "#B2DF8A"), print.summary = FALSE, cond = list(category = c("[iː]", "[yː]", "[eː]", "[oː]", "[uː]")))
+```
+
+```{r m-F2-2, message=FALSE, fig.width=base.width*3, fig.height=base.height*2.5, out.width='60%', fig.align='center', fig.cap="(ref:m-F2-2)"}
+itsadug::plot_smooth(m.F2, view = "timepoint", plot_all = "category", col = c("#E7298A", "#A6D854", "#FFD92F", "#E5C494", "#E6AB02", "#A6761D"), print.summary = FALSE, cond = list(category = c("[ɛː]", "[æː]", "[øː]", "[œː]", "[ø]", "[œ]")))
+```
+
+##### Long-short vowel pair distinctions
+The effect of F1, F2 and F3 on all vowel pairs was modeled in three separate GAMMs, with gender, quantity and category and their interaction as independent variables, and time-points as smoothing function. Random slopes and intercepts for talker was included, category was difference coded. Tables \@ref(tab:m-F1), \@ref(tab:m-F2) and \@ref(tab:m-F3) summarise the three GAMMs, and suggest main effect of category on both F1 ($\bar\beta$ = , se = , $p < .82$) and F2 ($\bar\beta$ = , se = , $p < .82$), with the exception of [`r linguisticsdown::cond_cmpl("æː")`] - [`r linguisticsdown::cond_cmpl("æ")`] ($p > .09$) predicting F1, thus confirming their overlap in height (Figure \@ref(fig:swe-vowels)).
+
+```{r message=FALSE}
+# Dataframe for running GAMMs on all 21 vowels grouped by pair
+d.model.paired <- d.SwehVd.vowel_pairs %>%
+  filter(Normalization.Type == "Nearey's uniform scaling (log)", vowel_pair != "ɛ - eː, ɛː") %>%
+  mutate(
+    #Reorder vowel_pairs to match the levels in category
+    vowel_pair = factor(vowel_pair, 
+                        levels = c("ɪ - iː", "ʏ - yː", "ɵ - ʉː", "ɛ - eː", "ɛ - ɛː", "æ - æː", "ø - øː", "œ - œː", "a - ɑː", "ɔ - oː", "ʊ - uː")),
+    category = factor(category, levels = levels.vowel.IPA.swe)) %>%
+  mutate(across(c(Talker, Quantity, Gender), ~ factor(.x)))
+
+# Difference code the vowel pair variable
+contrasts(d.model.paired$category) <- MASS::contr.sdif(21)
+
+# Rename contrast labels
+d.model.paired$category <- factor(d.model.paired$category, labels = c("[ɪ]", "[iː]", "[ʏ]", "[yː]", "[ɵ]", "[ʉː]", "[ɛ]", "[eː]", "[ɛː]", "[æ]", "[æː]", "[ø]", "[øː]", "[œ]", "[œː]", "[a]", "[ɑː]", "[ɔ]", "[oː]", "[ʊ]", "[uː]"))
+
+m.F1.paired <- mgcv::bam(F1 ~ Gender + Quantity * vowel_pair + 
+                           s(timepoint, by = category, k = 5) + 
+                           s(Talker, bs = "re") +
+                           s(Talker, category, bs = "re"),
+                         # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                         data = d.model.paired)
+
+m.F2.paired <- mgcv::bam(F2 ~ Gender + Quantity * vowel_pair + 
+                           s(timepoint, by = category, k = 5) + 
+                           s(Talker, bs = "re") +
+                           s(Talker, category, bs = "re"),
+                         # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                         data = d.model.paired)
+
+m.F3.paired <- mgcv::bam(F3 ~ Gender + Quantity * vowel_pair + 
+                           s(timepoint, by = category, k = 5) + 
+                           s(Talker, bs = "re") +
+                           s(Talker, category, bs = "re"),
+                         # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                         data = d.model.paired)
+
+m.duration.paired <- mgcv::bam(Duration ~ Gender + Quantity * vowel_pair + 
+                           s(timepoint, by = category, k = 5) + 
+                           s(Talker, bs = "re") +
+                           s(Talker, category, bs = "re"),
+                         # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                         data = d.model.paired)
+```
+
+Only half of the vowel pairs displayed significant differences in F3: for [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("ɪ")`], [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʏ")`], [`r linguisticsdown::cond_cmpl("eː")`] - [`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("ɛ")`], [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("ɔ")`], [`r linguisticsdown::cond_cmpl("ʉː")`] - [`r linguisticsdown::cond_cmpl("ɵ")`] distinctions, all $ps < .007$. Given that vowel category distinctions overall rely less on the higher formants, this result is expected. For the rounded vowels, the long vowels overall displayed lower F3 values than their short counterparts, hence more lip-rounding, in line with previous research [e.g., @hadding1976; @stalhammar1973]. For [`r linguisticsdown::cond_cmpl("uː")`] - [`r linguisticsdown::cond_cmpl("ʊ")`], and [`r linguisticsdown::cond_cmpl("øː")`] - [`r linguisticsdown::cond_cmpl("ø")`], these differences were numerical. However, the opposite pattern was found for the [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("ɔ")`] and the [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʏ")`] vowel pairs, indicating that [`r linguisticsdown::cond_cmpl("ʏ")`] and [`r linguisticsdown::cond_cmpl("ɔ")`] are more rounded than their long counterparts.<!--check these last values och automatisera-->
+
+The results thus seem to suggest that the extent to which *all* long-short Central Swedish vowel pairs are more or less dependent on duration varies somewhat between pairs. For instance, no statistically significant differences in spectral cues were found for [`r linguisticsdown::cond_cmpl("æː")`] - [`r linguisticsdown::cond_cmpl("æ")`], suggesting duration dependencies, while for all other vowel pairs, significant differences in at least one spectral cue were found.
 
 ##### High front vowel distinctions
 To model the effect of F3 on the high front vowels while accounting for the between-talker variability, two separate GAMMs was fit for the long and short high front vowels, with F3 as dependent variable, gender and category and their interaction as independent variables, and time-points as smoothing function. The intercept and slope of talker was included as random effect. Category was backward difference coded with [`r linguisticsdown::cond_cmpl("iː")`] as reference category, using the \texttt{contr.sdif()} function from the \texttt{R} package \texttt{MASS}. Model code: $F3 \sim category + Gender + s(timepoint, by = category, k = 5) + s(Talker, bs = "re") + s(Talker, category, bs = "re")$...
-                    
+
+```{r message=FALSE}
+# # Run separate models for the high front vowels, long and short
+# d.F3.highfront.long <- d.SwehVd.vowel_pairs %>%
+#   filter(Normalization.Type == "Nearey's uniform scaling (log)", category %in% c("[iː]","[yː]", "[ʉː]")) %>%
+#   mutate(category = factor(category, levels = c("[iː]","[yː]", "[ʉː]")))
+# 
+# # Difference code the vowel pair variable
+# contrasts(d.F3.highfront.long$category) <- MASS::contr.sdif(3)
+# 
+# # Rename contrast labels
+# d.F3.highfront.long$category <- factor(d.F3.highfront.long$category, labels = c("[iː]","[yː]", "[ʉː]"))
+# 
+# d.F3.highfront.short <- d.SwehVd.vowel_pairs %>%
+#   filter(Normalization.Type == "Nearey's uniform scaling (log)", category %in% c("[ɪ]", "[ʏ]", "[ɵ]")) %>%
+#   mutate(category = factor(category, levels = c("[ɪ]", "[ʏ]", "[ɵ]")))
+# 
+# # Difference code the vowel pair variable
+# contrasts(d.F3.highfront.short$category) <- MASS::contr.sdif(3)
+# 
+# d.F3.highfront.short$category <- factor(d.F3.highfront.short$category, labels = c("[ɪ]", "[ʏ]", "[ɵ]"))
+
+m.F3.highfront.long <- mgcv::bam(F3 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                                 + s(Talker, bs = "re")  
+                                 + s(Talker, category, bs = "re"),
+                                 # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                                 data = d.model.long %>%
+                                   filter(category %in% c("[iː]","[yː]", "[ʉː]")))
+
+m.F2.highfront.long <- mgcv::bam(F2 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                                 + s(Talker, bs = "re")  
+                                 + s(Talker, category, bs = "re"),
+                                 # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                                 data = d.model.long %>%
+                                   filter(category %in% c("[iː]","[yː]", "[ʉː]")))
+
+m.F1.highfront.long <- mgcv::bam(F1 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                                 + s(Talker, bs = "re")  
+                                 + s(Talker, category, bs = "re"),
+                                 # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                                 data = d.model.long %>%
+                                   filter(category %in% c("[iː]","[yː]", "[ʉː]")))
+
+m.F3.highfront.short <- mgcv::bam(F3 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                                  + s(Talker, bs = "re")  
+                                  + s(Talker, category, bs = "re"),
+                                  # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                                  data = d.model.short %>%
+                                    filter(category %in% c("[ɪ]", "[ʏ]", "[ɵ]")))
+
+m.F2.highfront.short <- mgcv::bam(F2 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                                  + s(Talker, bs = "re")  
+                                  + s(Talker, category, bs = "re"),
+                                  # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                                  data = d.model.short %>%
+                                    filter(category %in% c("[ɪ]", "[ʏ]", "[ɵ]")))
+
+m.F1.highfront.short <- mgcv::bam(F1 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                                  + s(Talker, bs = "re")  
+                                  + s(Talker, category, bs = "re"),
+                                  # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                                  data = d.model.short %>%
+                                    filter(category %in% c("[ɪ]", "[ʏ]", "[ɵ]")))
+```
+              
 The GAMMs suggested that there was no main effect of category on F3 ($\hat\beta = -.0027, se = .0133, p > .83$) for the [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] distinction (Table \@ref(tab:m-F3-long)). For the [`r linguisticsdown::cond_cmpl("ɪ")`] - [`r linguisticsdown::cond_cmpl("ʏ")`] distinction (Table \@ref(tab:m-F3-short)), there was indeed a main effect of category ($\bar\beta = -.1053, se = .0084, p < .0001$), both results in line with the qualitative analysis (see Figures \@ref(fig:m-F3-long) and \@ref(fig:m-F3-short)). F3 does not seem to be distinguishing reliably between the long high front vowels...
 
 \begin{table}[ht]
@@ -1075,18 +1026,18 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
 
 ```{r m-F3-long, message=FALSE, fig.width=base.width*3, fig.height=base.height*2.5, out.width='60%', fig.align='center', fig.cap="(ref:m-F3-long)"}
 # Add plot of GAMM for y, u, i for short and long
-itsadug::plot_smooth(m.F3.long, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#8DA0CB"), print.summary = FALSE, cond = list(category = c("[iː]", "[yː]", "[ʉː]")))
+itsadug::plot_smooth(m.F3.highfront.long, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#8DA0CB"), print.summary = FALSE, cond = list(category = c("[iː]", "[yː]", "[ʉː]")))
 ```
 (ref:m-F3-short) Fitted smooths of GAMM and 95% confidence intervals for [`r linguisticsdown::cond_cmpl("ɪ")`], [`r linguisticsdown::cond_cmpl("ʏ")`] and [`r linguisticsdown::cond_cmpl("ɵ")`], respectively.
 
 ```{r m-F3-short, message=FALSE, fig.width=base.width*3, fig.height=base.height*2.5, out.width='60%', fig.align='center', fig.cap="(ref:m-F3-short)"}
-itsadug::plot_smooth(m.F3.short, view = "timepoint", plot_all = "category", col = c("#1B9E77", "#D95F02", "#7570B3"), print.summary = FALSE, cond = list(category = c("[ɪ]", "[ʏ]", "[ɵ]")))
+itsadug::plot_smooth(m.F3.highfront.short, view = "timepoint", plot_all = "category", col = c("#1B9E77", "#D95F02", "#7570B3"), print.summary = FALSE, cond = list(category = c("[ɪ]", "[ʏ]", "[ɵ]")))
 ```
 
 ### Results summary
 The static and dynamic analyses suggest that Central Swedish vowels are primarily distinguished by F1, F2 and duration. <!--remove this?-->A relatively indirect estimate of how much each cue contributed to vowel distinctions in the entire 21-category space was obtained by comparing the proportion of explained deviance in the GAMMs predicting F1, F2, F3 and duration from all vowel categories. These models confirmed the general pattern, suggesting that F1 (91.4% of explained deviance), F2 (91.1% of explained deviance) and duration (91.8% of explained deviance) can more easily predict all 21 categories than F3 (66.3% of explained deviance), as indicated by their relatively higher proportion of deviance explained. However, it is reasonable to assume that some category distinctions rely on additional cues. For instance, the [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("uː")`] and  [`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("æː")`] distinctions are likely supported by formant dynamics, whereas the [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("y:")`] distinction presumably needs additional cues not analyzed here, given that neither formant dynamics nor F1, F2, F3 seem to reliably distinguish between the two.
 
-The dynamic analyses furthermore highlighted that for most of the categories, a larger portion of the dynamics resides in the later part of the segment. Of note is that all short vowels also display formant movements, which taken together, confirms formant dynamics as auxiliary cue to vowel distinctions [e.g., @refs].
+The dynamic analyses furthermore highlighted that for most of the categories, a larger portion of the dynamics resides in the later part of the segment. Of note is that all short vowels also display formant movements, which taken together, confirms formant dynamics as auxiliary cue to vowel distinctions [e.g., @refs; for perception, e.g., @assmann-nearey].
 
 
 \begin{table}
@@ -1117,10 +1068,13 @@ lower-mid&`r linguisticsdown::cond_cmpl("[æ]")`&&`r linguisticsdown::cond_cmpl(
 
 The resulting phonetic characteristics of the long and short Central Swedish vowels is summarized in Table \@ref(tab:swehvd-vowels). Beginning with the long vowels, there are 4 high vowels. The current acoustic description suggests that none of these are front, rather [`r linguisticsdown::cond_cmpl("i:")`] and [`r linguisticsdown::cond_cmpl("yː")`] group with [`r linguisticsdown::cond_cmpl("ʉː")`] as central vowels, and [`r linguisticsdown::cond_cmpl("uː")`] is back [c.f., @pelzer-boersma2019; @schotz2011].^[Whether [`r linguisticsdown::cond_cmpl("yː")`] still can be considered rounded given the high F3 values, and whether [`r linguisticsdown::cond_cmpl("i:")`] and [`r linguisticsdown::cond_cmpl("yː")`] are merged into [`r linguisticsdown::cond_cmpl("ɨː")`] or not, are questions for future research.] There are 2 mid-high vowels---[`r linguisticsdown::cond_cmpl("eː")`] (front) and [`r linguisticsdown::cond_cmpl("oː")`] (back)---and 4 lower-mid vowels, [`r linguisticsdown::cond_cmpl("æː")`] (front), [`r linguisticsdown::cond_cmpl("øː")`], [`r linguisticsdown::cond_cmpl("œː")`] (both central) and [`r linguisticsdown::cond_cmpl("ɑː")`] (back). Given the substantial lowering of [`r linguisticsdown::cond_cmpl("ɛː")`] and its overlap with [`r linguisticsdown::cond_cmpl("æ")`], it is reasonable to assume one long allophone for /`r linguisticsdown::cond_cmpl("ɛ")`/, which is [`r linguisticsdown::cond_cmpl("æː")`] [c.f., @pelzer-boersma2019].
 
-The short vowel space contain 4 high vowels, two of which are front, [`r linguisticsdown::cond_cmpl("ɪ")`] and [`r linguisticsdown::cond_cmpl("ʏ")`], one is central [`r linguisticsdown::cond_cmpl("ɵ")`] and one back [`r linguisticsdown::cond_cmpl("ʊ")`]. There are 4 mid-high vowels, [`r linguisticsdown::cond_cmpl("ɛ")`] (front), [`r linguisticsdown::cond_cmpl("ø")`], [`r linguisticsdown::cond_cmpl("œ")`] (both central), and [`r linguisticsdown::cond_cmpl("ɔ")`] (back), and 2 low vowels, [`r linguisticsdown::cond_cmpl("æ")`] (front), and [`r linguisticsdown::cond_cmpl("a")`] (central). This analysis would seem to support what @riad2014 anticipated and @pelzer-boersma2019 suggested, more precisely, a vowel system consisting of three height levels only, in contrast to the current four height levels system [e.g., @engstrand1999; @riad2014; @engstrand2004]. 
+The short vowel space contain 4 high vowels, two of which are front, [`r linguisticsdown::cond_cmpl("ɪ")`] and [`r linguisticsdown::cond_cmpl("ʏ")`], one is central [`r linguisticsdown::cond_cmpl("ɵ")`] and one back [`r linguisticsdown::cond_cmpl("ʊ")`]. There are 4 mid-high vowels, [`r linguisticsdown::cond_cmpl("ɛ")`] (front), [`r linguisticsdown::cond_cmpl("ø")`], [`r linguisticsdown::cond_cmpl("œ")`] (both central), and [`r linguisticsdown::cond_cmpl("ɔ")`] (back), and 2 low vowels, [`r linguisticsdown::cond_cmpl("æ")`] (front), and [`r linguisticsdown::cond_cmpl("a")`] (central). The analysis would thus seem to support what @riad2014 anticipated and @pelzer-boersma2019 suggested, more precisely, a vowel system consisting of three height levels only, in contrast to the current four height levels system [e.g., @engstrand1999; @riad2014; @engstrand2004]. 
 
-Although suggestions for an updated vowel phonology for Central Swedish are left for future research, the motivation of the summarized acoustics presented in Table \@ref(tab:swehvd-vowels) rests on a pairwise grouping of the long and short vowels, similar to phonological analyses of Central Swedish [@riad2014]. For instance, despite its high position, [`r linguisticsdown::cond_cmpl("eː")`] is defined as mid-high, on par with [`r linguisticsdown::cond_cmpl("oː")`], as both vowels share diphthongizational patterns, and their short versions are both lower than their long counterparts. Furthermore, [`r linguisticsdown::cond_cmpl("æː")`] is front rather than central as its short version is clearly more front than [`r linguisticsdown::cond_cmpl("ø")`]. [`r linguisticsdown::cond_cmpl("i:")`] and [`r linguisticsdown::cond_cmpl("yː")`] groups with [`r linguisticsdown::cond_cmpl("ʉː")`] because of their overall centralized positions in SwehVd, while their short versions are still clearly front. One could thus argue that both /`r linguisticsdown::cond_cmpl("i")`/ and /`r linguisticsdown::cond_cmpl("y")`/ are under-specified for the front-back dimension, which would also be the case for /`r linguisticsdown::cond_cmpl("ɑ")`/, as [`r linguisticsdown::cond_cmpl("ɑː")`] is back and [`r linguisticsdown::cond_cmpl("ɑ")`] is central.
+Although suggestions for an updated vowel phonology for Central Swedish are left for future research, the motivation of the summarized acoustics presented in Table \@ref(tab:swehvd-vowels) rests on a pairwise grouping of the long and short vowels, similar to phonological analyses of Central Swedish [@riad2014]. For instance, despite its high position, [`r linguisticsdown::cond_cmpl("eː")`] is defined as mid-high, on par with [`r linguisticsdown::cond_cmpl("oː")`], as both vowels share diphthongizational patterns, and their short versions are both lower than their long counterparts. Furthermore, [`r linguisticsdown::cond_cmpl("æː")`] is front rather than central as its short version is clearly more front than [`r linguisticsdown::cond_cmpl("ø")`]. Because of their overall centralized positions in SwehVd, [`r linguisticsdown::cond_cmpl("i:")`] and [`r linguisticsdown::cond_cmpl("yː")`] groups with [`r linguisticsdown::cond_cmpl("ʉː")`], while their short versions are still clearly front. One could thus argue that both /`r linguisticsdown::cond_cmpl("i")`/ and /`r linguisticsdown::cond_cmpl("y")`/ are under-specified for the front-back dimension, which would also be the case for /`r linguisticsdown::cond_cmpl("ɑ")`/, as [`r linguisticsdown::cond_cmpl("ɑː")`] is back and [`r linguisticsdown::cond_cmpl("ɑ")`] is central.
 
+```{r}
+rm(d.model.long, d.model.short, d.model.paired)
+```
 ```{r}
 # d.SwehVd %>%
 #   filter(Transcribed_vowel == "targeted", Word != "hädd") %>%
@@ -1151,19 +1105,19 @@ Although suggestions for an updated vowel phonology for Central Swedish are left
 ```
 
 # Study 2: Vowel category movements over time - from SweDia to SwehVd
-The aim of Study 2 was to investigate possible vowel shifts over the last generation. This was done by comparing the acoustic characteristics of SwehVd against that of 8 reference talkers in the SweDia materials, along the two primary cues to vowel identity, F1 and F2. The materials used in Study 2 is presented in Section \@ref(sec:datasets).
+The aim of Study 2 was to investigate possible vowel shifts over the last generation by comparing the acoustic characteristics of SwehVd against that of 8 reference talkers in the SweDia materials, along the two primary cues to vowel identity, F1 and F2. The materials used in Study 2 is presented in Section \@ref(sec:datasets).
 
 ## Methods
 In order to assess whether the relative placement of the categories in the acoustic space was different between datasets, formant data was visualized in F1-F2 space and distances assessed with the *orthogonal projection ratio* [henceforth $op$; @stevens-schiel2019].
 
 ### Orthogonal projection ratio {#sec:investigating-change}
-The $op$, formalized in \@ref(eq:orthogonal-projection-ratio), compares the relative position of a category $V_{vowel}$ to two other anchor categories, $U_{anchor}$ and $W_{anchor}$. Typically, the anchor categories are selected based on their position in the space relative to the category of interest, $V_{vowel}$. $V_{vowel}$ is placed somewhere in between the anchors, and the relative proximity of the vowel $V_{vowel}$ to the anchors is then measured. This is visualized in Figure \@ref(fig:op).
+The $op$, formalized in \@ref(eq:orthogonal-projection-ratio), compares the relative position of a category $V_{vowel}$ to two other anchor categories, $U_{anchor}$ and $W_{anchor}$. Typically, the anchor categories are selected based on their position in the space relative to the category of interest, $V_{vowel}$. $V_{vowel}$ is placed somewhere in between the anchors, and the relative proximity of the vowel $V_{vowel}$ to the anchors is then measured, see Figure \@ref(fig:op).
 
 \begin{equation}
  op(V_{vowel}) = ( -2 \cdot \frac{((V_{vowel} - U_{anchor}) \texttt{\%*\%} (U_{anchor} - W_{anchor}))}{((U_{anchor} - W_{anchor}) \texttt{\%*\%} (U_{anchor} - W_{anchor}))}) - 1 (\#eq:orthogonal-projection-ratio)
 \end{equation}
 
-The anchors $U_{anchor}$ and $W_{anchor}$ are first established by calculating the by-talker centroids for each anchor. The $op$ for each observation of $V_{vowel}$ relative to the anchors is then calculated, and summarized across all tokens. This is repeated for each of the $V_{vowel}$ and their respective anchors $U_{anchor}$ and $W_{anchor}$ in each dataset and then compared across datasets, in order to assess vowel shifts over time.
+The anchors $U_{anchor}$ and $W_{anchor}$ are first established by calculating the by-talker centroids for each anchor. The $op$ for each observation of $V_{vowel}$ relative to the anchors is then calculated, and summarized across all tokens. This procedure is repeated for each of the $V_{vowel}$ and their respective anchors $U_{anchor}$ and $W_{anchor}$ in each dataset and then compared across datasets, in order to assess vowel shifts over time.
 
 An $op = 0$ indicates that the category $V_{vowel}$ is positioned exactly in the middle between $U_{anchor}$ and $W_{anchor}$, an $op = \pm 1$ indicates that $V_{vowel}$ is positioned exactly on the mean of one of the two anchors, whereas a $V_{vowel}$ positioned somewhere between $U_{anchor}$ and $W_{anchor}$ has an $op$ that varies between $\pm 1$. The $op$ can thus be used as an index of e.g., lowering, fronting, or centralizing.
 
@@ -1196,11 +1150,7 @@ $V_{vowel}$ & $U_{anchor}$ & $W_{anchor}$\\
 ```{r op, fig.width=base.width*3, fig.height=base.height*3, out.width='60%', fig.align='center', fig.cap="(ref:op)"}
 d.SwehVd.forStudy.long.static %>%
   # Filter down to test folds
-  filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(35, 50, 65), 
-         category %in% c("[ʉː]", "[oː]", "[ɪ]", "[eː]", "[æː]", "[ɑː]", "[ɛː]", "[øː]")) %>%
-  # Get the geometric mean F1-F2 across the five time points
-  group_by(Normalization.Type, Talker, Gender, category, Token, Quantity) %>%
-  summarise(across(c(F1, F2, F3, Duration), ~ mean(.x))) %>%
+  filter(Normalization.Type == "Nearey's uniform scaling (log)", category %in% c("[ʉː]", "[oː]", "[ɪ]", "[eː]", "[æː]", "[ɑː]", "[ɛː]", "[øː]")) %>%
   mutate(anchor = ifelse(category %in% c("[ʉː]", "[ɛː]", "[øː]"), "vowel", "anchor"),
          op_pair = case_when(category %in% c("[ʉː]", "[oː]", "[ɪ]") ~ "A",
                              category %in% c("[eː]", "[ɑː]", "[øː]") ~ "B",
@@ -1263,25 +1213,21 @@ d.SwehVd.forStudy.long.static %>%
 ```
 
 ### Sampling-with-replacement
-The two datasets were of unequal sample sizes: N = `r nrow(d.SwehVd %>% distinct(Talker, category, Token))` datapoints for SwehVd, and N = `r nrow(d.SweDia2000.forStudy %>% distinct(Talker, category, Token))` datapoints for SweDia. In order to address this imbalance, the SwehVd materials was downsampled to approximate the size of the SweDia for the calculation of the $op$. This sampling-with-replacement procedure included 1000 bootstrapping rounds. At each round, a sample of 840 tokens from the SwehVd was extracted by first randomly selecting 8 talkers (4 female) from the database, and then randomly selecting 5 tokens per vowel from each talker, with replacement. The $op$ was calculated at each round, and finally averaged across the 1000 rounds for a comparison against the $op$ calculated for the SweDia materials (The SI contains analyses that include calculations made without the bootstrap approach, SI-XX).
+The two datasets were of unequal sample sizes: N = `r nrow(d.SwehVd %>% distinct(Talker, category, Token))` datapoints for SwehVd, and N = `r nrow(d.SweDia2000.forStudy %>% distinct(Talker, category, Token))` datapoints for SweDia. In order to address this imbalance, the SwehVd materials was down-sampled to approximate the size of the SweDia for the calculation of the $op$. The sampling-with-replacement procedure included 1000 bootstrapping rounds. At each round, a sample of 840 tokens from the SwehVd was extracted by first randomly selecting 8 talkers (4 female) from the database, and then randomly selecting 5 tokens per vowel from each talker, with replacement. The $op$ was calculated at each round, and finally averaged across the 1000 rounds for a comparison against the $op$ calculated for the SweDia materials (The SI contains analyses that include calculations made without the bootstrap approach, SI-XX).
 
 ## Results
-Figure \@ref(fig:db-comparison) displays the category movements in F1-F2 space across talkers between the two datasets. The figure suggests that a few vowels display considerable stability over time. This is the case for the back vowel [`r linguisticsdown::cond_cmpl("ɑː")`], and to a certain extent also [`r linguisticsdown::cond_cmpl("oː")`], the center vowels [`r linguisticsdown::cond_cmpl("œː")`] and [`r linguisticsdown::cond_cmpl("a")`], and the front vowel [`r linguisticsdown::cond_cmpl("ɛ")`]. The remaining vowels have all moved to a lower or higher degree. Two general tendencies can be noted. Firstly, several of the vowels that form the edges of the space slightly shift further outwards, causing the overall space to widen. This is the case for [`r linguisticsdown::cond_cmpl("ɪ")`], [`r linguisticsdown::cond_cmpl("eː")`], [`r linguisticsdown::cond_cmpl("æː")`], [`r linguisticsdown::cond_cmpl("a")`], [`r linguisticsdown::cond_cmpl("oː")`], and [`r linguisticsdown::cond_cmpl("uː")`]. Most of the inner vowels either also shift outwards---[`r linguisticsdown::cond_cmpl("ʏ")`], [`r linguisticsdown::cond_cmpl("ɵ")`], [`r linguisticsdown::cond_cmpl("ʉː")`], [`r linguisticsdown::cond_cmpl("ʊ")`], [`r linguisticsdown::cond_cmpl("ɔ")`]---or centralize---[`r linguisticsdown::cond_cmpl("ø")`], [`r linguisticsdown::cond_cmpl("øː")`], [`r linguisticsdown::cond_cmpl("œ")`]. Second, these movements lead to neighbouring categories closing in on each other in several cases, e.g., [`r linguisticsdown::cond_cmpl("ɪ")`] - [`r linguisticsdown::cond_cmpl("ʏ")`],  [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("ʉː")`], [`r linguisticsdown::cond_cmpl("ø")`] - [`r linguisticsdown::cond_cmpl("œ")`], [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("ɔ")`] - [`r linguisticsdown::cond_cmpl("uː")`] - [`r linguisticsdown::cond_cmpl("ʊ")`], or increasing their separability---[`r linguisticsdown::cond_cmpl("ɵ")`] - [`r linguisticsdown::cond_cmpl("œ")`], [`r linguisticsdown::cond_cmpl("ø")`] - [`r linguisticsdown::cond_cmpl("øː")`], [`r linguisticsdown::cond_cmpl("ʏ")`] - [`r linguisticsdown::cond_cmpl("ʉː")`].
+Figure \@ref(fig:db-comparison) displays the category movements in F1-F2 space across talkers between the two datasets. The figure suggests that a few vowels display considerable stability over time, for instance, the back vowel [`r linguisticsdown::cond_cmpl("ɑː")`], and to a certain extent also [`r linguisticsdown::cond_cmpl("oː")`], the center vowels [`r linguisticsdown::cond_cmpl("œː")`] and [`r linguisticsdown::cond_cmpl("a")`], and the front vowel [`r linguisticsdown::cond_cmpl("ɛ")`]. The remaining vowels have all moved to a lower or higher degree. Two general tendencies can be noted. Firstly, several of the vowels that form the edges of the space slightly shift further outwards, causing the overall space to widen. This is the case for [`r linguisticsdown::cond_cmpl("ɪ")`], [`r linguisticsdown::cond_cmpl("eː")`], [`r linguisticsdown::cond_cmpl("æː")`], [`r linguisticsdown::cond_cmpl("a")`], [`r linguisticsdown::cond_cmpl("oː")`], and [`r linguisticsdown::cond_cmpl("uː")`]. Most of the inner vowels either also shift outwards---[`r linguisticsdown::cond_cmpl("ʏ")`], [`r linguisticsdown::cond_cmpl("ɵ")`], [`r linguisticsdown::cond_cmpl("ʉː")`], [`r linguisticsdown::cond_cmpl("ʊ")`], [`r linguisticsdown::cond_cmpl("ɔ")`]---or centralize---[`r linguisticsdown::cond_cmpl("ø")`], [`r linguisticsdown::cond_cmpl("øː")`], [`r linguisticsdown::cond_cmpl("œ")`]. Second, these movements lead to neighbouring categories closing in on each other in several cases, e.g., [`r linguisticsdown::cond_cmpl("ɪ")`] - [`r linguisticsdown::cond_cmpl("ʏ")`],  [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("ʉː")`], [`r linguisticsdown::cond_cmpl("ø")`] - [`r linguisticsdown::cond_cmpl("œ")`], [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("ɔ")`] - [`r linguisticsdown::cond_cmpl("uː")`] - [`r linguisticsdown::cond_cmpl("ʊ")`], or increasing their separability---[`r linguisticsdown::cond_cmpl("ɵ")`] - [`r linguisticsdown::cond_cmpl("œ")`], [`r linguisticsdown::cond_cmpl("ø")`] - [`r linguisticsdown::cond_cmpl("øː")`], [`r linguisticsdown::cond_cmpl("ʏ")`] - [`r linguisticsdown::cond_cmpl("ʉː")`].
 
 Figure \@ref(fig:db-comparison) further demonstrates changes in the front part of the space that seem to suggest a series of consecutive movements, where the front vowels, [`r linguisticsdown::cond_cmpl("eː")`], [`r linguisticsdown::cond_cmpl("ɪ")`], [`r linguisticsdown::cond_cmpl("ʏ")`], all have traveled further up and front in SwehVd, while [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`] and [`r linguisticsdown::cond_cmpl("ʉː")`] have centralized.
 
-Finally, Figure \@ref(fig:db-comparison) shows that [`r linguisticsdown::cond_cmpl("ɛː")`] have lowered substantially compared to SweDia, down to a position close to [`r linguisticsdown::cond_cmpl("æː")`] (and to [`r linguisticsdown::cond_cmpl("æ")`]; recall Figure \@ref(fig:swe-vowels)). [`r linguisticsdown::cond_cmpl("æː")`] has in turn moved further down, presumably constrained by the lower bound and cannot move further. This lowering of [`r linguisticsdown::cond_cmpl("ɛː")`] was anticipated by @riad2014, and furthermore noted by @leinonen2010 and @pelzer-boersma2019.
+Finally, Figure \@ref(fig:db-comparison) shows that [`r linguisticsdown::cond_cmpl("ɛː")`] have lowered substantially compared to SweDia, down to a position close to [`r linguisticsdown::cond_cmpl("æː")`] (and to [`r linguisticsdown::cond_cmpl("æ")`]; recall Figure \@ref(fig:swe-vowels)). The already low [`r linguisticsdown::cond_cmpl("æː")`] has in turn moved further down, presumably constrained by the lower bound and cannot move further. This lowering of [`r linguisticsdown::cond_cmpl("ɛː")`] was anticipated by @riad2014, and furthermore noted by @leinonen2010 and @pelzer-boersma2019.
 
-(ref:db-comparison) Vowel category movements in the Central Swedish vowel space from 1999 to 2023, in F1-F2. The arrow indicates the direction of movement over time, with base of arrow representing SweDia (vowel label) and tip of arrow representing SwehVd. Vowel data is taken at vowel mid-point and averaged across talkers in the two datasets.
+(ref:db-comparison) Vowel category movements in the Central Swedish vowel space from 1999 to 2023, in F1-F2. The arrow indicates the direction of movement over time, with base of arrow representing SweDia (vowel label) and tip of arrow representing SwehVd. Vowel data is taken at vowel mid-point <!--change this-->and averaged across talkers in the two datasets.
 
 ```{r db-comparison, fig.width=base.width*3, fig.height=base.height*3, out.width='80%', fig.align='center', fig.cap="(ref:db-comparison)"}
 p.vowel.movements <- 
   d.Swehvd.Swedia %>%
-  filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(35, 50, 65)) %>%
-  group_by(Database, Talker, category, Token, Quantity) %>%
-  summarise(across(c(F2, F1), ~mean(.x))) %>%
-  group_by(Database, Talker, category, Quantity) %>%
-  summarise(across(c(F2, F1), ~mean(.x))) %>%
+  filter(Normalization.Type == "Nearey's uniform scaling (log)") %>%
   group_by(Database, category, Quantity) %>%
   summarise(across(c(F2, F1), ~mean(.x))) %>%
   ggplot(
@@ -1318,8 +1264,7 @@ p.vowel.movements
 ```{r}
 #Select categories for orthogonal projection ratio calc
 d.vowels.for.comparison <- d.Swehvd.Swedia %>%
-  #filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint == 50) %>%
-  filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(35, 50, 65)) %>%
+  filter(Normalization.Type == "Nearey's uniform scaling (log)") %>%
   group_by(Database, Talker, Gender, category, Token, Quantity) %>%
   summarise(across(c(F2, F1), ~mean(.x))) %>%
   group_by(category, Database) %>%
@@ -1330,8 +1275,8 @@ d.vowels.for.comparison <- d.Swehvd.Swedia %>%
     # F2_sd = sd(F2[Database == "SweDia"])) %>%
   group_by(category) %>%
   mutate(
-    within_SD_F1 = abs(F1_mean-F1_mean[Database == "SweDia"]) <= .75 * F1_sd[Database == "SweDia"],
-    within_SD_F2 = abs(F2_mean-F2_mean[Database == "SweDia"]) <= .75 * F2_sd[Database == "SweDia"]) %>%
+    within_SD_F1 = abs(F1_mean-F1_mean[Database == "SweDia"]) <= .85 * F1_sd[Database == "SweDia"],
+    within_SD_F2 = abs(F2_mean-F2_mean[Database == "SweDia"]) <= .85 * F2_sd[Database == "SweDia"]) %>%
   filter(within_SD_F1 == FALSE | within_SD_F2 == FALSE)
 ```
 
@@ -1373,11 +1318,8 @@ perform_bootstrap_round <- function(data) {
   return(values)
 }
 
-d.SwehVd.forStudy.opr <- d.SwehVd.forStudy.long %>%
-  filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint == 50)  
-# filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(35, 50, 65)) %>%
-#   group_by(Database, Talker, Gender, category, Token, Quantity, Word) %>%
-#   summarise(across(c(F2, F1), ~mean(.x))) %>%
+d.SwehVd.forStudy.opr <- d.SwehVd.forStudy.long.static %>%
+  filter(Normalization.Type == "Nearey's uniform scaling (log)")
 
 # Perform downsampling and bootstrap
 bootstrap_results <- map(
@@ -1413,7 +1355,7 @@ get_centroids <- . %>%
   group_by(category) %>%
   # for each row i.e. for each observation
   rowwise() %>%
-  # calculate orth.proj.ratio...
+  # calculate orth.proj.ratio
   mutate(orth_proj = case_when(category == "[ʏ]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[ɑː]`, `cenF2_[ɑː]`), c(`cenF1_[ɪ]`, `cenF2_[ɪ]`)),
                                category == "[ʉː]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[ɪ]`, `cenF2_[ɪ]`), c(`cenF1_[oː]`, `cenF2_[oː]`)),
                                category == "[ɛː]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[eː]`, `cenF2_[eː]`), c(`cenF1_[æː]`, `cenF2_[æː]`)),
@@ -1438,7 +1380,9 @@ centroids.SweDia2000 <-
   d.SweDia2000.forStudy.long %>%
   # choose the anchor vowels
   filter(category %in% c("[ɪ]", "[ʏ]", "[yː]", "[ɵ]", "[eː]", "[ɛː]", "[æː]", "[œː]", "[œ]", "[ɑː]", "[a]", "[oː]", "[øː]", "[ø]", "[ʉː]", "[ɔ]"), 
-         Normalization.Type == "Nearey's uniform scaling (log)", timepoint == 50) %>% 
+         Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(35, 50, 65)) %>%
+  group_by(Talker, Gender, category, Token, Quantity, Word) %>%
+  summarise(across(c(F2, F1), ~mean(.x))) %>%
   # for each speaker and vowel
   group_by(Talker, category) %>% 
   # compute mean F1 and F2
@@ -1451,7 +1395,9 @@ centroids.SweDia2000 <-
   
 d.SweDia2000.opr <-  d.SweDia2000.forStudy.long %>%
   # choose the anchor vowels
-  filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint == 50) %>%
+  filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(35, 50, 65)) %>%
+  group_by(Database, Talker, Gender, category, Token, Quantity, Word) %>%
+  summarise(across(c(F2, F1), ~mean(.x))) %>%
   # add the centroids %>%
   left_join(centroids.SweDia2000, by = "Talker") 
 
@@ -1459,7 +1405,7 @@ d.orth.SweDia2000 <- d.SweDia2000.opr %>%
   group_by(category, Database) %>%
   # # for each row i.e. for each observation
   rowwise() %>%
-  # calculate orth.proj.ratio...
+  # calculate orth.proj.ratio
   mutate(orth_proj = case_when(category == "[ʏ]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[ɑː]`, `cenF2_[ɑː]`), c(`cenF1_[ɪ]`, `cenF2_[ɪ]`)),
                                category == "[ʉː]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[ɪ]`, `cenF2_[ɪ]`), c(`cenF1_[oː]`, `cenF2_[oː]`)),
                                category == "[ɛː]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[eː]`, `cenF2_[eː]`), c(`cenF1_[æː]`, `cenF2_[æː]`)),
@@ -1486,11 +1432,11 @@ d.orth <- rbind(
   filter(category %in% c("[ʏ]", "[ɛː]", "[œ]", "[ʉː]", "[øː]", "[ø]", "[ɔ]"))
 ```
 
-Figure \@ref(fig:orth-dist) visualizes the $op$ of all vowels in Table \@ref(tab:opr-table) in both datasets. By this way of assessing the relative movement between anchor points across datasets, Figure \@ref(fig:orth-dist) suggests that all of the selected categories have moved over time in the directions suggested by the qualitative analysis in Figure \@ref(fig:db-comparison). The largest differences appear to concern [`r linguisticsdown::cond_cmpl("ɛː")`], [`r linguisticsdown::cond_cmpl("œ")`],  [`r linguisticsdown::cond_cmpl("ø")`], and [`r linguisticsdown::cond_cmpl("ɔ")`]. [`r linguisticsdown::cond_cmpl("ɛː")`] is relatively closer to [`r linguisticsdown::cond_cmpl("æː")`] in SwehVd than in SweDia, as is [`r linguisticsdown::cond_cmpl("œ")`] to [`r linguisticsdown::cond_cmpl("œː")`], indicating the lowering of both categories over the last generation. [`r linguisticsdown::cond_cmpl("ɔ")`] is relatively closer to [`r linguisticsdown::cond_cmpl("oː")`], and [`r linguisticsdown::cond_cmpl("ø")`] to [`r linguisticsdown::cond_cmpl("yː")`] in SwehVd, indicating back and front raising, respectively, over time.
+Figure \@ref(fig:orth-dist) visualizes the $op$ of all vowels in Table \@ref(tab:opr-table) in both datasets. By this way of assessing the relative movement between anchor points across datasets, Figure \@ref(fig:orth-dist) suggests that all of the selected categories have moved over time in the directions suggested by the qualitative analysis in Figure \@ref(fig:db-comparison). The largest differences appear to concern [`r linguisticsdown::cond_cmpl("ɛː")`], [`r linguisticsdown::cond_cmpl("œ")`],  [`r linguisticsdown::cond_cmpl("ø")`], and [`r linguisticsdown::cond_cmpl("ɔ")`]. The front [`r linguisticsdown::cond_cmpl("ɛː")`] is relatively closer to [`r linguisticsdown::cond_cmpl("æː")`] in SwehVd than in SweDia, as is [`r linguisticsdown::cond_cmpl("œ")`] to [`r linguisticsdown::cond_cmpl("œː")`], indicating the lowering of both categories over the last generation. The back [`r linguisticsdown::cond_cmpl("ɔ")`] is relatively closer to [`r linguisticsdown::cond_cmpl("oː")`], and [`r linguisticsdown::cond_cmpl("ø")`] to [`r linguisticsdown::cond_cmpl("yː")`] in SwehVd, indicating back and front raising, respectively, over time.
 
 An estimate of the magnitude of the effect was obtained by fitting separate generalized linear mixed-effects models (GLMMs) for each of the categories, predicting the orthogonal projection ratio from database, with talkers and word as random effects. <!--add here-->The GLMMs confirmed the directionality of the vowel shifts, and found statistically significant differences between datasets for [`r linguisticsdown::cond_cmpl("ʏ")`] ($p >$ .032), [`r linguisticsdown::cond_cmpl("ø")`] ($p > .039$), and [`r linguisticsdown::cond_cmpl("ɛː")`] ($p > .039$), see Table XXX.<!--add table here--> The word context carried some of the variability found in the data, as confirmed by running a separate GLMM, excluding word...<!--add glmm here-->
 
-(ref:orth-dist) The relative distance between categories in SweDia and SwehVd. $op = 0$ indicates that the category is equidistant between the two anchor categories in Table \@ref(tab:opr-table), positive numbers indicate a position closer to the second anchor vowel, negative numbers indicate a position closer to the first anchor. Pointranges indicate mean and 95% bootstrapped CIs of the $op$ summarized across talkers in each database. The large CIs for the [`r linguisticsdown::cond_cmpl("œ")`] category in the SweDia materials likely reflects considerable by-talker variability in the merger...
+(ref:orth-dist) The relative distance between categories in SweDia and SwehVd. $op = 0$ indicates that the category is equidistant between the two anchor categories in Table \@ref(tab:opr-table), positive numbers indicate a position closer to the second anchor vowel, negative numbers indicate a position closer to the first anchor. Pointranges indicate mean and 95% bootstrapped CIs of the $op$ summarized across talkers in each database. The large CIs for the [`r linguisticsdown::cond_cmpl("œ")`] category in the SweDia materials likely reflect the tendency of some talkers to  neutralize the short /`r linguisticsdown::cond_cmpl("ø")`/ and /`r linguisticsdown::cond_cmpl("ʉ")`/ as [`r linguisticsdown::cond_cmpl("ɵ")`].
 
 ```{r orth-dist, fig.width=base.width*2.5, fig.height=base.height*2, out.width='90%', fig.align='center', fig.cap="(ref:orth-dist)"}
 # colors.anchors.swe <- c("#D95F02", "#8DA0CB", "#E7298A", "#FFD92F", "#E6AB02", "#A6761D", "#1F78B4")
@@ -1545,31 +1491,40 @@ p.orth
 #   mutate(
 #     orth_proj = ifelse(Database == "SwehVd", mean(orth_proj), orth_proj))
 
-m.Y <- lmerTest::lmer(orth_proj ~ Database + (1|Word) + (1|Talker), data = d.orth %>%
-  filter(category == "[ʏ]", !is.na(orth_proj)) %>% 
-    mutate(across(c(Talker, Database), ~ factor(.x))))
-m.Ä <- lmerTest::lmer(orth_proj ~ Database + (1|Word) + (1|Talker), data = d.orth %>%
-  filter(category == "[ɛː]", !is.na(orth_proj)) %>% 
-    mutate(across(c(Talker, Database), ~ factor(.x))))
-m.ÖR <- lmerTest::lmer(orth_proj ~ Database + (1|Word) + (1|Talker), data = d.orth %>%
-  filter(category == "[œ]", !is.na(orth_proj)) %>% 
-    mutate(across(c(Talker, Database), ~ factor(.x))))
-m.U <- lmerTest::lmer(orth_proj ~ Database + (1|Word) + (1|Talker), data = d.orth %>%
-  filter(category == "[ʉː]", !is.na(orth_proj)) %>% 
-    mutate(across(c(Talker, Database), ~ factor(.x))))
-m.Ö <- lmerTest::lmer(orth_proj ~ Database + (1|Word) + (1|Talker), data = d.orth %>%
-  filter(category == "[øː]", !is.na(orth_proj)) %>% 
-    mutate(across(c(Talker, Database), ~ factor(.x))))
-m.ÖÖ <- lmerTest::lmer(orth_proj ~ Database + (1|Word) + (1|Talker), data = d.orth %>%
-  filter(category == "[ø]", !is.na(orth_proj)) %>% 
-    mutate(across(c(Talker, Database), ~ factor(.x))))
-m.Å <- lmerTest::lmer(orth_proj ~ Database + (1|Word) + (1|Talker), data = d.orth %>%
-  filter(category == "[ɔ]", !is.na(orth_proj)) %>% 
-    mutate(across(c(Talker, Database), ~ factor(.x))))
+m.Y <- lmerTest::lmer(orth_proj ~ Database + (1|Word) + (1|Talker), 
+                      data = d.orth %>%
+                        filter(category == "[ʏ]", !is.na(orth_proj)) %>% 
+                        mutate(across(c(Talker, Database), ~ factor(.x))))
+m.Ä <- lmerTest::lmer(orth_proj ~ Database + (1|Word) + (1|Talker), 
+                      data = d.orth %>%
+                        filter(category == "[ɛː]", !is.na(orth_proj)) %>% 
+                        mutate(across(c(Talker, Database), ~ factor(.x))))
+m.ÖR <- lmerTest::lmer(orth_proj ~ Database + (1|Word) + (1|Talker), 
+                       data = d.orth %>%
+                         filter(category == "[œ]", !is.na(orth_proj)) %>% 
+                         mutate(across(c(Talker, Database), ~ factor(.x))))
+m.U <- lmerTest::lmer(orth_proj ~ Database + (1|Word) + (1|Talker), 
+                      data = d.orth %>%
+                        filter(category == "[ʉː]", !is.na(orth_proj)) %>% 
+                        mutate(across(c(Talker, Database), ~ factor(.x))))
+m.Ö <- lmerTest::lmer(orth_proj ~ Database + (1|Word) + (1|Talker), 
+                      data = d.orth %>%
+                        filter(category == "[øː]", !is.na(orth_proj)) %>% 
+                        mutate(across(c(Talker, Database), ~ factor(.x))))
+m.ÖÖ <- lmerTest::lmer(orth_proj ~ Database + (1|Word) + (1|Talker), 
+                       data = d.orth %>%
+                         filter(category == "[ø]", !is.na(orth_proj)) %>% 
+                         mutate(across(c(Talker, Database), ~ factor(.x))))
+m.Å <- lmerTest::lmer(orth_proj ~ Database + (1|Word) + (1|Talker), 
+                      data = d.orth %>%
+                        filter(category == "[ɔ]", !is.na(orth_proj)) %>% 
+                        mutate(across(c(Talker, Database), ~ factor(.x))))
 #modelsummary::modelsummary(m.Y, output = "latex")
 #summary(m.Y)
 ```
-
+```{r}
+rm(d.orth, d.orth.SweDia2000, d.orth.for.model, centroids.SweDia2000, bootstrap_SwehVd)
+```
 
 ```{r}
 # make_ellipse <- function(mu, Sigma, cues) {
@@ -1662,44 +1617,43 @@ m.Å <- lmerTest::lmer(orth_proj ~ Database + (1|Word) + (1|Talker), data = d.or
 #plot_vowel3D(quantity = "long")
 #plot_vowel3D(quantity = "short")
 #plot_vowel3D(quantity = c("short", "long"))
-
 ```
 
 The results of Study 2 suggests that vowel shifts have taken place over the last generation. More evident tendencies concern the lowering of [`r linguisticsdown::cond_cmpl("ɛː")`], the raising of [`r linguisticsdown::cond_cmpl("ø")`], and the fronting of [`r linguisticsdown::cond_cmpl("ʏ")`]. These findings together with the results from Study 1, are next discussed in the General discussion.
 
 # General discussion {#sec:discussion}
-<!--reiterate and stress why the acoustic description was necessary, different and a contribution to existing reports of swedish vowels,more comprehensive insights into formant trajectories within and between quantities...report more results for F3???-->
-The present study aimed for a comprehensive description of the acoustic cues to vowel identity in modern-day Central Swedish, and to assess to what extent vowels had shifted over the last generation. The primary results of the two studies are next discussed, along with methodological considerations and future directions.
+The objective of the present study was to provide an extensive analysis of the acoustic cues to vowel identity in contemporary Central Swedish and to evaluate the extent of vowel shifts over the recent generation. The main findings results from both studies are next discussed, alongside methodological considerations and potential avenues for future research.
 
 ## Static and dynamic analyses of the 21 vowels of modern-day Central Swedish
-The purpose of the first study was to present an up-to-date acoustic analysis of Central Swedish vowels that included both empirical formant data and models of the formant dynamics. The results of the static analyses indicated that the most important cues to vowel identity were F1, F2 and duration, which replicated previous work [e.g., @kuronen2000; @lindblom1963].<!--is lindblom mentioned earlier??--> The results furthermore suggested that static measurements, while informative, were insufficient to accurately capture the spectral acoustics of some vowels. A more exhaustive description can be achieved by including dynamic analyses, as shown in this paper. This was especially true for the [`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("æː")`],  [`r linguisticsdown::cond_cmpl("uː")`] - [`r linguisticsdown::cond_cmpl("oː")`] and [`r linguisticsdown::cond_cmpl("eː")`] - [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] distinctions, given the direction and scope of formant trajectory movements across the vowel segment [e.g., @kuronen2000]. The analysis of the empirical data furthermore suggested that most of the movement took place at the later part of the segment for the majority of vowels, irrespective of the magnitude of change in F1 and F2. [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`] and [`r linguisticsdown::cond_cmpl("ʉː")`] constituted important exceptions that displayed more movement in the first three to four time-points. Of note, the short vowels also displayed substantial formant movements, which seems to signal the importance of vowel dynamics for long and short vowels alike.<!--TODO: c.f. the use of moving windows for perceptual studies--> This has been shown in work on other languages [@refs], but has largely been lacking in studies on Swedish. 
+The purpose of the first study was to present an up-to-date acoustic analysis of Central Swedish vowels that included both empirical formant data and models of the formant dynamics. The first study thus aimed to expand on and complement previous work by 1) the scope of the analysis, performing the same type of analyses on all 21 categories, 2) the materials chosen, using a recently collected hVd corpus with high resolution within and across talkers for a single variety, and 3) the methodological approach employed, with the use of traditional formant analysis, trajectory visualizations and models of formant dynamics (GAMMs). 
 
-GAMMs fit to the data contributed with further insights into the formant dynamics of the vowel space, in its entirety as well as to individual contrasts. For instance, GAMMs fitted to the long-short vowel pairs indicated that all pairs but [`r linguisticsdown::cond_cmpl("æː")`] - [`r linguisticsdown::cond_cmpl("æ")`], were reliably distinguished by at least one spectral cue, highlighting the importance of formants for vowel pair distinctions. The GAMMs fitted to the long and short high front vowels separately furthermore suggested that none of the first three formants could reliably distinguish between [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`], even when accounting for talker variability. What consequences these results might have for the perception of Central Swedish vowels should be investigated in future studies. For instance, the role of spectral cues in long-short vowel pair distinctions could be assessed by listeners categorizing synthesized versions where duration is kept constant, and more insight into the effect of formant dynamics for vowel perception could be gained from having listeners categorize excerpts from different segments of the long vowels.
+The results of the static analyses indicated that the most important cues to vowel identity were F1, F2 and duration, which replicated previous work [e.g., @kuronen2000; @lindblom1963].<!--is lindblom mentioned earlier??--> The results furthermore suggested that static measurements, while informative, were insufficient to accurately capture the spectral acoustics of some vowels. A more exhaustive description can be achieved by including dynamic analyses, as shown in this paper. This was especially true for the [`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("æː")`],  [`r linguisticsdown::cond_cmpl("uː")`] - [`r linguisticsdown::cond_cmpl("oː")`] and [`r linguisticsdown::cond_cmpl("eː")`] - [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] distinctions, given the direction and scope of formant trajectory movements across the vowel segment. The analysis of the empirical data furthermore suggested that most of the movement took place at the later part of the segment for the majority of vowels, irrespective of the magnitude of change in F1 and F2. However, [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`] and [`r linguisticsdown::cond_cmpl("ʉː")`] constituted important exceptions as they displayed more movement in the first three to four time-points. Of note, the short vowels also displayed substantial formant movements, which seems to signal the importance of vowel dynamics for long and short vowels alike. This has been shown in work on other languages [@refs], but has largely been lacking in studies on Swedish. 
+
+GAMMs fit to the data contributed with further insights into the formant dynamics of the vowel space, in its entirety as well as for individual contrasts. For instance, GAMMs fitted to the long-short vowel pairs indicated that all pairs but [`r linguisticsdown::cond_cmpl("æː")`] - [`r linguisticsdown::cond_cmpl("æ")`] were reliably distinguished by at least one spectral cue, highlighting the importance of formants for vowel pair distinctions. The GAMMs fitted to the long and short high front vowels separately furthermore suggested that none of the first three formants could reliably distinguish between [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`], even when accounting for talker variability. What consequences these results might have for the *perception* of Central Swedish vowels should be investigated in future studies. For instance, the role of spectral cues in long-short vowel pair distinctions could be assessed by exposing listeners to synthesized versions where long and short vowel duration is crossed with the allophones' spectral information for any given phoneme. More insight into the effect of formant dynamics for vowel perception could be gained from having listeners categorize tokens extracted from different segments of the long vowels, e.g., the first three time-points vs. the three final time-points.
 
 ## Vowel shifts
-The acoustic characteristics of SwehVd were subsequently compared to that of 8 reference talkers of Central Swedish from the SweDia materials, recorded approximately one generation ago, in order to investigate the scope and spread of previously reported changes [e.g., @pelzer-boersma2019; @schotz2011]. Several vowels had shifted quite substantially compared to previous work on Central Swedish [@refs]. Two of the most important shifts concerned the fronting of [`r linguisticsdown::cond_cmpl("ɪ")`] and [`r linguisticsdown::cond_cmpl("ʏ")`] and the centralization of [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`], where [`r linguisticsdown::cond_cmpl("ɪ")`] and [`r linguisticsdown::cond_cmpl("ʏ")`] appear to maintain their positions as high front vowels, while [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] centralize to the mid-center part of the space [c.f., @fant1969; @kuronen2000]. Given the rather small shift in the placement of [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] in SwehVd compared to the reference materials, these changes had presumably begun already in 1999, and then continued throughout the first two decades of the 2000s, as indicated by the results in this paper and in @pelzer-boersma2019.^[Unfortunately, @pelzer-boersma2019 did not analyse the short vowels, it is therefore difficult to know whether the fronting of the short vowels was as pronounced in 2019.]
+In study 2, the acoustic characteristics of SwehVd were subsequently compared to that of 8 reference talkers of Central Swedish from the SweDia materials, recorded approximately one generation ago, in order to investigate the scope and spread of previously reported changes [e.g., @pelzer-boersma2019; @schotz2011]. The aim was to present a broad-scale comparison by evaluating changes in all but one of the 21 categories in the same analysis, using empirical formant analysis and a distance metric, the $op$.
+
+Several vowels had shifted quite considerably compared to earlier work on Central Swedish [c.f., @fant1969; @kuronen2000]. Two of the most important shifts concerned the fronting of [`r linguisticsdown::cond_cmpl("ɪ")`] and [`r linguisticsdown::cond_cmpl("ʏ")`] and the centralization of [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`], where [`r linguisticsdown::cond_cmpl("ɪ")`] and [`r linguisticsdown::cond_cmpl("ʏ")`] appeared to maintain their positions as high front vowels, while [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] had centralized to the mid-center part of the space. Compared to the reference materials, the shifts in [`r linguisticsdown::cond_cmpl("ɪ")`], [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] were not as substantial as for other vowels, which suggests that these changes had begun already in 1999, and then continued throughout the first two decades of the 2000s [see also, @pelzer-boersma2019].^[Unfortunately, @pelzer-boersma2019 did not analyse the short vowels, it is therefore difficult to know whether the fronting of the short vowels was as pronounced in 2019.]
 
 The high front vowels form a particularly interesting part of the space given that several possibly related processes might be ongoing. Besides the centralization of [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`], the visualizations and GAMMs suggested that neither the first three formants nor vowel dynamics seemed to suffice for a reliable distinction between the two vowels. These findings conflicted with previous work on Central Swedish [e.g., @fant1969; @fujimura1967; @kuronen2000], and would seem to indicate three possibilities: 1) the contrast might be supported by additional acoustic cues not investigated in this study, 2) listeners might disambiguate the two categories using visual cues or linguistic information, or 3) perhaps these two categories are not distinguished at all, which would suggest a merger in process among these talkers. A merger might be driven by relaxation of lip-rounding, as supported by the higher F3 values found for [`r linguisticsdown::cond_cmpl("yː")`]. 
 
-Both of these processes---centralization and sustained overlap despite all cues considered (F1, F2, F3, formant trajectories)---could however be explained by [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] being produced as damped versions. The presence of a damped [`r linguisticsdown::cond_cmpl("ɨː")`] would be supported by the lower F2 values, as the consonantal offglide in [`r linguisticsdown::cond_cmpl("ɨː")`] lowers F2 [@engstrand2000].^[Other possible explanations might be coarticulatory effects, more specifically, effects of the final /d/ on the preceding vowel. There is a neutral onset, [`r linguisticsdown::cond_cmpl("h")`], but a stop [`r linguisticsdown::cond_cmpl("d")`], retroflex [`r linguisticsdown::cond_cmpl("ɖ")`], or rhotic consonant [`r linguisticsdown::cond_cmpl("r")`] in coda, that could be causing a movement in the later part of the vowel segment. A place of articulation effect, or coarticulatory effect caused by the consonant in coda, would be expected to affect primarily F2 [e.g., @delattre1955; @Stevens2000], resulting in a backward push towards an F2 of approximately 1800 Hz. This would nevertheless affect the entire system, and not only two of the vowels, given the constant phonological context (h-VOWEL-d) used for recording.] A merger of [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] into [`r linguisticsdown::cond_cmpl("ɨː")`] has been observed among younger talkers in other regions in Sweden. @gross2020 concluded that several of the talkers of Gothenburg Swedish in their study whose [`r linguisticsdown::cond_cmpl("iː")`] had a horizontally centralized quality closer to [`r linguisticsdown::cond_cmpl("yː")`], merged the two categories into [`r linguisticsdown::cond_cmpl("ɨː")`]. If centralization of [`r linguisticsdown::cond_cmpl("iː")`] is a prerequisite for the merger, as suggested by @gross2020, what we see here might be the beginning of a merger in process. A future scenario might involve the loss of the defining feature lip rounding in [`r linguisticsdown::cond_cmpl("yː")`] if the merger continues, given its weaker perceptual salience [as hypothesized by @gross2020].^[A parallel exist in iotacism in Norwegian and Swedish dialects [@eliasson2000], characterized by the loss of lip rounding resulting in vowel shifts such as [`r linguisticsdown::cond_cmpl("yː")`] to [`r linguisticsdown::cond_cmpl("iː")`] for monophthongs, and [`r linguisticsdown::cond_cmpl("øy")`] to [`r linguisticsdown::cond_cmpl("ei")`] for diphthongs. This phenomenon describes a feature loss for a fairly unusual phonological characteristic---rounded front vowels. Talkers that merge because of iotacism would not necessarily produce [`r linguisticsdown::cond_cmpl("iː")`] as the damped [`r linguisticsdown::cond_cmpl("ɨː")`]. This could potentially explain the vowel patterns of the two talkers that merge the two vowels but have a rather fronted [`r linguisticsdown::cond_cmpl("iː")`] without an offglide consonant element (see \@ref(fig:swe-merge), for Talkers SW_005 and SW_015).] 
+Both of these processes---centralization and sustained overlap despite all cues considered (F1, F2, F3, formant trajectories)---could however be explained by [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] being produced as damped versions. The presence of a damped [`r linguisticsdown::cond_cmpl("ɨː")`] would be supported by the lower F2 values, as the consonantal offglide in [`r linguisticsdown::cond_cmpl("ɨː")`] lowers F2 [@engstrand2000]. A merger of [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] into [`r linguisticsdown::cond_cmpl("ɨː")`] has been observed among younger talkers in other regions in Sweden. @gross2020 concluded that several of the talkers of Gothenburg Swedish in their study whose [`r linguisticsdown::cond_cmpl("iː")`] had a horizontally centralized quality closer to [`r linguisticsdown::cond_cmpl("yː")`], merged the two categories into [`r linguisticsdown::cond_cmpl("ɨː")`]. If centralization of [`r linguisticsdown::cond_cmpl("iː")`] is a prerequisite for the merger, as suggested by @gross2020, what we see here might be the beginning of a merger in process. A future scenario might involve the loss of the defining feature lip rounding in [`r linguisticsdown::cond_cmpl("yː")`] if a merger continues, given its weaker perceptual salience [as hypothesized by @gross2020].^[A parallel exist in iotacism in Norwegian and Swedish dialects [@eliasson2000], characterized by the loss of lip rounding resulting in vowel shifts such as [`r linguisticsdown::cond_cmpl("yː")`] to [`r linguisticsdown::cond_cmpl("iː")`] for monophthongs, and [`r linguisticsdown::cond_cmpl("øy")`] to [`r linguisticsdown::cond_cmpl("ei")`] for diphthongs. Iotacism describes a feature loss for a fairly unusual phonological characteristic---rounded front vowels. Talkers that merge because of iotacism would not necessarily produce [`r linguisticsdown::cond_cmpl("iː")`] as the damped [`r linguisticsdown::cond_cmpl("ɨː")`], which could potentially explain the vowel patterns of the two talkers that merge the two vowels but have a rather fronted [`r linguisticsdown::cond_cmpl("iː")`] without an offglide consonant element (see \@ref(fig:swe-merge), for Talkers SW_005 and SW_015).] 
 
-Impressionistic listening by the author supported the presence of a buzzing sound, similar to [`r linguisticsdown::cond_cmpl("ɨː")`], among the majority of talkers in SwehVd, both male and female. The strength and scope of [`r linguisticsdown::cond_cmpl("ɨː")`] varied across talkers, from a relatively strong [`r linguisticsdown::cond_cmpl("ɨː")`] (17 talkers), to a weaker buzzing sound (12 talkers), or more of a consonant element similar to [`r linguisticsdown::cond_cmpl("j")`] (3 talkers). Several of the talkers that did not produce any apparent final consonant glide or buzz (11 talkers), seemed to have less retracted [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`]. Further insights into the individual differences can be gained by studying...the repo is available..<!--add here--> 
+Impressionistic listening by the author did support the presence of a buzzing sound, similar to [`r linguisticsdown::cond_cmpl("ɨː")`], among the majority of talkers in SwehVd, both male and female. The strength and scope of [`r linguisticsdown::cond_cmpl("ɨː")`] varied across talkers, from a relatively strong [`r linguisticsdown::cond_cmpl("ɨː")`] (17 talkers), to a weaker buzzing sound (12 talkers), or more of a consonant element similar to [`r linguisticsdown::cond_cmpl("j")`] (3 talkers). Interestingly, several of the talkers that did not produce any apparent final consonant glide or buzz (11 talkers), seemed to have overall less retracted [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`], hence supporting the hypothesized link between centralization and consonantal offglide. Further insights into these individual differences can be gained by studying the SwehVd materials on a talker-specific level.
 
-The changed placement of [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] might have affected the surrounding front vowels. Interestingly, [`r linguisticsdown::cond_cmpl("eː")`] was *not* the most fronted vowel for some of the talkers who do not centralize [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`]<!--(e.g., SW_005, SW_015, SW_020)-->. This would seem to suggest that the fronted placement of [`r linguisticsdown::cond_cmpl("eː")`] might be conditioned on a more centralized position of [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`]. The order and cause of these events is of course unclear. For instance, the raising of [`r linguisticsdown::cond_cmpl("eː")`] could be pushing back [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`]---a push chain shift. Alternatively, the backing of [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] could be pulling [`r linguisticsdown::cond_cmpl("eː")`] upwards---a pull chain shift [for reviews of chain shifts, see e.g., @king1969; @martinet1952]. A hypothesized pull chain shift scenario might involve further movements downstream, for instance, a centralization of [`r linguisticsdown::cond_cmpl("ʉː")`], a lowering of [`r linguisticsdown::cond_cmpl("oː")`] and [`r linguisticsdown::cond_cmpl("uː")`], or a general backing of the entire system. The vowel space as described here does not seem to support this. The movements of [`r linguisticsdown::cond_cmpl("eː")`] instead suggest a push chain shift, but what might be causing [`r linguisticsdown::cond_cmpl("eː")`] to move remains unclear, given that the neighbouring category [`r linguisticsdown::cond_cmpl("ɛː")`] substantially lowers. A future scenario might involve [`r linguisticsdown::cond_cmpl("eː")`] once more descending to a position closer to its shorter counterpart, and closer to the position it occupies in the latter part of the segment (see Figure \@ref(fig:trajectories)). This would potentially result in a sparser front space, possibly setting the stage for a more compact system overall.<!--borde detta inte innebära problem med sammanfall som man tänker att systemet vill undvika? och leder det då till nya förändringar för att öka avstånd osv?--> Future studies should investigate the support for either hypothesis in more detail for more insight into the possible causes of the movements.
+The changed placement of [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] might have affected the surrounding front vowels. For instance, [`r linguisticsdown::cond_cmpl("eː")`] was *not* the most fronted vowel for some of the talkers who do not centralize [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`]<!--(e.g., SW_005, SW_015, SW_020)-->. This would seem to suggest that the fronted placement of [`r linguisticsdown::cond_cmpl("eː")`] might be conditioned on a more centralized position of [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`]. The order and cause of these events is of course unclear. For instance, the raising of [`r linguisticsdown::cond_cmpl("eː")`] could be pushing back [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`]---a push chain shift [for reviews of chain shifts, see e.g., @king1969; @martinet1952]. However, what might be causing [`r linguisticsdown::cond_cmpl("eː")`] to move remains unclear, given that the neighbouring category [`r linguisticsdown::cond_cmpl("ɛː")`] substantially lowers. A future scenario might involve [`r linguisticsdown::cond_cmpl("eː")`] once more descending to a position closer to its shorter counterpart, and closer to the position it occupies in the latter part of the segment (see Figure \@ref(fig:trajectories)). Such a change would potentially result in a sparser front space, possibly setting the stage for a more compact system overall. Alternatively, the backing of [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] could be pulling [`r linguisticsdown::cond_cmpl("eː")`] upwards---a pull chain shift. A pull chain shift could hypothetically involve further movements downstream, for instance, a centralization of [`r linguisticsdown::cond_cmpl("ʉː")`], a lowering of [`r linguisticsdown::cond_cmpl("oː")`] and [`r linguisticsdown::cond_cmpl("uː")`], or a general backing of the entire system. Future studies should investigate the support for either hypothesis in more detail for further insight into the possible causes of the movements.
 
 Other noticeable changes outside of the high front area concern [`r linguisticsdown::cond_cmpl("ɛː")`] and [`r linguisticsdown::cond_cmpl("œ")`], that have both lowered since 1999. The lowering of [`r linguisticsdown::cond_cmpl("ɛː")`] was anticipated by e.g., @riad2014, and confirmed in @leinonen2010 and @pelzer-boersma2019. Even if [`r linguisticsdown::cond_cmpl("œ")`] has lowered compared to SweDia, [`r linguisticsdown::cond_cmpl("øː")`] and [`r linguisticsdown::cond_cmpl("ø")`] are still located beneath [`r linguisticsdown::cond_cmpl("œ")`], which suggest a backing rather than lowering of /`r linguisticsdown::cond_cmpl("ø")`/ in position before retroflex segments [c.f., @riad2014]. Furthermore, the difference in placement of [`r linguisticsdown::cond_cmpl("œ")`] might result from a presence (SweDia) or lack of (SwehVd) neutralization of [`r linguisticsdown::cond_cmpl("ø")`] into [`r linguisticsdown::cond_cmpl("ɵ")`]. In both materials, [`r linguisticsdown::cond_cmpl("ø")`] appears in a context before a retroflex (SwehVd - *hörr*, SweDia - *dörr*), and in SweDia, [`r linguisticsdown::cond_cmpl("ø")`] is considerably closer to [`r linguisticsdown::cond_cmpl("ɵ")`] than in the SwehVd. If this result holds, it would suggest that the previously documented merger of short [`r linguisticsdown::cond_cmpl("ø")`] and [`r linguisticsdown::cond_cmpl("ɵ")`] might have lost its importance in Central Swedish over the last generation [e.g., @stahle1965; @wenner2010; but see @kotsinas1995 for younger Stockholm talkers].
 
 ## Methodological considerations
-Methodological considerations for the present study concern 1) methods chosen to support claims about ongoing changes in the vowel space, 2) the choice of how to measure some of the acoustic cues, and 3) materials used for comparing vowel changes over time. Firstly, many acoustic-phonetic studies often include systematic listening by trained phoneticians, validated through measures of inter-rater reliability [for a review, see @cucchiarini1995; @gross2020; @kuronen2000; @pelzer-boersma2019]. In this study, proposals of the presence of a possible ongoing merger and/or centralization of [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`], and the absence of merger of [`r linguisticsdown::cond_cmpl("œ")`] - [`r linguisticsdown::cond_cmpl("ɵ")`], would all receive stronger support if supplemented by systematic (and not impressionistic) listening. Future studies should evaluate these claims using systematic listening. For this reason, the SwehVd database is made publicly available in an online repository (SwehVd: <https://osf.io/ruxnb/>).
+Methodological considerations for the present study concern 1) methods chosen to support claims about ongoing changes in the vowel space, 2) the choice of how to measure some of the acoustic cues, and 3) materials used for comparing vowel changes over time. Firstly, many acoustic-phonetic studies often include systematic listening by trained phoneticians, validated through measures of inter-rater reliability [for a review, see @cucchiarini1995; @gross2020; @kuronen2000; @pelzer-boersma2019]. In this study, proposals of the presence of a possible ongoing merger and/or centralization of [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`], and the absence of merger of [`r linguisticsdown::cond_cmpl("œ")`] - [`r linguisticsdown::cond_cmpl("ɵ")`], would all receive stronger support if supplemented by systematic (and not impressionistic) listening. A second consideration concerns two of the cue measurements, F0 and duration, and how they were measured and evaluated. Here, the average F0 across the vowel segment was reported. However, pitch contours have been known to influence perceived duration and prominence of vowels [e.g., @gussenhoven-zhou2013]. One could therefore claim that a more accurate acoustic representation of vowels should have included pitch contours. Similarly, the temporal analysis of the effect of duration on long-short vowel pairs could be supplemented with measures of consonant ratios [e.g., @pelzer-boersma2019; @schaeffler2005]. Both of these methodological considerations can be addressed in future studies as the SwehVd database is publicly available in an online repository (SwehVd: <https://osf.io/ruxnb/>).
 
-A second consideration to address concerns two of the cue measurements, F0 and duration, and how they were measured and evaluated. In this study, the average F0 across the vowel segment was reported. However, pitch contours have been known to influence perceived duration and prominence of vowels [e.g., @gussenhoven-zhou2013]. One could therefore claim that a more accurate representation of the vowel should have included pitch contours. Similarly, the temporal analysis of the effect of duration on long-short vowel pairs could be supplemented with measures of consonant ratios [e.g., @pelzer-boersma2019; @schaeffler2005]. Both of these shortcomings can, similarly to the first limitation, be addressed in future studies as the SwehVd database is publicly available.
-
-Third and finally, there were several differences in the materials compared that could potentially affect the results. For instance, the difference in size of the datasets was considerable. This imbalance was addressed by the sampling-with-replacement approach for the $op$ and the regression models. Furthermore, different phonological contexts were employed for recording of the two databases, which can constrain claims made about vowel changes given differences in potential effects of coarticulation. This limitation was partly mitigated by including word as random effect in the regression models. Future research could address these limitations with more scrutiny, by providing models with more detailed information about the specific phonological context employed in each word. 
-
-Across previous studies, there are substantial differences in word context, number of talkers recorded, whether there are both male and female talkers, and number of repetitions per word (Table \@ref(tab:previous-work)). This implies that, irrespective of what reference materials chosen for comparison, there would inevitably be some loss in comparability. The SwehVd sought to address this issue by recording hVd words, with the intention of enhancing comparability in studies on Central Swedish, and with the welcome side-effect of facilitating cross-linguistic investigations.
+Third and finally, there were differences in the materials compared in Study 2 that could potentially have affected the results. For instance, the difference in size of the datasets was considerable. The sampling-with-replacement approach for the $op$ tried to address this imbalance. Furthermore, different phonological contexts were employed for recording of the two databases, which can constrain claims made about vowel changes given differences in potential effects of coarticulation. This limitation was partly mitigated by including word as random effect in the regression models. Future research could address these limitations with more scrutiny, e.g., by providing models with more detailed information about the specific phonological context employed in each word. Across previous studies, there are substantial differences in word context, number of talkers recorded, number of repetitions per word, and the demographics of talkers (Table \@ref(tab:previous-work)). This variability implies that, irrespective of what reference materials chosen for comparison, there would inevitably be some loss in comparability. The SwehVd sought to address this issue by recording hVd words, with the intention of enhancing comparability in studies on Central Swedish, and with the welcome side-effect of facilitating cross-linguistic investigations.
 
 # Conclusions
-<!--add here-->The aim of this study was to present an updated acoustic characterization of the *entire* vowel space of Central Swedish. What is gained with this broad-scale approach is of course lost in terms of detailed investigations of individual vowel contrasts. There is certainly a lot more to say about the centralization of [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`], the potential loss of lip-rounding in [`r linguisticsdown::cond_cmpl("yː")`], the direction of chain shifts, and lowering of [`r linguisticsdown::cond_cmpl("ɛː")`], among other things. The acoustic descriptions outlined in this paper, together with the SwehVd database, can provide a reference point for future investigations into these acoustic events and beyond.
+The present study has reported on the acoustic properties of Central Swedish vowels and how they have changed over the last generation. The spectral and temporal cues investigated all seem to contribute to distinguishing between the 21 vowels in the Central Swedish vowel space. More insight into formant dynamics within and between quantities have been gained by the dynamic analysis presented, which is of value for cross-linguistic research. 
+What has been gained with the broad-scale approach of characterizing the *entire* vowel space adopted here, is of course lost in terms of detailed investigations of individual vowel contrasts. There is certainly a lot more to say about the centralization of [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`], the potential loss of lip-rounding in [`r linguisticsdown::cond_cmpl("yː")`], the direction of chain shifts, and lowering of [`r linguisticsdown::cond_cmpl("ɛː")`], among other things. The acoustic descriptions outlined in this paper, together with the SwehVd database, can provide a reference point for future investigations into these acoustic events and beyond.
 
 # Data availability statement {-}
 The SwehVd dataset presented in this study can be found in an online repository (SwehVd: <https://osf.io/ruxnb/>). All analyses and visualization code can be found in a separate online repository (<https://osf.io/>).
@@ -1777,7 +1731,7 @@ d.previous.work <- tibble(
                "formant trajectories at 10 measurement points; F1-F2 means and sd; linear regression",
                "F1 to F4 and duration means",
                "formant trajectories at XX measurement points (long vowels); F1 to FXX means",
-               "PCA",
+               "principal component analysis of Bark-filtered vowel spectra",
                "",
                "EMG; F1 to F3 means",
                "F1-F2 median values at 20, 50, 80% into the vowel; linear mixed effects model",
@@ -1787,7 +1741,7 @@ d.previous.work <- tibble(
             "Comparing the acoustics and perception of whispered and phonated vowels",
             "Formant frequencies of the long vowels",
             "Spectral and temporal acoustics of all Central Swedish vowels",
-            "Acoustic characteristics of Swedish dialects",
+            "Acoustic characteristics of Swedish rural dialects",
             "The effect of vowel duration on formant frequencies",
             "The articulation and acoustics of rounded vowels",
             "Diphthongization in the long vowels",
@@ -1815,12 +1769,9 @@ Figure \@ref(fig:SI-raw) shows the entire vowel space of 21 vowels across talker
 (ref:SI-raw) The SwehVd vowel data in F1-F2 Hertz space. Points show the productions of each of the 21 Central Swedish vowels by the 44 (24 female) L1 talkers in the database. Vowel labels indicate category means across talkers. Vowels that mismatched intended label are excluded (`r signif((d.SwehVd %>% filter(Transcribed_vowel != "targeted") %>% nrow() / d.SwehVd %>% nrow()) * 100)`% of all recordings).
 
 ```{r SI-raw, fig.width=base.width*3, fig.height=base.height*3, out.width='70%', fig.align='center', fig.cap="(ref:SI-raw)"}
-d.SwehVd.forStudy.long %>%
-  filter(Normalization.Type == "no normalization (Hz)", timepoint %in% c(35, 50, 65)) %>%
+d.SwehVd.forStudy.long.static %>%
+  filter(Normalization.Type == "no normalization (Hz)") %>%
   #mutate(Gender = case_when(Gender == "female" ~ .7, Gender == "male" ~ .1)) %>%
-  # Get the geometric mean F1-F2 across the five time points
-  group_by(Normalization.Type, Talker, Gender, category, Token, Quantity) %>%
-  summarise(across(c(F1, F2, F3, Duration), ~ mean(.x))) %>%
   ggplot(
     aes(
       x = F2,
@@ -1858,10 +1809,8 @@ Figure \@ref(fig:SI-swe-vowels-all-cues-hz) shows the entire vowel space of 21 v
 
 ```{r SI-swe-vowels-all-cues-hz, fig.width=base.width*4+.5, fig.height=base.height*4+.5, out.width = '100%', fig.align='center', fig.cap="(ref:SI-swe-vowels-all-cues-hz)"}
 p.matrix.cues %+%
-  (d.SwehVd.forStudy.long %>%
-     filter(Normalization.Type == "no normalization (Hz)", timepoint %in% c(35, 50, 65), F0 < 320) %>%
-     group_by(Normalization.Type, Talker, Gender, category, Token, Quantity) %>%
-     summarise(across(c(F0, F1, F2, F3, Duration), ~ mean(.x))))
+  (d.SwehVd.forStudy.long.static %>%
+     filter(Normalization.Type == "no normalization (Hz)", F0 < 320))
 ```
 
 ### Neutralization of short /e/ and /`r linguisticsdown::cond_cmpl("ɛ")`/ {#sec:SI-hedd-hädd}
@@ -1907,7 +1856,7 @@ Figure \@ref(fig:SI-time-points) visualizes the SwehVd vowel space under four di
 
 ```{r SI-time-points, fig.width=base.width*4.5, fig.height=base.height*4.5+.5, out.width = '100%', fig.align='center', fig.cap="(ref:SI-time-points)"}
 p.20_50 <- p %+%
-  (d.SwehVd.forStudy.long.static %>%
+  (d.SwehVd.forStudy.long %>%
   filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(20,35,50)) %>%
   # Get the geometric mean F1-F2 across the five time points
   group_by(Normalization.Type, Talker, Gender, category, Token, Quantity) %>%
@@ -1915,7 +1864,7 @@ p.20_50 <- p %+%
   guides(shape = "none")
 
 p.35_65 <- p %+%
-  (d.SwehVd.forStudy.long.static %>%
+  (d.SwehVd.forStudy.long %>%
   filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(35,50,65)) %>%
   # Get the geometric mean F1-F2 across the five time points
   group_by(Normalization.Type, Talker, Gender, category, Token, Quantity) %>%
@@ -1923,12 +1872,12 @@ p.35_65 <- p %+%
   guides(shape = "none")
 
 p.50 <- p %+%
-  (d.SwehVd.forStudy.long.static %>%
+  (d.SwehVd.forStudy.long %>%
   filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint == 50)) +
   guides(shape = "none")
 
 p.50_80 <- p %+%
-  (d.SwehVd.forStudy.long.static %>%
+  (d.SwehVd.forStudy.long %>%
   filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(50,65,80)) %>%
   # Get the geometric mean F1-F2 across the five time points
   group_by(Normalization.Type, Talker, Gender, category, Token, Quantity) %>%
@@ -2098,11 +2047,7 @@ p.ör <- p +
 
 ```{r SI-talker-specific-female, fig.width=base.width*6, fig.height=base.height*4.5, fig.align='center', fig.cap="(ref:SI-talker-specific-female)"}
 p.talkers <- d.SwehVd.forStudy.long.static %>%
-  filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(35, 50, 65), Gender == "female") %>%
-  # Get the geometric mean F1-F2 across the five time points
-  group_by(Talker, Gender, category, Token, Quantity) %>%
-  summarise(across(c(F1, F2, F3, Duration), ~ mean(.x))) %>%
-  ungroup() %>%
+  filter(Normalization.Type == "Nearey's uniform scaling (log)", Gender == "female") %>%
   ggplot(
     aes(
       x = F2,
@@ -2129,11 +2074,8 @@ p.talkers
 
 ```{r SI-talker-specific-male, fig.width=base.width*6, fig.height=base.height*4.5, fig.align='center', fig.cap="(ref:SI-talker-specific-male)"}
 p.talkers %+%
-(d.SwehVd.forStudy.long %>%
-  filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(35, 50, 65), Gender == "male") %>%
-  # Get the geometric mean F1-F2 across the five time points
-  group_by(Talker, Gender, category, Token, Quantity) %>%
-  summarise(across(c(F1, F2, F3, Duration), ~ mean(.x))))
+(d.SwehVd.forStudy.long.static %>%
+  filter(Normalization.Type == "Nearey's uniform scaling (log)", Gender == "male"))
 ```
 
 \end{landscape}
@@ -2199,7 +2141,7 @@ Vowel IPA&Target words&Comment\\
 \hline
 `r linguisticsdown::cond_cmpl("[ɔ]")`&lott&\\
 \hline
-`r linguisticsdown::cond_cmpl("[ɔ]")`&såll&\\
+&såll&\\
 \hline
 `r linguisticsdown::cond_cmpl("[ʏ]")`&flytta&\\
 \hline
@@ -2217,7 +2159,7 @@ Vowel IPA&Target words&Comment\\
 \hline
 &vägg&recorded by ym4 only\\
 \hline
-`r linguisticsdown::cond_cmpl("[æ]")`&särk&\\
+`r linguisticsdown::cond_cmpl("[æ]")`&särk&recorded by ym4 and yw4 only\\
 \hline
 `r linguisticsdown::cond_cmpl("[ɵ]")`&ludd&\\
 \hline
@@ -2313,8 +2255,8 @@ p.matrix.cues %+%
 (ref:trajectories-swedia) The trajectory of all vowels in the SweDia reference materials across the five time points, along F1-F2. The arrow indicates the direction of the trajectory and ends at 80% into the vowel. The vowel label is placed at the third time-point, at vowel mid-point (50%).
 
 ```{r trajectories-swedia, fig.width=base.width*3.5, fig.height=base.height*2, out.width='90%', fig.align='center', fig.cap="(ref:trajectories-swedia)"}
-d.Swehvd.Swedia %>%
-  filter(Normalization.Type == "Nearey's uniform scaling (log)", Database == "SweDia") %>%
+d.SweDia2000.forStudy.long %>%
+  filter(Normalization.Type == "Nearey's uniform scaling (log)") %>%
   mutate(timepoint = as.character(timepoint)) %>%
   group_by(Talker, category, timepoint, Quantity) %>%
   summarise(across(c(F2, F1), ~mean(.x))) %>%
@@ -2453,7 +2395,7 @@ RMSE & \num{0.09}\\
 #   group_by(category, Database) %>%
 #  # for each row i.e. for each observation
 #   rowwise() %>%
-#   # calculate orth.proj.ratio...
+#   # calculate orth.proj.ratio
 #   mutate(orth_proj = case_when(category == "[ʏ]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[ɑː]`, `cenF2_[ɑː]`), c(`cenF1_[ɪ]`, `cenF2_[ɪ]`)),
 #                                category == "[ʉː]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[ɪ]`, `cenF2_[ɪ]`), c(`cenF1_[oː]`, `cenF2_[oː]`)),
 #                                category == "[ɛː]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[eː]`, `cenF2_[eː]`), c(`cenF1_[æː]`, `cenF2_[æː]`)),
