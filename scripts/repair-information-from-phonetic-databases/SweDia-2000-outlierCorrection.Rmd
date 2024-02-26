@@ -19,7 +19,7 @@ library(mvtnorm)    # for outlier identification
 ```
 
 ```{r}
-source("../../output/thesis/constants_thesis.R")
+source("../../output/papers/constants_functions.R")
 ```
 
 # Overview
@@ -449,6 +449,56 @@ d.vowels.swedia %>%
   scale_x_reverse() +
   scale_y_reverse() +
   facet_grid(~ Quantity)
+```
+
+```{r}
+# There still seems to be outliers in the data. Set the cut-off to .5 instead
+outlier_probability_cutoff = .05
+  
+d.swedia.outliers.univariate.round2 <- d.vowels.swedia %>%
+  #filter(!is.na(F0)) %>%
+  obtain_densities_univariates() %>%
+  select(Talker, Vowel, Token, Trial, Location, Quantity, F0, F1, F2, F3, Duration, starts_with("cumulative"))
+
+d.vowels.swedia.repair.round2 <- rbind(
+  #First get the F0 outliers
+      d.swedia.outliers.univariate.round2 %>%
+        select(-c(cumulative_probability_F1, cumulative_probability_F2, cumulative_probability_F3, cumulative_probability_Duration)) %>%
+        filter(!between(cumulative_probability_F0, outlier_probability_cutoff, 1 - outlier_probability_cutoff)) %>%
+        rename(cumulative_probability = cumulative_probability_F0) %>%
+        mutate(outlier_source = "F0_univariate"),
+      #Then get the F1 outliers
+      d.swedia.outliers.univariate.round2 %>%
+        select(-c(cumulative_probability_F0, cumulative_probability_F2, cumulative_probability_F3, cumulative_probability_Duration)) %>%
+        filter(!between(cumulative_probability_F1, outlier_probability_cutoff, 1 - outlier_probability_cutoff)) %>%
+        rename(cumulative_probability = cumulative_probability_F1) %>%
+        mutate(outlier_source = "F1_univariate"),
+        #Then get the F2 outliers
+      d.swedia.outliers.univariate.round2 %>%
+        select(-c(cumulative_probability_F0, cumulative_probability_F1, cumulative_probability_F3, cumulative_probability_Duration)) %>%
+        filter(!between(cumulative_probability_F2, outlier_probability_cutoff, 1 - outlier_probability_cutoff)) %>%
+        rename(cumulative_probability = cumulative_probability_F2) %>%
+        mutate(outlier_source = "F2_univariate"),
+        #Then get the F3 outliers
+      d.swedia.outliers.univariate.round2 %>%
+        select(-c(cumulative_probability_F0, cumulative_probability_F1, cumulative_probability_F2, cumulative_probability_Duration)) %>%
+        filter(!between(cumulative_probability_F3, outlier_probability_cutoff, 1 - outlier_probability_cutoff)) %>%
+        rename(cumulative_probability = cumulative_probability_F3) %>%
+        mutate(outlier_source = "F3_univariate")) %>%
+  arrange(Talker, Vowel, Token)
+
+# write.csv(
+#   d.vowels.swedia.repair.round2 %>%
+#     # Mutate back to arpabet for csv readability
+#     mutate(Vowel = factor(
+#       plyr::mapvalues(
+#         Vowel,
+#         levels.vowel.IPA.swe,
+#         levels.vowel.SweFA),
+#       levels = levels.vowel.SweFA)) %>%
+#     select(Talker, Vowel, Token, Trial, Location, Quantity, F0, F1, F2, F3, outlier_source),
+#   file = "../../data/phonetic vowel statistics/Swedish/Published databases/SweDia2000/outlier-corrected-vowel-data/SweDia2000_allCuesvowels_to_repair_round2.csv",
+#   row.names = FALSE, quote = FALSE)
 ```
 ```{r}
 # Write csv-file with the manually corrected vowel data, but without removed outliers.
