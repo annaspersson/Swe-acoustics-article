@@ -15,7 +15,7 @@ affiliation:
 
 wordcount         : "X"
 
-bibliography      : ["latex-stuff/librarySweAcoust.bib"]
+bibliography      : ["latex-stuff/librarySweAcoust.bib", "latex-stuff/r-referencesSweAcoust.bib"]
 link-citations    : yes
 csl               : latex-stuff/apa-6th-edition.csl
 
@@ -729,7 +729,7 @@ Figure \@ref(fig:trajectories) further demonstrates that some neighbouring categ
 #### Models of formant dynamics
 The first set of GAMMs were modeled separately for each cue (F1, F2, F3) and each set of long and short vowels, with gender, category and their interaction as independent variables, and time-points as smoothing function. Random slopes and intercepts for talker were included. Category was backwards difference coded with [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("ɪ")`] as reference categories in each set, using the \texttt{contr.sdif()} function from the \texttt{R} package \texttt{MASS}. Example of model code: $F1 \sim category + Gender + s(timepoint, by = category, k = 5) + s(Talker, bs = "re") + s(Talker, category, bs = "re")$. Summary tables of all 6 models are included in the SI, Section \@ref(sec:SI-GAMMs). 
 
-The GAMMs suggested a main effect of category on F1 for all vowels in both datasets (all $ps > .008$), except for [`r linguisticsdown::cond_cmpl("ʏ")`] ($\hat\beta = .012, se = .014, p > .37$) which indicates overlap with [`r linguisticsdown::cond_cmpl("ɪ")`] in height (Figures \@ref(fig:m-F1-long) and \@ref(fig:m-F1-short)).
+The GAMMs suggested a main effect of category on F1 for all vowels in both datasets (all $ps > .008$), except for [`r linguisticsdown::cond_cmpl("ʏ")`] ($\hat\beta = .012, se = .014, p > .37$) which indicates overlap with [`r linguisticsdown::cond_cmpl("ɪ")`] in height (Figure \@ref(fig:m-F1-short)). The difference in means between the high front vowels [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʉː")`] were not as substantial as for the other categories, as indicated by the overlapping confidence intervals in Figure \@ref(fig:m-F1-long) (Figures \@ref(fig:SI-m-F1-long) and \@ref(fig:SI-m-F1-short) in SI visualize all categories included in the GAMMs for F1).
 
 ```{r}
 # Run GAMMs predicting F1, F2, F3 separately from the long and short categories
@@ -798,45 +798,46 @@ m.F3.short <- mgcv::bam(F3 ~ category + Gender + s(timepoint, by = category, k =
                         data = d.model.short)
 ```
 
-(ref:m-F1-long) Fitted smooths of GAMM for predicting F1 and 95% confidence intervals for the long vowels.
+(ref:m-F1-long) Fitted smooths of GAMM for predicting F1 and 95% confidence intervals for the long vowels [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("ʉː")`], [`r linguisticsdown::cond_cmpl("eː")`] and [`r linguisticsdown::cond_cmpl("oː")`].
 
 ```{r m-F1-long, message=FALSE, fig.width=base.width*3, fig.height=base.height*2.5, out.width='60%', fig.align='center', fig.cap="(ref:m-F1-long)"}
-itsadug::plot_smooth(m.F1.long, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#8DA0CB", "#FB9A99", "#E7298A", "#A6D854", "#FFD92F", "#E5C494", "#B3B3B3", "#A6CEE3", "#B2DF8A"), print.summary = FALSE)
+itsadug::plot_smooth(m.F1.long, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#8DA0CB", "#FB9A99", "#A6CEE3"), print.summary = FALSE, cond = list(category = c("[iː]", "[yː]", "[ʉː]", "[eː]", "[oː]")))
+#plot_diff(m.F1.long, view = "timepoint", comp = list(category = c("[iː]", "[yː]")))
 ```
 
-(ref:m-F1-short) Fitted smooths of GAMM for predicting F1 and 95% confidence intervals for the short vowels.
+(ref:m-F1-short) Fitted smooths of GAMM for predicting F1 and 95% confidence intervals for the short vowels [`r linguisticsdown::cond_cmpl("ɪ")`] and [`r linguisticsdown::cond_cmpl("ʏ")`].
 
 ```{r m-F1-short, message=FALSE, fig.width=base.width*3, fig.height=base.height*2.5, out.width='60%', fig.align='center', fig.cap="(ref:m-F1-short)"}
-itsadug::plot_smooth(m.F1.short, view = "timepoint", plot_all = "category", col = c("#1B9E77", "#D95F02", "#7570B3", "#E78AC3", "#66A61E", "#E6AB02", "#A6761D", "#666666", "#1F78B4", "#33A02C"), print.summary = FALSE)
+itsadug::plot_smooth(m.F1.short, view = "timepoint", plot_all = "category", col = c("#1B9E77", "#D95F02"), print.summary = FALSE, cond = list(category = c("[ɪ]", "[ʏ]")))
 ```
-For F2, there was a main effect of category for all long and short vowels (all $p > .037$; see Figures \@ref(fig:m-F2-long), \@ref(fig:m-F2-short). Figures \@ref(fig:m-F1-long), \@ref(fig:m-F1-short), \@ref(fig:m-F2-long), and \@ref(fig:m-F2-short) further highlights the clear diphthongization in [`r linguisticsdown::cond_cmpl("eː")`] and [`r linguisticsdown::cond_cmpl("oː")`], and how some categories either overlap at the beginning or at the end of the vowel segment (e.g., [`r linguisticsdown::cond_cmpl("ɛː")`]-[`r linguisticsdown::cond_cmpl("æː")`], [`r linguisticsdown::cond_cmpl("øː")`]-[`r linguisticsdown::cond_cmpl("œː")`]).
+For F2, there was a main effect of category for all long and short vowels (all $p > .037$; see Figures \@ref(fig:m-F2-long), \@ref(fig:m-F2-short). Figures \@ref(fig:m-F1-long), \@ref(fig:m-F1-short), \@ref(fig:m-F2-long), and \@ref(fig:m-F2-short) further highlights the clear diphthongization in [`r linguisticsdown::cond_cmpl("eː")`] and [`r linguisticsdown::cond_cmpl("oː")`], and how some neighbouring categories overlap in F2 at the end of the vowel segment (e.g., [`r linguisticsdown::cond_cmpl("ɛː")`]-[`r linguisticsdown::cond_cmpl("æː")`]). Again, [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] have overlapping confidence intervals, even if their estimated means differ (Figures \@ref(fig:SI-m-F2-long) and \@ref(fig:SI-m-F2-short) in SI visualize all categories included in the GAMMs for F2).
 
-(ref:m-F2-long) Fitted smooths of GAMM for predicting F2 and 95% confidence intervals for the long vowels.
+(ref:m-F2-long) Fitted smooths of GAMM for predicting F2 and 95% confidence intervals for the long vowels [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("eː")`], [`r linguisticsdown::cond_cmpl("ɛː")`], [`r linguisticsdown::cond_cmpl("æː")`] and [`r linguisticsdown::cond_cmpl("oː")`].
 
 ```{r m-F2-long, message=FALSE, fig.width=base.width*3, fig.height=base.height*2.5, out.width='60%', fig.align='center', fig.cap="(ref:m-F2-long)"}
-itsadug::plot_smooth(m.F2.long, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#8DA0CB", "#FB9A99", "#E7298A", "#A6D854", "#FFD92F", "#E5C494", "#B3B3B3", "#A6CEE3", "#B2DF8A"), print.summary = FALSE)
+itsadug::plot_smooth(m.F2.long, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#FB9A99", "#E7298A", "#A6D854","#A6CEE3"), print.summary = FALSE, cond = list(category = c("[iː]", "[yː]", "[eː]", "[ɛː]", "[æː]", "[oː]")))
 ```
 
-(ref:m-F2-short) Fitted smooths of GAMM for predicting F2 and 95% confidence intervals for the short vowels.
+(ref:m-F2-short) Fitted smooths of GAMM for predicting F2 and 95% confidence intervals for the short vowels [`r linguisticsdown::cond_cmpl("ɪ")`] and [`r linguisticsdown::cond_cmpl("ʏ")`].
 
 ```{r m-F2-short, message=FALSE, fig.width=base.width*3, fig.height=base.height*2.5, out.width='60%', fig.align='center', fig.cap="(ref:m-F1-short)"}
-itsadug::plot_smooth(m.F2.short, view = "timepoint", plot_all = "category", col = c("#1B9E77", "#D95F02", "#7570B3", "#E78AC3", "#66A61E", "#E6AB02", "#A6761D", "#666666", "#1F78B4", "#33A02C"), print.summary = FALSE)
+itsadug::plot_smooth(m.F2.short, view = "timepoint", plot_all = "category", col = c("#1B9E77", "#D95F02"), print.summary = FALSE, cond = list(category = c("[ɪ]", "[ʏ]")))
 ```
 
-A main effect of category was also found for F3 for all vowels besides [`r linguisticsdown::cond_cmpl("yː")`] ($\hat\beta = -.003, se = .011, p > .80$; all other $ps > .046$). The fact that a main effect of category on F3 was only found for the [`r linguisticsdown::cond_cmpl("ɪ")`] - [`r linguisticsdown::cond_cmpl("ʏ")`] and not the [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] distinction, suggests that F3 does not reliably distinguish between the long high front rounded-unrounded vowels, in line with the qualitative analysis (see Figures \@ref(fig:m-F3-long) and \@ref(fig:m-F3-short)).
+A main effect of category was also found for F3 for all vowels besides [`r linguisticsdown::cond_cmpl("yː")`] ($\hat\beta = -.003, se = .011, p > .80$; all other $ps > .046$). The fact that a main effect of category on F3 was only found for the [`r linguisticsdown::cond_cmpl("ɪ")`] - [`r linguisticsdown::cond_cmpl("ʏ")`] and not the [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] distinction, suggests that F3 does not reliably distinguish between the long high front rounded-unrounded vowels, in line with the qualitative analysis (see Figures \@ref(fig:m-F3-long) and \@ref(fig:m-F3-short)) (Figures \@ref(fig:SI-m-F3-long) and \@ref(fig:SI-m-F3-short) in SI visualize all categories included in the GAMMs for F3).
 
 <!--A main effect of Gender was only found for F2 and the short vowels ($\hat\beta = -.028, se = .01, p > .006$).-->
 
-(ref:m-F3-long) Fitted smooths of GAMM for predicting F3 and 95% confidence intervals for the long vowels.
+(ref:m-F3-long) Fitted smooths of GAMM for predicting F3 and 95% confidence intervals for the long vowels [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("ʉː")`] and [`r linguisticsdown::cond_cmpl("eː")`].
 
 ```{r m-F3-long, message=FALSE, fig.width=base.width*3, fig.height=base.height*2.5, out.width='60%', fig.align='center', fig.cap="(ref:m-F3-long)"}
-itsadug::plot_smooth(m.F3.long, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#8DA0CB", "#FB9A99", "#E7298A", "#A6D854", "#FFD92F", "#E5C494", "#B3B3B3", "#A6CEE3", "#B2DF8A"), print.summary = FALSE)
+itsadug::plot_smooth(m.F3.long, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#8DA0CB", "#FB9A99"), print.summary = FALSE, cond = list(category = c("[iː]", "[yː]", "[ʉː]", "[eː]")))
 ```
 
-(ref:m-F3-short) Fitted smooths of GAMM for predicting F3 and 95% confidence intervals for the short vowels.
+(ref:m-F3-short) Fitted smooths of GAMM for predicting F3 and 95% confidence intervals for the short vowels [`r linguisticsdown::cond_cmpl("ɪ")`] and [`r linguisticsdown::cond_cmpl("ʏ")`].
 
 ```{r m-F3-short, message=FALSE, fig.width=base.width*3, fig.height=base.height*2.5, out.width='60%', fig.align='center', fig.cap="(ref:m-F3-short)"}
-itsadug::plot_smooth(m.F3.short, view = "timepoint", plot_all = "category", col = c("#1B9E77", "#D95F02", "#7570B3", "#E78AC3", "#66A61E", "#E6AB02", "#A6761D", "#666666", "#1F78B4", "#33A02C"), print.summary = FALSE)
+itsadug::plot_smooth(m.F3.short, view = "timepoint", plot_all = "category", col = c("#1B9E77", "#D95F02"), print.summary = FALSE, cond = list(category = c("[ɪ]", "[ʏ]")))
 ```
 
 ```{r}
@@ -904,9 +905,11 @@ itsadug::plot_smooth(m.F3.short, view = "timepoint", plot_all = "category", col 
 
 The effect of F1, F2, F3 and duration on all long and short vowel pairs was modeled in four separate GAMMs, with gender, category and their interaction as independent variables, and time-points as smoothing function. Random slopes and intercepts for talker were included. Category was backwards difference coded with [`r linguisticsdown::cond_cmpl("iː")`] as reference category. The category variable was ordered alternating long and short vowels by the pair, in order for the short vowel to be compared against its preceding long counterpart. Summary tables of these four GAMMs are included in the SI (Section \@ref(sec:SI-GAMMs)). 
 
-The GAMMs suggested a main effect of category on all spectral and temporal cues for all vowel pairs (for F1, all $ps > .027$; for F2, F3 and duration, all $ps < .0001$). With the exception of the [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʏ")`] vowel pair (see also previous section), all rounded vowels displayed lower F3 values, hence more lip-rounding, in their long allophones [e.g., @hadding1976; @stalhammar1973]. The results thus seem to suggest that *all* long-short Central Swedish vowel pairs differ in spectral and temporal cues, including pairs for which previous research have found primarily duration dependencies [e.g., @behne-kirk1997; @haddingkoch1964; @kuronen2000].
+The GAMMs suggested a main effect of category on all spectral and temporal cues for all vowel pairs (for F1, all $ps > .027$; for F2, F3 and duration, all $ps < .0001$). With the exception of the [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʏ")`] vowel pair (see also previous section), all rounded vowels displayed lower F3 values, hence more lip-rounding, in their long allophones [e.g., @hadding1976; @stalhammar1973]. The results thus seem to suggest that *all* long-short Central Swedish vowel pairs differ in spectral and temporal cues, including pairs for which previous research have found primarily duration dependencies [e.g., @behne-kirk1997; @haddingkoch1964; @kuronen2000]. Some pairs did, however, display smaller differences in spectral cues than others. For instance, the [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("ɪ")`], [`r linguisticsdown::cond_cmpl("uː")`] - [`r linguisticsdown::cond_cmpl("ʊ")`] and [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("ɔ")`] pairs predicting F1 and F3 (see Figures \@ref(fig:m-F1-paired) and \@ref(fig:m-F3-paired)).
 
-```{r message=FALSE}
+(ref:m-F1-paired) Fitted smooths of GAMM for predicting F1 and 95% confidence intervals for the vowel pairs [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("ɪ")`] and [`r linguisticsdown::cond_cmpl("uː")`] - [`r linguisticsdown::cond_cmpl("ʊ")`].
+
+```{r m-F1-paired, message=FALSE, fig.width=base.width*3, fig.height=base.height*2.5, out.width='60%', fig.align='center', fig.cap="(ref:m-F1-paired)"}
 # Dataframe for running GAMMs on all 21 vowels grouped by pair
 d.model.paired <- d.SwehVd.vowel_pairs %>%
   filter(Normalization.Type == "Nearey's uniform scaling (log)", vowel_pair != "ɛ - eː, ɛː") %>%
@@ -946,7 +949,14 @@ m.duration.paired <- mgcv::bam(Duration ~ category + Gender +
                            s(Talker, bs = "re") +
                            s(Talker, category, bs = "re"),
                          data = d.model.paired)
-#summary(m.F1.paired)
+
+itsadug::plot_smooth(m.F1.paired, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#1B9E77", "#B2DF8A", "#33A02C"), print.summary = FALSE, cond = list(category = c("[iː]", "[ɪ]", "[uː]", "[ʊ]")))
+```
+
+(ref:m-F3-paired) Fitted smooths of GAMM for predicting F3 and 95% confidence intervals for the vowel pairs [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("ɪ")`] and [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("ɔ")`].
+
+```{r m-F3-paired, message=FALSE, fig.width=base.width*3, fig.height=base.height*2.5, out.width='60%', fig.align='center', fig.cap="(ref:m-F3-paired)"}
+itsadug::plot_smooth(m.F3.paired, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#1B9E77", "#A6CEE3", "#1F78B4"), print.summary = FALSE, cond = list(category = c("[iː]", "[ɪ]", "[oː]", "[ɔ]")))
 ```
 
 ### Results summary
@@ -1393,32 +1403,32 @@ p.orth
 #   mutate(
 #     orth_proj = ifelse(Database == "SwehVd", mean(orth_proj), orth_proj))
 
-m.Y <- lmerTest::lmer(orth_proj ~ Database + (1|Word) + (1|Talker), 
+m.Y <- lmerTest::lmer(orth_proj ~ Database + (1|Word) + (1|Talker),
                       data = d.orth %>%
                         filter(category == "[ʏ]", !is.na(orth_proj)) %>% 
-                        mutate(across(c(Talker, Database), ~ factor(.x))))
-m.Ä <- lmerTest::lmer(orth_proj ~ Database + (1|Talker), 
+                        mutate(across(c(Talker, Database, Word), ~ factor(.x))))
+m.Ä <- lmerTest::lmer(orth_proj ~ Database + (1|Word) + (1|Talker), 
                       data = d.orth %>%
                         filter(category == "[ɛː]", !is.na(orth_proj)) %>% 
-                        mutate(across(c(Talker, Database), ~ factor(.x))))
+                        mutate(across(c(Talker, Database, Word), ~ factor(.x))))
 m.ÖR <- lmerTest::lmer(orth_proj ~ Database + (1|Word) + (1|Talker), 
                        data = d.orth %>%
                          filter(category == "[œ]", !is.na(orth_proj)) %>% 
-                         mutate(across(c(Talker, Database), ~ factor(.x))))
-m.U <- lmerTest::lmer(orth_proj ~ Database + (1|Word) + (1|Talker), 
+                         mutate(across(c(Talker, Database, Word), ~ factor(.x))))
+m.U <- lmerTest::lmer(orth_proj ~ Database + (1|Word) + (1|Talker),
                       data = d.orth %>%
                         filter(category == "[ʉː]", !is.na(orth_proj)) %>% 
-                        mutate(across(c(Talker, Database), ~ factor(.x))))
+                        mutate(across(c(Talker, Database, Word), ~ factor(.x))))
 m.Ö <- lmerTest::lmer(orth_proj ~ Database + (1|Word) + (1|Talker), 
                       data = d.orth %>%
                         filter(category == "[øː]", !is.na(orth_proj)) %>% 
-                        mutate(across(c(Talker, Database), ~ factor(.x))))
+                        mutate(across(c(Talker, Database, Word), ~ factor(.x))))
 m.Å <- lmerTest::lmer(orth_proj ~ Database + (1|Word) + (1|Talker), 
                       data = d.orth %>%
                         filter(category == "[ɔ]", !is.na(orth_proj)) %>% 
-                        mutate(across(c(Talker, Database), ~ factor(.x))))
+                        mutate(across(c(Talker, Database, Word), ~ factor(.x))))
 #modelsummary::modelsummary(m.Y, output = "latex")
-#summary(m.Y)
+#summary(m.ÖR)
 ```
 ```{r}
 rm(d.orth, d.orth.SweDia2000, d.orth.for.model, centroids.SweDia2000, bootstrap_SwehVd)
@@ -1912,6 +1922,44 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
 # Code kept for reproducibility
 #gamtabs(m.F1.long, caption='Model summary, coefficients for parametric and smooth terms', label = "tab:m.F1.long")
 #gamtabs(m.F3.short, caption='Model summary, coefficients for parametric and smooth terms', label = "tab:m.F3.short")
+```
+
+### Visualizations of GAMMs
+
+(ref:SI-m-F1-long) Fitted smooths of GAMM for predicting F1 and 95% confidence intervals for all long vowels.
+
+```{r SI-m-F1-long, message=FALSE, fig.width=base.width*3, fig.height=base.height*2.5, out.width='60%', fig.align='center', fig.cap="(ref:SI-m-F1-long)"}
+itsadug::plot_smooth(m.F1.long, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#8DA0CB", "#FB9A99", "#E7298A", "#A6D854", "#FFD92F", "#E5C494", "#B3B3B3", "#A6CEE3", "#B2DF8A"), print.summary = FALSE)
+```
+
+(ref:SI-m-F1-short) Fitted smooths of GAMM for predicting F1 and 95% confidence intervals for all short vowels.
+
+```{r SI-m-F1-short, message=FALSE, fig.width=base.width*3, fig.height=base.height*2.5, out.width='60%', fig.align='center', fig.cap="(ref:SI-m-F1-short)"}
+itsadug::plot_smooth(m.F1.short, view = "timepoint", plot_all = "category", col = c("#1B9E77", "#D95F02", "#7570B3", "#E78AC3", "#66A61E", "#E6AB02", "#A6761D", "#666666", "#1F78B4", "#33A02C"), print.summary = FALSE)
+```
+
+(ref:SI-m-F2-long) Fitted smooths of GAMM for predicting F2 and 95% confidence intervals for all long vowels.
+
+```{r SI-m-F2-long, message=FALSE, fig.width=base.width*3, fig.height=base.height*2.5, out.width='60%', fig.align='center', fig.cap="(ref:SI-m-F2-long)"}
+itsadug::plot_smooth(m.F2.long, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#8DA0CB", "#FB9A99", "#E7298A", "#A6D854", "#FFD92F", "#E5C494", "#B3B3B3", "#A6CEE3", "#B2DF8A"), print.summary = FALSE)
+```
+
+(ref:SI-m-F2-short) Fitted smooths of GAMM for predicting F2 and 95% confidence intervals for all short vowels.
+
+```{r SI-m-F2-short, message=FALSE, fig.width=base.width*3, fig.height=base.height*2.5, out.width='60%', fig.align='center', fig.cap="(ref:SI-m-F1-short)"}
+itsadug::plot_smooth(m.F2.short, view = "timepoint", plot_all = "category", col = c("#1B9E77", "#D95F02", "#7570B3", "#E78AC3", "#66A61E", "#E6AB02", "#A6761D", "#666666", "#1F78B4", "#33A02C"), print.summary = FALSE)
+```
+
+(ref:SI-m-F3-long) Fitted smooths of GAMM for predicting F3 and 95% confidence intervals for all long vowels.
+
+```{r SI-m-F3-long, message=FALSE, fig.width=base.width*3, fig.height=base.height*2.5, out.width='60%', fig.align='center', fig.cap="(ref:m-F3-long)"}
+itsadug::plot_smooth(m.F3.long, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#8DA0CB", "#FB9A99", "#E7298A", "#A6D854", "#FFD92F", "#E5C494", "#B3B3B3", "#A6CEE3", "#B2DF8A"), print.summary = FALSE)
+```
+
+(ref:SI-m-F3-short) Fitted smooths of GAMM for predicting F3 and 95% confidence intervals for all short vowels.
+
+```{r SI-m-F3-short, message=FALSE, fig.width=base.width*3, fig.height=base.height*2.5, out.width='60%', fig.align='center', fig.cap="(ref:m-F3-short)"}
+itsadug::plot_smooth(m.F3.short, view = "timepoint", plot_all = "category", col = c("#1B9E77", "#D95F02", "#7570B3", "#E78AC3", "#66A61E", "#E6AB02", "#A6761D", "#666666", "#1F78B4", "#33A02C"), print.summary = FALSE)
 ```
 
 ## Additional information on Study 2 {#sec:SI-SweDia}
