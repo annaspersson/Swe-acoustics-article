@@ -731,18 +731,17 @@ p.merge / p.merge.F3 + theme(axis.title.x = element_blank()) +
 get_category_separability <- function(
     data,
     category_A, 
-    category_B, 
-    n = length(category_A)) {
+    category_B) {
   data %>%
     group_by(Talker, category) %>%
     mutate(
-      category_separability_F1 = case_when(category == category_A ~ (F1 - data[data$category == category_B,]$F1_centroid)^2),
-      category_separability_F2 = case_when(category == category_A ~ (F2 - data[data$category == category_B,]$F2_centroid)^2),
-      category_separability_F3 = case_when(category == category_A ~ (F3 - data[data$category == category_B,]$F3_centroid)^2),
-      overall_separability = (sum(n) * sqrt(category_separability_F1 + category_separability_F2)) / n)
+      category_separability_F1 = ifelse(category == category_A, (F1 - data[data$category == category_B,]$F1_centroid)^2, NA),
+      category_separability_F2 = ifelse(category == category_A, (F2 - data[data$category == category_B,]$F2_centroid)^2, NA),
+      category_separability_F3 = ifelse(category == category_A, (F3 - data[data$category == category_B,]$F3_centroid)^2, NA),
+      overall_separability = (sum(sqrt(category_separability_F1 + category_separability_F2))))
 }
 
-d.SwehVd.forStudy.long.static %>% 
+d.SwehVd.for.cat.separability <- d.SwehVd.forStudy.long.static %>% 
   filter(Normalization.Type == "Nearey's uniform scaling (log)", category %in% c("[iː]", "[ɪ]", "[yː]", "[ʏ]")) %>%
   left_join(
     d.SwehVd.forStudy.long.static %>% 
@@ -758,9 +757,17 @@ d.SwehVd.forStudy.long.static %>%
     F1_centroid = F1.y,
     F2_centroid = F2.y,
     F3_centroid = F3.y) %>%
-  select(-ends_with(c(".x", ".y"))) %>%
-  group_by(Talker, category) %>%
-  get_category_separability(category_A = "[iː]", category_B = "[yː]")
+  select(-ends_with(c(".x", ".y"))) 
+
+d.SwehVd.for.cat.separability.all <- rbind(
+  d.SwehVd.for.cat.separability %>%
+  get_category_separability(category_A = "[iː]", category_B = "[yː]"),
+  d.SwehVd.for.cat.separability %>%
+  get_category_separability(category_A = "[ɪ]", category_B = "[ʏ]")) %>%
+  na.omit() %>%
+  group_by(category) %>%
+  summarise(
+    category_separability = mean(overall_separability, na.rm = T))
 ```
 
 #### Quantity vs. quality in long and short vowel pairs
