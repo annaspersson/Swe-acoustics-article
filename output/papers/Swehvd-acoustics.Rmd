@@ -694,23 +694,23 @@ p.merge / p.merge.F3 + theme(axis.title.x = element_blank()) +
 
 In order to quantitatively asses whether the distinction between neighboring unrounded and rounded categories increased when F3 was considered, the category separability of these two vowels was calculated based on F1 and F2, and subsequently compared against the separability calculated when including F3. If separability increased when F3 was added, it would suggest that F3 do contribute to category distinctions. The category separability was calculated for the [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("eː")`] - [`r linguisticsdown::cond_cmpl("yː")`] and [`r linguisticsdown::cond_cmpl("ɪ")`] - [`r linguisticsdown::cond_cmpl("ʏ")`] pairs, assessing the effect of F3 on unrounded vs. rounded categories, and for the [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʉː")`], [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("uː")`] and [`r linguisticsdown::cond_cmpl("ɔ")`] - [`r linguisticsdown::cond_cmpl("ʊ")`] pairs, assessing the effect of F3 on outrounded vs. inrounded categories.
 
-A linear mixed-effects model (LMM) was fit to analyse the by-talker by-category separability for the pairs, with category, cue dimension and their interaction as fixed-effect predictors, and Talker as random effect.
+Separate linear mixed-effects models (LMMs) were fit to analyse the by-talker by-category separability for each of the pairs, with category, cue dimension and their interaction as fixed-effect predictors, and Talker as random effect. All LMMs indicated a main effect of cue dimension, with category separability increasing with the added cue.
 
 ```{r}
 #Try to calculate the category separability based on Xie & Jaeger 2020
-get_category_separability <- function(
-    data,
-    category_A, 
-    category_B) {
-  data %>%
-    group_by(Talker, category) %>%
-    mutate(
-      category_separability_F1 = ifelse(category == category_A, (F1 - data[data$category == category_B,]$F1_centroid)^2, NA),
-      category_separability_F2 = ifelse(category == category_A, (F2 - data[data$category == category_B,]$F2_centroid)^2, NA),
-      category_separability_F3 = ifelse(category == category_A, (F3 - data[data$category == category_B,]$F3_centroid)^2, NA),
-      separability_F1F2 = (sum(sqrt(category_separability_F1 + category_separability_F2))),
-      separability_F1F2F3 = (sum(sqrt(category_separability_F1 + category_separability_F2 + category_separability_F3))))
-}
+# get_category_separability <- function(
+#     data,
+#     category_A, 
+#     category_B) {
+#   data %>%
+#     group_by(Talker, category) %>%
+#     mutate(
+#       category_separability_F1 = ifelse(category == category_A, (F1 - data[data$category == category_B,]$F1_centroid)^2, NA),
+#       category_separability_F2 = ifelse(category == category_A, (F2 - data[data$category == category_B,]$F2_centroid)^2, NA),
+#       category_separability_F3 = ifelse(category == category_A, (F3 - data[data$category == category_B,]$F3_centroid)^2, NA),
+#       separability_F1F2 = (sum(sqrt(category_separability_F1 + category_separability_F2))),
+#       separability_F1F2F3 = (sum(sqrt(category_separability_F1 + category_separability_F2 + category_separability_F3))))
+# }
 
 #Do the summing after the by-talker and category calculations?
 get_category_separability <- function(
@@ -731,10 +731,10 @@ get_category_separability <- function(
 }
 
 d.SwehVd.for.cat.separability <- d.SwehVd.forStudy.long.static %>% 
-  filter(Normalization.Type == "Nearey's uniform scaling (log)", category %in% c("[iː]", "[ɪ]", "[yː]", "[ʏ]")) %>%
+  filter(Normalization.Type == "Nearey's uniform scaling (log)", category %in% c("[iː]", "[ɪ]", "[yː]", "[ʏ]", "[ʉː]", "[eː]", "[oː]", "[ɔ]", "[uː]", "[ʊ]")) %>%
   left_join(
     d.SwehVd.forStudy.long.static %>% 
-      filter(Normalization.Type == "Nearey's uniform scaling (log)", category %in% c("[iː]", "[ɪ]", "[yː]", "[ʏ]")) %>%
+      filter(Normalization.Type == "Nearey's uniform scaling (log)", category %in% c("[iː]", "[ɪ]", "[yː]", "[ʏ]", "[ʉː]", "[eː]", "[oː]", "[ɔ]", "[uː]", "[ʊ]")) %>%
       group_by(Talker, category) %>%
       summarise(across(starts_with("F"), ~ mean(.x))) %>%
       select(Talker, category, F1, F2, F3),
@@ -751,34 +751,128 @@ d.SwehVd.for.cat.separability <- d.SwehVd.forStudy.long.static %>%
 d.SwehVd.cat.separability <- rbind(
   # Get category separability of i: from y:
   d.SwehVd.for.cat.separability %>%
-  get_category_separability(category_A = "[iː]", category_B = "[yː]"),
+  get_category_separability(category_A = "[iː]", category_B = "[yː]") %>%
+    mutate(comparison = "iː to yː"),
   # and then y: from i:
   d.SwehVd.for.cat.separability %>%
-  get_category_separability(category_A = "[yː]", category_B = "[iː]"),
+  get_category_separability(category_A = "[yː]", category_B = "[iː]") %>%
+    mutate(comparison = "yː to iː"),
   d.SwehVd.for.cat.separability %>%
-  get_category_separability(category_A = "[ɪ]", category_B = "[ʏ]")) %>%
+  get_category_separability(category_A = "[eː]", category_B = "[yː]") %>%
+    mutate(comparison = "eː to yː"),
+  d.SwehVd.for.cat.separability %>%
+  get_category_separability(category_A = "[yː]", category_B = "[eː]") %>%
+    mutate(comparison = "yː to eː"),
+  d.SwehVd.for.cat.separability %>%
+  get_category_separability(category_A = "[ɪ]", category_B = "[ʏ]") %>%
+    mutate(comparison = "ɪ to ʏ"),
+  d.SwehVd.for.cat.separability %>%
+  get_category_separability(category_A = "[ʏ]", category_B = "[ɪ]") %>%
+    mutate(comparison = "ʏ to ɪ"),
+  d.SwehVd.for.cat.separability %>%
+  get_category_separability(category_A = "[yː]", category_B = "[ʉː]") %>%
+    mutate(comparison = "yː to ʉː"),
+  d.SwehVd.for.cat.separability %>%
+  get_category_separability(category_A = "[ʉː]", category_B = "[yː]") %>%
+    mutate(comparison = "ʉː to yː"),
+  d.SwehVd.for.cat.separability %>%
+  get_category_separability(category_A = "[oː]", category_B = "[uː]") %>%
+    mutate(comparison = "oː to uː"),
+  d.SwehVd.for.cat.separability %>%
+  get_category_separability(category_A = "[uː]", category_B = "[oː]") %>%
+    mutate(comparison = "uː to oː"),
+  d.SwehVd.for.cat.separability %>%
+  get_category_separability(category_A = "[ɔ]", category_B = "[ʊ]") %>%
+    mutate(comparison = "ɔ to ʊ"),
+  d.SwehVd.for.cat.separability %>%
+  get_category_separability(category_A = "[ʊ]", category_B = "[ɔ]") %>%
+    mutate(comparison = "ʊ to ɔ")) %>%
   na.omit() %>%
-  group_by(Talker, category) %>%
+  group_by(Talker, category, comparison) %>%
   summarise(
     F1F2 = mean(separability_F1F2, na.rm = T),
     F1F2F3 = mean(separability_F1F2F3, na.rm = T)) %>%
   pivot_longer(
     cols = starts_with("F"),
     names_to = "cue_dimension",
-    values_to = "value") %>%
+    values_to = "separability") %>%
   mutate(cue_dimension = factor(cue_dimension, levels = c("F1F2", "F1F2F3")),
          category = factor(category, levels = levels.vowel.IPA.swe))
+```
+```{r}
+colors.comparison <- c("#66C2A5", "#FC8D62", "#FB9A99", "#FC8D62", "#1B9E77", "#D95F02", "#FC8D62", "#8DA0CB", "#A6CEE3", "#B2DF8A", "#1F78B4", "#33A02C")
+names(colors.comparison) <- c("iː to yː",  "yː to iː", "eː to yː", "yː to eː", "ɪ to ʏ", "ʏ to ɪ", "yː to ʉː", "ʉː to yː", "oː to uː", "uː to oː", "ɔ to ʊ", "ʊ to ɔ")
 
-
+d.SwehVd.cat.separability %>% 
+group_by(cue_dimension, comparison, category) %>%
+  mutate(
+    comparison = factor(comparison, levels = c("iː to yː",  "yː to iː", "eː to yː", "yː to eː", "ɪ to ʏ", "ʏ to ɪ", "yː to ʉː", "ʉː to yː", "oː to uː", "uː to oː", "ɔ to ʊ", "ʊ to ɔ")),
+    rounding = ifelse(comparison %in% c("iː to yː",  "yː to iː", "eː to yː", "yː to eː", "ɪ to ʏ", "ʏ to ɪ"), "unrounded vs. outrounded", "outrounded vs. inrounded"),
+    ci = list(enframe(Hmisc::smean.cl.boot(separability)))) %>%
+    unnest(ci) %>%
+    spread(name, value) %>%
+  group_by(cue_dimension, comparison, category, rounding) %>%
+    summarise(
+      mean_CI_lower = mean(Lower),
+      mean_CI_upper = mean(Upper),
+      mean = mean(Mean)) %>%
+  ggplot(
+    aes(x = cue_dimension,
+        y = mean,
+        ymin = mean_CI_lower,
+        ymax = mean_CI_upper,
+        color = comparison)) +
+  geom_pointrange(
+    position = position_dodge2(width = 0.5),
+    fatten = 2.5) +
+  geom_line(aes(group = comparison), position = position_dodge(width = 0.5), linetype = "dashed") +
+  scale_color_manual(name = "comparison", values = colors.comparison) + 
+  scale_x_discrete("Cue dimension") +
+  scale_y_continuous("Category separability index") +
+  myGplot.defaults() +
+  facet_grid(~ rounding)
+```
+```{r}
 contrasts(d.SwehVd.cat.separability$cue_dimension) <- contr.sum(2)
 
 # Rename contrast labels
 d.SwehVd.cat.separability$cue_dimension <- factor(d.SwehVd.cat.separability$cue_dimension, labels = c("F1F2", "F1F2F3"))
 
-m.sep.YY <- lmerTest::lmer(value ~ cue_dimension + (1|Talker),
-                      data = d.SwehVd.cat.separability %>% filter(category == "[yː]"))
+m.sep.IIYY <- lmerTest::lmer(separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability %>% filter(comparison == "iː to yː"))
 
-summary(m.sep.YY)
+m.sep.YYII <- lmerTest::lmer(separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability %>% filter(comparison == "yː to iː"))
+
+m.sep.EEYY <- lmerTest::lmer(separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability %>% filter(comparison == "eː to yː"))
+
+m.sep.YYEE <- lmerTest::lmer(separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability %>% filter(comparison == "yː to eː"))
+
+m.sep.IY <- lmerTest::lmer(separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability %>% filter(comparison == "ɪ to ʏ"))
+
+m.sep.YI <- lmerTest::lmer(separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability %>% filter(comparison == "ʏ to ɪ"))
+
+m.sep.YYUU <- lmerTest::lmer(separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability %>% filter(comparison == "yː to ʉː"))
+
+m.sep.UUYY <- lmerTest::lmer(separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability %>% filter(comparison == "ʉː to yː"))
+
+m.sep.ÅÅOO <- lmerTest::lmer(separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability %>% filter(comparison == "oː to uː"))
+
+m.sep.OOÅÅ <- lmerTest::lmer(separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability %>% filter(comparison == "uː to oː"))
+
+m.sep.ÅO <- lmerTest::lmer(separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability %>% filter(comparison == "ɔ to ʊ"))
+
+m.sep.OÅ <- lmerTest::lmer(separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability %>% filter(comparison == "ʊ to ɔ"))
 ```
 
 #### Quantity vs. quality in long and short vowel pairs
@@ -908,7 +1002,7 @@ Some of the movement could be due to coarticulatory effects from the alveolars i
 
 Figure \@ref(fig:trajectories) further demonstrates that some neighbouring categories either start at different locations but end up in the same, or start at similar locations but travel in different directions. For instance, [`r linguisticsdown::cond_cmpl("uː")`] - [`r linguisticsdown::cond_cmpl("oː")`] are fairly closely located at earlier time-points, but differ substantially towards the end of the vowel segment, while [`r linguisticsdown::cond_cmpl("ɛː")`]-[`r linguisticsdown::cond_cmpl("æː")`], [`r linguisticsdown::cond_cmpl("øː")`]-[`r linguisticsdown::cond_cmpl("œː")`] and [`r linguisticsdown::cond_cmpl("ø")`]-[`r linguisticsdown::cond_cmpl("œ")`] start at different locations but end up in approximately the same. Finally, the formant trajectories suggest that the empty spots identified in the vowel space under a static analysis (Figure \@ref(fig:swe-vowels)), may indeed be occupied when vowel dynamics is considered. This is especially true for [`r linguisticsdown::cond_cmpl("eː")`] that travels from the mid-high front to the mid center of the space as the signal unfolds---down to a position closer to its short counterpart, [`r linguisticsdown::cond_cmpl("ɛ")`]. Given the amount of overlap when static spectral cues are considered (Figure \@ref(fig:swe-vowels)), formant dynamics is likely highly informative for several of these distinctions.<!--add here comparison to Kuronen - iye and ou only differs at later tps, and ä-är only by movements-->
 
-To quantitatively estimate whether category distinctions increase once dynamic information is considered, category separability indices were calculated on the dynamic formant data. Comparing these indices agains those of static measures would allow for an assessment of whether category separability in F1-F2 space increases once dynamic information is considered. This index was calculated for the neighboring [`r linguisticsdown::cond_cmpl("uː")`] - [`r linguisticsdown::cond_cmpl("oː")`], [`r linguisticsdown::cond_cmpl("ɛː")`]-[`r linguisticsdown::cond_cmpl("æː")`], [`r linguisticsdown::cond_cmpl("øː")`]-[`r linguisticsdown::cond_cmpl("œː")`] and [`r linguisticsdown::cond_cmpl("ø")`]-[`r linguisticsdown::cond_cmpl("œ")`]. Comparisons of [`r linguisticsdown::cond_cmpl("iː")`]-[`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("iː")`]-[`r linguisticsdown::cond_cmpl("eː")`] and [`r linguisticsdown::cond_cmpl("yː")`]-[`r linguisticsdown::cond_cmpl("ʉː")`] were also included as formant trajectories have been hypothesized to cue these category distinctions [@kuronen2000].
+To quantitatively estimate whether category distinctions increase once dynamic information is considered, category separability indices were calculated on the dynamic formant data. Comparing these indices against those of static measures would allow for an assessment of whether category separability in F1-F2 space increases once dynamic information is considered. This index was calculated for the neighboring [`r linguisticsdown::cond_cmpl("uː")`] - [`r linguisticsdown::cond_cmpl("oː")`], [`r linguisticsdown::cond_cmpl("ɛː")`]-[`r linguisticsdown::cond_cmpl("æː")`], [`r linguisticsdown::cond_cmpl("øː")`]-[`r linguisticsdown::cond_cmpl("œː")`] and [`r linguisticsdown::cond_cmpl("ø")`]-[`r linguisticsdown::cond_cmpl("œ")`]. Comparisons of [`r linguisticsdown::cond_cmpl("iː")`]-[`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("iː")`]-[`r linguisticsdown::cond_cmpl("eː")`] and [`r linguisticsdown::cond_cmpl("yː")`]-[`r linguisticsdown::cond_cmpl("ʉː")`] were also included as formant trajectories have been hypothesized to cue these category distinctions [@kuronen2000].
 Do some vowels benefit from formant movements disproportionally much? Treat each time-point as an independent Gaussian distribution, calculate at each time-point separate indices over the cues and then sum them up for the 5 tps.
 
 ```{r}
