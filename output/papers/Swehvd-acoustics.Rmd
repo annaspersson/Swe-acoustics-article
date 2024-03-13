@@ -146,8 +146,9 @@ Existing descriptions of the entire space of 21 vowels rest on recordings made m
 ```{r previous-work}
 # Add table of previous work on Central Swedish vowels
 d.previous.work <- tibble(
-  Article = c("Bruce, Elert, Engstrand & Wretling, 1999",
-              "Eklund & Traunmüller, 1997",
+  Article = c("Eklund & Traunmüller, 1997",
+              "Elert, 1964",
+              "Eriksson, 2004",
               "Fant, Henningsson & Stålhammar, 1969",
               "Kuronen, 2000",
               "Leinonen, 2010",
@@ -156,8 +157,9 @@ d.previous.work <- tibble(
               "Pelzer & Boersma, 2019",
               "Schötz, Frid & Löfqvist, 2011",
               "Wenner, 2010"),
-  "Speech materials" = c("3-5 repetitions of all 21 vowels, different phonological contexts for each vowel",
-                         "3 repetitions of all 9 long vowels in isolation",
+  "Speech materials" = c("3 repetitions of all 9 long vowels in isolation",
+                         "1 repetition of all 21 vowels in sentence lists and word list (recorded by 2 talkers only; different V:C and VC: contexts)",
+                         "3-4 repetitions of all 21 vowels, different phonological contexts for each vowel",
                          "1 repetition of all 9 long vowels in isolation",
                          "5-7 repetitions of all 21 vowels, different phonological contexts for each vowel and each repetition",
                          "a subset of 19 vowels from the SweDia database (see Bruce et al., 1999 above)",
@@ -166,8 +168,9 @@ d.previous.work <- tibble(
                          "8 repetitions of all 9 long vowels, different phonological contexts for each vowel and each repetition",
                          "6 repetitions of the long /i:/ in two different contexts (bibel, papipa)",
                          "3 repetitions of short /œ/ and /ɵ/ in different phonological contexts"),
-  Participants = c("12 talkers (6 female; 6 young) each from 107 locations across Sweden and Finland; 8 reference talkers of standard Central Swedish from the Greater Stockholm area (4 female)",
-                   "12 talkers (6 female) from the Greater Stockholm area, 20-58 years of age",
+  Participants = c("12 talkers (6 female) from the Greater Stockholm area, 20-58 years of age",
+                   "11 talkers (5 female) from Stockholm, born in the 1930's",
+                   "12 talkers (6 female; 6 young) each from 107 locations across Sweden and Finland; 8 reference talkers of standard Central Swedish from the Greater Stockholm area (4 female)",
                    "24 male talkers, students at KTH in Stockholm",
                    "4 male talkers from Nyköping, 17-18 years of age (4 female reference talkers), recorded by Leinonen, Pitkänen & Vihanta, 1982",
                    "see Bruce et al., 1999",
@@ -176,18 +179,20 @@ d.previous.work <- tibble(
                    "8 talkers (4 female) from Stockholm",
                    "1 male talker from Stockholm",
                    "78 talkers (40 female) from 4 locations in Uppland, 12-85 years of age"),
-  Approach = c("",
-               "formant trajectories at 10 measurement points; F1-F2 means and sd; linear regression",
+  Approach = c("formant trajectories at 10 measurement points; F1-F2 means and SD; linear regression",
+               "duration means, SD and SE; t-statistics",
+               "project description",
                "F1 to F4 and duration means",
-               "formant trajectories at XX measurement points (long vowels); F1 to FXX means",
-               "principal component analysis of Bark-filtered vowel spectra",
-               "",
+               "F0, F1 to F4 and duration means; formant trajectories at 4 measurement points with 30 ms intervals (long vowels)",
+               "principal component analysis of Bark-filtered vowel spectra; multidimensional scaling for dialectometric analysis",
+               "F1 to F3..., duration",
                "EMG; F1 to F3 means",
                "F1-F2 median values at 20, 50, 80% into the vowel; linear mixed effects model",
                "articulography; F1 to F4 means; Bark-circles",
                "F1 to F3 means; linear regression; correlation analysis"),
-  Focus = c("SweDia dialect database development",
-            "Comparing the acoustics and perception of whispered and phonated vowels",
+  Focus = c("Comparing the acoustics and perception of whispered and phonated vowels",
+            "Phonological quantity",
+            "SweDia dialect database development",
             "Formant frequencies of the long vowels",
             "Spectral and temporal acoustics of all Central Swedish vowels",
             "Acoustic characteristics of Swedish rural dialects",
@@ -479,7 +484,7 @@ The dynamic analysis is divided into two main sections that both use formant mea
 
 In the second part of the dynamic analysis, the hypothesized contribution of formant dynamics to category information was modeled using generalized additive mixed-effects models (GAMMs) [@baayen2017]. GAMMs were employed to assess the relative contribution of each cue to category distinctions once formant dynamics was considered, while also accounting for by-talker variability. This type of model has not only a temporal structure (formant measurements at different time-points), but also a hierarchical structure, as individual measurements were grouped into formant contours that in turn were grouped by talkers and gender. Both the complex dependencies generated by this structure as well as the non-monotonic behavior of formants, cannot easily be captured by traditional parametric methods, such as linear regression [e.g., @soskuthy2021]. GAMMs can accommodate nonlinear relationships between predictors and response variables, and their use of smooth functions can provide more nuanced representations of these relationships. Much like other types of mixed models, GAMMs allow for the inclusion of random effects, which provides a parsimonious way to account for dependencies in grouped data. 
 
-GAMMs are increasingly used in phonetic research, due to their suitability in modelling complex phonetic patterns without having to rely on simplifying assumptions of linearity or that vowels can be reduced to a single F1-F2 point estimate [e.g., @soskuthy2021; @refs; @weiling2018]. They have been used in studies on vowels in different English varieties, e.g., on /u/-fronting in Derby English [@soskuthy2018], on the front vowel system of Southern American English [@renwick-stanley2020], but to the best of my knowledge, they have not yet been implemented in studies of Swedish vowels. The use of GAMMs thus complements previous work on Central Swedish that has primarily used visual inspection, formant measurements and linear regression (Table \@ref(tab:previous-work)).
+GAMMs are increasingly used in phonetic research, due to their suitability in modelling complex phonetic patterns without having to rely on simplifying assumptions of linearity or that vowels can be reduced to a single F1-F2 point estimate [e.g., @soskuthy2021; @refs; @wieling2018]. They have been used in studies on vowels in different English varieties, e.g., on /u/-fronting in Derby English [@soskuthy2018], on the front vowel system of Southern American English [@renwick-stanley2020], but to the best of my knowledge, they have not yet been implemented in studies of Swedish vowels. The use of GAMMs thus complements previous work on Central Swedish that has primarily used visual inspection, formant measurements and linear regression (Table \@ref(tab:previous-work)).
 
 GAMMs were fit to all 21 categories, as well as to the long and short vowels separately, using the \texttt{bam()} function from the \texttt{R} package \texttt{mgcv}. Example of model code: $F1 \sim category + Gender + s(timepoint, by = category, k = 5) + s(Talker, bs = "re") + s(Talker, category, bs = "re")$. The first set of GAMMs were fit to the long and short vowels separately. Here, vowel was backwards difference coded with [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("ɪ")`] as reference categories in each set, using the \texttt{contr.sdif()} function from the \texttt{R} package \texttt{MASS}. The second set was fit to all 21 categories, aiming for an evaluation of differences between categories within vowel pairs. Vowel was backwards difference coded with [`r linguisticsdown::cond_cmpl("iː")`] as reference vowel. The vowel variable was ordered alternating long and short vowels by the pair, in order for the short vowel to be compared against its preceding long counterpart. 
 
