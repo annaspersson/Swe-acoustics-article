@@ -697,26 +697,14 @@ p.merge / p.merge.F3 + theme(axis.title.x = element_blank()) +
         plot.tag = element_text(face = "bold"))
 ```
 
-In order to quantitatively asses whether the distinction between neighboring unrounded and rounded categories increased when F3 was considered, the category separability of these two vowels was calculated based on F1 and F2, and subsequently compared against the separability calculated when including F3. If separability increased when F3 was added, it would suggest that F3 do contribute to category distinctions. The category separability was calculated for the [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("eː")`] - [`r linguisticsdown::cond_cmpl("yː")`] and [`r linguisticsdown::cond_cmpl("ɪ")`] - [`r linguisticsdown::cond_cmpl("ʏ")`] pairs, assessing the effect of F3 on unrounded vs. rounded categories, and for the [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʉː")`], [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("uː")`] and [`r linguisticsdown::cond_cmpl("ɔ")`] - [`r linguisticsdown::cond_cmpl("ʊ")`] pairs, assessing the effect of F3 on outrounded vs. inrounded categories.
+In order to quantitatively asses whether the distinction between closely neighboring unrounded and rounded categories increased when F3 was considered, the category separability of these vowels was calculated based on F1 and F2, and subsequently compared against the separability calculated when including F3. If separability were to increase when F3 was added, it would suggest that F3 do contribute to category distinctions. The category separability was calculated for the [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("eː")`] - [`r linguisticsdown::cond_cmpl("yː")`] and [`r linguisticsdown::cond_cmpl("ɪ")`] - [`r linguisticsdown::cond_cmpl("ʏ")`] pairs, assessing the effect of F3 on unrounded vs. rounded neighboring categories, and for the [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʉː")`], [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("uː")`] and [`r linguisticsdown::cond_cmpl("ɔ")`] - [`r linguisticsdown::cond_cmpl("ʊ")`] pairs, assessing the effect of F3 on outrounded vs. inrounded neighboring categories. Following @xie-jaeger2020, the separability was calculated in both directions, that is, both assessing the separability of [`r linguisticsdown::cond_cmpl("iː")`] from [`r linguisticsdown::cond_cmpl("yː")`], and [`r linguisticsdown::cond_cmpl("yː")`] from [`r linguisticsdown::cond_cmpl("iː")`], to capture possible differences in separability between categories in a contrast.
 
-Separate linear mixed-effects models (LMMs) were fit to analyse the by-talker by-category separability for each of the pairs, with category, cue dimension and their interaction as fixed-effect predictors, and Talker as random effect. All LMMs indicated a main effect of cue dimension, with category separability increasing with the added cue.
+Three general observations can be made from Figure \@ref(fig:cat-sep-F3). Category separability was overall lower for some vowels, especially when only F1 and F2 were considered, e.g., [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("ɪ")`], and [`r linguisticsdown::cond_cmpl("ʏ")`]. Including F3 overall increased the category separability, more so for some contrasts than others, such as the [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʉː")`] and the [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("iː")`] contrasts. However, some contrasts displayed asymmetrical patterns of separability. For instance, [`r linguisticsdown::cond_cmpl("yː")`] and [`r linguisticsdown::cond_cmpl("ɔ")`] was substantially more separable from [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("ʊ")`], respectively, than [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("ʊ")`] from [`r linguisticsdown::cond_cmpl("yː")`] and [`r linguisticsdown::cond_cmpl("ɔ")`].<!--add here on what this would seem to suggest-->
+
+Separate linear mixed-effects models (LMMs) were fit to analyse the by-talker by-category separability for each of the pairs, with category, cue dimension and their interaction as fixed-effect predictors, and Talker as random effect. All LMMs indicated a main effect of cue dimension, with category separability increasing with the added cue (all $ps < .003$).
 
 ```{r}
 #Try to calculate the category separability based on Xie & Jaeger 2020
-# get_category_separability <- function(
-#     data,
-#     category_A, 
-#     category_B) {
-#   data %>%
-#     group_by(Talker, category) %>%
-#     mutate(
-#       category_separability_F1 = ifelse(category == category_A, (F1 - data[data$category == category_B,]$F1_centroid)^2, NA),
-#       category_separability_F2 = ifelse(category == category_A, (F2 - data[data$category == category_B,]$F2_centroid)^2, NA),
-#       category_separability_F3 = ifelse(category == category_A, (F3 - data[data$category == category_B,]$F3_centroid)^2, NA),
-#       separability_F1F2 = (sum(sqrt(category_separability_F1 + category_separability_F2))),
-#       separability_F1F2F3 = (sum(sqrt(category_separability_F1 + category_separability_F2 + category_separability_F3))))
-# }
-
 #Do the summing after the by-talker and category calculations?
 get_category_separability <- function(
     data,
@@ -735,11 +723,12 @@ get_category_separability <- function(
     summarise(across(starts_with("separability"), ~ sum(.x) / n))
 }
 
+# Calculate the separability for additional categories explored further down in dynamic analysis
 d.SwehVd.for.cat.separability <- d.SwehVd.forStudy.long.static %>% 
-  filter(Normalization.Type == "Nearey's uniform scaling (log)", category %in% c("[iː]", "[ɪ]", "[yː]", "[ʏ]", "[ʉː]", "[eː]", "[oː]", "[ɔ]", "[uː]", "[ʊ]")) %>%
+  filter(Normalization.Type == "Nearey's uniform scaling (log)", category %in% c("[iː]", "[ɪ]", "[yː]", "[ʏ]", "[ʉː]", "[eː]", "[ɛː]", "[æː]", "[øː]", "[œː]", "[ø]", "[œ]", "[oː]", "[ɔ]", "[uː]", "[ʊ]")) %>%
   left_join(
     d.SwehVd.forStudy.long.static %>% 
-      filter(Normalization.Type == "Nearey's uniform scaling (log)", category %in% c("[iː]", "[ɪ]", "[yː]", "[ʏ]", "[ʉː]", "[eː]", "[oː]", "[ɔ]", "[uː]", "[ʊ]")) %>%
+      filter(Normalization.Type == "Nearey's uniform scaling (log)", category %in% c("[iː]", "[ɪ]", "[yː]", "[ʏ]", "[ʉː]", "[eː]", "[ɛː]", "[æː]", "[øː]", "[œː]", "[ø]", "[œ]", "[oː]", "[ɔ]", "[uː]", "[ʊ]")) %>%
       group_by(Talker, category) %>%
       summarise(across(starts_with("F"), ~ mean(.x))) %>%
       select(Talker, category, F1, F2, F3),
@@ -763,11 +752,23 @@ d.SwehVd.cat.separability <- rbind(
   get_category_separability(category_A = "[yː]", category_B = "[iː]") %>%
     mutate(comparison = "yː to iː"),
   d.SwehVd.for.cat.separability %>%
+    get_category_separability(category_A = "[yː]", category_B = "[ʉː]") %>%
+    mutate(comparison = "yː to ʉː"),
+  d.SwehVd.for.cat.separability %>%
+  get_category_separability(category_A = "[ʉː]", category_B = "[yː]") %>%
+    mutate(comparison = "ʉː to yː"),
+  d.SwehVd.for.cat.separability %>%
   get_category_separability(category_A = "[eː]", category_B = "[yː]") %>%
     mutate(comparison = "eː to yː"),
   d.SwehVd.for.cat.separability %>%
   get_category_separability(category_A = "[yː]", category_B = "[eː]") %>%
     mutate(comparison = "yː to eː"),
+  d.SwehVd.for.cat.separability %>%
+    get_category_separability(category_A = "[iː]", category_B = "[eː]") %>%
+    mutate(comparison = "iː to eː"),
+  d.SwehVd.for.cat.separability %>%
+  get_category_separability(category_A = "[eː]", category_B = "[iː]") %>%
+    mutate(comparison = "eː to iː"),
   d.SwehVd.for.cat.separability %>%
   get_category_separability(category_A = "[ɪ]", category_B = "[ʏ]") %>%
     mutate(comparison = "ɪ to ʏ"),
@@ -780,6 +781,24 @@ d.SwehVd.cat.separability <- rbind(
   d.SwehVd.for.cat.separability %>%
   get_category_separability(category_A = "[ʉː]", category_B = "[yː]") %>%
     mutate(comparison = "ʉː to yː"),
+    d.SwehVd.for.cat.separability %>%
+  get_category_separability(category_A = "[ɛː]", category_B = "[æː]") %>%
+    mutate(comparison = "ɛː to æː"),
+  d.SwehVd.for.cat.separability %>%
+  get_category_separability(category_A = "[æː]", category_B = "[ɛː]") %>%
+    mutate(comparison = "æː to ɛː"),
+  d.SwehVd.for.cat.separability %>%
+    get_category_separability(category_A = "[øː]", category_B = "[œː]") %>%
+    mutate(comparison = "øː to œː"),
+  d.SwehVd.for.cat.separability %>%
+  get_category_separability(category_A = "[œː]", category_B = "[øː]") %>%
+    mutate(comparison = "œː to øː"),
+  d.SwehVd.for.cat.separability %>%
+    get_category_separability(category_A = "[ø]", category_B = "[œ]") %>%
+    mutate(comparison = "ø to œ"),
+  d.SwehVd.for.cat.separability %>%
+  get_category_separability(category_A = "[œ]", category_B = "[ø]") %>%
+    mutate(comparison = "œ to ø"),
   d.SwehVd.for.cat.separability %>%
   get_category_separability(category_A = "[oː]", category_B = "[uː]") %>%
     mutate(comparison = "oː to uː"),
@@ -802,21 +821,33 @@ d.SwehVd.cat.separability <- rbind(
     names_to = "cue_dimension",
     values_to = "separability") %>%
   mutate(cue_dimension = factor(cue_dimension, levels = c("F1F2", "F1F2F3")),
-         category = factor(category, levels = levels.vowel.IPA.swe))
+         category = factor(category, levels = levels.vowel.IPA.swe),
+         Talker = factor(Talker),
+         comparison = factor(comparison, levels = c("iː to yː",  "yː to iː", "eː to yː", "yː to eː", "ɪ to ʏ", "ʏ to ɪ", "yː to ʉː", "ʉː to yː", "oː to uː", "uː to oː", "ɔ to ʊ", "ʊ to ɔ")))
 ```
-```{r}
+
+(ref:cat-sep-F3) The effect of including F3 in measures of category separability for the distinction between neighboring outrounded vs. inrounded categories (**left panel**), and unrounded vs. outrounded categories (**right panel**). Pointranges indicate mean and 95% bootstrapped CIs of the category separability summarized across talkers for each cue dimension. Shape indicates neighboring categories for which the comparison is made, color indicates the direction of the comparison.
+
+```{r cat-sep-F3, fig.width=base.width*3.5, fig.height=base.height*2, out.width='90%', fig.align='center', fig.cap="(ref:cat-sep-F3)", message=FALSE}
 colors.comparison <- c("#66C2A5", "#FC8D62", "#FB9A99", "#FC8D62", "#1B9E77", "#D95F02", "#FC8D62", "#8DA0CB", "#A6CEE3", "#B2DF8A", "#1F78B4", "#33A02C")
 names(colors.comparison) <- c("iː to yː",  "yː to iː", "eː to yː", "yː to eː", "ɪ to ʏ", "ʏ to ɪ", "yː to ʉː", "ʉː to yː", "oː to uː", "uː to oː", "ɔ to ʊ", "ʊ to ɔ")
 
 d.SwehVd.cat.separability %>% 
+  filter(comparison %in% c("iː to yː",  "yː to iː", "eː to yː", "yː to eː", "ɪ to ʏ", "ʏ to ɪ", "yː to ʉː", "ʉː to yː", "oː to uː", "uː to oː", "ɔ to ʊ", "ʊ to ɔ")) %>%
 group_by(cue_dimension, comparison, category) %>%
   mutate(
     comparison = factor(comparison, levels = c("iː to yː",  "yː to iː", "eː to yː", "yː to eː", "ɪ to ʏ", "ʏ to ɪ", "yː to ʉː", "ʉː to yː", "oː to uː", "uː to oː", "ɔ to ʊ", "ʊ to ɔ")),
     rounding = ifelse(comparison %in% c("iː to yː",  "yː to iː", "eː to yː", "yː to eː", "ɪ to ʏ", "ʏ to ɪ"), "unrounded vs. outrounded", "outrounded vs. inrounded"),
+    group = case_when(comparison %in% c("iː to yː",  "yː to iː") ~ "iː - yː",
+                      comparison %in% c("eː to yː", "yː to eː") ~ "eː - yː",
+                      comparison %in% c("ɪ to ʏ", "ʏ to ɪ") ~ "ɪ - ʏ",
+                      comparison %in% c("yː to ʉː", "ʉː to yː") ~ "yː - ʉː",
+                      comparison %in% c("oː to uː", "uː to oː") ~ "oː - uː",
+                      comparison %in% c("ɔ to ʊ", "ʊ to ɔ") ~ "ɔ - ʊ"),
     ci = list(enframe(Hmisc::smean.cl.boot(separability)))) %>%
     unnest(ci) %>%
     spread(name, value) %>%
-  group_by(cue_dimension, comparison, category, rounding) %>%
+  group_by(cue_dimension, comparison, group, category, rounding) %>%
     summarise(
       mean_CI_lower = mean(Lower),
       mean_CI_upper = mean(Upper),
@@ -826,16 +857,19 @@ group_by(cue_dimension, comparison, category) %>%
         y = mean,
         ymin = mean_CI_lower,
         ymax = mean_CI_upper,
-        color = comparison)) +
+        color = comparison,
+        shape = group)) +
   geom_pointrange(
-    position = position_dodge2(width = 0.5),
-    fatten = 2.5) +
-  geom_line(aes(group = comparison), position = position_dodge(width = 0.5), linetype = "dashed") +
+    position = position_dodge2(width = 0.3),
+    fatten = 2.5,
+    size = .8) +
+  geom_line(aes(group = comparison), position = position_dodge(width = 0.3), linetype = "dashed") +
   scale_color_manual(name = "comparison", values = colors.comparison) + 
-  scale_x_discrete("Cue dimension") +
+  scale_x_discrete("Cues") +
   scale_y_continuous("Category separability index") +
+  guides(shape = "none", color = guide_legend(ncol = 2)) +
   myGplot.defaults() +
-  facet_grid(~ rounding)
+  facet_grid(~ factor(rounding, levels = c("unrounded vs. outrounded", "outrounded vs. inrounded")))
 ```
 ```{r}
 contrasts(d.SwehVd.cat.separability$cue_dimension) <- contr.sum(2)
@@ -930,6 +964,10 @@ d.SwehVd.vowel_pairs %>%
 
 All long-short vowel pairs furthermore display spectral differences in F1-F2. In fact, as indicated in Figure \@ref(fig:swe-vowels), formant differences are apparent for *all* vowel pairs, even for some vowel distinctions for which duration has been found to be the primary cue---[`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("ɛ")`], [`r linguisticsdown::cond_cmpl("øː")`] - [`r linguisticsdown::cond_cmpl("ø")`], [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("ɪ")`], and [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("ɔ")`] [e.g., @behne-kirk1997; @haddingkoch1964; @kuronen2000]. The vowel pairs that display larger spectral differences along F1-F2 seem to be [`r linguisticsdown::cond_cmpl("ʉː")`] - [`r linguisticsdown::cond_cmpl("ɵ")`] and [`r linguisticsdown::cond_cmpl("ɑː")`] - [`r linguisticsdown::cond_cmpl("a")`] [in line with e.g., @fant1983; @kuronen2000],<!--eklund??--> but also [`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("ɛ")`], which contrasts with previous studies. The large spectral differences in [`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("ɛ")`] are presumably due to [`r linguisticsdown::cond_cmpl("ɛː")`] being produced very low in the SwehVd materials, which leads to a gap along the top-left to bottom-left diagonal between [`r linguisticsdown::cond_cmpl("eː")`] and [`r linguisticsdown::cond_cmpl("ɛ")`]. Overall, F2 appears to carry more of the spectral variation between the long and short vowel phonemes, as categories display increased separability in the pairwise combination of F2 and duration (Figure \@ref(fig:swe-vowels-all-cues), rightmost column, third row). This was tested using the same separability measure as in the previous section, assessing what different spectral cue combinations most easily distinguish the vowel pairs: F1-F2, F1-F3, or F2-F3<!--and duration??-->.
 
+```{r}
+
+```
+
 The results thus seem to indicate that quantity distinctions---long vs. short vowels---are not separate from quality distinctions---high, low, front, back vowels.
 
 To sum up, the results of the static analysis suggests that F1 and F2 are the most important cues to vowel distinctions. While including F3 does lead to increased category separability for XX and XX, this does not seem to be the case for i-y. In addition, long-short vowel pairs display considerable spectral differences, suggesting that quantity and quality distinctions are not separable. However, we know that formants are not static but rather fluctuate across the signal. A more comprehensive mapping of the acoustics should thus aim to assess the relative contribution of each cue when formant dynamics is considered, in essence, how much does dynamic information add to the relative weight of cues. Given that formant dynamics should hypothetically benefit perception, one could assume that category distinctions would increase once dynamics is included.
@@ -1001,14 +1039,131 @@ p.trajectories
 
 In terms of directionality, there was a general tendency of movement towards a more central vowel quality in most of the vowels, both long and short. According to previous studies [e.g., @bleckert1987; @elert2000], the high vowels [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("ʉː")`] and [`r linguisticsdown::cond_cmpl("uː")`] tend to be realized with an offglide, which would generate a falling F1 for all four vowels, a rising F2 for [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] and a falling F2 for [`r linguisticsdown::cond_cmpl("ʉː")`] and [`r linguisticsdown::cond_cmpl("uː")`]. These predictions were borne out for F1 in all cases, but for F2, only for [`r linguisticsdown::cond_cmpl("ʉː")`]. Both [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] display very little movement along F2, whereas [`r linguisticsdown::cond_cmpl("uː")`] moves towards a more central quality, possibly indicating diphthongization ending in [`r linguisticsdown::cond_cmpl("ə")`] rather than a consonantal offglide. 
 
-For distinguishing between what appears to be diphthongization and merely formant movement, Figure XXX suggests diphthongization in primarily [`r linguisticsdown::cond_cmpl("eː")`] and [`r linguisticsdown::cond_cmpl("oː")`], which replicates previous work [e.g., @eklund1997; @elert2000; @pelzer-boersma2019]. The previously reported diphthongization in [`r linguisticsdown::cond_cmpl("øː")`], however, does not seem to be particularly pronounced in this material...<!--add here-->
+Some of the movement could be due to coarticulatory effects from the alveolars in coda ([`r linguisticsdown::cond_cmpl("d")`], [`r linguisticsdown::cond_cmpl("ɖ")`], [`r linguisticsdown::cond_cmpl("r")`]) on the preceding vowel. Coarticulation would be expected to affect primarily F2, resulting in a centralizing movement in the later part of the segment, when transitioning into the alveolar [e.g., @hillenbrand2001; @stevens-house1963]. The formant movements along F2 from the last point (65%) to arrow tip (80%) in e.g., [`r linguisticsdown::cond_cmpl("ɵ")`], [`r linguisticsdown::cond_cmpl("œː")`], [`r linguisticsdown::cond_cmpl("œ")`], [`r linguisticsdown::cond_cmpl("ɑː")`], [`r linguisticsdown::cond_cmpl("ɔ")`], [`r linguisticsdown::cond_cmpl("uː")`], and [`r linguisticsdown::cond_cmpl("ʊ")`], might at least partly be caused by such coarticulation. For distinguishing between what appears to be diphthongization and merely formant movement, caused by e.g., coarticulation, Figure\@ref(fig:trajectories) suggests diphthongization in primarily [`r linguisticsdown::cond_cmpl("eː")`], [`r linguisticsdown::cond_cmpl("ʉː")`] and [`r linguisticsdown::cond_cmpl("oː")`], which replicates previous work [e.g., @eklund1997; @elert2000; @pelzer-boersma2019]. The previously reported diphthongization in [`r linguisticsdown::cond_cmpl("øː")`], however, does not seem to be particularly pronounced in this material.
 
-Some of the movement could be due to coarticulatory effects from the alveolars in coda ([`r linguisticsdown::cond_cmpl("d")`], [`r linguisticsdown::cond_cmpl("ɖ")`], [`r linguisticsdown::cond_cmpl("r")`]) on the preceding vowel. Coarticulation would be expected to affect primarily F2, resulting in a centralizing movement in the later part of the segment, when transitioning into the alveolar [e.g., @hillenbrand2001; @stevens-house1963]. The formant movements along F2 from the last point (65%) to arrow tip (80%) in e.g., [`r linguisticsdown::cond_cmpl("ɵ")`], [`r linguisticsdown::cond_cmpl("œː")`], [`r linguisticsdown::cond_cmpl("œ")`], [`r linguisticsdown::cond_cmpl("ɑː")`], [`r linguisticsdown::cond_cmpl("ɔ")`], [`r linguisticsdown::cond_cmpl("uː")`], and [`r linguisticsdown::cond_cmpl("ʊ")`], might at least partly be caused by such coarticulation.
-
-Figure \@ref(fig:trajectories) further demonstrates that some neighbouring categories either start at different locations but end up in the same, or start at similar locations but travel in different directions. For instance, [`r linguisticsdown::cond_cmpl("uː")`] - [`r linguisticsdown::cond_cmpl("oː")`] are fairly closely located at earlier time-points, but differ substantially towards the end of the vowel segment, while [`r linguisticsdown::cond_cmpl("ɛː")`]-[`r linguisticsdown::cond_cmpl("æː")`], [`r linguisticsdown::cond_cmpl("øː")`]-[`r linguisticsdown::cond_cmpl("œː")`] and [`r linguisticsdown::cond_cmpl("ø")`]-[`r linguisticsdown::cond_cmpl("œ")`] start at different locations but end up in approximately the same. Finally, the formant trajectories suggest that the empty spots identified in the vowel space under a static analysis (Figure \@ref(fig:swe-vowels)), may indeed be occupied when vowel dynamics is considered. This is especially true for [`r linguisticsdown::cond_cmpl("eː")`] that travels from the mid-high front to the mid center of the space as the signal unfolds---down to a position closer to its short counterpart, [`r linguisticsdown::cond_cmpl("ɛ")`]. Given the amount of overlap when static spectral cues are considered (Figure \@ref(fig:swe-vowels)), formant dynamics is likely highly informative for several of these distinctions.<!--add here comparison to Kuronen - iye and ou only differs at later tps, and ä-är only by movements-->
+Figure \@ref(fig:trajectories) further demonstrates that some neighbouring categories either start at different locations but end up in the same, or start at similar locations but travel in different directions. For instance, [`r linguisticsdown::cond_cmpl("uː")`] - [`r linguisticsdown::cond_cmpl("oː")`] are fairly closely located at earlier time-points, but differ substantially towards the end of the vowel segment, while [`r linguisticsdown::cond_cmpl("ɛː")`]-[`r linguisticsdown::cond_cmpl("æː")`], [`r linguisticsdown::cond_cmpl("øː")`]-[`r linguisticsdown::cond_cmpl("œː")`] and [`r linguisticsdown::cond_cmpl("ø")`]-[`r linguisticsdown::cond_cmpl("œ")`] start at different locations but end up in approximately the same [c.f., @kuronen2000]. Finally, the formant trajectories suggest that the empty spots identified in the vowel space under a static analysis (Figure \@ref(fig:swe-vowels)), may indeed be occupied when vowel dynamics is considered. This is especially true for [`r linguisticsdown::cond_cmpl("eː")`] that travels from the mid-high front to the mid center of the space as the signal unfolds---down to a position closer to its short counterpart, [`r linguisticsdown::cond_cmpl("ɛ")`]. Given the amount of overlap when static spectral cues are considered (Figure \@ref(fig:swe-vowels)), formant dynamics is likely highly informative for several of these distinctions.
 
 To quantitatively estimate whether category distinctions increase once dynamic information is considered, category separability indices were calculated on the dynamic formant data. Comparing these indices against those of static measures would allow for an assessment of whether category separability in F1-F2 space increases once dynamic information is considered. This index was calculated for the neighboring [`r linguisticsdown::cond_cmpl("uː")`] - [`r linguisticsdown::cond_cmpl("oː")`], [`r linguisticsdown::cond_cmpl("ɛː")`]-[`r linguisticsdown::cond_cmpl("æː")`], [`r linguisticsdown::cond_cmpl("øː")`]-[`r linguisticsdown::cond_cmpl("œː")`] and [`r linguisticsdown::cond_cmpl("ø")`]-[`r linguisticsdown::cond_cmpl("œ")`]. Comparisons of [`r linguisticsdown::cond_cmpl("iː")`]-[`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("iː")`]-[`r linguisticsdown::cond_cmpl("eː")`] and [`r linguisticsdown::cond_cmpl("yː")`]-[`r linguisticsdown::cond_cmpl("ʉː")`] were also included as formant trajectories have been hypothesized to cue these category distinctions [@kuronen2000].
+
 Do some vowels benefit from formant movements disproportionally much? Treat each time-point as an independent Gaussian distribution, calculate at each time-point separate indices over the cues and then sum them up for the 5 tps.
+
+```{r}
+get_category_separability.dynamic <- function(
+    data,
+    category_A, 
+    category_B,
+    n = length(data$category[data$category == category_A])) {
+  data %>%
+    group_by(Talker, category, Token) %>%
+    mutate(
+      category_separability_F1 = ifelse(
+        category == category_A, 
+        map2(F1, data$F1_centroid[data$category == category_B],
+                                     function(x, y) (x - y)^2), NA),
+      category_separability_F2 = ifelse(
+        category == category_A, 
+        map2(F2, data$F2_centroid[data$category == category_B],
+                                     function(x, y) (x - y)^2), NA)) %>%
+      na.omit() %>% 
+    group_by(Talker, category, Token) %>%
+    mutate(
+      # sum the separability across all timepoints
+      separability_F1F2 = sqrt(map_dbl(category_separability_F1, sum) + map_dbl(category_separability_F2, sum))) %>%
+    group_by(Talker, category) %>%
+    summarise(
+      separability_F1F2 = sum(separability_F1F2) / n)
+}
+
+d.SwehVd.for.cat.separability.dynamic <- d.SwehVd.forStudy.long %>% 
+  filter(Normalization.Type == "Nearey's uniform scaling (log)", category %in% c("[iː]", "[yː]", "[ʉː]", "[eː]", "[ɛː]", "[æː]", "[øː]", "[œː]", "[ø]", "[œ]", "[oː]", "[uː]")) %>%
+  left_join(
+    d.SwehVd.forStudy.long %>% 
+      filter(Normalization.Type == "Nearey's uniform scaling (log)", category %in% c("[iː]", "[yː]", "[ʉː]", "[eː]", "[ɛː]", "[æː]", "[øː]", "[œː]", "[ø]", "[œ]", "[oː]", "[uː]")) %>%
+      group_by(Talker, category, timepoint) %>%
+      summarise(across(starts_with("F"), ~ mean(.x))) %>%
+      select(Talker, category, F1, F2, F3, timepoint),
+    by = c("Talker", "category", "timepoint")) %>%
+  mutate(
+    F1 = F1.x,
+    F2 = F2.x,
+    F3 = F3.x,
+    F1_centroid = F1.y,
+    F2_centroid = F2.y,
+    F3_centroid = F3.y) %>%
+  select(-ends_with(c(".x", ".y"))) %>%
+  group_by(Talker, category, Token) %>%
+  summarise(
+    F1 = list(F1),
+    F2 = list(F2),
+    F1_centroid = list(F1_centroid),
+    F2_centroid = list(F2_centroid))
+
+d.SwehVd.cat.separability.dynamic <- rbind(
+  d.SwehVd.for.cat.separability.dynamic %>%
+    get_category_separability.dynamic(category_A = "[iː]", category_B = "[yː]") %>%
+    mutate(comparison = "iː to yː"),
+  d.SwehVd.for.cat.separability.dynamic %>%
+  get_category_separability.dynamic(category_A = "[yː]", category_B = "[iː]") %>%
+    mutate(comparison = "yː to iː"),
+  d.SwehVd.for.cat.separability.dynamic %>%
+    get_category_separability.dynamic(category_A = "[iː]", category_B = "[eː]") %>%
+    mutate(comparison = "iː to eː"),
+  d.SwehVd.for.cat.separability.dynamic %>%
+  get_category_separability.dynamic(category_A = "[eː]", category_B = "[iː]") %>%
+    mutate(comparison = "eː to iː"),
+  d.SwehVd.for.cat.separability.dynamic %>%
+    get_category_separability.dynamic(category_A = "[yː]", category_B = "[ʉː]") %>%
+    mutate(comparison = "yː to ʉː"),
+  d.SwehVd.for.cat.separability.dynamic %>%
+  get_category_separability.dynamic(category_A = "[ʉː]", category_B = "[yː]") %>%
+    mutate(comparison = "ʉː to yː"),
+  d.SwehVd.for.cat.separability.dynamic %>%
+    get_category_separability.dynamic(category_A = "[ɛː]", category_B = "[æː]") %>%
+    mutate(comparison = "ɛː to æː"),
+  d.SwehVd.for.cat.separability.dynamic %>%
+  get_category_separability.dynamic(category_A = "[æː]", category_B = "[ɛː]") %>%
+    mutate(comparison = "æː to ɛː"),
+  d.SwehVd.for.cat.separability.dynamic %>%
+    get_category_separability.dynamic(category_A = "[øː]", category_B = "[œː]") %>%
+    mutate(comparison = "øː to œː"),
+  d.SwehVd.for.cat.separability.dynamic %>%
+  get_category_separability.dynamic(category_A = "[œː]", category_B = "[øː]") %>%
+    mutate(comparison = "œː to øː"),
+  d.SwehVd.for.cat.separability.dynamic %>%
+    get_category_separability.dynamic(category_A = "[ø]", category_B = "[œ]") %>%
+    mutate(comparison = "ø to œ"),
+  d.SwehVd.for.cat.separability.dynamic %>%
+  get_category_separability.dynamic(category_A = "[œ]", category_B = "[ø]") %>%
+    mutate(comparison = "œ to ø"),
+  d.SwehVd.for.cat.separability.dynamic %>%
+    get_category_separability.dynamic(category_A = "[oː]", category_B = "[uː]") %>%
+    mutate(comparison = "oː to uː"),
+  d.SwehVd.for.cat.separability.dynamic %>%
+  get_category_separability.dynamic(category_A = "[uː]", category_B = "[oː]") %>%
+    mutate(comparison = "uː to oː")) %>%
+  na.omit() %>% 
+  group_by(Talker, category, comparison) %>%
+  summarise(
+    F1F2 = mean(separability_F1F2, na.rm = T)) %>%
+  pivot_longer(
+    cols = starts_with("F"),
+    names_to = "cue_dimension",
+    values_to = "separability") %>%
+  mutate(cue_dimension = factor(cue_dimension),
+         category = factor(category, levels = levels.vowel.IPA.swe),
+         Talker = factor(Talker),
+         comparison = factor(comparison, levels = c("iː to yː",  "yː to iː", "eː to iː", "iː to eː", "yː to ʉː", "ʉː to yː", "ɛː to æː", "æː to ɛː", "øː to œː", "œː to øː", "ø to œ", "œ to ø", "oː to uː", "uː to oː")))
+
+d.SwehVd.cat.separability.compare <- 
+  d.SwehVd.cat.separability %>%
+  filter(
+    cue_dimension == "F1F2", comparison %in% c("iː to yː",  "yː to iː", "eː to iː", "iː to eː", "yː to ʉː", "ʉː to yː", "ɛː to æː", "æː to ɛː", "øː to œː", "œː to øː", "ø to œ", "œ to ø", "oː to uː", "uː to oː")) %>%
+  mutate(
+    analysis = "static") %>%
+  rbind(d.SwehVd.cat.separability.dynamic %>%
+          mutate(
+            analysis = "dynamic"))
+```
 
 ```{r}
 # d.SwehVd.forStudy.long.dynamic %>%
@@ -1359,7 +1514,7 @@ For the current purpose of serving as a reference point for the SwehVd materials
 
 Given the smaller number of talkers in SweDia, the two databases were of unequal sample sizes overall: N = `r nrow(d.SwehVd %>% distinct(Talker, category, Token))` datapoints for SwehVd, and N = `r nrow(d.SweDia2000.forStudy %>% distinct(Talker, category, Token))` datapoints for SweDia. The regional origin of the talkers matched across databases, age at time of recording and the relative proportion of male and female talkers were also highly similar (50% female talkers in SweDia2000, 55% female talkers in SwehVd). Any potential effects of differences in gender distributions on the comparison were presumably reduced by the use of normalized vowel data.
 
-Cue measurements from SweDia were extracted in the same way as for SwehVd (Section \@ref(sec:cueMeasures)). To correct for measurement errors in the automatic extraction of cues, the joint multivariate distribution of the five extracted cues (F0, F1, F2, F3 and duration) was estimated for each distinct combination of talker and vowel. Points that fell outside of the $0.5th$ to the $99.5th$ quantile of the multivariate Gaussian distribution for each vowel were identified, examined for measurement errors, and subsequently corrected. This followed the approach employed for the SwehVd corpus [@refs], and strikes a middle-ground between the ideal (manual correction of all tokens) and feasibility.
+Cue measurements from SweDia were extracted in the same way as for SwehVd (Section \@ref(sec:cueMeasures)). To correct for measurement errors in the automatic extraction of cues, the joint multivariate distribution of the five extracted cues (F0, F1, F2, F3 and duration) was estimated for each distinct combination of talker and vowel. This was compared against 5 separate univariate distributions to assess whether the number of identified outliers was driven by one or a couple of the five cues. Points that fell outside of the $0.5th$ to the $99.5th$ quantile of the multivariate Gaussian distribution for each vowel were identified, examined for measurement errors, and subsequently corrected. This followed the approach employed for the SwehVd corpus [@refs], and strikes a middle-ground between the ideal (manual correction of all tokens) and feasibility.
 
 ### Assessing vowel shifts
 In order to assess whether the relative placement of the categories in the acoustic space was different between datasets, formant data was visualized in F1-F2 space and distances assessed with the *orthogonal projection ratio*, henceforth $op$ [@stevens-schiel2019].^[Other distance measures are possible, such as Mahalanobi's distance. The primary advantages of using the $op$ is that it considers the overall structure of vowel spaces rather than individual distances, and that it offers a standardized way to compare the degree of category membership across different datasets.] Both visualizations and $op$ calculations were based on measurements at the steady-state portion of the vowel in both datasets---taking the average F1-F2 values across the three mid-points (at 35, 50, and 65% into the vowel). This approach presumably reduced the risk of coarticulatory effects resulting from the use of different phonological contexts between the two datasets.
@@ -1387,6 +1542,8 @@ $U_{anchor}$ & $V_{vowel}$ & $W_{anchor}$\\
 `r linguisticsdown::cond_cmpl("[eː]")` & `r linguisticsdown::cond_cmpl("[ɛː]")` & `r linguisticsdown::cond_cmpl("[æː]")`\\
 \hline
 `r linguisticsdown::cond_cmpl("[eː]")` & `r linguisticsdown::cond_cmpl("[øː]")` & `r linguisticsdown::cond_cmpl("[ɑː]")`\\
+\hline
+`r linguisticsdown::cond_cmpl("[ʉː]")` & `r linguisticsdown::cond_cmpl("[ø]")` & `r linguisticsdown::cond_cmpl("[a]")`\\
 \hline
 `r linguisticsdown::cond_cmpl("[ɵ]")` & `r linguisticsdown::cond_cmpl("[œ]")` & `r linguisticsdown::cond_cmpl("[œː]")`\\
 \hline
@@ -1522,7 +1679,9 @@ d.vowels.for.comparison <- d.Swehvd.Swedia %>%
     within_SD_F2 = abs(F2_mean-F2_mean[Database == "SweDia"]) <= .85 * F2_sd[Database == "SweDia"]) %>%
   filter(within_SD_F1 == FALSE | within_SD_F2 == FALSE)
 ```
-
+```{r}
+rm(d.vowels.for.comparison)
+```
 ```{r}
 # Function for calculating the orthogonal projection ratio.
 orthogonal_projection <- function(V, U, W) {
@@ -1538,7 +1697,7 @@ orthogonal_projection <- function(V, U, W) {
 centroids.SwehVd <-
   d.SwehVd.forStudy.long %>%
   # choose the anchor vowels
-  filter(category %in% c("[ɪ]", "[ʏ]", "[yː]", "[ɵ]", "[eː]", "[ɛː]", "[æː]", "[œː]", "[œ]", "[ɑː]", "[oː]", "[øː]", "[ʉː]", "[ɔ]"), 
+  filter(category %in% c("[ɪ]", "[ʏ]", "[yː]", "[ɵ]", "[eː]", "[ɛː]", "[æː]", "[œː]", "[œ]", "[ɑː]", "[a]", "[oː]", "[øː]", "[ø]", "[ʉː]", "[ɔ]"), 
          Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(35, 50, 65)) %>%
   group_by(Talker, Gender, category, Token, Quantity, Word) %>%
   summarise(across(c(F2, F1), ~mean(.x))) %>%
@@ -1555,7 +1714,7 @@ centroids.SwehVd <-
 centroids.SweDia2000 <-
   d.SweDia2000.forStudy.long %>%
   # choose the anchor vowels
-  filter(category %in% c("[ɪ]", "[ʏ]", "[yː]", "[ɵ]", "[eː]", "[ɛː]", "[æː]", "[œː]", "[œ]", "[ɑː]", "[oː]", "[øː]", "[ʉː]", "[ɔ]"), 
+  filter(category %in% c("[ɪ]", "[ʏ]", "[yː]", "[ɵ]", "[eː]", "[ɛː]", "[æː]", "[œː]", "[œ]", "[ɑː]", "[a]", "[oː]", "[øː]", "[ø]", "[ʉː]", "[ɔ]"), 
          Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(35, 50, 65)) %>%
   group_by(Talker, Gender, category, Token, Quantity, Word) %>%
   summarise(across(c(F2, F1), ~mean(.x))) %>%
@@ -1572,7 +1731,7 @@ centroids.SweDia2000 <-
 # Join the centroids with the original dataframe
 d.SwehVd.opr <- d.SwehVd.forStudy.long %>%
   # choose the anchor vowels
-  filter(category %in% c("[ɪ]", "[ʏ]", "[yː]", "[ɵ]", "[eː]", "[ɛː]", "[æː]", "[œː]", "[œ]", "[ɑː]", "[oː]", "[øː]", "[ʉː]", "[ɔ]"), 
+  filter(category %in% c("[ɪ]", "[ʏ]", "[yː]", "[ɵ]", "[eː]", "[ɛː]", "[æː]", "[œː]", "[œ]", "[ɑː]", "[a]", "[oː]", "[øː]", "[ø]", "[ʉː]", "[ɔ]"), 
          Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(35, 50, 65)) %>%
   group_by(Database, Talker, Gender, category, Token, Quantity, Word) %>%
   summarise(across(c(F2, F1), ~mean(.x))) %>%
@@ -1581,7 +1740,7 @@ d.SwehVd.opr <- d.SwehVd.forStudy.long %>%
 
 d.SweDia2000.opr <-  d.SweDia2000.forStudy.long %>%
   # choose the anchor vowels
-  filter(category %in% c("[ɪ]", "[ʏ]", "[yː]", "[ɵ]", "[eː]", "[ɛː]", "[æː]", "[œː]", "[œ]", "[ɑː]", "[oː]", "[øː]", "[ʉː]", "[ɔ]"), 
+  filter(category %in% c("[ɪ]", "[ʏ]", "[yː]", "[ɵ]", "[eː]", "[ɛː]", "[æː]", "[œː]", "[œ]", "[ɑː]", "[a]", "[oː]", "[øː]", "[ø]", "[ʉː]", "[ɔ]"), 
          Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(35, 50, 65)) %>%
   group_by(Database, Talker, Gender, category, Token, Quantity, Word) %>%
   summarise(across(c(F2, F1), ~mean(.x))) %>%
@@ -1598,6 +1757,7 @@ d.orth.SwehVd <- d.SwehVd.opr %>%
                                category == "[ʉː]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[ɪ]`, `cenF2_[ɪ]`), c(`cenF1_[oː]`, `cenF2_[oː]`)),
                                category == "[ɛː]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[eː]`, `cenF2_[eː]`), c(`cenF1_[æː]`, `cenF2_[æː]`)),
                                category == "[øː]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[eː]`, `cenF2_[eː]`), c(`cenF1_[ɑː]`, `cenF2_[ɑː]`)),
+                               category == "[ø]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[a]`, `cenF2_[a]`), c(`cenF1_[ʉː]`, `cenF2_[ʉː]`)),
                                category == "[œ]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[ɵ]`, `cenF2_[ɵ]`), c(`cenF1_[œː]`, `cenF2_[œː]`)),
                                category == "[ɔ]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[ɑː]`, `cenF2_[ɑː]`), c(`cenF1_[oː]`, `cenF2_[oː]`)),
                                TRUE ~ NA)) %>%
@@ -1612,6 +1772,7 @@ d.orth.SweDia2000 <- d.SweDia2000.opr %>%
                                category == "[ʉː]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[ɪ]`, `cenF2_[ɪ]`), c(`cenF1_[oː]`, `cenF2_[oː]`)),
                                category == "[ɛː]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[eː]`, `cenF2_[eː]`), c(`cenF1_[æː]`, `cenF2_[æː]`)),
                                category == "[øː]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[eː]`, `cenF2_[eː]`), c(`cenF1_[ɑː]`, `cenF2_[ɑː]`)),
+                               category == "[ø]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[a]`, `cenF2_[a]`), c(`cenF1_[ʉː]`, `cenF2_[ʉː]`)),
                                category == "[œ]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[ɵ]`, `cenF2_[ɵ]`), c(`cenF1_[œː]`, `cenF2_[œː]`)),
                                category == "[ɔ]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[ɑː]`, `cenF2_[ɑː]`), c(`cenF1_[oː]`, `cenF2_[oː]`)),
                                TRUE ~ NA)) %>%
@@ -1622,7 +1783,7 @@ d.orth <- rbind(
   d.orth.SweDia2000,
   d.orth.SwehVd) %>%
   select(category, F1, F2, orth_proj, Database, Word, Talker) %>%
-  filter(category %in% c("[ʏ]", "[ɛː]", "[œ]", "[ʉː]", "[øː]", "[ɔ]")) %>% 
+  filter(category %in% c("[ʏ]", "[ɛː]", "[œ]", "[ʉː]", "[øː]", "[ø]", "[ɔ]")) %>% 
   mutate(across(c(Talker, Database, Word), ~ factor(.x)))
 ```
 
@@ -1653,9 +1814,9 @@ p.orth <- d.orth %>%
         ymax = mean_CI_upper,
         color = category)) +
   geom_pointrange(
-    position = position_dodge2(width = 0.5),
+    position = position_dodge2(width = 0.2),
     fatten = 2.5) +
-  geom_line(aes(group = category), position = position_dodge(width = 0.5), linetype = "dashed") +
+  geom_line(aes(group = category), position = position_dodge(width = 0.2), linetype = "dashed") +
   scale_color_manual(name = "category", values = colors.vowel.swe) + 
   scale_y_continuous("Orthogonal projection ratio", limits = c(-1,1)) +
   myGplot.defaults() #+
@@ -1695,9 +1856,13 @@ m.U <- lmerTest::lmer(orth_proj ~ Database + (1|Talker),
                       data = d.orth %>%
                         filter(category == "[ʉː]", !is.na(orth_proj)))
 
-m.Ö <- lmerTest::lmer(orth_proj ~ Database + (1|Talker), 
+m.ÖÖ <- lmerTest::lmer(orth_proj ~ Database + (1|Talker), 
                       data = d.orth %>%
                         filter(category == "[øː]", !is.na(orth_proj)))
+
+m.Ö <- lmerTest::lmer(orth_proj ~ Database + (1|Talker), 
+                      data = d.orth %>%
+                        filter(category == "[ø]", !is.na(orth_proj)))
 
 m.Å <- lmerTest::lmer(orth_proj ~ Database + (1|Talker), 
                       data = d.orth %>%
@@ -1705,10 +1870,10 @@ m.Å <- lmerTest::lmer(orth_proj ~ Database + (1|Talker),
 #modelsummary::modelsummary(m.Y, output = "latex")
 ```
 
-An estimate of the magnitude of the effect was obtained by fitting spearate LMMs for each of the categories, predicting the orthogonal projection ratio from database, with talkers as random effects. Summary tables of all 6 models are included in the SI, Section \@ref(sec:SI-LMMs). The LMMs confirmed the directionality of the vowel shifts, and found a main effect of Database on $op$ for all categories (all $ps < .019$), with the exception of [`r linguisticsdown::cond_cmpl("ʉː")`] ($\bar\beta = 0.11, SE = 0.071, p > .126$).
+An estimate of the magnitude of the effect was obtained by fitting spearate LMMs for each of the categories, predicting the orthogonal projection ratio from database, with talkers as random effects. Summary tables of all 6 models are included in the SI, Section \@ref(sec:SI-LMMs). The LMMs confirmed the directionality of the vowel shifts, and found a main effect of Database on $op$ for all categories (all $ps < .019$), with the exception of [`r linguisticsdown::cond_cmpl("ʉː")`] ($\bar\beta = 0.11, SE = 0.06, p > .06$).
 
 ```{r}
-rm(d.orth, d.orth.SweDia2000, d.orth.for.model, centroids.SweDia2000, bootstrap_SwehVd)
+rm(d.orth, d.orth.SweDia2000, centroids.SweDia2000)
 ```
 
 ```{r}
