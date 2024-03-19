@@ -500,6 +500,84 @@ d.vowels.swedia.repair.round2 <- rbind(
 #   file = "../../data/phonetic vowel statistics/Swedish/Published databases/SweDia2000/outlier-corrected-vowel-data/SweDia2000_allCuesvowels_to_repair_round2.csv",
 #   row.names = FALSE, quote = FALSE)
 ```
+
+
+```{r}
+# Read in csv-file with manually repaired univariate values for F0, F1, F2 and F3 and join it to vowel data. Do separate read-ins for each corrected cue value as the rows otherwise duplicate
+d.vowels.swedia.repaired.round2 <- 
+  read_csv('../../data/phonetic vowel statistics/Swedish/Published databases/SweDia2000/outlier-corrected-vowel-data/SweDia2000_allCuesvowels_repaired_round2.csv') %>%
+  select(Talker, Vowel, Trial, Token, Location, F0, F1, F2, F3, Quantity, outlier_source) %>%
+  mutate(
+    Location = gsub("\\_", "", Location),
+    Vowel = factor(
+      plyr::mapvalues(
+        Vowel,
+        levels.vowel.SweFA,
+        levels.vowel.IPA.swe),
+      levels = levels.vowel.IPA.swe)) %>%
+  mutate_at("Token", factor)
+
+d.vowels.swedia %<>%
+  select(Talker, Age, Gender, Vowel, Word, Token, Trial, Location, F1, F2, F3, F0_gm, F0, Duration, SR, Quantity) %>%
+  # add the corrected values, but in a loop as the values otherwise duplicate
+  left_join(
+    d.vowels.swedia.repaired.round2 %>%
+      filter(outlier_source == "F0_univariate") %>%
+      select(-c(F1, F2, F3, outlier_source)),
+      by = c("Talker", "Vowel", "Trial", "Token", "Location", "Quantity")) %>%
+  # whenever there is a corrected value (.y), use that value; otherwise use the
+  # automatically-extracted value (.x).
+  mutate(
+    F0 = ifelse(!is.na(F0.y), F0.y, F0.x)) %>%
+  select(-c(F0.x, F0.y)) %>%
+  left_join(
+    d.vowels.swedia.repaired.round2 %>%
+      filter(outlier_source == "F1_univariate") %>%
+      select(-c(F0, F2, F3, outlier_source)),
+    by = c("Talker", "Vowel", "Trial", "Token", "Location", "Quantity")) %>%
+  # whenever there is a corrected value (.y), use that value; otherwise use the
+  # automatically-extracted value (.x).
+  mutate(
+    F1 = ifelse(!is.na(F1.y), F1.y, F1.x)) %>%
+  select(-c(F1.x, F1.y)) %>%
+  left_join(
+    d.vowels.swedia.repaired.round2 %>%
+      filter(outlier_source == "F2_univariate") %>%
+      select(-c(F0, F1, F3, outlier_source)),
+      by = c("Talker", "Vowel", "Trial", "Token", "Location", "Quantity")) %>%
+  # whenever there is a corrected value (.y), use that value; otherwise use the
+  # automatically-extracted value (.x).
+  mutate(
+    F2 = ifelse(!is.na(F2.y), F2.y, F2.x)) %>%
+  select(-c(F2.x, F2.y)) %>%
+  left_join(
+    d.vowels.swedia.repaired.round2 %>%
+      filter(outlier_source == "F3_univariate") %>%
+      select(-c(F0, F1, F2, outlier_source)),
+    by = c("Talker", "Vowel", "Trial", "Token", "Location", "Quantity")) %>%
+  # whenever there is a corrected value (.y), use that value; otherwise use the
+  # automatically-extracted value (.x).
+  mutate(
+    F3 = ifelse(!is.na(F3.y), F3.y, F3.x)) %>%
+  select(-c(F3.x, F3.y)) %>%
+  select(Talker, Age, Gender, Vowel,  Word, Token, Trial, Location, F0_gm, F0, Duration, SR, F1, F2, F3, Quantity)
+
+d.vowels.swedia %>%
+  group_by(Talker, Vowel, Token, Word, Quantity, Gender) %>%
+  summarise(across(c(F1, F2, F3), ~ geometric.mean(.x))) %>%
+  ggplot(
+    aes(
+      x = F2, 
+      y = F1,
+      color = Vowel,
+      shape = Gender, label = Token)) +
+  scale_colour_manual(name = "Vowel",values = colors.vowel.swe) +
+  geom_point(alpha = .5) + 
+  #scale_shape_manual(values = c(1:8)) +
+  scale_x_reverse() +
+  scale_y_reverse() +
+  facet_grid(~ Quantity)
+```
 ```{r}
 # Write csv-file with the manually corrected vowel data, but without removed outliers.
 write.csv(
