@@ -506,25 +506,6 @@ obtain_densities <- . %>%
     unlist) %>%
   ungroup()
 
-obtain_densities_Norm <- . %>%
-  group_by(Talker, category, Normalization.Type) %>%
-    nest() %>%
-    mutate(
-      # density based on F1 and F2
-      x_F1F2 = map(data, ~ cbind(.$F1, .$F2)),
-      mean_F1F2 = map(x_F1F2, ~ colMeans(.x)),
-      cov_F1F2 = map(x_F1F2, ~ cov(.x))) %>%
-    unnest(data) %>%
-    # normalize densities within each talker and vowel
-    mutate(
-      cumulative_probability_F1F2 = pmap(
-        .l = list(F1, F2, mean_F1F2, cov_F1F2), 
-        .f = get_cumulative_probability)) %>%
-    mutate_at(
-      vars(cumulative_probability_F1F2),
-      unlist) %>%
-    ungroup()
-
 # obtain_densities_univariates <- function(
 #   data,
 #   cue = "cue"
