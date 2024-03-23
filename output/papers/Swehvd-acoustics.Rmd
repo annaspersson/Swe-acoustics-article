@@ -1290,10 +1290,9 @@ d.SwehVd.forStudy.long.dynamic %>%
 ```
 
 #### Models of formant dynamics
-The first set of GAMMs were modeled separately for each cue (F1, F2, F3) and each of the sets of neighboring vowels hypothesized to rely on formant dynamics, with gender and vowel as independent variables, and time-points as smoothing function. Random slopes and intercepts for talker were included. Summary tables of all 6 models are included in the SI, Section \@ref(sec:SI-GAMMs).
+The first set of GAMMs were modeled separately for each cue (F1, F2, F3) and each of the sets of neighboring vowels hypothesized to (at least for some talkers) rely on formant dynamics: the high front vowel contrasts [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʉː")`] - [`r linguisticsdown::cond_cmpl("eː")`] with [`r linguisticsdown::cond_cmpl("iː")`] coded as reference category, the high back vowel contrast [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("uː")`], and the lower-mid front contrast [`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("æː")`] [@fant1971; @kuronen2000; @pelzer-boersma2019]. Given the directionality in formant trajectories found for [`r linguisticsdown::cond_cmpl("øː")`]-[`r linguisticsdown::cond_cmpl("œː")`], this contrast was also modeled. GAMMs were also fit to the corresponding short subsets, to explore potential effects of dynamics in the short vowels. These were not entirely identical to the long subsets, for reasons of evident separability in F1-F2 space: [`r linguisticsdown::cond_cmpl("ɪ")`] - [`r linguisticsdown::cond_cmpl("ʏ")`], [`r linguisticsdown::cond_cmpl("ɔ")`] - [`r linguisticsdown::cond_cmpl("ʊ")`],  [`r linguisticsdown::cond_cmpl("ɛ")`] - [`r linguisticsdown::cond_cmpl("æ")`], and [`r linguisticsdown::cond_cmpl("ø")`] - [`r linguisticsdown::cond_cmpl("œ")`].
 
-##### High front vowel contrasts
-The first set of vowel contrasts contained the high front vowel cluster of [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʉː")`] - [`r linguisticsdown::cond_cmpl("eː")`], hypothesized to (at least for some talkers) rely on formant dynamics. A corresponding subset of the short vowels [`r linguisticsdown::cond_cmpl("ɪ")`] - [`r linguisticsdown::cond_cmpl("ʏ")`] was also included in this evaluation.
+Each GAMM predicted the cue from category with gender and vowel as independent variables, and time-points as smoothing function. Random slopes and intercepts for talker were included. Summary tables of all 6 models are included in the SI, Section \@ref(sec:SI-GAMMs).
 
 ```{r}
 # Run GAMMs predicting F1, F2, F3 separately for subsets of neighboring contrasts
@@ -1321,6 +1320,14 @@ d.model.center.long <- d.SwehVd.forStudy.long.dynamic %>%
     category = factor(category, levels = c("[ɛː]", "[æː]"))) %>%
   mutate(across(c(Talker, Quantity, Gender), ~ factor(.x)))
 
+# Dataframe for running GAMMs on mid center vowels
+d.model.mid.long <- d.SwehVd.forStudy.long.dynamic %>%
+  select(-starts_with("formant")) %>%
+  filter(Normalization.Type == "Nearey's uniform scaling (log)", category %in% c("[øː]", "[œː]")) %>%
+  mutate(
+    category = factor(category, levels = c("[øː]", "[œː]"))) %>%
+  mutate(across(c(Talker, Quantity, Gender), ~ factor(.x)))
+
 # Dataframe for running GAMMs on high front short vowels
 d.model.front.short <- d.SwehVd.forStudy.long.dynamic %>%
   select(-starts_with("formant")) %>%
@@ -1345,6 +1352,14 @@ d.model.center.short <- d.SwehVd.forStudy.long.dynamic %>%
     category = factor(category, levels = c("[ɛ]", "[æ]"))) %>%
   mutate(across(c(Talker, Quantity, Gender), ~ factor(.x)))
 
+# Dataframe for running GAMMs on mid center vowels
+d.model.mid.short <- d.SwehVd.forStudy.long.dynamic %>%
+  select(-starts_with("formant")) %>%
+  filter(Normalization.Type == "Nearey's uniform scaling (log)", category %in% c("[ø]", "[œ]")) %>%
+  mutate(
+    category = factor(category, levels = c("[ø]", "[œ]"))) %>%
+  mutate(across(c(Talker, Quantity, Gender), ~ factor(.x)))
+
 # Difference code the vowel variable
 contrasts(d.model.front.long$category) <- contr.treatment(4)
 contrasts(d.model.front.short$category) <- contr.treatment(2)
@@ -1352,6 +1367,8 @@ contrasts(d.model.back.long$category) <- contr.treatment(2)
 contrasts(d.model.back.long$category) <- contr.treatment(2)
 contrasts(d.model.center.short$category) <- contr.treatment(2)
 contrasts(d.model.center.short$category) <- contr.treatment(2)
+contrasts(d.model.mid.long$category) <- contr.treatment(2)
+contrasts(d.model.mid.short$category) <- contr.treatment(2)
 
 # Rename contrast labels
 d.model.front.long$category <- factor(d.model.front.long$category, labels = c("[iː]", "[yː]", "[ʉː]", "[eː]"))
@@ -1360,6 +1377,8 @@ d.model.back.long$category <- factor(d.model.back.long$category, labels = c("[o�
 d.model.back.short$category <- factor(d.model.back.short$category, labels = c("[ɔ]", "[ʊ]"))
 d.model.center.long$category <- factor(d.model.center.long$category, labels = c("[ɛː]", "[æː]"))
 d.model.center.short$category <- factor(d.model.center.short$category, labels = c("[ɛ]", "[æ]"))
+d.model.mid.long$category <- factor(d.model.mid.long$category, labels = c("[øː]", "[œː]"))
+d.model.mid.short$category <- factor(d.model.mid.short$category, labels = c("[ø]", "[œ]"))
 ```
 ```{r}
 # Run all gamms for front vowels
@@ -1477,71 +1496,104 @@ m.F3.center.short <- mgcv::bam(F3 ~ category + Gender + s(timepoint, by = catego
                         # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
                         data = d.model.center.short)
 ```
+```{r}
+# Run all gamms for center vowels
+m.F1.mid.long <- mgcv::bam(F1 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                       + s(Talker, bs = "re")  
+                       + s(Talker, category, bs = "re"),
+                       # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                       data = d.model.mid.long)
 
-The GAMMs fit to the long vowels 
+m.F2.mid.long <- mgcv::bam(F2 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                       + s(Talker, bs = "re")  
+                       + s(Talker, category, bs = "re"),
+                       # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                       data = d.model.mid.long)
 
-suggested an effect of vowel on F1 for all vowels in both the long and short vowel sets (all $ps < .013$), except for [`r linguisticsdown::cond_cmpl("ʏ")`] ($\hat\beta = .01, se = .014, p > .47$) which indicates overlap with [`r linguisticsdown::cond_cmpl("ɪ")`] in height (Figure \@ref(fig:m-high-front)). The difference in means between the high front vowels [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʉː")`] were not as substantial as for the other categories, as indicated by the overlapping confidence intervals in Figure \@ref(fig:m-F1). Figure \@ref(fig:m-high-front) clearly demonstrates the importance of formant dynamics for [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] and XXX<!--add here-->, as they are overlapping parts of the segment, but not along the entire segment.
+m.F3.mid.long <- mgcv::bam(F3 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                       + s(Talker, bs = "re")  
+                       + s(Talker, category, bs = "re"),
+                       # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                       data = d.model.mid.long)
+
+m.F1.mid.short <- mgcv::bam(F1 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                        + s(Talker, bs = "re")  
+                        + s(Talker, category, bs = "re"),
+                        # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                        data = d.model.mid.short)
+
+m.F2.mid.short <- mgcv::bam(F2 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                        + s(Talker, bs = "re")  
+                        + s(Talker, category, bs = "re"),
+                        # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                        data = d.model.mid.short)
+
+m.F3.mid.short <- mgcv::bam(F3 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                        + s(Talker, bs = "re")  
+                        + s(Talker, category, bs = "re"),
+                        # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                        data = d.model.mid.short)
+```
+
+The GAMMs fit to the high front vowel contrasts suggested an effect of vowel on all cues for all vowels (all $ps < .0025$) except for [`r linguisticsdown::cond_cmpl("yː")`] predicting F3 ($\hat\beta = .0007, se = .013, p > .95$), and for [`r linguisticsdown::cond_cmpl("ʏ")`] predicting F1 ($\hat\beta = .01, se = .01, p > .32$). The long [`r linguisticsdown::cond_cmpl("yː")`] predicting F2 was also close to insignificant ($p > .046$). This indicates that the F3-dynamics does not aid in distinguishing between [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`], and that `r linguisticsdown::cond_cmpl("ɪ")`] and [`r linguisticsdown::cond_cmpl("ʏ")`] have maintained overlap in height even when dynamics is considered. The fact that a main effect of vowel on F3 was only found for the [`r linguisticsdown::cond_cmpl("ɪ")`] - [`r linguisticsdown::cond_cmpl("ʏ")`] and not the [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] distinction, suggests that F3-dynamics does not reliably distinguish between the long high front rounded-unrounded vowels <!--This is in line with the static analysis but check separability-->(Figure \@ref(fig:m-F3)).<!--compare static sep for F2?mirroring the low sep in f1f2 when static is considered?--> Figure \@ref(fig:m-high-front) demonstrates the importance of formant dynamics for the long high front vowels along F1 and F3, as they are overlapping at some time-points, but not along the entire segment. 
 
 (ref:m-high-front) Fitted smooths of GAMM for predicting F1 (**upper row**), F2 (**mid row**), F3 (**bottom row**) and 95% confidence intervals for the long vowels [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("ʉː")`], and [`r linguisticsdown::cond_cmpl("eː")`] (**left**), and the short vowels [`r linguisticsdown::cond_cmpl("ɪ")`] and [`r linguisticsdown::cond_cmpl("ʏ")`] (**right**).
 
 ```{r m-high-front, message=FALSE, fig.width=base.width*4.5, fig.height=base.height*4.5, fig.align='center', fig.cap="(ref:m-high-front)"}
 par(mfrow=c(3,2))
-itsadug::plot_smooth(m.F1.front.long, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#8DA0CB", "#FB9A99"), print.summary = FALSE, ylim = c(-1.4, -.7), rm.ranef = F)
-itsadug::plot_smooth(m.F1.front.short, view = "timepoint", plot_all = "category", col = c("#1B9E77", "#D95F02"), print.summary = FALSE, ylim = c(-1.4, -.7), rm.ranef = F)
-itsadug::plot_smooth(m.F2.front.long, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#8DA0CB", "#FB9A99"), print.summary = FALSE, ylim = c(0, .75), rm.ranef = F)
-itsadug::plot_smooth(m.F2.front.short, view = "timepoint", plot_all = "category", col = c("#1B9E77", "#D95F02"), print.summary = FALSE, ylim = c(0, .75), rm.ranef = F)
-itsadug::plot_smooth(m.F3.front.long, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#8DA0CB", "#FB9A99"), print.summary = FALSE, ylim = c(.5, 1), rm.ranef = F)
-itsadug::plot_smooth(m.F3.front.short, view = "timepoint", plot_all = "category", col = c("#1B9E77", "#D95F02"), print.summary = FALSE, ylim = c(.5, 1), rm.ranef = F)
+itsadug::plot_smooth(m.F1.front.long, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#8DA0CB", "#FB9A99"), print.summary = FALSE, ylim = c(-1.4, -.75))
+itsadug::plot_smooth(m.F1.front.short, view = "timepoint", plot_all = "category", col = c("#1B9E77", "#D95F02"), print.summary = FALSE, ylim = c(-1.4, -.75))
+itsadug::plot_smooth(m.F2.front.long, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#8DA0CB", "#FB9A99"), print.summary = FALSE, ylim = c(.2, .75))
+itsadug::plot_smooth(m.F2.front.short, view = "timepoint", plot_all = "category", col = c("#1B9E77", "#D95F02"), print.summary = FALSE, ylim = c(.2, .75))
+itsadug::plot_smooth(m.F3.front.long, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#8DA0CB", "#FB9A99"), print.summary = FALSE, ylim = c(.5, 1))
+itsadug::plot_smooth(m.F3.front.short, view = "timepoint", plot_all = "category", col = c("#1B9E77", "#D95F02"), print.summary = FALSE, ylim = c(.5, 1))
 #plot_diff(m.F1.long, view = "timepoint", comp = list(category = c("[iː]", "[yː]")))
 ```
-
-For F2, there was an effect of vowel for all long and short vowels (all $p < .0001$; see Figure \@ref(fig:m-F2), except for [`r linguisticsdown::cond_cmpl("yː")`] ($\hat\beta = -.034, se = .018, p > .054$) which indicates overlap with [`r linguisticsdown::cond_cmpl("iː")`] in backness (Figure \@ref(fig:m-F2)).<!--compare static sep for F2?mirroring the low sep in f1f2 when static is considered?--> Unlike the F1-dynamics, the F2-dynamics does not aid in distinguishing between [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`]. Figures \@ref(fig:m-F1) and \@ref(fig:m-F2) further highlight the presumable diphthongization in [`r linguisticsdown::cond_cmpl("eː")`] and [`r linguisticsdown::cond_cmpl("oː")`], and how some neighbouring categories overlap in F2 at the end of the vowel segment (e.g., [`r linguisticsdown::cond_cmpl("ɛː")`]-[`r linguisticsdown::cond_cmpl("æː")`]) (Figure \@ref(fig:SI-m-F2) in SI visualizes all categories included in the GAMMs for F2).
-
-An effect of vowel was also found for F3 for all vowels besides [`r linguisticsdown::cond_cmpl("yː")`] ($\hat\beta = .0005, se = .013, p > .96$) and [`r linguisticsdown::cond_cmpl("ɔ")`] ($\hat\beta = -.016, se = .011, p > .14$; all other $ps < .0001$).<!--check this--> The fact that a main effect of vowel on F3 was only found for the [`r linguisticsdown::cond_cmpl("ɪ")`] - [`r linguisticsdown::cond_cmpl("ʏ")`] and not the [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] distinction, suggests that F3-dynamics does not reliably distinguish between the long high front rounded-unrounded vowels <!--This is in line with the static analysis but check separability-->(Figure \@ref(fig:m-F3); Figure \@ref(fig:SI-m-F3) in SI visualizes all categories included in the GAMMs for F3).^[A main effect of Gender was only found for F2 and the short vowels ($\hat\beta = -.028, se = .01, p > .006$), which suggests that the normalization approach likely reduced some talker-specific differences related to anatomical differences.]
-
-##### High back vowel contrasts
-[`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("uː")`],  [@fant1971; @kuronen2000; @pelzer-boersma2019]. GAMMs were also fit to the corresponding short subsets, to explore potential effects of dynamics in the short vowels. These subsets were not entirely identical to the long subsets, for reasons of evident separability in F1-F2 space: [`r linguisticsdown::cond_cmpl("ɪ")`] - [`r linguisticsdown::cond_cmpl("ʏ")`], [`r linguisticsdown::cond_cmpl("ɔ")`] - [`r linguisticsdown::cond_cmpl("ʊ")`]
+An effect of category on all three cues was found in all GAMMs fit to the high back long and short contrasts (all $ps < .0006$). These results suggest that formant dynamics is likely informative for these contrasts (Figure \@ref(fig:m-high-back).^[An effect of gender was found for the high back vowels predicting F1 for the long and short vowels (both $ps < .022$), which suggests that the normalization approach likely reduced some talker-specific differences related to anatomical differences, but not all.] Figures \@ref(fig:m-high-front) and \@ref(fig:m-high-back) further highlight the presumable diphthongization in [`r linguisticsdown::cond_cmpl("eː")`] and [`r linguisticsdown::cond_cmpl("oː")`]. <!--add here-->
 
 (ref:m-high-back) Fitted smooths of GAMM for predicting F1 (**upper row**), F2 (**mid row**), F3 (**bottom row**) and 95% confidence intervals for the long vowels[`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("uː")` (**left**), and the short vowels [`r linguisticsdown::cond_cmpl("ɔ")`] - [`r linguisticsdown::cond_cmpl("ʊ")`] (**right**).
 
 ```{r m-high-back, message=FALSE, fig.width=base.width*4.5, fig.height=base.height*4.5, fig.align='center', fig.cap="(ref:m-high-back)"}
 par(mfrow=c(3,2))
-itsadug::plot_smooth(m.F1.back.long, view = "timepoint", plot_all = "category", col = c("#A6CEE3", "#B2DF8A"), print.summary = FALSE, ylim = c(-1.4, -.8), rm.ranef = F)
-itsadug::plot_smooth(m.F1.back.short, view = "timepoint", plot_all = "category", col = c("#1F78B4", "#33A02C"), print.summary = FALSE, ylim = c(-1.4, -.8), rm.ranef = F)
-itsadug::plot_smooth(m.F2.back.long, view = "timepoint", plot_all = "category", col = c("#A6CEE3", "#B2DF8A"), print.summary = FALSE, ylim = c(-.75 -.3), rm.ranef = F)
-itsadug::plot_smooth(m.F2.back.short, view = "timepoint", plot_all = "category", col = c("#1F78B4", "#33A02C"), print.summary = FALSE, ylim = c(-.75 -.3), rm.ranef = F)
-itsadug::plot_smooth(m.F3.back.long, view = "timepoint", plot_all = "category", col = c("#A6CEE3", "#B2DF8A"), print.summary = FALSE, ylim = c(.7, 1), rm.ranef = F)
-itsadug::plot_smooth(m.F3.back.short, view = "timepoint", plot_all = "category", col = c("#1F78B4", "#33A02C"), print.summary = FALSE, ylim = c(.7, 1), rm.ranef = F)
+itsadug::plot_smooth(m.F1.back.long, view = "timepoint", plot_all = "category", col = c("#A6CEE3", "#B2DF8A"), print.summary = FALSE, ylim = c(-1.4, -.8))
+itsadug::plot_smooth(m.F1.back.short, view = "timepoint", plot_all = "category", col = c("#1F78B4", "#33A02C"), print.summary = FALSE, ylim = c(-1.4, -.8))
+itsadug::plot_smooth(m.F2.back.long, view = "timepoint", plot_all = "category", col = c("#A6CEE3", "#B2DF8A"), print.summary = FALSE, ylim = c(-.75 -.3))
+itsadug::plot_smooth(m.F2.back.short, view = "timepoint", plot_all = "category", col = c("#1F78B4", "#33A02C"), print.summary = FALSE, ylim = c(-.75 -.3))
+itsadug::plot_smooth(m.F3.back.long, view = "timepoint", plot_all = "category", col = c("#A6CEE3", "#B2DF8A"), print.summary = FALSE, ylim = c(.7, 1))
+itsadug::plot_smooth(m.F3.back.short, view = "timepoint", plot_all = "category", col = c("#1F78B4", "#33A02C"), print.summary = FALSE, ylim = c(.7, 1))
 ```
-
-##### Lower-mid front contrasts
-[`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("æː")`]
+The GAMMs fit to the lower-mid front long and short vowel contrasts suggested an effect of vowel on F1 and F2 (all $ps < .0001$). For the GAMMs predicting F3, no statistically significant differences were found between the long and short /`r linguisticsdown::cond_cmpl("ɛ")`/ and /`r linguisticsdown::cond_cmpl("æ")`/ (for [`r linguisticsdown::cond_cmpl("æː")`], $\hat\beta = -.012, se = .01, p > .25$, for [`r linguisticsdown::cond_cmpl("æ")`], $\hat\beta = .012, se = .008, p > .14$). Figure \@ref(fig:m-center) shows how these vowels overlap in F3, but also how they overlap in F2 at the end of the vowel segment.
 
 (ref:m-center) Fitted smooths of GAMM for predicting F1 (**upper row**), F2 (**mid row**), F3 (**bottom row**) and 95% confidence intervals for the long vowels [`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("æː")`] (**left**), and the short vowels [`r linguisticsdown::cond_cmpl("ɛ")`] - [`r linguisticsdown::cond_cmpl("æ")`] (**right**).
 
 ```{r m-center, message=FALSE, fig.width=base.width*4.5, fig.height=base.height*4.5, fig.align='center', fig.cap="(ref:m-center)"}
 par(mfrow=c(3,2))
-itsadug::plot_smooth(m.F1.center.long, view = "timepoint", plot_all = "category", col = c("#E78AC3", "#A6D854"), print.summary = FALSE, ylim = c(-.95, -.4), rm.ranef = F)
-itsadug::plot_smooth(m.F1.center.short, view = "timepoint", plot_all = "category", col = c("#E7298A", "#66A61E"), print.summary = FALSE, ylim = c(-.95, -.4), rm.ranef = F)
-itsadug::plot_smooth(m.F2.center.long, view = "timepoint", plot_all = "category", col = c("#E78AC3", "#A6D854"), print.summary = FALSE, ylim = c(.25, .5), rm.ranef = F)
-itsadug::plot_smooth(m.F2.center.short, view = "timepoint", plot_all = "category", col = c("#E7298A", "#66A61E"), print.summary = FALSE, ylim = c(.25, .5), rm.ranef = F)
-itsadug::plot_smooth(m.F3.center.long, view = "timepoint", plot_all = "category", col = c("#E78AC3", "#A6D854"), print.summary = FALSE, ylim = c(.65, .92), rm.ranef = F)
-itsadug::plot_smooth(m.F3.center.short, view = "timepoint", plot_all = "category", col = c("#E7298A", "#66A61E"), print.summary = FALSE, ylim = c(.65, .92), rm.ranef = F)
+itsadug::plot_smooth(m.F1.center.long, view = "timepoint", plot_all = "category", col = c("#E78AC3", "#A6D854"), print.summary = FALSE, ylim = c(-.95, -.4))
+itsadug::plot_smooth(m.F1.center.short, view = "timepoint", plot_all = "category", col = c("#E7298A", "#66A61E"), print.summary = FALSE, ylim = c(-.95, -.4))
+itsadug::plot_smooth(m.F2.center.long, view = "timepoint", plot_all = "category", col = c("#E78AC3", "#A6D854"), print.summary = FALSE, ylim = c(.2, .5))
+itsadug::plot_smooth(m.F2.center.short, view = "timepoint", plot_all = "category", col = c("#E7298A", "#66A61E"), print.summary = FALSE, ylim = c(.2, .5))
+itsadug::plot_smooth(m.F3.center.long, view = "timepoint", plot_all = "category", col = c("#E78AC3", "#A6D854"), print.summary = FALSE, ylim = c(.65, .85))
+itsadug::plot_smooth(m.F3.center.short, view = "timepoint", plot_all = "category", col = c("#E7298A", "#66A61E"), print.summary = FALSE, ylim = c(.65, .85))
 ```
 
-##### Formant dynamics in long-short vowel pairs
-The GAMMs fitted to F1, F2 and F3 for the long and short vowels separately suggest that when formant dynamics is considered, the overlap in F1 and F2 for the [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] distinction is likely sufficiently reduced. Considering the absence of an effect for F3, it is reasonable to assume that the dynamics in F1 and F2 is presumably sufficient for a reliable distinction between the two vowels, and that F3 carries little information for this distinction under the assumption of dynamic spectral acoustics, but more so for static analyses. As hypothesized in previous work, the neighboring u-o, ä-ä, ö-ö, öö contrasts were all significant...<!--add here and redo gamms-->
+Finally, for the GAMMs fitted to the mid center vowels, there was an effect of category on all cue evaluations for both long and short vowels, with the exception of the long vowels fit to F1 where no statistically significant differences were found between [`r linguisticsdown::cond_cmpl("øː")`] - [`r linguisticsdown::cond_cmpl("œː")`] ($\hat\beta = -.017, se = .01, p > .12$). However, the effect was relatively small in comparison to the other contrasts evaluated (all $ps < .044$), which is further illustrated by Figure \@ref(fig:m-mid).<!--add here on what this means-->
 
-(ref:m-F3) Fitted smooths of GAMM for predicting F3 and 95% confidence intervals for the long vowels [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("ʉː")`] and [`r linguisticsdown::cond_cmpl("eː")`] (**left**), and the short vowels [`r linguisticsdown::cond_cmpl("ɪ")`] and [`r linguisticsdown::cond_cmpl("ʏ")`] (**right**).
+(ref:m-mid) Fitted smooths of GAMM for predicting F1 (**upper row**), F2 (**mid row**), F3 (**bottom row**) and 95% confidence intervals for the long vowels [`r linguisticsdown::cond_cmpl("øː")`] - [`r linguisticsdown::cond_cmpl("œː")`] (**left**), and the short vowels [`r linguisticsdown::cond_cmpl("ø")`] - [`r linguisticsdown::cond_cmpl("œ")`] (**right**).
 
-```{r m-F3, message=FALSE, fig.width=base.width*4, fig.height=base.height*1.5, fig.align='center', fig.cap="(ref:m-F3)"}
-par(mfrow=c(1,2))
-itsadug::plot_smooth(m.F3.long, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#8DA0CB", "#FB9A99"), print.summary = FALSE, cond = list(category = c("[iː]", "[yː]", "[ʉː]", "[eː]")), ylim = c(.5, 1), rm.ranef = F)
-itsadug::plot_smooth(m.F3.short, view = "timepoint", plot_all = "category", col = c("#1B9E77", "#D95F02"), print.summary = FALSE, cond = list(category = c("[ɪ]", "[ʏ]")), ylim = c(.5, 1), rm.ranef = F)
+```{r m-mid, message=FALSE, fig.width=base.width*4.5, fig.height=base.height*4.5, fig.align='center', fig.cap="(ref:m-mid)"}
+par(mfrow=c(3,2))
+itsadug::plot_smooth(m.F1.mid.long, view = "timepoint", plot_all = "category", col = c("#FFD92F", "#E5C494"), print.summary = FALSE, ylim = c(-1, -.6))
+itsadug::plot_smooth(m.F1.mid.short, view = "timepoint", plot_all = "category", col = c("#E6AB02", "#A6761D"), print.summary = FALSE, ylim = c(-1, -.6))
+itsadug::plot_smooth(m.F2.mid.long, view = "timepoint", plot_all = "category", col = c("#FFD92F", "#E5C494"), print.summary = FALSE, ylim = c(-.1, .3))
+itsadug::plot_smooth(m.F2.mid.short, view = "timepoint", plot_all = "category", col = c("#E6AB02", "#A6761D"), print.summary = FALSE, ylim = c(-.1, .3))
+itsadug::plot_smooth(m.F3.mid.long, view = "timepoint", plot_all = "category", col = c("#FFD92F", "#E5C494"), print.summary = FALSE, ylim = c(.65, .8))
+itsadug::plot_smooth(m.F3.mid.short, view = "timepoint", plot_all = "category", col = c("#E6AB02", "#A6761D"), print.summary = FALSE, ylim = c(.65, .8))
 ```
+
+The GAMMs fitted to F1, F2 and F3 for the three sets of long and short contrasts separately suggest that when formant dynamics is considered, the overlap in F1 and F2 for the [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] distinction is likely sufficiently reduced. Considering the absence of an effect for F3, it is reasonable to assume that the dynamics in F1 and F2 is presumably sufficient for a reliable distinction between the two vowels, and that F3 carries little information for this distinction under the assumption of dynamic spectral acoustics, but more so for static analyses. As hypothesized in previous work, the neighboring u-o, ä-ä, ö-ö, öö contrasts were all significant...<!--add here and redo gamms--> F3 seems not particularly informative for many contrasts overlapping in F1-F2. The GAMMs furhtermore illustrates the effect of adjusting for talker-variability, when this is done, much of the overlap that we see in static analyses change. GAMMs also take several contrasts into account comparing to the separability index. they are also fitted to each cue separately which allows for an evaluation of the relative weight of each cue in comarpison to the separability index. However, both of these measures suffer from the limitation of not being able to account for ALL vowels at one go. For this, an alternative approach would be models that can assess the predicted consequences for perception, confusion matrices etc.
 
 ```{r}
-rm(d.model.long, d.model.short)
+rm(d.model.front.long, d.model.front.short, d.model.back.long, d.model.back.short, d.model.center.long, d.model.center.short)
 ```
 ```{r}
 # CODE KEPT FROM DISCUSSIONS W M GUBIAN??
@@ -1606,11 +1658,12 @@ rm(d.model.long, d.model.short)
 #   facet_wrap(factor(rounding, levels = c("inrounded", "outrounded", "no rounding")) ~ Quantity, ncol = 2)
 ```
 
+##### Formant dynamics in long-short vowel pairs
 For the second set of GAMMs, the effect of F1, F2, F3 and duration on all long and short vowel pairs was modeled in four separate GAMMs, with gender and vowel as independent variables, and time-points as smoothing function. Random slopes and intercepts for talker were included. Summary tables of these four GAMMs are included in the SI (Section \@ref(sec:SI-GAMMs)). 
 
 The GAMMs suggested a treatment effect of vowel on all spectral and temporal cues for all vowel pairs (for F1, all $ps < .04$; for F2, F3 and duration, all $ps < .0005$). With the exception of the [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʏ")`] vowel pair (see also previous section), all rounded vowels displayed lower F3 values, hence more lip-rounding, in their long allophones [e.g., @hadding1976; @stalhammar1973]. The results thus seem to suggest that when formant dynamics is considered, *all* long-short Central Swedish vowel pairs differ in spectral and temporal cues. Among the pairs that displayed smaller, albeit statistically significant, differences in spectral cues is the [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("ɪ")`] pair predicting F1 and F3 (Figure XXX), possibly indicating a tendency for stronger duration dependency, in line with previous perceptual work [@behne-kirk1997].<!--integrate this--> While the static analysis suggested that F1-F2-F3 only numerically increased separability for long-short pairs, with the exception of y-y and e-ä, the dynamic analysis suggests that all cues, albeit considered separately, carry information about vowel quality when formant movements are considered.
 
-(ref:m-paired) Fitted smooths of GAMM and 95% confidence intervals for the vowel pairs [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("ɪ")`] and [`r linguisticsdown::cond_cmpl("uː")`] - [`r linguisticsdown::cond_cmpl("ʊ")`] predicting F1 (**left**), and for the vowel pairs [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("ɪ")`] and [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("ɔ")`] predicting F3 (**right**). 
+(ref:m-paired) Fitted smooths of GAMM and 95% confidence intervals for the vowel pairs [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("ɪ")`] predicting F1 (**left**), and for the vowel pairs [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("ɪ")`] and [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("ɔ")`] predicting F3 (**right**). 
 
 ```{r}
 # Dataframe for running GAMMs on all 21 vowels grouped by pair
