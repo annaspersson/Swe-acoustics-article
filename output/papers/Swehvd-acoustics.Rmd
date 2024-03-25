@@ -1,17 +1,25 @@
 ---
 title             : "The acoustic characteristics of Central Swedish vowels"
+runtitle.         : "Swedish vowel acoustics"
 date              : "`r format(Sys.time(), '%B %d, %Y')`"
 
 author:
   - name: Anna Persson
     affiliation: '1'
     corresponding: yes
-    address: 'Department of Swedish Language and Multilingualism, Stockholm University, SE-106 91 Stockholm, Sweden'
+    street: Stockholm University
+    city: Stockholm
+    zip: SE-106 91
+    country: Sweden
     email: 'anna.persson@su.se'
+    phone: '+46730573273'
 
 affiliation:
   - id: '1'
-    institution: Department of Swedish Language and Multilingualism, Stockholm University
+    department: Department of Swedish Language and Multilingualism
+    institution: Stockholm University
+    city: Stockholm
+    country: Sweden
 
 wordcount         : "X"
 
@@ -52,7 +60,7 @@ header-includes:
 
 documentclass     : "apa6"
 classoption       : "man"
-fontsize          : 11pt
+fontsize          : 12pt
 output:
   papaja::apa6_pdf:
     latex_engine: xelatex
@@ -2306,6 +2314,9 @@ The present study has reported on the acoustic properties of Central Swedish vow
 What has been gained with the broad-scale approach of characterizing the *entire* vowel space adopted here, is of course lost in terms of detailed investigations of individual vowel contrasts. There is certainly a lot more to say about the centralization of [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`], the potential loss of lip-rounding in [`r linguisticsdown::cond_cmpl("yː")`], the direction of vowel shifts, and lowering of [`r linguisticsdown::cond_cmpl("ɛː")`], among other things. The acoustic descriptions outlined in this paper, together with the publicly available SwehVd database, can provide a reference point for future investigations into these acoustic events and beyond.
 
 \newpage
+
+# Ethics statement {-}
+This study on human participants was granted an exemption from requiring ethics approval in accordance with the local legislation and institutional requirements (Etikprövningsmyndigheten, Uppsala, Sweden). The participants provided their written informed consent to participate in this study.
 
 # Data availability statement {-}
 The SwehVd dataset presented in this study can be found in an online repository (SwehVd: <https://osf.io/ruxnb/>). All analyses and visualization code can be found in a separate online repository (<https://osf.io/7uvj4/>).
