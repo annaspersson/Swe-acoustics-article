@@ -1,13 +1,13 @@
 ---
 title             : "The acoustic characteristics of Central Swedish vowels"
-runtitle.         : "Swedish vowel acoustics"
+shorttitle        : "Swedish vowel acoustics"
 date              : "`r format(Sys.time(), '%B %d, %Y')`"
 
 author:
   - name: Anna Persson
     affiliation: '1'
     corresponding: yes
-    street: Stockholm University
+    address: 'Department of Swedish Language and Multilingualism, Stockholm University'
     city: Stockholm
     zip: SE-106 91
     country: Sweden
@@ -17,13 +17,13 @@ author:
 affiliation:
   - id: '1'
     department: Department of Swedish Language and Multilingualism
-    institution: Stockholm University
+    institution: 'Department of Swedish Language and Multilingualism, Stockholm University'
     city: Stockholm
     country: Sweden
 
 wordcount         : "X"
 
-bibliography      : ["latex-stuff/librarySweAcoust.bib", "latex-stuff/r-referencesSweAcoust.bib"]
+bibliography      : ["latex-stuff/librarySweAcoust.bib", "latex-stuff/packages.bib"]
 link-citations    : yes
 csl               : latex-stuff/apa-6th-edition.csl
 
@@ -32,7 +32,7 @@ figurelist        : no
 tablelist         : no
 footnotelist      : no
 linenumbers       : yes
-numbersections    : false
+numbersections    : true
 mask              : no
 draft             : no
 
@@ -102,8 +102,9 @@ library(knitr)
 
 # Set knit defaults for code chunks
 opts_chunk$set(
-  dev='jpeg', # default format of figures
-  fig.ext="jpeg",
+  fig.path = "../../figures/knitted/",
+  dpi=1200,
+  dev=c('jpeg', 'png'), # default format of figures
   comment="",
   echo=FALSE, warning=FALSE, message=FALSE,
   cache=TRUE)
@@ -128,18 +129,18 @@ source("constants_functions.R")
 myGplot.defaults("paper")
 
 options(knitr.table.format = "latex")
-color.transform <- "#C9C0BB"
-color.centering <- "#ABCDEF"
-color.scaling <- "#DDADAF"
 
 base.width = 2.5
 base.height = 2.5
 base_size = 10
+
+INCLUDE_SI = T     # switch on/off to include SI.
 ```
 
-# Abstract
-The Swedish vowel space is a relatively densely populated space with 21 categories that differ in quality and quantity. Existing descriptions of the entire space rest on recordings made in the late 1990s or earlier, while recent work in general has focused on parts of the space. The present paper reports two studies. The first study presents static and dynamic acoustic analyses of the entire vowel space using a recently released database of *h-VOWEL-d* words (SwehVd). The second study compares the acoustic characteristics of SwehVd against formant data from 8 talkers of the same variety recorded in 1999 [@eriksson2004], to investigate the extent to which the phonetic realization of vowels has changed over the last generation. The results highlight the importance of static and dynamic spectral and temporal cues for Swedish vowel category distinction, and indicate possibly ongoing shifts in the high front part of the space.
+# Abstract {-}
+The Swedish vowel space is a relatively densely populated space with 21 categories that differ in quality and quantity. Existing descriptions of the entire space rest on recordings made in the late 1990s or earlier, while recent work in general has focused on parts of the space. The present paper reports two studies. The first study presents static and dynamic acoustic analyses of the entire vowel space using a recently released database of *h-VOWEL-d* words (SwehVd). The second study compares the acoustic characteristics of SwehVd against formant data from 8 talkers of the same variety recorded in 1999, to investigate the extent to which the phonetic realization of vowels has changed over the last generation. The results highlight the importance of static and dynamic spectral and temporal cues for Swedish vowel category distinction, and indicate possibly ongoing shifts in the high front part of the space.
 
+Keywords: vowels, category separability, formant dynamics, vowel change
 \newpage
 \setcounter{page}{1}
 
@@ -259,7 +260,7 @@ The materials and methodological approach adopted in the current paper is motiva
 Anticipating some of the main results from Study 1, the acoustic analyses suggested differences in the phonetic realization of some vowels compared to other qualitative descriptions of Central Swedish [@eklund1997; @engstrand1999; @fant1969; @kuronen2000; @riad2014]. These included the fronting of [`r linguisticsdown::cond_cmpl("eː")`], the lowering of [`r linguisticsdown::cond_cmpl("ɛː")`], and the centralization of [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] [c.f., @leinonen2010; @pelzer-boersma2019; @schotz2011]. This led me to conduct Study 2, which aimed to assess the scope and spread of these changes over the last generation, by comparing the acoustic characteristics of SwehVd against vowel data from a database of 8 (female = 4) talkers of Central Swedish recorded in 1999 as part of the SweDia dialect project [@eriksson2004].
 
 The paper is organized as follows. A background to the acoustics of Central Swedish vowels is provided by a review of previous work. This is followed by the two studies' methods and results, and finally, a discussion of the results and its consequences for the Central Swedish vowel system. 
-All analyses and visualization code for this study can be found in an online repository (<https://osf.io/7uvj4/>). This article is written in R Markdown, which allows readers to easily replicate the analyses using freely available software [@refs].
+All analyses and visualization code for this study can be found in an online repository (<https://osf.io/7uvj4/>). This article is written in R Markdown, which allows readers to easily replicate the analyses using freely available software [R; @r-core; @r-studio].
 
 ```{r load-SwehVd}
 # Load native Swedish vowel data, manually corrected (generated by Persson-2023-outlierCorrected)
@@ -502,6 +503,7 @@ p <- d.SwehVd.forStudy.long.static %>%
   myGplot.defaults(base_size+2)  +
   theme(legend.position = "top")
 p
+#ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=1200)
 ```
 
 #### Static acoustic analysis
@@ -510,6 +512,7 @@ The static analysis of SwehVd presents formant measurements at the steady state 
 In order to evaluate the hypothesized importance of lip-rounding (F3) for neighboring unrounded and rounded categories, a category separability index was employed. Following work by @wedel2018 and @xie-jaeger2020, each vowel's separability from the neighboring vowel was calculated as the average distance of vowel tokens to the centroid of the neighboring vowel, operationalized as \@ref(eq:category-separability). 
 
 \begin{equation}
+\tiny
  separability \ of /`r linguisticsdown::cond_cmpl("yː")`/ from /`r linguisticsdown::cond_cmpl("iː")`/ = \frac{\sum\limits_{k=1}^{n} \sqrt{(F1_{token \ k \ of /`r linguisticsdown::cond_cmpl("yː")`/} - F1_{Center \ of /`r linguisticsdown::cond_cmpl("iː")`/})^2 + (F2_{token \ k \ of /`r linguisticsdown::cond_cmpl("yː")`/} - F2_{Center \ of /`r linguisticsdown::cond_cmpl("iː")`/})^2}}{n} (\#eq:category-separability)
 \end{equation}
 
@@ -522,11 +525,11 @@ The same separability index was also used to investigate to what extent long-sho
 #### Dynamic acoustic analysis
 Formant measurements at all five time-points were used in the dynamic analysis to assess the importance of formant dynamics for vowel distinctions. The dynamic analysis is divided into two main sections. In the first section, formant trajectory plots were used to assess the scope and direction of formant movements, and to what extent vowels seem to diphthongize or merely display movements. The trajectory plots were also used to evaluate the hypothesized importance of formant trajectories for the [`r linguisticsdown::cond_cmpl("iː")`]-[`r linguisticsdown::cond_cmpl("yː")`]-[`r linguisticsdown::cond_cmpl("eː")`], [`r linguisticsdown::cond_cmpl("oː")`]-[`r linguisticsdown::cond_cmpl("uː")`] and [`r linguisticsdown::cond_cmpl("ɛː")`]-[`r linguisticsdown::cond_cmpl("æː")`] contrasts, as reported in previous work [e.g., @kuronen2000; @pelzer-boersma2019], and to explore trajectories in the short vowels.
 
-In the second part of the dynamic analysis, the hypothesized contribution of formant dynamics to category information was modeled using generalized additive mixed-effects models (GAMMs) [@baayen2017]. GAMMs were employed to assess what cues carry information about vowel quality once formant dynamics was considered, while also accounting for by-talker variability in the data. This type of model has not only a temporal structure (formant measurements at different time-points), but also a hierarchical structure, as individual measurements were grouped into formant contours that in turn were grouped by talkers and gender. Both the complex dependencies generated by this structure as well as the non-monotonic behavior of formants, cannot easily be captured by traditional parametric methods, such as linear regression, however, GAMMs can accommodate these nonlinear relationships between predictors and response variables [e.g., @chuang2021; @soskuthy2021; @wieling2018]. Much like other types of mixed models, they allow for the inclusion of random effects, which provides a parsimonious way to account for dependencies in grouped data. 
+In the second part of the dynamic analysis, the hypothesized contribution of formant dynamics to category information was modeled using generalized additive mixed-effects models (GAMMs) [@baayen2017]. GAMMs were employed to assess what cues carry information about vowel quality once formant dynamics was considered, while also accounting for by-talker variability in the data. This type of model has not only a temporal structure (formant measurements at different time-points), but also a hierarchical structure, as individual measurements were grouped into formant contours that in turn were grouped by talkers and gender. Both the complex dependencies generated by this structure as well as the non-monotonic behavior of formants, cannot easily be captured by traditional parametric methods, such as linear regression, however, GAMMs can accommodate these nonlinear relationships between predictors and response variables [e.g., @chuang2021; @soskuthy2021; @wieling2018]. Much like other types of mixed models, they allow for the inclusion of random effects, which provides a parsimonious way to account for dependencies in grouped data.
 
 GAMMs are increasingly used in phonetic research, due to their suitability in modeling complex phonetic patterns without having to rely on simplifying assumptions of linearity or that vowels can be reduced to a single F1-F2 point estimate. They have been used in studies on vowels in different English varieties, e.g., on /u/-fronting in Derby English [@soskuthy2018], and on the front vowel system of Southern American English [@renwick-stanley2020], but to the best of my knowledge, they have not yet been implemented in studies of Swedish vowels. The use of GAMMs thus complements previous work on Central Swedish that has primarily used visual inspection, formant measurements and linear models (Table \@ref(tab:previous-work)).
 
-GAMMs were fit to subsets of contrasts separately, as well as to all 21 categories, using the \texttt{bam()} function from the \texttt{R} package \texttt{mgcv}. Example of model code: $F1 \sim category + Gender + s(timepoint, by = category, k = 5) + s(Talker, bs = "re") + s(Talker, category, bs = "re")$. The first set of GAMMs were fit to subsets of neighboring contrasts, hypothesized to differ primarily in formant dynamics: [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʉː")`] - [`r linguisticsdown::cond_cmpl("eː")`], [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("uː")`], [`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("æː")`] [@fant1971; @kuronen2000; @pelzer-boersma2019]. Given the directionality in formant trajectories found for [`r linguisticsdown::cond_cmpl("øː")`]-[`r linguisticsdown::cond_cmpl("œː")`] (Section \@ref(sec:swehVd-trajectories), this contrast was also included. GAMMs were furthermore fit to the corresponding short subsets, to explore potential effects of dynamics in the short vowels. These subsets were not entirely identical to the long subsets, for reasons of evident separability in F1-F2 space: [`r linguisticsdown::cond_cmpl("ɪ")`] - [`r linguisticsdown::cond_cmpl("ʏ")`], [`r linguisticsdown::cond_cmpl("ɔ")`] - [`r linguisticsdown::cond_cmpl("ʊ")`], [`r linguisticsdown::cond_cmpl("ɛ")`] - [`r linguisticsdown::cond_cmpl("æ")`] and [`r linguisticsdown::cond_cmpl("ø")`]-[`r linguisticsdown::cond_cmpl("œ")`]. Here, vowel was treatment coded with [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("oː")`], [`r linguisticsdown::cond_cmpl("ɛː")`], [`r linguisticsdown::cond_cmpl("ɪ")`], [`r linguisticsdown::cond_cmpl("ɔ")`], [`r linguisticsdown::cond_cmpl("ɛ")`], and [`r linguisticsdown::cond_cmpl("ø")`] as reference categories in each set, using the \texttt{contr.treatment()} function from the \texttt{R} package \texttt{stats}. Visualizations of GAMMs were generated using the \texttt{plot\_smooth()} function from the \texttt{R} package \texttt{itsadug}.
+GAMMs were fit to subsets of contrasts separately, as well as to all 21 categories, using the \texttt{bam()} function from the \texttt{R} package \texttt{mgcv}. Example of model code: $F1 \sim category + Gender + s(timepoint, by = category, k = 5) + s(Talker, bs = "re") + s(Talker, category, bs = "re")$. The first set of GAMMs were fit to subsets of neighboring contrasts, hypothesized to differ primarily in formant dynamics: [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʉː")`] - [`r linguisticsdown::cond_cmpl("eː")`], [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("uː")`], [`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("æː")`] [@fant1971; @kuronen2000; @pelzer-boersma2019]. Given the directionality in formant trajectories found for [`r linguisticsdown::cond_cmpl("øː")`]-[`r linguisticsdown::cond_cmpl("œː")`] (Figure \@ref(fig:trajectories), this contrast was also included. GAMMs were furthermore fit to the corresponding short subsets, to explore potential effects of dynamics in the short vowels. These subsets were not entirely identical to the long subsets, for reasons of evident separability in F1-F2 space: [`r linguisticsdown::cond_cmpl("ɪ")`] - [`r linguisticsdown::cond_cmpl("ʏ")`], [`r linguisticsdown::cond_cmpl("ɔ")`] - [`r linguisticsdown::cond_cmpl("ʊ")`], [`r linguisticsdown::cond_cmpl("ɛ")`] - [`r linguisticsdown::cond_cmpl("æ")`] and [`r linguisticsdown::cond_cmpl("ø")`]-[`r linguisticsdown::cond_cmpl("œ")`]. Here, vowel was treatment coded with [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("oː")`], [`r linguisticsdown::cond_cmpl("ɛː")`], [`r linguisticsdown::cond_cmpl("ɪ")`], [`r linguisticsdown::cond_cmpl("ɔ")`], [`r linguisticsdown::cond_cmpl("ɛ")`], and [`r linguisticsdown::cond_cmpl("ø")`] as reference categories in each set, using the \texttt{contr.treatment()} function from the \texttt{R} package \texttt{stats}. Visualizations of GAMMs were generated using the \texttt{plot\_smooth()} function from the \texttt{R} package \texttt{itsadug}.
 
 The second set was fit to all 21 categories, aiming for an evaluation of differences between categories within vowel pairs. Vowel was backwards difference coded, using the \texttt{contr.sdif()} function from the \texttt{R} package \texttt{MASS}, with [`r linguisticsdown::cond_cmpl("iː")`] as reference vowel. The vowel variable was ordered alternating long and short vowels by the pair, in order for the short vowel to be compared against its preceding long counterpart. 
 
@@ -602,6 +605,7 @@ p.normalized <- d.SwehVd.forStudy.long.static %>%
   guides(alpha = "none", color = "none", shape = "none") +
   facet_grid(factor(Normalization.Type, levels = labels.normalization) ~ Quantity)
 p.normalized
+#ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=1200)
 ```
 
 Figure \@ref(fig:swe-vowels-by-quantity), left panel, visualizes the long vowels along the two primary cues to vowel identity, F1-F2.^[The SI presents the mean cue values for the male and female talkers, Tables \@ref(tab:SI-cue-values-long) and \@ref(tab:SI-cue-values-short). As expected, the male talkers have lower formant values and lower F0s than the female talkers (average F0 across long and short categories for female talkers = `r round(d.cue.values %>% filter(Gender == "female") %>% ungroup() %>% summarise(mean = mean(F0.mean)) %>% pull(mean), digits = 0)`, for male talkers = `r round(d.cue.values %>% filter(Gender == "male") %>% ungroup() %>% summarise(mean = mean(F0.mean)) %>% pull(mean), digits = 0)`).] Four vowels cluster in the high front part of the space. The mid-high [`r linguisticsdown::cond_cmpl("eː")`] occupies a substantially higher position than in many previous descriptions, and is also the most fronted vowel [c.f., @fant1969; @kuronen2000; but see @engstrand2000; @pelzer-boersma2019]. The high [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] are rather mid-central, and exhibit substantial overlap with [`r linguisticsdown::cond_cmpl("ʉː")`]. The [`r linguisticsdown::cond_cmpl("uː")`] - [`r linguisticsdown::cond_cmpl("oː")`], and [`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("æː")`] categories are also partly overlapping.
@@ -664,6 +668,7 @@ p.matrix.cues <-
   theme(
     legend.position = "top")
 p.matrix.cues
+#ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=1200)
 ```
 
 #### Cues and cue correlations
@@ -738,6 +743,7 @@ p.merge / p.merge.F3 + theme(axis.title.x = element_blank()) +
   plot_annotation(tag_levels = 'A') &
   theme(legend.margin = margin(0, 0, 0, 0, unit = "pt"),
         plot.tag = element_text(face = "bold"))
+#ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=1200)
 ```
 
 In order to quantitatively asses whether the distinction between closely neighboring unrounded and rounded categories increased when F3 was considered, the category separability of these vowels was calculated based on F1 and F2, and subsequently compared against the separability calculated when including F3. If separability were to increase when F3 was added, it would suggest that F3 do contribute to category distinctions. 
@@ -910,6 +916,7 @@ group_by(cue_dimension, comparison) %>%
 
 p.category.separability +
   facet_grid(~ factor(rounding, levels = c("unrounded vs. outrounded", "outrounded vs. inrounded")))
+#ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=1200)
 ```
 ```{r}
 contrasts(d.SwehVd.cat.separability$cue_dimension) <- contr.sum(2)
@@ -982,6 +989,7 @@ d.SwehVd.vowel_pairs %>%
   scale_colour_manual(name = "category", values = colors.vowel.swe, aesthetics = c("colour", "fill")) +
   guides(linetype = "none", color = "none", fill = "none") +
   facet_wrap(~ factor(vowel_pair, levels = c("ɪ - iː", "ʏ - yː", "ɵ - ʉː", "ɛ - eː, ɛː", "æ - æː", "ø - øː", "œ - œː", "a - ɑː", "ɔ - oː", "ʊ - uː")), nrow = 2)
+#ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=1200)
 ```
 
 All long-short vowel pairs furthermore display spectral differences in F1-F2. In fact, as indicated in Figure \@ref(fig:swe-vowels), formant differences are apparent for *all* vowel pairs, even for vowel distinctions for which duration has been found to be the primary cue---[`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("ɛ")`], [`r linguisticsdown::cond_cmpl("øː")`] - [`r linguisticsdown::cond_cmpl("ø")`], [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("ɪ")`], and [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("ɔ")`] [e.g., @behne-kirk1997; @haddingkoch1964; @kuronen2000]. The vowel pairs that display larger spectral differences along F1-F2 seem to be [`r linguisticsdown::cond_cmpl("ʉː")`] - [`r linguisticsdown::cond_cmpl("ɵ")`] and [`r linguisticsdown::cond_cmpl("ɑː")`] - [`r linguisticsdown::cond_cmpl("a")`] [in line with e.g., @fant1983; @kuronen2000], but also [`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("ɛ")`], which contrasts with previous studies. The large spectral differences in [`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("ɛ")`] are presumably due to [`r linguisticsdown::cond_cmpl("ɛː")`] being produced very low in the SwehVd materials, which increases the distance to [`r linguisticsdown::cond_cmpl("ɛ")`] and in addition leads to a gap along the top-left to bottom-left diagonal between [`r linguisticsdown::cond_cmpl("eː")`] and [`r linguisticsdown::cond_cmpl("ɛ")`]. Overall, F2 appears to carry more of the spectral variation between the long and short vowel phonemes, as categories display increased separability in the pairwise combination of F2 and duration (Figure \@ref(fig:swe-vowels-all-cues), rightmost column, third row).
@@ -1121,6 +1129,7 @@ group_by(cue_dimension, comparison) %>%
   guides(shape = "none", color = guide_legend(ncol = 2)) +
   myGplot.defaults() +
   facet_grid(~height)
+#ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=1200)
 ```
 ```{r}
 contrasts(d.SwehVd.cat.separability.long.short$cue_dimension) <- contr.treatment(4)
@@ -1234,7 +1243,7 @@ p.trajectories
 #     aes(x = timepoint, y = F3, group = Talker, color = red_speaker)) +
 #   geom_line() +
 #   facet_wrap(~category)
-#ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=300)
+#ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=1200)
 
 #Generate a subset of d-measurements manually
 #d.F2d <- read_csv2('../../data/final-d.csv')
@@ -1298,6 +1307,7 @@ d.SwehVd.forStudy.long.dynamic %>%
   guides(color = "none", shape = "none") +
   facet_grid(factor(Normalization.Type, levels = labels.normalization) ~ Quantity) +
   theme(legend.position = "bottom")
+#ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=1200)
 ```
 
 #### Models of formant dynamics
@@ -1560,6 +1570,7 @@ itsadug::plot_smooth(m.F2.front.short, view = "timepoint", plot_all = "category"
 itsadug::plot_smooth(m.F3.front.long, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#8DA0CB", "#FB9A99"), print.summary = FALSE, ylim = c(.5, 1))
 itsadug::plot_smooth(m.F3.front.short, view = "timepoint", plot_all = "category", col = c("#1B9E77", "#D95F02"), print.summary = FALSE, ylim = c(.5, 1))
 #plot_diff(m.F1.long, view = "timepoint", comp = list(category = c("[iː]", "[yː]")))
+#ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=1200)
 ```
 An effect of category on all three cues was found in all GAMMs fit to the high back long and short contrasts (all $ps < .0006$). These results suggest that formant dynamics is likely informative for these contrasts, and that all three cues contribute to distinguishing between these vowels even when formant dynamics is considered (Figure \@ref(fig:m-high-back)).^[An effect of gender was found for the high back vowels predicting F1 for the long and short vowels (both $ps < .022$), which suggests that the normalization approach likely reduced some talker-specific differences related to anatomical differences, but not all.] Figures \@ref(fig:m-high-front) and \@ref(fig:m-high-back) further highlight the presumable diphthongization in [`r linguisticsdown::cond_cmpl("eː")`] and [`r linguisticsdown::cond_cmpl("oː")`], as indicated by the steepness of the fitted curve.
 
@@ -1573,6 +1584,7 @@ itsadug::plot_smooth(m.F2.back.long, view = "timepoint", plot_all = "category", 
 itsadug::plot_smooth(m.F2.back.short, view = "timepoint", plot_all = "category", col = c("#1F78B4", "#33A02C"), print.summary = FALSE, ylim = c(-.75 -.3))
 itsadug::plot_smooth(m.F3.back.long, view = "timepoint", plot_all = "category", col = c("#A6CEE3", "#B2DF8A"), print.summary = FALSE, ylim = c(.7, 1))
 itsadug::plot_smooth(m.F3.back.short, view = "timepoint", plot_all = "category", col = c("#1F78B4", "#33A02C"), print.summary = FALSE, ylim = c(.7, 1))
+#ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=1200)
 ```
 The GAMMs fit to the lower-mid front long and short vowel contrasts suggested an effect of vowel on F1 and F2 (all $ps < .0001$). For the GAMMs predicting F3, no statistically significant differences were found between the long and short /`r linguisticsdown::cond_cmpl("ɛ")`/ and /`r linguisticsdown::cond_cmpl("æ")`/ (for [`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("æː")`], $\hat\beta = -.012, se = .01, p > .25$, for [`r linguisticsdown::cond_cmpl("ɛ")`] - [`r linguisticsdown::cond_cmpl("æ")`], $\hat\beta = .012, se = .008, p > .14$). Figure \@ref(fig:m-center) demonstrates how these vowels overlap in F3 dynamics, but are distinguished for larger parts of the segment along F1 and F2.
 
@@ -1600,6 +1612,7 @@ itsadug::plot_smooth(m.F2.mid.long, view = "timepoint", plot_all = "category", c
 itsadug::plot_smooth(m.F2.mid.short, view = "timepoint", plot_all = "category", col = c("#E6AB02", "#A6761D"), print.summary = FALSE, ylim = c(-.1, .3))
 itsadug::plot_smooth(m.F3.mid.long, view = "timepoint", plot_all = "category", col = c("#FFD92F", "#E5C494"), print.summary = FALSE, ylim = c(.65, .8))
 itsadug::plot_smooth(m.F3.mid.short, view = "timepoint", plot_all = "category", col = c("#E6AB02", "#A6761D"), print.summary = FALSE, ylim = c(.65, .8))
+#ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=1200)
 ```
 
 As hypothesized in previous work [e.g., @fant1971; @kuronen2000; @pelzer-boersma2019], the neighboring high front (/`r linguisticsdown::cond_cmpl("i")`/ - /`r linguisticsdown::cond_cmpl("y")`/ - /`r linguisticsdown::cond_cmpl("ʉ")`/ - /`r linguisticsdown::cond_cmpl("e")`/), high back (`r linguisticsdown::cond_cmpl("o")`/ - /`r linguisticsdown::cond_cmpl("u")`/), lower-mid front (/`r linguisticsdown::cond_cmpl("ɛ")`/ - /`r linguisticsdown::cond_cmpl("æ")`/) and mid center (/`r linguisticsdown::cond_cmpl("ø")`/ - /`r linguisticsdown::cond_cmpl("œ")`/) contrasts, that exhibit varying degrees of category overlap when static formants are considered, were all significantly different from each other along at least two cues when formant dynamics was considered. For all contrasts, the vowels overlapped in parts of, but importantly not along the entire segment, for at least one cue for which significant effects were found (Figures \@ref(fig:m-high-front), \@ref(fig:m-high-back), \@ref(fig:m-center), \@ref(fig:m-mid)). This would seem to suggest that whatever overlap is found when static formants are considered, is presumably sufficiently reduced by formant dynamics for reliable category distinctions.
@@ -1732,6 +1745,7 @@ m.duration.paired <- mgcv::bam(Duration ~ category + Gender +
 par(mfrow=c(1,2))
 itsadug::plot_smooth(m.F1.paired, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#1B9E77"), print.summary = FALSE, cond = list(category = c("[iː]", "[ɪ]")))
 itsadug::plot_smooth(m.F3.paired, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#1B9E77"), print.summary = FALSE, cond = list(category = c("[iː]", "[ɪ]")))
+#ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=1200)
 ```
 
 ### Results summary
@@ -1814,7 +1828,7 @@ For details on the recruitment, recording, pre-processing and annotation procedu
 
 Given the smaller number of talkers in SweDia, the two databases were of unequal sample sizes overall: N = `r nrow(d.SwehVd %>% distinct(Talker, category, Token))` datapoints for SwehVd, and N = `r nrow(d.SweDia2000 %>% filter(Location == "50") %>% distinct(Talker, category, Token))` datapoints for SweDia. The regional origin of the talkers matched across databases, age at time of recording (mean age in SweDia = `r mean(d.SweDia2000.forStudy$Age, na.rm = T) %>% round(digits = 0)`, mean age in SwehVd = `r mean(d.SwehVd.forStudy$Age, na.rm = T) %>% round(digits = 0)`) and the relative proportion of male and female talkers were also highly similar (50% female talkers in SweDia2000, 55% female talkers in SwehVd). Any potential effect of differences in gender distributions on the comparison were presumably reduced by the use of normalized vowel data.
 
-Cue measurements from SweDia were extracted in the same way as for SwehVd (Section \@ref(sec:cueMeasures)). To correct for measurement errors in the automatic extraction of cues, the joint multivariate distribution of the five extracted cues (F0, F1, F2, F3 and duration) was estimated for each distinct combination of talker and vowel. This was compared against 5 separate univariate distributions to assess whether the number of identified outliers was driven by one or a couple of the five cues. Points that fell outside of the $0.25th$ to the $97.5th$ quantile of the distributions for each vowel were identified, examined for measurement errors, and subsequently corrected. This followed the approach employed for the SwehVd corpus [@persson-jaeger2023], and strikes a middle-ground between the ideal (manual correction of all tokens) and feasibility. Outliers were identified and removed following the approach for the subsetted SwehVd dataset used in Study 1 (Section XXX), leaving N = `r nrow(d.SweDia2000.forStudy %>% filter(timepoint == "50") %>% distinct(Talker, category, Token))` datapoints for analysis.
+Cue measurements from SweDia were extracted in the same way as for SwehVd (Section \@ref(sec:cueMeasures)). To correct for measurement errors in the automatic extraction of cues, the joint multivariate distribution of the five extracted cues (F0, F1, F2, F3 and duration) was estimated for each distinct combination of talker and vowel. This was compared against 5 separate univariate distributions to assess whether the number of identified outliers was driven by one or a couple of the five cues. Points that fell outside of the $0.25th$ to the $97.5th$ quantile of the distributions for each vowel were identified, examined for measurement errors, and subsequently corrected. This followed the approach employed for the SwehVd corpus [@persson-jaeger2023], and strikes a middle-ground between the ideal (manual correction of all tokens) and feasibility. Outliers were identified and removed following the approach for the subsetted SwehVd dataset used in Study 1, leaving N = `r nrow(d.SweDia2000.forStudy %>% filter(timepoint == "50") %>% distinct(Talker, category, Token))` datapoints for analysis.
 
 ### Assessing vowel shifts
 In order to assess whether the relative placement of the categories in the acoustic space was different between datasets, formant data was visualized in F1-F2 space and distances assessed with the *orthogonal projection ratio*, henceforth $op$ [@stevens-schiel2019].^[Other distance measures are possible, such as Mahalanobi's distance. The primary advantages of using the $op$ is that it considers the overall structure of vowel spaces rather than individual distances, and that it offers a standardized way to compare the degree of category membership across different datasets.] Both visualizations and $op$ calculations were based on measurements at the steady-state portion of the vowel in both datasets---taking the average F1-F2 values across the three mid-points (at 35, 50, and 65% into the vowel). This approach presumably reduced the risk of coarticulatory effects resulting from the use of different phonological contexts between the two datasets.
@@ -1893,6 +1907,7 @@ d.SwehVd.forStudy.long.static %>%
   scale_x_reverse("F2", position = "top", scales::pretty_breaks(n = 4)) +
   scale_y_reverse("F1", position = "right", scales::pretty_breaks(n = 4)) +
   guides(alpha = "none", color = "none", shape = "none", fill = "none")
+#ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=1200)
 ```
 
 Table \@ref(tab:opr-table) lists all the vowels $V_{vowel}$ tested along with their corresponding anchor points, $U_{anchor}$ and $W_{anchor}$. These were all vowels for which the overall distance in F1 and F2 vowel means in SwehVd to SweDia, $\geq .85$ standard deviations from the vowel means in SweDia.^[The front `r linguisticsdown::cond_cmpl("[æː]")` was also included in this subset. Given that it occupies the lowest position in the space, the calculation of $op$ was not possible.]
@@ -1964,7 +1979,7 @@ p.vowel.movements <-
   guides(color = "none") +
   facet_wrap(~ Normalization.Type)
 p.vowel.movements
-#ggsave(file = "../../figures/p.png", width = 5, height = 5, dpi=700)
+#ggsave(file = "../../figures/p.png", width = 5, height = 5, dpi=1200)
 ```
 ```{r}
 #Select categories for orthogonal projection ratio calc
@@ -2132,6 +2147,7 @@ p.orth <- d.orth %>%
   #   label = "*",
   #   size = 4, color = "red", inherit.aes = F)
 p.orth
+#ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=1200)
 ```
 
 ```{r message=FALSE}
@@ -2325,8 +2341,7 @@ The SwehVd dataset presented in this study can be found in an online repository 
 The work presented in this study was partially funded by a grant from the Kinander's foundation (2021), a grant from Kungliga Vetenskapsakademien (2023), and by the Department of Swedish Language and Multilingualism at Stockholm University.
 
 # Acknowledgments {-}
-<!--omitted for review-->
-I thank audiences at the 2023 ASA meeting, at the Ludwig-Maximilians-Universität Institute for Phonetics and Speech Processing lab meeting October 2023, and at the Stockholm University Department of Swedish language and multilingualism for feedback on earlier presentations of this work. I am particularly grateful to Anders Eriksson for providing the recordings of the SweDia reference talkers, Michele Gubian for advice and support in implementing GAMMs, Jonathan Harrington for advice and support in implementing the orthogonal projection ratio, T Florian Jaeger for advice and support on code development, Tomas Riad for discussion of Swedish vowel systems, Maryann Tan for collaboration in preparation of the SwehVd database, and to Nathan Young for feedback on segmentation procedures, as well as for access to, and support for, the [SweFA software](https://github.com/mcgarrah/LG-FAVE) for the automatic annotation of Swedish vowels. Finally, I thank Niclas Abrahamsson, T Florian Jaeger, Catrin Norrby, Rasmus Puggaard-Rode, Tomas Riad, Maryann Tan, and Carla Wikse Barrow for feedback on earlier versions of the manuscript.
+Omitted for review<!--I thank audiences at the 2023 ASA meeting, at the Ludwig-Maximilians-Universität Institute for Phonetics and Speech Processing lab meeting October 2023, and at the Stockholm University Department of Swedish language and multilingualism for feedback on earlier presentations of this work. I am particularly grateful to Anders Eriksson for providing the recordings of the SweDia reference talkers, Michele Gubian for advice and support in implementing GAMMs, Jonathan Harrington for advice and support in implementing the orthogonal projection ratio, T Florian Jaeger for advice and support on code development, Tomas Riad for discussion of Swedish vowel systems, Maryann Tan for collaboration in preparation of the SwehVd database, and to Nathan Young for feedback on segmentation procedures, as well as for access to, and support for, the [SweFA software](https://github.com/mcgarrah/LG-FAVE) for the automatic annotation of Swedish vowels. Finally, I thank Niclas Abrahamsson, T Florian Jaeger, Catrin Norrby, Rasmus Puggaard-Rode, Tomas Riad, Maryann Tan, and Carla Wikse Barrow for feedback on earlier versions of the manuscript.-->
 
 # Conflict of Interest {-}
 The author declares that the research was conducted in the absence of any commercial or financial relationships that could be construed as a potential conflict of interest.
@@ -2335,1317 +2350,14 @@ The author declares that the research was conducted in the absence of any commer
 
 # References
 
-\newpage
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
 
-# Supplementary information for *Persson (2024). The acoustic characteristics of Central Swedish vowels* {-}
-Both the main text and these supplementary information (SI) are derived from the same R markdown document available via OSF at  [https://osf.io/7uvj4/](https://osf.io/7uvj4/).
+<div id="refs" custom-style="Bibliography"></div>
+\endgroup
 
-## Required software {#sec:SI-software}
 
-The document was compiled using \texttt{knitr} [@xie2023] in RStudio with R:
-
-```{r}
-version
+```{r, child="SI.Rmd", eval= if (INCLUDE_SI) TRUE else FALSE}
 ```
 
-The following R packages were used to create this document: `r cite_r("latex-stuff/r-referencesSweAcoust.bib")`.
-
-```{r}
-
-```
-
-## Additional information on Study 1
-
-### Neutralization of short /e/ and /`r linguisticsdown::cond_cmpl("ɛ")`/ {#sec:SI-hedd-hädd}
-Figure \@ref(fig:SI-hedd) demonstrates that the short allophones of /`r linguisticsdown::cond_cmpl("e")`/ and /`r linguisticsdown::cond_cmpl("ɛ")`/ neutralize as [`r linguisticsdown::cond_cmpl("ɛ")`] in Central Swedish.
-
-(ref:SI-hedd) The *hedd* and *hädd* words in the SwehVd vowel data in F1-F2 space. Points show recordings of the *hedd* and *hädd* words ([`r linguisticsdown::cond_cmpl("ɛ")`]) by 44 native talkers in the database, averaged across the five measurement points within each vowel segment. Word labels indicate word means across talkers. Since *hädd* and *hedd* resulted in the same allophone, all *hädd* words are excluded from the subset used in this study. This facilitates comparison of, for example, densities across vowels (see diagonal of Figure \@ref(fig:swe-vowels-all-cues)).
-
-```{r SI-hedd, fig.width=base.width*1.5, fig.height=base.height*1.5, out.width='50%', fig.align='center', fig.cap="(ref:SI-hedd)"}
-d.SwehVd %>%
-  filter(Transcribed_vowel == "targeted", Word %in% c("hedd", "hädd")) %>%
-  # Get the geometric mean F1-F2 across the five time points
-  group_by(Talker, Word, Token) %>%
-  summarise(across(c(F1, F2), ~ geometric.mean(.x))) %>%
-  ggplot(
-    aes(
-      x = F2,
-      y = F1,
-      color = Word)) +
-  geom_point(alpha = .4) +
-  stat_ellipse() +
-  # Add between-talker mean
-  geom_label(
-    data =
-      ~ .x %>%
-      group_by(Word) %>%
-      summarise(across(c(F1, F2), ~ geometric.mean(.x))),
-    mapping = aes(
-      colour = Word,
-      label = Word),
-    alpha = .8,
-    size = 4,
-    label.size = NA) +
-  scale_x_reverse("F2 (in Hz)", position = "top", breaks = scales::breaks_pretty(6)) +
-  scale_y_reverse("F1 (in Hz)", position = "right", breaks = scales::breaks_pretty(6)) +
-  guides(color = "none") +
-  theme(legend.position = "top")
-```
-
-### The effect of different measurement points {#sec:SI-measurement-points}
-Figure \@ref(fig:SI-time-points) visualizes the SwehVd vowel space under four different assumptions about measurement points. The figure suggests that the use of different measurement points primarily affects vowels for which formant dynamics are particularly important, e.g., [`r linguisticsdown::cond_cmpl("eː")`] and [`r linguisticsdown::cond_cmpl("oː")`]. 
-
-(ref:SI-time-points) The SwehVd vowel data in F1-F2 space, faceted by the time points used for measuring formants: averaging across the first three time-points (at 20, 35, and 50% into the vowel; **panel A**), averaging across the mid three time-points (at 35, 50, and 65% into the vowel; **panel B**), taking the mid time-point (at 50%; **panel C**), and averaging across the final three mid-points (at 50, 65, and 80% into the vowel; **panel D**). Points show recordings of each of the 21 Central Swedish vowels by the 44 L1 talkers in the database. Vowel labels indicate vowel means across talkers. Long vowels are boldfaced. Vowels that mismatched intended label are excluded (`r signif((d.SwehVd %>% filter(Transcribed_vowel != "targeted") %>% nrow() / d.SwehVd %>% nrow()) * 100)`% of all recordings).
-
-```{r SI-time-points, fig.width=base.width*4.5, fig.height=base.height*4.5+.5, out.width = '100%', fig.align='center', fig.cap="(ref:SI-time-points)"}
-p.20_50 <- p %+%
-  (d.SwehVd.forStudy.long %>%
-  filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(20,35,50)) %>%
-  # Get the geometric mean F1-F2 across the five time points
-  group_by(Normalization.Type, Talker, Gender, category, Token, Quantity) %>%
-  summarise(across(c(F0, F1, F2, F3, Duration), ~ mean(.x)))) +
-  guides(shape = "none")
-
-p.35_65 <- p %+%
-  (d.SwehVd.forStudy.long %>%
-  filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(35,50,65)) %>%
-  # Get the geometric mean F1-F2 across the five time points
-  group_by(Normalization.Type, Talker, Gender, category, Token, Quantity) %>%
-  summarise(across(c(F0, F1, F2, F3, Duration), ~ mean(.x)))) +
-  guides(shape = "none")
-
-p.50 <- p %+%
-  (d.SwehVd.forStudy.long %>%
-  filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint == 50)) +
-  guides(shape = "none")
-
-p.50_80 <- p %+%
-  (d.SwehVd.forStudy.long %>%
-  filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(50,65,80)) %>%
-  # Get the geometric mean F1-F2 across the five time points
-  group_by(Normalization.Type, Talker, Gender, category, Token, Quantity) %>%
-  summarise(across(c(F0, F1, F2, F3, Duration), ~ mean(.x)))) +
-  guides(shape = "none")
-
-(p.20_50 + p.35_65) / (p.50 + p.50_80) +
-  plot_annotation(tag_levels = list(c("A", "B", "C", "D"))) +
-  plot_layout(
-    guides = "collect") & 
-  theme(legend.position = "right",
-        legend.justification = "right",
-        legend.margin = margin(0, 0, 0, 0, unit = "pt"),
-        plot.tag = element_text(face = "bold"))
-```
-
-### Mean cue values across talkers {#sec:SI-mean-cues}
-The overall mean cue values for the long and short vowels are presented in Tables \@ref(tab:SI-cue-values-long) and \@ref(tab:SI-cue-values-short), respectively.
-
-\begin{landscape}
-
-\begin{table}
-
-\caption{\label{tab:SI-cue-values-long}The spectral and temporal properties of the long vowels (averaged across talkers, by gender)}
-\centering
-\fontsize{6}{8}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{.7cm}>{\raggedright\arraybackslash}p{.7cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}}
-\toprule
-Cue & Gender & `r linguisticsdown::cond_cmpl("[iː]")`& `r linguisticsdown::cond_cmpl("[yː]")`& `r linguisticsdown::cond_cmpl("[ʉː]")` & `r linguisticsdown::cond_cmpl("[eː]")` & `r linguisticsdown::cond_cmpl("[ɛː]")` & `r linguisticsdown::cond_cmpl("[æː]")` & `r linguisticsdown::cond_cmpl("[øː]")` & `r linguisticsdown::cond_cmpl("[œː]")` & `r linguisticsdown::cond_cmpl("[ɑː]")` & `r linguisticsdown::cond_cmpl("[oː]")` & `r linguisticsdown::cond_cmpl("[uː]")`\\
-\midrule
-Duration & F & 0.23 (SD=0.05) & 0.24 (SD=0.05) & 0.23 (SD=0.05) & 0.26 (SD=0.05) & 0.25 (SD=0.04) & 0.25 (SD=0.05) & 0.25 (SD=0.04) & 0.26 (SD=0.05) & 0.23 (SD=0.05) & 0.25 (SD=0.05) & 0.23 (SD=0.05)\\
- & M & 0.21 (SD=0.05) & 0.22 (SD=0.06) & 0.22 (SD=0.06) & 0.23 (SD=0.06) & 0.24 (SD=0.06) & 0.24 (SD=0.06) & 0.23 (SD=0.05) & 0.23 (SD=0.06) & 0.23 (SD=0.06) & 0.24 (SD=0.05) & 0.22 (SD=0.05)\\
-F0 & F & 200.53 (SD=27.45) & 196.29 (SD=30.09) & 196.1 (SD=26.89) & 195.04 (SD=25.38) & 189.86 (SD=24.03) & 187.74 (SD=25.95) & 189.77 (SD=25) & 190.65 (SD=27.04) & 192.84 (SD=25.61) & 195.51 (SD=29.33) & 199.89 (SD=26.49)\\
- & M & 118.09 (SD=22.59) & 114.94 (SD=21.79) & 116.85 (SD=22.18) & 116.12 (SD=19.12) & 109.89 (SD=22.61) & 111.56 (SD=23.07) & 112.17 (SD=28.07) & 114.12 (SD=29.46) & 113.37 (SD=NA) & 122.23 (SD=26.64) & 116.84 (SD=20.36)\\
-F1 & F & 374.2 (SD=40.95) & 361.09 (SD=34.22) & 391.34 (SD=30.39) & 424.37 (SD=44.27) & 791.24 (SD=101.72) & 848.7 (SD=115.25) & 638.55 (SD=76.26) & 614.75 (SD=75.62) & 649.15 (SD=83.44) & 440.1 (SD=46.87) & 396.75 (SD=37.13)\\
-\addlinespace
- & M & 315.64 (SD=37.31) & 302.43 (SD=36.81) & 333.44 (SD=41.18) & 393.6 (SD=41.58) & 682.61 (SD=69.57) & 726.06 (SD=68.57) & 553.09 (SD=41.36) & 548.04 (SD=42.07) & 582.84 (SD=54.5) & 424.82 (SD=30.21) & 354.55 (SD=32.95)\\
-F2 & F & 2093.73 (SD=217.16) & 2009 (SD=186.87) & 1783.62 (SD=113.99) & 2430.25 (SD=300.79) & 1794.7 (SD=129.12) & 1648.51 (SD=86.13) & 1525.93 (SD=99.29) & 1299.7 (SD=110.97) & 1050.33 (SD=105.69) & 760.92 (SD=94.01) & 789.15 (SD=108.23)\\
- & M & 1887.17 (SD=171.28) & 1843.46 (SD=155.66) & 1590.83 (SD=88.26) & 2132.97 (SD=174.9) & 1587.19 (SD=112.9) & 1463.63 (SD=114.66) & 1358.95 (SD=106.46) & 1134.96 (SD=92.03) & 893.01 (SD=88.48) & 703.9 (SD=80.61) & 762.44 (SD=76.79)\\
-F3 & F & 3173.35 (SD=351.41) & 3270.07 (SD=136.69) & 2655.81 (SD=165.76) & 3077.56 (SD=168.89) & 2785.39 (SD=244.12) & 2754.6 (SD=265.82) & 2690.74 (SD=142.9) & 2743.12 (SD=140.38) & 2864.53 (SD=195.42) & 2910.92 (SD=180.43) & 2835.14 (SD=181.03)\\
- & M & 2946.54 (SD=152.43) & 2837.89 (SD=137.97) & 2364.8 (SD=131.58) & 2697.06 (SD=166.57) & 2491.89 (SD=185.15) & 2495.84 (SD=172.42) & 2370.48 (SD=172.29) & 2417.6 (SD=164.1) & 2638.12 (SD=215.24) & 2645.54 (SD=166.4) & 2567.77 (SD=151.27)\\
-\bottomrule
-\end{tabular}
-\end{table}
-\end{landscape}
-
-
-```{r SI-cue-values-long}
-# Keep code for reproducibility
-# d.cue.values.forTable <- d.cue.values %>%
-#   group_by(Quantity, Gender, category) %>%
-#   mutate(
-#     F0 = paste0(F0.mean, " (SD=", F0.sd, ")"),
-#     F1 = paste0(F1.mean, " (SD=", F1.sd, ")"),
-#     F2 = paste0(F2.mean, " (SD=", F2.sd, ")"),
-#     F3 = paste0(F3.mean, " (SD=", F3.sd, ")"),
-#     Duration = paste0(Duration.mean, " (SD=", Duration.sd, ")")) %>%
-#   ungroup() %>%
-#   select(-c(contains(c(".mean", ".sd")), Quantity)) %>%
-#   arrange(factor(category, levels = levels.vowel.IPA.swe))
-# 
-# d.cue.values.forTable %<>%
-#   pivot_longer(
-#     cols = c(starts_with("F"), "Duration"),
-#     names_to = "Cue",
-#     values_to = "Cue.Value") %>%
-#   pivot_wider(
-#     names_from = "category",
-#     values_from = "Cue.Value") %>%
-#   relocate("Gender", .after = Cue) %>%
-#   arrange(Cue) %>%
-#   mutate(
-#     Gender = ifelse(Gender == "female", "F", "M"),
-#     Cue = ifelse(row_number() %% 2 == 0, "", Cue))
-# 
-# kable(d.cue.values.forTable %>%
-#         select(Cue, Gender, contains(levels.vowel.IPA.swe.long)),
-#       format = "latex",
-#       booktabs = TRUE,
-#       caption = "The spectral and temporal properties of the long vowels (averaged across talkers, by gender)") %>%
-#   kable_styling(font_size = 6) %>%
-#   column_spec(1:2, width = ".7cm") %>%
-#   column_spec(3:13, width = "1.4cm")
-```
-
-\begin{landscape}
-
-\begin{table}
-
-\caption{\label{tab:SI-cue-values-short}The spectral and temporal properties of the short vowels (averaged across the female and male talkers)}
-\centering
-\fontsize{6}{8}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{.7cm}>{\raggedright\arraybackslash}p{.7cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}}
-\toprule
-Cue & Gender & `r linguisticsdown::cond_cmpl("[ɪ]")` & `r linguisticsdown::cond_cmpl("[ʏ]")` & `r linguisticsdown::cond_cmpl("[ɵ]")` & `r linguisticsdown::cond_cmpl("[ɛ]")` & `r linguisticsdown::cond_cmpl("[æ]")` & `r linguisticsdown::cond_cmpl("[ø]")` & `r linguisticsdown::cond_cmpl("[œ]")` & `r linguisticsdown::cond_cmpl("[a]")` & `r linguisticsdown::cond_cmpl("[ɔ]")` & `r linguisticsdown::cond_cmpl("[ʊ]")`\\
-\midrule
-Duration & F & 0.12 (SD=0.02) & 0.12 (SD=0.02) & 0.13 (SD=0.03) & 0.12 (SD=0.02) & 0.16 (SD=0.03) & 0.13 (SD=0.03) & 0.17 (SD=0.03) & 0.13 (SD=0.03) & 0.13 (SD=0.03) & 0.13 (SD=0.03)\\
- & M & 0.11 (SD=0.02) & 0.11 (SD=0.03) & 0.13 (SD=0.02) & 0.12 (SD=0.02) & 0.14 (SD=0.03) & 0.12 (SD=0.03) & 0.14 (SD=0.03) & 0.13 (SD=0.03) & 0.12 (SD=0.03) & 0.12 (SD=0.03)\\
-F0 & F & 216.61 (SD=NA) & 219.19 (SD=29.02) & 216.44 (SD=31.66) & 210.79 (SD=27.89) & 202.46 (SD=28.44) & 211.95 (SD=28.48) & 204.68 (SD=29.17) & 205.66 (SD=28.99) & 211.46 (SD=30.03) & 224.54 (SD=28.62)\\
- & M & 131.12 (SD=20.59) & 132.02 (SD=22.6) & 131.06 (SD=20.07) & 121.65 (SD=NA) & 122.6 (SD=37.4) & 128.09 (SD=33.82) & 126.12 (SD=29.65) & 117.64 (SD=NA) & 126.47 (SD=NA) & 131.03 (SD=19.12)\\
-F1 & F & 380.91 (SD=38.71) & 383.73 (SD=37.34) & 422.14 (SD=37.68) & 627.89 (SD=70.76) & 801.77 (SD=97.71) & 569.1 (SD=63.26) & 533.26 (SD=55.52) & 796.35 (SD=101.31) & 500.55 (SD=53.01) & 418.77 (SD=37.08)\\
-\addlinespace
- & M & 332.8 (SD=28.49) & 337.95 (SD=29.57) & 387.37 (SD=31.06) & 555.36 (SD=47.99) & 722.32 (SD=59.41) & 504.93 (SD=39.4) & 505.32 (SD=38.18) & 690.47 (SD=54.28) & 471.87 (SD=31.94) & 375.94 (SD=26.94)\\
-F2 & F & 2526.8 (SD=283.27) & 2372.74 (SD=152.56) & 1322.19 (SD=112.94) & 1961.78 (SD=179.47) & 1762.92 (SD=141.77) & 1666.89 (SD=110.52) & 1399.73 (SD=151.46) & 1367.24 (SD=98.14) & 932.73 (SD=95.5) & 854.43 (SD=109.58)\\
- & M & 2257.6 (SD=149.07) & 2030.22 (SD=124.31) & 1162.53 (SD=95.09) & 1714 (SD=123.35) & 1510.17 (SD=116.33) & 1432.82 (SD=144.94) & 1190.35 (SD=82.51) & 1139.67 (SD=92.26) & 782.81 (SD=80.04) & 774.96 (SD=81.75)\\
-F3 & F & 3085.16 (SD=168.28) & 2798.4 (SD=160.74) & 2781.55 (SD=188.02) & 2760.26 (SD=248.05) & 2810.87 (SD=260.86) & 2706.12 (SD=155.43) & 2781.02 (SD=171.5) & 2850.9 (SD=259.87) & 3022.98 (SD=190.97) & 2939.17 (SD=182.25)\\
- & M & 2772.45 (SD=180.21) & 2479.21 (SD=128.84) & 2459.57 (SD=148.01) & 2522.15 (SD=154.8) & 2545.13 (SD=165.44) & 2424.64 (SD=134.98) & 2470.4 (SD=165.12) & 2659.06 (SD=204.29) & 2716.22 (SD=182.89) & 2596.2 (SD=158)\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\end{landscape}
-
-
-```{r SI-cue-values-short}
-# Keep code for reproducibility
-#For each cue, the highest and lowest mean and SD should be boldfaced.
-# kable(d.cue.values.forTable %>%
-#         select(Cue, Gender, contains(levels.vowel.IPA.swe.short)),
-#       format = "latex",
-#       booktabs = TRUE,
-#       caption = "The spectral and temporal properties of the short vowels (averaged across the female and male talkers)") %>%
-#   kable_styling(font_size = 6) %>%
-#   column_spec(1:2, width = ".7cm") %>%
-#   column_spec(3:12, width = "1.4cm")
-```
-```{r}
-# itsadug::plot_smooth(m.F3.short, view = "timepoint", plot_all = "category")
-# itsadug::plot_smooth(m.F3.long, view = "timepoint", plot_all = "category")
-#itsadug::plot_diff(m.F3.long, view = "timepoint", comp = list(category = c("[yː]", "[iː]")))
-```
-
-### Cue matrix plot in unnormalized Hertz {#sec:SI-raw}
-Figure \@ref(fig:SI-swe-vowels-all-cues-hz) displays the pairwise combinations of the five spectral and temporal cues---F0, F1, F2, F3 and duration---in raw Hertz. For F0, there are two overlapping but separated peaks, reflecting the overall difference in vocal tract size for the two groups of female and male talkers in the database.
-
-(ref:SI-swe-vowels-all-cues-hz) The SwehVd vowels in unnormalized Hertz space. Points show recordings of each of the 21 Central Swedish vowels by the talkers in the database in all five cue spaces, averaged across the three midpoints. Vowel labels indicate vowel means across talkers. Ellipses show bivariate Gaussian 95% confidence interval of vowel means. Note that, unlike in Figure \@ref(fig:swe-vowels), axis directions are not reversed. Vowels that mismatched the intended label are excluded (`r signif((d.SwehVd %>% filter(Transcribed_vowel != "targeted") %>% nrow() / d.SwehVd %>% nrow()) * 100)`% of all recordings).
-
-```{r SI-swe-vowels-all-cues-hz, fig.width=base.width*4+.5, fig.height=base.height*4+.5, out.width = '100%', fig.align='center', fig.cap="(ref:SI-swe-vowels-all-cues-hz)"}
-p.matrix.cues %+%
-  (d.SwehVd.forStudy.long.static %>%
-     filter(Normalization.Type == "no normalization (Hz)", F0 < 320))
-```
-
-### Summary tables of LMMs predicting category separability from cue space {#sec:SI-LMMs-study1}
-#### Investigating separability in rounded vs. unrounded neighboring categories
-
-\begin{table}
-\caption{LMMs predicting category separability from cue space}
-\centering
-\begin{tabular}[t]{lccc}
-\addlinespace[0.5em]
-\toprule
-\multicolumn{4}{l}{\textit{unrounded vs. outrounded}}\\
-\midrule
-& `r linguisticsdown::cond_cmpl("[iː]")` vs. `r linguisticsdown::cond_cmpl("[yː]")` & `r linguisticsdown::cond_cmpl("[eː]")` vs. `r linguisticsdown::cond_cmpl("[yː]")` & `r linguisticsdown::cond_cmpl("[ɪ]")` vs. `r linguisticsdown::cond_cmpl("[ʏ]")`\\
-\midrule \hspace{1em}(Intercept) & 0.089 & 0.322 & 0.146\\
-\hspace{1em} & se = 0.006 & se = 0.014 & se = 0.011\\
-\hspace{1em} & t-value = 14.891 & t-value = 23.742 & t-value = 13.400\\
-\hspace{1em} & p.value = <0.001 & p.value = <0.001 & p.value = \vphantom{3} <0.001\\
-\hspace{1em} cue space F1F2F3 & 0.013 & 0.007 & 0.015\\
-\hspace{1em} & se = 0.003 & se = 0.001 & se = 0.001\\
-\hspace{1em} & t-value = 3.765 & t-value = 11.120 & t-value = 16.460\\
-\hspace{1em} & p.value = <0.001 & p.value = <0.001 & p.value = \vphantom{2} <0.001\\
-\hspace{1em}SD (Intercept Talker) & 0.033 & 0.082 & 0.066\\
-\hspace{1em}SD (Observations) & 0.021 & 0.004 & 0.005\\
-\addlinespace[0.5em]
-\toprule
-\multicolumn{4}{l}{\textit{outrounded vs. inrounded}}\\
-\midrule
-& `r linguisticsdown::cond_cmpl("[yː]")` vs. `r linguisticsdown::cond_cmpl("[ʉː]")` & `r linguisticsdown::cond_cmpl("[oː]")` vs. `r linguisticsdown::cond_cmpl("[uː]")` & `r linguisticsdown::cond_cmpl("[ɔ]")` vs. `r linguisticsdown::cond_cmpl("[ʊ]")`\\
-\midrule \hspace{1em}(Intercept) & 0.187 & 0.195 & 0.245\\
-\hspace{1em} & se = 0.014 & se = 0.012 & se = 0.013\\
-\hspace{1em} & t-value = 12.916 & t-value = 16.089 & t-value = 18.506\\
-\hspace{1em} & p.value = <0.001 & p.value = <0.001 & p.value = \vphantom{1} <0.001\\
-\hspace{1em} cue space F1F2F3 & 0.046 & 0.004 & 0.005\\
-\hspace{1em} & se = 0.002 & se = 0.000 & se = 0.001\\
-\hspace{1em} & t-value = 18.642 & t-value = 16.049 & t-value = 8.546\\
-\hspace{1em} & p.value = <0.001 & p.value = <0.001 & p.value = <0.001\\
-\hspace{1em}SD (Intercept Talker) & 0.087 & 0.074 & 0.079\\
-\hspace{1em}SD (Observations) & 0.015 & 0.002 & 0.004\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-```{r}
-#panels <- list(
-#  "long vs. short" = list("A" = m.sep.I, "B" = m.sep.Y, "C" = m.sep.U, "D" = m.sep.E, "E" = m.sep.Ä, "F" = m.sep.ÄR),
-#  "long vs. short" = list("G" = m.sep.Ö, "H" = m.sep.ÖR, "I" = m.sep.A, "J" = m.sep.Å, "K" = m.sep.O))
-#modelsummary::modelsummary(panels, output = "latex", title = "LMM predicting category separability from cue space for all long-short contrasts", estimate = "{estimate}", statistic = c("se = {std.error}", "t-value = {statistic}", "p.value = {p.value}"), shape = "rbind", gof_map = NA)
-rm(m.sep.IIYY, m.sep.EEYY, m.sep.IY, m.sep.YYUU, m.sep.ÅÅOO, m.sep.ÅO)
-```
-
-#### Investigating separability in long vs. short categories
-
-\begin{landscape}
-\begin{table}
-\tiny
-\caption{LMMs predicting category separability from cue space for all long-short contrasts}
-\centering
-\begin{tabular}[t]{lcccccc}
-\toprule
-  & `r linguisticsdown::cond_cmpl("[iː]")` vs. `r linguisticsdown::cond_cmpl("[ɪ]")` & `r linguisticsdown::cond_cmpl("[yː]")` vs. `r linguisticsdown::cond_cmpl("[ʏ]")` & `r linguisticsdown::cond_cmpl("[ʉː]")` vs. `r linguisticsdown::cond_cmpl("[ɵ]")` & `r linguisticsdown::cond_cmpl("[eː]")` vs. `r linguisticsdown::cond_cmpl("[ɛ]")` & `r linguisticsdown::cond_cmpl("[ɛː]")` vs. `r linguisticsdown::cond_cmpl("[ɛ]")` & `r linguisticsdown::cond_cmpl("[æː]")` vs. `r linguisticsdown::cond_cmpl("[æ]")`\\
-\midrule
-\addlinespace[0.5em]
-\multicolumn{6}{l}{\textit{long vs. short}}\\
-\midrule \hspace{1em}(Intercept) & 0.234 & 0.201 & 0.347 & 0.467 & 0.239 & 0.112 \\
-\hspace{1em} & se = 0.012 & se = 0.010 & se = 0.013 & se = 0.018 & se = 0.016 & se = 0.013 \\
-\hspace{1em} & t-value = 19.250 & t-value = 20.798 & t-value = 25.758 & t-value = 26.667 & t-value = 15.358 & t-value = 8.398 \\
-\hspace{1em} & p.value = <0.001 & p.value = <0.001 & p.value = <0.001 & p.value = <0.001 & p.value = <0.001 & p.value = <0.001\\
-\hspace{1em} cue space F1F3 & -0.102 & -0.007 & -0.195 & -0.055 & -0.010 & 0.002 \\
-\hspace{1em} & se = 0.008 & se = 0.006 & se = 0.005 & se = 0.007 & se = 0.005 & se = 0.006 \vphantom{2} \\
-\hspace{1em} & t-value = -13.259 & t-value = -1.132 & t-value = -37.105 & t-value = -7.617 & t-value = -2.011 & t-value = 0.410  \\
-\hspace{1em} & p.value = <0.001 & p.value = 0.258 & p.value = <0.001 & p.value = <0.001 & p.value = 0.045 & p.value = 0.682  \\
-\hspace{1em} cue space F2F3 & 0.000 & 0.023 & -0.024 & -0.202 & -0.129 & -0.014  \\
-\hspace{1em} & se = 0.008 & se = 0.006 & se = 0.005 & se = 0.007 & se = 0.005 & se = 0.006 \vphantom{1}  \\
-\hspace{1em} & t-value = 0.039 & t-value = 3.720 & t-value = -4.488 & t-value = -27.827 & t-value = -25.714 & t-value = -2.560 \\
-\hspace{1em} & p.value = 0.969 & p.value = <0.001 & p.value = <0.001 & p.value = <0.001 & p.value = <0.001 & p.value = 0.011  \\
-\hspace{1em} cue space F1F2F3 & 0.012 & 0.025 & 0.006 & 0.015 & 0.006 & 0.010  \\
-\hspace{1em} & se = 0.008 & se = 0.006 & se = 0.005 & se = 0.007 & se = 0.005 & se = 0.006 \\
-\hspace{1em} & t-value = 1.619 & t-value = 4.122 & t-value = 1.062 & t-value = 2.052 & t-value = 1.114 & t-value = 1.874 \\
-\hspace{1em} & p.value = 0.107 & p.value = <0.001 & p.value = 0.289 & p.value = 0.041 & p.value = 0.266 & p.value = 0.062 \\
-\hspace{1em}SD (Intercept Talker) & 0.066 & 0.052 & 0.079 & 0.102 & 0.092 & 0.078  \\
-\hspace{1em}SD (Observations) & 0.047 & 0.038 & 0.032 & 0.044 & 0.031 & 0.033  \\
-\addlinespace[0.5em]
-\toprule
-  & `r linguisticsdown::cond_cmpl("[øː]")` vs. `r linguisticsdown::cond_cmpl("[ø]")` & `r linguisticsdown::cond_cmpl("[œː]")` vs. `r linguisticsdown::cond_cmpl("[œ]")` & `r linguisticsdown::cond_cmpl("[ɑː]")` vs. `r linguisticsdown::cond_cmpl("[a]")` & `r linguisticsdown::cond_cmpl("[oː]")` vs. `r linguisticsdown::cond_cmpl("[ɔ]")` & `r linguisticsdown::cond_cmpl("[uː]")` vs. `r linguisticsdown::cond_cmpl("[ʊ]")` & \\
-\multicolumn{6}{l}{\textit{long vs. short }}\\
-\midrule \hspace{1em}(Intercept) & 0.151 & 0.168 & 0.328 & 0.261 & 0.143 & \\
-\hspace{1em} & se = 0.011 & se = 0.012 & se = 0.012 & se = 0.015 & se = 0.009 & \\
-\hspace{1em} & t-value = 13.918 & t-value = 13.942 & t-value = 26.696 & t-value = 17.341 & t-value = 15.995 & \\
-\hspace{1em} & p.value = <0.001 & p.value = <0.001 & p.value = <0.001 & p.value = <0.001 & p.value = \vphantom{2} <0.001 & \\
-\hspace{1em} cue space F1F3 &  -0.021 & -0.029 & -0.134 & -0.097 & -0.046 & \\
-\hspace{1em} & se = 0.004 & se = 0.007 & se = 0.007 & se = 0.006 & se = \vphantom{2} 0.005 & \\
-\hspace{1em} & t-value = -4.841 & t-value = -4.055 & t-value = -20.347 & t-value = -15.011 & t-value = -9.606 & \\
-\hspace{1em} & p.value = <0.001 & p.value = <0.001 & p.value = <0.001 & p.value = <0.001 & p.value = \vphantom{1} <0.001 & \\
-\hspace{1em} cue space F2F3 & -0.051 & -0.064 & -0.046 & -0.048 & -0.019 & \\
-\hspace{1em} &  se = 0.004 & se = 0.007 & se = 0.007 & se = 0.006 & se = \vphantom{1} 0.005 & \\
-\hspace{1em} &  t-value = -12.042 & t-value = -9.055 & t-value = -6.968 & t-value = -7.447 & t-value = -3.907 & \\
-\hspace{1em} & p.value = <0.001 & p.value = <0.001 & p.value = <0.001 & p.value = <0.001 & p.value = <0.001 & \\
-\hspace{1em} cue space F1F2F3 &  0.003 & 0.003 & 0.008 & 0.004 & 0.004 & \\
-\hspace{1em} & se = 0.004 & se = 0.007 & se = 0.007 & se = 0.006 & se = 0.005 & \\
-\hspace{1em} & t-value = 0.673 & t-value = 0.401 & t-value = 1.233 & t-value = 0.639 & t-value = 0.747 & \\
-\hspace{1em} & p.value = 0.501 & p.value = 0.689 & p.value = 0.219 & p.value = 0.524 & p.value = 0.456 & \\
-\hspace{1em}SD (Intercept Talker) &  0.063 & 0.067 & 0.069 & 0.087 & 0.049 & \\
-\hspace{1em}SD (Observations) &  0.026 & 0.043 & 0.040 & 0.039 & 0.029 & \\
-\bottomrule
-\end{tabular}
-\end{table}
-\end{landscape}
-
-```{r}
-rm(m.sep.I, m.sep.Y, m.sep.U, m.sep.E, m.sep.Ä, m.sep.ÄR, m.sep.Ö, m.sep.ÖR, m.sep.A, m.sep.Å, m.sep.O)
-```
-
-### Summary tables of GAMMs {#sec:SI-GAMMs}
-#### Summary tables of GAMMs fit to the long and short vowels separately
-
-\begin{table}[ht]
-\tiny
-\caption{\label{tab:m-F1-long}Model summary, coefficients for parametric and smooth terms for the long vowels predicting F1} 
-\centering
-\begin{tabular}{lrrrr}
-   \hline
-A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & -1.2581 & 0.0159 & -79.0431 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[yː]")` & -0.0410 & 0.0166 & -2.4782 & 0.0132 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʉː]")` & 0.0454 & 0.0166 & 2.7418 & 0.0061 \\ 
-  category `r linguisticsdown::cond_cmpl("[eː]")` & 0.1810 & 0.0166 & 10.8980 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɛː]")` & 0.7493 & 0.0166 & 45.2124 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[æː]")` & 0.8133 & 0.0166 & 49.0231 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[øː]")` & 0.5389 & 0.0166 & 32.5344 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[œː]")` & 0.5220 & 0.0166 & 31.4725 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɑː]")` & 0.5850 & 0.0166 & 35.3320 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[oː]")` & 0.2198 & 0.0166 & 13.2789 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[uː]")` & 0.0858 & 0.0166 & 5.1835 & $<$ 0.0001 \\ 
-  Gendermale & -0.0142 & 0.0167 & -0.8495 & 0.3956 \\ 
-   \hline
-B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[iː]")` & 2.8856 & 3.3983 & 52.6776 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[yː]")` & 3.0461 & 3.5407 & 64.8624 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʉː]")` & 3.4079 & 3.8058 & 164.6939 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[eː]")` & 3.9019 & 3.9941 & 918.8075 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛː]")` & 1.8295 & 2.2580 & 6.6087 & 0.0008 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[æː]")` & 3.3166 & 3.7478 & 141.2550 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[øː]")` & 1.7378 & 2.1458 & 1.3180 & 0.2552 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[œː]")` & 2.2780 & 2.7653 & 38.5201 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɑː]")` & 2.5634 & 3.0739 & 61.2729 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[oː]")` & 3.8050 & 3.9767 & 488.1183 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[uː]")` & 2.8050 & 3.3178 & 101.1087 & $<$ 0.0001 \\ 
-  s(Talker) & 28.7164 & 35.0000 & 3779.7286 & $<$ 0.0001 \\ 
-  s(Talker,category) & 353.3604 & 395.0000 & 109.3719 & 0.0002 \\ 
-   \hline
-\end{tabular}
-\label{tab:m.F1.long}
-\end{table}
-
-\begin{table}[ht]
-\tiny
-\caption{\label{tab:m-F1-short}Model summary, coefficients for parametric and smooth terms for the short vowels predicting F1} 
-\centering
-\begin{tabular}{lrrrr}
-   \hline
-A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & -1.2335 & 0.0126 & -98.1559 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʏ]")` & 0.0101 & 0.0142 & 0.7100 & 0.4777 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɵ]")` & 0.1274 & 0.0142 & 8.9893 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɛ]")` & 0.4967 & 0.0142 & 35.0469 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[æ]")` & 0.7474 & 0.0142 & 52.7173 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ø]")` & 0.3992 & 0.0142 & 28.1755 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[œ]")` & 0.3711 & 0.0142 & 26.1868 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[a]")` & 0.7210 & 0.0142 & 50.8841 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɔ]")` & 0.3046 & 0.0142 & 21.4895 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʊ]")` & 0.1076 & 0.0143 & 7.5308 & $<$ 0.0001 \\ 
-  Gendermale & 0.0025 & 0.0121 & 0.2091 & 0.8344 \\ 
-   \hline
-B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɪ]")` & 2.4152 & 2.9251 & 3.3502 & 0.0170 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʏ]")` & 1.4273 & 1.7313 & 10.1807 & 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɵ]")` & 2.6009 & 3.1132 & 38.2396 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛ]")` & 3.4659 & 3.8422 & 56.9238 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[æ]")` & 3.1236 & 3.6073 & 236.0249 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ø]")` & 3.4074 & 3.8075 & 128.3129 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[œ]")` & 2.3960 & 2.8972 & 87.0197 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[a]")` & 3.4736 & 3.8445 & 216.8702 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɔ]")` & 3.0735 & 3.5601 & 78.3766 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʊ]")` & 2.0436 & 2.5004 & 60.2633 & $<$ 0.0001 \\ 
-  s(Talker) & 25.3514 & 35.0000 & 1875.6404 & $<$ 0.0001 \\ 
-  s(Talker,category) & 322.0419 & 358.0000 & 92.5488 & 0.0026 \\ 
-   \hline
-\end{tabular}
-\label{tab:m.F1.short}
-\end{table}
-
-\begin{table}[ht]
-\tiny
-\caption{\label{tab:m-F2-long}Model summary, coefficients for parametric and smooth terms for the long vowels predicting F2} 
-\centering
-\begin{tabular}{lrrrr}
-   \hline
-A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & 0.4742 & 0.0137 & 34.7130 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[yː]")` & -0.0338 & 0.0176 & -1.9258 & 0.0541 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʉː]")` & -0.1644 & 0.0176 & -9.3682 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[eː]")` & 0.1199 & 0.0176 & 6.8147 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɛː]")` & -0.1644 & 0.0176 & -9.3546 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[æː]")` & -0.2471 & 0.0176 & -14.0522 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[øː]")` & -0.3212 & 0.0176 & -18.2899 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[œː]")` & -0.4971 & 0.0176 & -28.2797 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɑː]")` & -0.7161 & 0.0176 & -40.7916 & $<$ 0.0001 \\ 
-  category  `r linguisticsdown::cond_cmpl("[oː]")` & -1.0056 & 0.0176 & -57.2904 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[uː]")` & -0.9430 & 0.0176 & -53.7071 & $<$ 0.0001 \\ 
-  Gendermale & 0.0161 & 0.0101 & 1.5969 & 0.1103 \\ 
-   \hline
-B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[iː]")` & 1.0003 & 1.0005 & 22.2720 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[yː]")` & 1.5741 & 1.9335 & 21.0899 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʉː]")` & 2.3265 & 2.8190 & 133.2084 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[eː]")` & 3.7803 & 3.9714 & 429.7569 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛː]")` & 2.8318 & 3.3529 & 87.1532 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[æː]")` & 2.7837 & 3.3018 & 15.8658 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[øː]")` & 2.2627 & 2.7569 & 86.7410 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[œː]")` & 3.5816 & 3.8977 & 83.4778 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɑː]")` & 3.4386 & 3.8224 & 22.2069 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[oː]")` & 3.9535 & 3.9986 & 2519.5558 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[uː]")` & 3.9267 & 3.9966 & 365.2221 & $<$ 0.0001 \\ 
-  s(Talker) & 15.4601 & 35.0000 & 588.8598 & 0.0017 \\ 
-  s(Talker,category) & 369.1515 & 395.0000 & 100.5594 & $<$ 0.0001 \\ 
-   \hline
-\end{tabular}
-\label{tab:m.F2.long}
-\end{table}
-
-\begin{table}[ht]
-\tiny
-\caption{\label{tab:m-F2-short}Model summary, coefficients for parametric and smooth terms for the short vowels predicting F2} 
-\centering
-\begin{tabular}{lrrrr}
-   \hline
-A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & 0.6721 & 0.0134 & 50.0539 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʏ]")` & -0.0800 & 0.0162 & -4.9291 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɵ]")` & -0.6523 & 0.0162 & -40.2068 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɛ]")` & -0.2621 & 0.0162 & -16.1587 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[æ]")` & -0.3787 & 0.0162 & -23.3375 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ø]")` & -0.4274 & 0.0162 & -26.3507 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[œ]")` & -0.6088 & 0.0162 & -37.5217 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[a]")` & -0.6393 & 0.0162 & -39.4102 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɔ]")` & -1.0180 & 0.0162 & -62.7457 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʊ]")` & -1.0781 & 0.0163 & -65.9478 & $<$ 0.0001 \\ 
-  Gendermale & -0.0241 & 0.0116 & -2.0753 & 0.0380 \\ 
-   \hline
-B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɪ]")` & 3.4002 & 3.8027 & 10.0722 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʏ]")` & 2.5987 & 3.1206 & 12.0595 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɵ]")` & 3.4117 & 3.8067 & 156.8285 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛ]")` & 1.0026 & 1.0052 & 353.1813 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[æ]")` & 2.3543 & 2.8579 & 47.3045 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ø]")` & 1.3078 & 1.5495 & 27.2700 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[œ]")` & 3.2909 & 3.7292 & 213.0158 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[a]")` & 1.9059 & 2.3453 & 46.6220 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɔ]")` & 3.6323 & 3.9203 & 129.6893 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʊ]")` & 3.7892 & 3.9729 & 610.5709 & $<$ 0.0001 \\ 
-  s(Talker) & 21.1938 & 35.0000 & 1891.3787 & $<$ 0.0001 \\ 
-  s(Talker,category) & 329.2584 & 358.0000 & 154.7962 & 0.0002 \\ 
-   \hline
-\end{tabular}
-\label{tab:m.F2.short}
-\end{table}
-
-\begin{table}[ht]
-\tiny
-\caption{\label{tab:m-F3-long}Model summary, coefficients for parametric and smooth terms for the long vowels predicting F3} 
-\centering
-\begin{tabular}{lrrrr}
-   \hline
-A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & 0.8996 & 0.0122 & 73.7840 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[yː]")` & 0.0005 & 0.0125 & 0.0426 & 0.9660 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʉː]")` & -0.1923 & 0.0125 & -15.3562 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[eː]")` & -0.0590 & 0.0126 & -4.7007 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɛː]")` & -0.1449 & 0.0125 & -11.5580 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[æː]")` & -0.1573 & 0.0125 & -12.5330 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[øː]")` & -0.1874 & 0.0125 & -14.9538 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[œː]")` & -0.1700 & 0.0125 & -13.5509 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɑː]")` & -0.0996 & 0.0125 & -7.9521 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[oː]")` & -0.0923 & 0.0125 & -7.3711 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[uː]")` & -0.1211 & 0.0125 & -9.6641 & $<$ 0.0001 \\ 
-  Gendermale & 0.0154 & 0.0130 & 1.1854 & 0.2359 \\ 
-   \hline
-B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[iː]")` & 2.4279 & 2.9330 & 10.4686 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[yː]")` & 2.7365 & 3.2555 & 6.7506 & 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʉː]")` & 3.1352 & 3.6129 & 15.1899 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[eː]")` & 3.6726 & 3.9380 & 99.6233 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛː]")` & 2.8323 & 3.3534 & 24.9016 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[æː]")` & 2.2217 & 2.7047 & 5.2104 & 0.0023 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[øː]")` & 3.0826 & 3.5737 & 33.1766 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[œː]")` & 2.4748 & 2.9806 & 10.1390 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɑː]")` & 1.0001 & 1.0001 & 18.3454 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[oː]")` & 3.0348 & 3.5276 & 14.8969 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[uː]")` & 2.7088 & 3.2230 & 16.3112 & $<$ 0.0001 \\ 
-  s(Talker) & 29.0128 & 35.0000 & 6274.0260 & $<$ 0.0001 \\ 
-  s(Talker,category) & 355.6026 & 395.0000 & 141.5340 & 0.0043 \\ 
-   \hline
-\end{tabular}
-\label{tab:m.F3.long}
-\end{table}
-
-\begin{table}[ht]
-\tiny
-\caption{\label{tab:m-F3-short}Model summary, coefficients for parametric and smooth terms for the short vowels predicting F3} 
-\centering
-\begin{tabular}{lrrrr}
-   \hline
-A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & 0.8579 & 0.0110 & 77.9231 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʏ]")` & -0.1016 & 0.0113 & -8.9679 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɵ]")` & -0.1138 & 0.0113 & -10.0402 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɛ]")` & -0.1044 & 0.0113 & -9.2127 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[æ]")` & -0.0923 & 0.0113 & -8.1404 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ø]")` & -0.1291 & 0.0113 & -11.3896 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[œ]")` & -0.1097 & 0.0113 & -9.6791 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[a]")` & -0.0588 & 0.0113 & -5.1861 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɔ]")` & -0.0164 & 0.0113 & -1.4453 & 0.1484 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʊ]")` & -0.0557 & 0.0114 & -4.8737 & $<$ 0.0001 \\ 
-  Gendermale & 0.0156 & 0.0118 & 1.3283 & 0.1841 \\ 
-   \hline
-B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɪ]")` & 2.5901 & 3.1111 & 43.6472 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʏ]")` & 2.1010 & 2.5750 & 4.3018 & 0.0075 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɵ]")` & 1.0001 & 1.0001 & 128.7993 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛ]")` & 2.5942 & 3.1188 & 7.2194 & 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[æ]")` & 3.1163 & 3.6015 & 11.2320 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ø]")` & 2.9107 & 3.4256 & 70.2035 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[œ]")` & 2.1632 & 2.6377 & 4.4842 & 0.0080 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[a]")` & 2.4978 & 3.0106 & 8.1591 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɔ]")` & 1.0001 & 1.0001 & 39.8252 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʊ]")` & 1.2430 & 1.4434 & 7.2389 & 0.0021 \\ 
-  s(Talker) & 28.4246 & 35.0000 & 3559.3982 & $<$ 0.0001 \\ 
-  s(Talker,category) & 318.8779 & 358.0000 & 99.0016 & 0.0106 \\ 
-   \hline
-\end{tabular}
-\label{tab:m.F3.short}
-\end{table}
-
-#### Summary tables of GAMMs fit to all 21 categories
- 
-\begin{table}[ht]
-\tiny
-\caption{\label{tab:m-F1-paired}Model summary, coefficients for parametric and smooth terms for all 21 vowels predicting F1} 
-\centering
-\begin{tabular}{lrrrr}
-   \hline
-A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & -1.2618 & 0.0142 & -89.1177 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɪ]")` & 0.0324 & 0.0157 & 2.0593 & 0.0395 \\ 
-  category `r linguisticsdown::cond_cmpl("[yː]")` & -0.0410 & 0.0157 & -2.6085 & 0.0091 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʏ]")` & 0.0426 & 0.0157 & 2.7044 & 0.0068 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʉː]")` & 0.0456 & 0.0157 & 2.8987 & 0.0037 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɵ]")` & 0.1600 & 0.0157 & 10.1678 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[eː]")` & 0.1794 & 0.0158 & 11.3701 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɛ]")` & 0.5294 & 0.0157 & 33.7688 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɛː]")` & 0.7494 & 0.0158 & 47.5815 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[æː]")` & 0.8138 & 0.0158 & 51.6221 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[æ]")` & 0.7805 & 0.0157 & 49.5770 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[øː]")` & 0.5390 & 0.0157 & 34.2376 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ø]")` & 0.4322 & 0.0157 & 27.4658 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[œː]")` & 0.5222 & 0.0158 & 33.1307 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[œ]")` & 0.4039 & 0.0157 & 25.6634 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɑː]")` & 0.5853 & 0.0157 & 37.1926 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[a]")` & 0.7541 & 0.0157 & 47.9239 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[oː]")` & 0.2189 & 0.0157 & 13.9132 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɔ]")` & 0.3373 & 0.0157 & 21.4318 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[uː]")` & 0.0861 & 0.0157 & 5.4716 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʊ]")` & 0.1406 & 0.0159 & 8.8655 & $<$ 0.0001 \\ 
-  Gendermale & -0.0063 & 0.0134 & -0.4692 & 0.6389 \\ 
-   \hline
-B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[iː]")` & 2.9699 & 3.4749 & 60.8984 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɪ]")` & 2.3196 & 2.8202 & 2.7657 & 0.0380 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[yː]")` & 3.1211 & 3.6026 & 75.2795 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʏ]")` & 1.2836 & 1.5107 & 9.6941 & 0.0003 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʉː]")` & 3.4823 & 3.8488 & 192.2389 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɵ]")` & 2.5131 & 3.0207 & 32.6885 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[eː]")` & 3.9160 & 3.9957 & 1083.5453 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛ]")` & 3.6352 & 3.9234 & 92.8670 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛː]")` & 2.0567 & 2.5243 & 7.0863 & 0.0003 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[æː]")` & 3.3827 & 3.7909 & 164.8723 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[æ]")` & 3.0379 & 3.5369 & 199.9285 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[øː]")` & 1.8388 & 2.2686 & 1.5376 & 0.1954 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ø]")` & 3.3342 & 3.7613 & 107.8693 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[œː]")` & 2.3894 & 2.8882 & 43.6960 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[œ]")` & 2.2966 & 2.7874 & 75.0532 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɑː]")` & 2.6751 & 3.1893 & 69.7824 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[a]")` & 3.3890 & 3.7948 & 182.4588 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[oː]")` & 3.8321 & 3.9826 & 575.2500 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɔ]")` & 2.9739 & 3.4744 & 66.6260 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[uː]")` & 2.9624 & 3.4643 & 114.3566 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʊ]")` & 1.9404 & 2.3813 & 52.5447 & $<$ 0.0001 \\ 
-  s(Talker) & 30.3648 & 35.0000 & 7129.7891 & $<$ 0.0001 \\ 
-  s(Talker,category) & 700.8765 & 754.0000 & 82.5811 & $<$ 0.0001 \\ 
-   \hline
-\end{tabular}
-\label{tab:m.F1.paired}
-\end{table}
-
-\begin{table}[ht]
-\tiny
-\caption{\label{tab:m-F2-paired}Model summary, coefficients for parametric and smooth terms for all 21 vowels predicting F2} 
-\centering
-\begin{tabular}{lrrrr}
-   \hline
-A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & 0.4831 & 0.0135 & 35.8530 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɪ]")` & 0.1793 & 0.0170 & 10.5309 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[yː]")` & -0.0338 & 0.0170 & -1.9831 & 0.0474 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʏ]")` & 0.0995 & 0.0170 & 5.8417 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʉː]")` & -0.1643 & 0.0170 & -9.6510 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɵ]")` & -0.4735 & 0.0170 & -27.8011 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[eː]")` & 0.1209 & 0.0171 & 7.0847 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[ɛ]")` & -0.0824 & 0.0170 & -4.8503 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɛː]")` & -0.1641 & 0.0170 & -9.6292 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[æː]")` & -0.2473 & 0.0171 & -14.5034 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[æ]")` & -0.1997 & 0.0170 & -11.7242 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[øː]")` & -0.3210 & 0.0170 & -18.8458 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ø]")` & -0.2480 & 0.0170 & -14.5610 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[œː]")` & -0.4977 & 0.0171 & -29.1877 & $<$ 0.0001 \\
-  category `r linguisticsdown::cond_cmpl("[œ]")` & -0.4302 & 0.0170 & -25.2542 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[ɑː]")` & -0.7165 & 0.0170 & -42.0672 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[a]")` & -0.4597 & 0.0170 & -26.9935 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[oː]")` & -1.0077 & 0.0170 & -59.1781 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɔ]")` & -0.8391 & 0.0170 & -49.2613 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[uː]")` & -0.9441 & 0.0170 & -55.4250 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[ʊ]")` & -0.9004 & 0.0172 & -52.4751 & $<$ 0.0001 \\
-  Gendermale & -0.0030 & 0.0097 & -0.3103 & 0.7563 \\ 
-   \hline
-B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[iː]")` & 1.0015 & 1.0029 & 25.5650 & $<$ 0.0001 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɪ]")` & 3.3221 & 3.7528 & 8.6397 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[yː]")` & 1.6674 & 2.0543 & 21.7906 & $<$ 0.0001 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʏ]")` & 2.5259 & 3.0445 & 10.5300 & $<$ 0.0001 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʉː]")` & 2.4654 & 2.9713 & 145.9897 & $<$ 0.0001 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɵ]")` & 3.3562 & 3.7716 & 135.6853 & $<$ 0.0001 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[eː]")` & 3.8051 & 3.9774 & 494.3527 & $<$ 0.0001 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛ]")` & 1.7680 & 2.1855 & 278.9595 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛː]")` & 2.9022 & 3.4184 & 98.6021 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[æː]")` & 2.8558 & 3.3707 & 17.9822 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[æ]")` & 2.2613 & 2.7546 & 42.0383 & $<$ 0.0001 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[øː]")` & 2.5127 & 3.0298 & 91.1535 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ø]")` & 1.1352 & 1.2570 & 29.5323 & $<$ 0.0001 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[œː]")` & 3.6238 & 3.9165 & 95.8035 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[œ]")` & 3.2293 & 3.6851 & 184.8442 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɑː]")` & 3.4899 & 3.8515 & 25.4819 & $<$ 0.0001 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[a]")` & 1.7816 & 2.1970 & 42.6025 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[oː]")` & 3.9594 & 3.9990 & 2902.3723 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɔ]")` & 3.5890 & 3.9014 & 111.6825 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[uː]")` & 3.9363 & 3.9974 & 420.6330 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʊ]")` & 3.7607 & 3.9653 & 524.5672 & $<$ 0.0001 \\ 
-  s(Talker) & 24.6716 & 35.0000 & 3703.0200 & $<$ 0.0001 \\ 
-  s(Talker,category) & 711.8453 & 754.0000 & 111.1971 & $<$ 0.0001 \\ 
-   \hline
-\end{tabular}
-\label{tab:m.F2.paired}
-\end{table}
-
-\begin{table}[ht]
-\tiny
-\caption{\label{tab:m-F3-paired}Model summary, coefficients for parametric and smooth terms for all 21 vowels predicting F3} 
-\centering
-\begin{tabular}{lrrrr}
-   \hline
-A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & 0.8994 & 0.0116 & 77.7339 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɪ]")` & -0.0413 & 0.0119 & -3.4809 & 0.0005 \\
-  category `r linguisticsdown::cond_cmpl("[yː]")` & 0.0007 & 0.0118 & 0.0576 & 0.9541 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʏ]")` & -0.1432 & 0.0119 & -12.0801 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʉː]")` & -0.1924 & 0.0118 & -16.2359 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɵ]")` & -0.1555 & 0.0119 & -13.1199 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[eː]")` & -0.0588 & 0.0119 & -4.9460 & $<$ 0.0001 \\
-  category `r linguisticsdown::cond_cmpl("[ɛ]")` & -0.1459 & 0.0118 & -12.3596 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɛː]")` & -0.1450 & 0.0119 & -12.2203 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[æː]")` & -0.1572 & 0.0119 & -13.2361 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[æ]")` & -0.1340 & 0.0119 & -11.2963 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[øː]")` & -0.1875 & 0.0119 & -15.8153 & $<$ 0.0001 \\
-  category `r linguisticsdown::cond_cmpl("[ø]")` & -0.1709 & 0.0119 & -14.4191 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[œː]")` & -0.1698 & 0.0119 & -14.3056 & $<$ 0.0001 \\
-  category `r linguisticsdown::cond_cmpl("[œ]")` & -0.1511 & 0.0119 & -12.7489 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[ɑː]")` & -0.0996 & 0.0119 & -8.4030 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[a]")` & -0.1003 & 0.0119 & -8.4656 & $<$ 0.0001 \\
-  category `r linguisticsdown::cond_cmpl("[oː]")` & -0.0921 & 0.0119 & -7.7723 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɔ]")` & -0.0580 & 0.0119 & -4.8932 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[uː]")` & -0.1210 & 0.0119 & -10.2044 & $<$ 0.0001 \\
-  category `r linguisticsdown::cond_cmpl("[ʊ]")` & -0.0974 & 0.0119 & -8.1535 & $<$ 0.0001 \\
-  Gendermale & 0.0155 & 0.0121 & 1.2866 & 0.1982 \\ 
-   \hline
-B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[iː]")` & 2.3877 & 2.8890 & 10.2860 & $<$ 0.0001 \\   
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɪ]")`  & 2.5706 & 3.0908 & 42.4087 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[yː]")` & 2.7213 & 3.2404 & 6.5528 & 0.0001 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʏ]")` & 2.0793 & 2.5501 & 4.1808 & 0.0088 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʉː]")` & 3.1212 & 3.6017 & 14.7398 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɵ]")` & 1.0007 & 1.0013 & 124.4234 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[eː]")` & 3.6630 & 3.9345 & 96.5489 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛ]")` & 3.0119 & 3.5168 & 12.8402 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛː]")` & 2.8123 & 3.3344 & 24.2192 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[æː]")` & 2.2083 & 2.6896 & 5.0740 & 0.0028 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[æ]")` & 3.0922 & 3.5819 & 10.8873 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[øː]")` & 3.0677 & 3.5614 & 32.2446 & $<$ 0.0001 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ø]")` & 2.8947 & 3.4110 & 68.1325 & $<$ 0.0001 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[œː]")` & 2.4586 & 2.9632 & 9.8438 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[œ]")` & 2.1449 & 2.6169 & 4.3514 & 0.0095 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɑː]")` & 1.0002 & 1.0003 & 17.7578 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[a]")` & 2.4811 & 2.9927 & 7.9447 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[oː]")` & 3.0203 & 3.5151 & 14.4622 & $<$ 0.0001 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɔ]")` & 1.0001 & 1.0003 & 38.5056 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[uː]")` & 2.6925 & 3.2065 & 15.8756 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʊ]")` & 1.2141 & 1.3948 & 7.2875 & 0.0023 \\ 
-  s(Talker) & 31.7596 & 35.0000 & 11782.6492 & $<$ 0.0001 \\ 
-  s(Talker,category) & 699.8265 & 754.0000 & 88.8884 & 0.0001 \\ 
-   \hline
-\end{tabular}
-\label{tab:m.F3.paired}
-\end{table}
-
-\begin{table}[ht]
-\tiny
-\caption{\label{tab:m-duration-paired}Model summary, coefficients for parametric and smooth terms for all 21 vowels predicting duration} 
-\centering
-\begin{tabular}{lrrrr}
-   \hline
-A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & 0.2247 & 0.0075 & 29.7842 & $<$ 0.0001 \\ 
-    category `r linguisticsdown::cond_cmpl("[ɪ]")` & -0.1035 & 0.0051 & -20.3505 & $<$ 0.0001 \\
-  category `r linguisticsdown::cond_cmpl("[yː]")` & 0.0147 & 0.0051 & 2.8873 & 0.0039 \\
-  category `r linguisticsdown::cond_cmpl("[ʏ]")` & -0.1047 & 0.0051 & -20.5962 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʉː]")` & 0.0124 & 0.0051 & 2.4408 & 0.0147 \\  
-  category `r linguisticsdown::cond_cmpl("[ɵ]")` & -0.0904 & 0.0051 & -17.7653 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[eː]")` & 0.0271 & 0.0051 & 5.3302 & $<$ 0.0001 \\
-  category `r linguisticsdown::cond_cmpl("[ɛ]")` & -0.0970 & 0.0051 & -19.1206 & $<$ 0.0001 \\
-  category `r linguisticsdown::cond_cmpl("[ɛː]")` & 0.0249 & 0.0051 & 4.8883 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[æː]")` & 0.0309 & 0.0051 & 6.0607 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[æ]")` & -0.0673 & 0.0051 & -13.2361 & $<$ 0.0001 \\
-  category `r linguisticsdown::cond_cmpl("[øː]")` & 0.0220 & 0.0051 & 4.3213 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ø]")` & -0.0954 & 0.0051 & -18.7537 & $<$ 0.0001 \\   
-  category `r linguisticsdown::cond_cmpl("[œː]")` & 0.0254 & 0.0051 & 4.9813 & $<$ 0.0001 \\
-  category `r linguisticsdown::cond_cmpl("[œ]")` & -0.0630 & 0.0051 & -12.3867 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɑː]")` & 0.0137 & 0.0051 & 2.6987 & 0.0070 \\  
-  category `r linguisticsdown::cond_cmpl("[a]")` & -0.0876 & 0.0051 & -17.2311 & $<$ 0.0001 \\
-  category `r linguisticsdown::cond_cmpl("[oː]")` & 0.0278 & 0.0051 & 5.4724 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[ɔ]")` & -0.0907 & 0.0051 & -17.8292 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[uː]")` & 0.0072 & 0.0051 & 1.4083 & 0.1590 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʊ]")` & -0.0898 & 0.0051 & -17.5237 & $<$ 0.0001 \\ 
-  Gendermale & -0.0158 & 0.0099 & -1.5985 & 0.1099 \\ 
-   \hline
-B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[iː]")` & 1.0003 & 1.0005 & 0.4070 & 0.5235 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɪ]")`  & 1.0001 & 1.0002 & 0.0001 & 0.9953 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[yː]")` & 1.0002 & 1.0003 & 0.3187 & 0.5725 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʏ]")` & 1.0001 & 1.0002 & 0.0123 & 0.9121 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʉː]")` & 1.0001 & 1.0002 & 2.3733 & 0.1234 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɵ]")` & 1.0001 & 1.0003 & 0.0859 & 0.7696 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[eː]")` & 1.0002 & 1.0004 & 0.0092 & 0.9244 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛ]")` & 1.0002 & 1.0005 & 0.5153 & 0.4730 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛː]")` & 1.0002 & 1.0004 & 1.0377 & 0.3084 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[æː]")` & 1.0001 & 1.0003 & 0.1511 & 0.6976 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[æ]")` & 1.0002 & 1.0003 & 0.0611 & 0.8052 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[øː]")` & 1.0001 & 1.0002 & 0.1833 & 0.6686 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ø]")` & 1.0002 & 1.0004 & 1.1941 & 0.2746 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[œː]")` & 1.0001 & 1.0003 & 0.2322 & 0.6300 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[œ]")` & 1.0001 & 1.0002 & 0.1012 & 0.7504 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɑː]")` & 1.0002 & 1.0004 & 0.4794 & 0.4888 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[a]")` & 1.0001 & 1.0002 & 0.1999 & 0.6549 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[oː]")` & 1.0001 & 1.0002 & 0.0503 & 0.8228 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɔ]")` & 1.0001 & 1.0002 & 0.0442 & 0.8337 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[uː]")` & 1.0004 & 1.0008 & 0.8059 & 0.3692 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʊ]")` & 1.0001 & 1.0002 & 0.0110 & 0.9169 \\ 
-  s(Talker) & 34.1047 & 35.0000 & 127803.3103 & $<$ 0.0001 \\ 
-  s(Talker,category) & 705.9825 & 754.0000 & 147.2948 & 0.0251 \\ 
-   \hline
-\end{tabular} 
-\label{tab:m.duration.paired}
-\end{table}
-
-#### Visualizations of GAMMs {#sec:SI-GAMMs-figs}
-
-(ref:SI-m-F1-paired) Fitted smooths of GAMM for predicting F1 and 95% confidence intervals for all vowel pairs. For visualization purposes, the pairs are split into high vowels (**left panel**), and lower-mid vowels (**right panel**).
-
-```{r SI-m-F1-paired, message=FALSE, fig.width=base.width*4, fig.height=base.height*1.5, fig.align='center', fig.cap="(ref:SI-m-F1-paired)"}
-par(mfrow=c(1,2))
-itsadug::plot_smooth(m.F1.paired, view = "timepoint", plot_all = "category", cond = list(category = c("[iː]", "[ɪ]", "[yː]", "[ʏ]", "[ʉː]", "[ɵ]", "[eː]", "[ɛ]", "[oː]", "[ɔ]", "[uː]", "[ʊ]")), col = c("#66C2A5", "#1B9E77", "#FC8D62", "#D95F02", "#8DA0CB", "#7570B3", "#FB9A99", "#E78AC3", "#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C"), print.summary = FALSE)
-itsadug::plot_smooth(m.F1.paired, view = "timepoint", plot_all = "category", cond = list(category = c("[ɛː]", "[æː]", "[æ]", "[øː]", "[ø]", "[œː]", "[œ]", "[ɑː]", "[a]")), col = c("#E7298A", "#A6D854", "#66A61E", "#FFD92F", "#E6AB02", "#E5C494", "#A6761D", "#B3B3B3", "#666666"), print.summary = FALSE)
-```
-
-(ref:SI-m-F2-paired) Fitted smooths of GAMM for predicting F2 and 95% confidence intervals for all vowel pairs. For visualization purposes, the pairs are split into high vowels (**left panel**), and lower-mid vowels (**right panel**).
-
-```{r SI-m-F2-paired, message=FALSE, fig.width=base.width*4, fig.height=base.height*1.5, fig.align='center', fig.cap="(ref:SI-m-F2-paired)"}
-par(mfrow=c(1,2))
-itsadug::plot_smooth(m.F2.paired, view = "timepoint", plot_all = "category", cond = list(category = c("[iː]", "[ɪ]", "[yː]", "[ʏ]", "[ʉː]", "[ɵ]", "[eː]", "[ɛ]", "[oː]", "[ɔ]", "[uː]", "[ʊ]")), col = c("#66C2A5", "#1B9E77", "#FC8D62", "#D95F02", "#8DA0CB", "#7570B3", "#FB9A99", "#E78AC3", "#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C"), print.summary = FALSE)
-itsadug::plot_smooth(m.F2.paired, view = "timepoint", plot_all = "category", cond = list(category = c("[ɛː]", "[æː]", "[æ]", "[øː]", "[ø]", "[œː]", "[œ]", "[ɑː]", "[a]")), col = c("#E7298A", "#A6D854", "#66A61E", "#FFD92F", "#E6AB02", "#E5C494", "#A6761D", "#B3B3B3", "#666666"), print.summary = FALSE)
-```
-
-(ref:SI-m-F3-paired) Fitted smooths of GAMM for predicting F3 and 95% confidence intervals for all vowel pairs. For visualization purposes, the pairs are split into high vowels (**left panel**), and lower-mid vowels (**right panel**).
-
-```{r SI-m-F3-paired, message=FALSE, fig.width=base.width*4, fig.height=base.height*1.5, fig.align='center', fig.cap="(ref:m-F3-paired)"}
-par(mfrow=c(1,2))
-itsadug::plot_smooth(m.F3.paired, view = "timepoint", plot_all = "category", cond = list(category = c("[iː]", "[ɪ]", "[yː]", "[ʏ]", "[ʉː]", "[ɵ]", "[eː]", "[ɛ]", "[oː]", "[ɔ]", "[uː]", "[ʊ]")), col = c("#66C2A5", "#1B9E77", "#FC8D62", "#D95F02", "#8DA0CB", "#7570B3", "#FB9A99", "#E78AC3", "#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C"), print.summary = FALSE)
-itsadug::plot_smooth(m.F3.paired, view = "timepoint", plot_all = "category", cond = list(category = c("[ɛː]", "[æː]", "[æ]", "[øː]", "[ø]", "[œː]", "[œ]", "[ɑː]", "[a]")), col = c("#E7298A", "#A6D854", "#66A61E", "#FFD92F", "#E6AB02", "#E5C494", "#A6761D", "#B3B3B3", "#666666"), print.summary = FALSE)
-```
-```{r}
-# Code kept for reproducibility
-#gamtabs(m.duration.paired, caption='Model summary, coefficients for parametric and smooth terms', label = "tab:m.duration.paired")
-rm(m.F1.paired, m.F2.paired, m.F3.paired, m.duration.paired)
-```
-
-## Additional information on Study 2 {#sec:SI-SweDia}
-
-### Wordlist used for recording of SweDia {#sec:SI-SweDia-wordlist}
-
-\begin{table}
-\caption{\label{tab:word-list}Words recorded by talkers of Central Swedish for the SweDia database}
-\centering
-\begin{tabular}[t]{c|c|c}
-\hline
-Vowel IPA&Target words&Comment\\
-\hline
-`r linguisticsdown::cond_cmpl("[æː]")`&lär&\\
-\hline
-`r linguisticsdown::cond_cmpl("[øː]")`&blöt&\\
-\hline
-&söt&\\
-\hline
-&lös&\\
-\hline
-`r linguisticsdown::cond_cmpl("[ɛː]")`&läs&missing for ym4 and yw4\\
-\hline
-&nät&\\
-\hline
-&väg&recorded by ym4 only\\
-\hline
-`r linguisticsdown::cond_cmpl("[uː]")`&sot&\\
-\hline
-`r linguisticsdown::cond_cmpl("[ʉː]")`&lus&\\
-\hline
-`r linguisticsdown::cond_cmpl("[yː]")`&typ&\\
-\hline
-`r linguisticsdown::cond_cmpl("[oː]")`&lås&\\
-\hline
-&låt&recorded by ym4 only\\
-\hline
-`r linguisticsdown::cond_cmpl("[eː]")`&leta&\\
-\hline
-&gles&recorded by ym4 and yw4 only\\
-\hline
-`r linguisticsdown::cond_cmpl("[œː]")`&dör&\\
-\hline
-`r linguisticsdown::cond_cmpl("[iː]")`&dis&\\
-\hline
-`r linguisticsdown::cond_cmpl("[ɑː]")`&lat&\\
-\hline
-&tak&recorded by ym4 and yw4 only\\
-\hline
-`r linguisticsdown::cond_cmpl("[ɪ]")`&sitt&\\
-\hline
-&disk&recorded by ym4 and yw4 only\\
-\hline
-&fisk&\\
-\hline
-`r linguisticsdown::cond_cmpl("[ɔ]")`&lott&\\
-\hline
-&såll&\\
-\hline
-`r linguisticsdown::cond_cmpl("[ʏ]")`&flytta&\\
-\hline
-&tysk&\\
-\hline
-&sytt&\\
-\hline
-`r linguisticsdown::cond_cmpl("[a]")`&lass&\\
-\hline
-&tack&recorded by ym4 only\\
-\hline
-`r linguisticsdown::cond_cmpl("[ɛ]")`&lätt&\\
-\hline
-&lett&\\
-\hline
-&vägg&recorded by ym4 only\\
-\hline
-`r linguisticsdown::cond_cmpl("[æ]")`&särk&recorded by ym4 and yw4 only\\
-\hline
-`r linguisticsdown::cond_cmpl("[ɵ]")`&ludd&\\
-\hline
-`r linguisticsdown::cond_cmpl("[œ]")`&dörr&\\
-\hline
-`r linguisticsdown::cond_cmpl("[ø]")`&blött&\\
-\hline
-`r linguisticsdown::cond_cmpl("[ʊ]")`&snott&\\
-\hline
-\end{tabular}
-\end{table}
-
-### Additional visualizations of the SweDia materials {#sec:SI-raw-Swedia}
-(ref:SI-raw-Swedia) The SweDia reference talkers' vowel data along F1-F2, in unnormalized Hertz (*left*) and Nearey's uniform scaling space (*right*). Points show the productions of each of the 21 Central Swedish vowels by the 8 (4 female) L1 reference talkers in the database. Vowel labels indicate vowel means across talkers. Vowels that mismatched intended label are excluded (`r signif((d.SwehVd %>% filter(Transcribed_vowel != "targeted") %>% nrow() / d.SwehVd %>% nrow()) * 100)`% of all recordings).
-
-```{r SI-raw-Swedia, fig.width=base.width*4.5, fig.height=base.height*3.5, out.width='90%', fig.align='center', fig.cap="(ref:SI-raw-Swedia)"}
-p %+%
-  (d.SweDia2000.forStudy.long %>%
-     filter(Normalization.Type %in% c("no normalization (Hz)", "Nearey's uniform scaling (log)"), F1 < 1000, timepoint %in% c(35, 50, 65)) %>%
-     # Get the geometric mean F1-F2 across the five time points
-     group_by(Normalization.Type, Talker, Gender, category, Token, Quantity) %>%
-     summarise(across(c(F1, F2, F3, Duration), ~ mean(.x))))
-```
-
-(ref:SI-Swedia-normalized) The SweDia reference talkers' vowel data in F1-F2 Nearey's uniform scaling space, separated by quantity. Ellipses show bivariate Gaussian 95% confidence interval of vowel means. Vowel labels indicate vowel means across female and male talkers.
-
-```{r SI-Swedia-normalized, fig.width=base.width*4.5, fig.height=base.height*2.5, fig.align='center', fig.cap="(ref:SI-Swedia-normalized)"}
-p.normalized %+%
-  (d.SweDia2000.forStudy.long %>%
-  filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(35, 50, 65)) %>%
-  # Get the geometric mean F1-F2 across the five time points
-  group_by(Normalization.Type, Talker, Gender, category, Token, Quantity) %>%
-  summarise(across(c(F1, F2, F3, Duration), ~ mean(.x))))
-```
-
-(ref:SI-swe-vowels-all-cues-nearey-swedia) The SweDia vowels in Nearey's uniform scaling space. Points show recordings of each of the 21 Central Swedish vowels by the talkers in the database in all five cue spaces, averaged across the three midpoints. Vowel labels indicate vowel means across talkers. Ellipses show bivariate Gaussian 95% confidence interval of vowel means. Note that, unlike in Figure \@ref(fig:swe-vowels), axis directions are not reversed. Vowels that mismatched the intended label are excluded (`r signif((d.SwehVd %>% filter(Transcribed_vowel != "targeted") %>% nrow() / d.SwehVd %>% nrow()) * 100)`% of all recordings).
-
-```{r SI-swe-vowels-all-cues-nearey-swedia, fig.width=base.width*4+.5, fig.height=base.height*4+.5, out.width = '100%', fig.align='center', fig.cap="(ref:SI-swe-vowels-all-cues-nearey-swedia)"}
-set.seed(63720472)
-
-p.matrix.cues %+%
-  (d.SweDia2000.forStudy.long %>%
-     filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(35, 50, 65)) %>%
-     # Get the geometric mean F1-F2 across the five time points
-     group_by(Normalization.Type, Talker, Gender, category, Token, Quantity) %>%
-     summarise(across(c(F0, F1, F2, F3, Duration), ~ mean(.x))) %>%
-     # For plotting reasons, randomly select 3 tokens of each category
-     group_by(Talker, category) %>%
-     slice_sample(n = 3))
-```
-
-(ref:trajectories-swedia) The trajectory of all vowels in the SweDia reference materials across the five time points, along F1-F2. The arrow indicates the direction of the trajectory and ends at 80% into the vowel. The vowel label is placed at the third time-point, at vowel mid-point (50%).
-
-```{r trajectories-swedia, fig.width=base.width*3.5, fig.height=base.height*2, out.width='90%', fig.align='center', fig.cap="(ref:trajectories-swedia)"}
-d.SweDia2000.forStudy.long %>%
-  filter(Normalization.Type == "Nearey's uniform scaling (log)") %>%
-  mutate(timepoint = as.character(timepoint)) %>%
-  group_by(Talker, category, timepoint, Quantity) %>%
-  summarise(across(c(F2, F1), ~mean(.x))) %>%
-  group_by(category, timepoint, Quantity) %>%
-  summarise(across(c(F2, F1), ~mean(.x))) %>%
-  ggplot(
-    aes(
-      x = F2,
-      y = F1,
-      color = category,
-      group = NULL)) +
-  geom_path(
-    alpha = .5,
-    arrow = arrow(ends = "last", type = "closed", angle = "22.5", length = unit(.1, "cm"))) +
-  geom_label(
-    data = . %>%
-      filter(timepoint == "50"),
-    mapping = aes(
-      colour = category,
-      label = category,
-      fontface = ifelse(category %in% levels.vowel.IPA.swe.long, 2, 1)),
-    alpha = .6,
-    size = 4,
-    label.size = NA,
-    label.padding = unit(.01, "cm")) +
-  # geom_point(
-  #   data = d.F2d %>%
-  #     #get the mean F1 F2 at 10% into d-closure across talkers
-  #     summarise(
-  #       F1 = mean(F1_closure),
-  #       F2 = mean(F2_closure)),
-  #   color = "black",
-  #   alpha = .6) +
-  scale_color_manual(name = "category", values = colors.vowel.swe) +
-  scale_x_reverse("F2", position = "top", scales::pretty_breaks(n = 6)) +
-  scale_y_reverse("F1", position = "right", scales::pretty_breaks(n = 6)) +
-  guides(color = "none") +
-  facet_wrap( ~ Quantity, labeller = label_wrap_gen(multi_line=FALSE))
-```
-
-### Sampling-with-replacement approach to op
-The two datasets were of unequal sample sizes: N = `r nrow(d.SwehVd %>% distinct(Talker, category, Token))` datapoints for SwehVd, and N = `r nrow(d.SweDia2000.forStudy %>% distinct(Talker, category, Token))` datapoints for SweDia. In order to address this imbalance, the SwehVd materials were down-sampled to approximate the size of the SweDia for the calculation of the $op$. The sampling-with-replacement procedure included 1000 bootstrapping rounds. At each round, a sample of 840 tokens from the SwehVd was extracted by first randomly selecting 8 talkers (4 female) from the database, and then randomly selecting 5 tokens per vowel from each talker, with replacement. The $op$ was calculated at each round, and finally averaged across the 1000 rounds for a comparison against the $op$ calculated for the SweDia materials.
-
-```{r}
-# Set seed for reproducibility
-set.seed(15497221)
-
-# Number of bootstrap rounds
-n_bootstrap_rounds <- 1000
-
-# Number of talkers to select in each round
-n_talkers_per_gender <- 4
-
-# Number of tokens to select in each round per category
-n_tokens_per_category <- 5
-
-# Create a function to perform downsampling and store values
-perform_bootstrap_round <- function(data) {
-  # Randomly select 4 female and 4 male talkers
-  selected_talkers <- data %>%
-    group_by(Gender) %>%
-    slice_sample(n = n_talkers_per_gender, replace = TRUE) %>%
-    ungroup()
-
-  # Randomly select 5 tokens per category
-  selected_tokens <- selected_talkers %>%
-    group_by(category) %>%
-    slice_sample(n = n_tokens_per_category, replace = TRUE) %>%
-    ungroup()
-
- # Extract and store the F1 and F2 values, category, and bootstrap round
-  values <- selected_tokens %>%
-    select(Talker, category, Word, F1, F2) %>%
-    mutate(bootstrap_round = cur_group_id()) %>%
-    as.data.frame()
-
-  return(values)
-}
-
-d.SwehVd.forStudy.opr <- d.SwehVd.forStudy.long.static %>%
-  filter(Normalization.Type == "Nearey's uniform scaling (log)")
-
-# Perform downsampling and bootstrap
-bootstrap_results <- map(
-  1:n_bootstrap_rounds,
-  ~ perform_bootstrap_round(d.SwehVd.forStudy.opr)
-)
-
-# Create a dataframe with bootstrap results in long format
-bootstrap_SwehVd <- bind_rows(bootstrap_results, .id = "bootstrap_round")
-```
-```{r}
-get_centroids <- . %>%
-  group_by(Talker, category) %>% 
-  # compute mean F1 and F2
-  summarise(cenF1 = mean(F1),
-            cenF2 = mean(F2)) %>%
-  # rearrange in columns
-  pivot_wider(names_from = category, 
-              values_from = c(cenF1, cenF2)) %>%
-  ungroup() %>%
-  left_join(bootstrap_SwehVd, by = "Talker") %>%
-  group_by(category) %>%
-  # for each row i.e. for each observation
-  rowwise() %>%
-  # calculate orth.proj.ratio
-  mutate(orth_proj = case_when(category == "[ʏ]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[ɑː]`, `cenF2_[ɑː]`), c(`cenF1_[ɪ]`, `cenF2_[ɪ]`)),
-                               category == "[ʉː]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[ɪ]`, `cenF2_[ɪ]`), c(`cenF1_[oː]`, `cenF2_[oː]`)),
-                               category == "[ɛː]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[eː]`, `cenF2_[eː]`), c(`cenF1_[æː]`, `cenF2_[æː]`)),
-                               category == "[øː]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[eː]`, `cenF2_[eː]`), c(`cenF1_[ɑː]`, `cenF2_[ɑː]`)),
-                               category == "[œ]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[ɵ]`, `cenF2_[ɵ]`), c(`cenF1_[œː]`, `cenF2_[œː]`)),
-                               category == "[ɔ]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[ɑː]`, `cenF2_[ɑː]`), c(`cenF1_[oː]`, `cenF2_[oː]`)),
-                               TRUE ~ NA))
-
-d.SwehVd.opr <-
-  bootstrap_SwehVd %>% 
-  # choose the anchor vowels
-  filter(category %in% c("[ɪ]", "[ʏ]", "[yː]", "[ɵ]", "[eː]", "[ɛː]", "[æː]", "[œː]", "[œ]", "[ɑː]", "[oː]", "[øː]", "[ʉː]", "[ɔ]")) %>% 
-  group_by(bootstrap_round) %>%
-  get_centroids() %>%  
-  # Then summarise across all bootstrap rounds
-  group_by(category, F1, F2, Talker) %>%
-  summarise(orth_proj = mean(orth_proj, na.rm = T))
-```
-
-### Summary tables for LMMs fit to orthogonal projection ratio {#sec:SI-LMMs}
-
-\begin{table}
-
-\caption{LMM predicting orthogonal projection ratio from database}
-\centering
-\begin{tabular}[t]{lcccc}
-\toprule
-  & `r linguisticsdown::cond_cmpl("[ʏ]")` & `r linguisticsdown::cond_cmpl("[ʉː]")` & `r linguisticsdown::cond_cmpl("[ɛː]")` & `r linguisticsdown::cond_cmpl("[øː]")`\\
-\addlinespace[0.5em]
-\multicolumn{5}{l}{\textit{}}\\
-\midrule \hspace{1em}(Intercept) & 0.670 & -0.555 & 0.440 & 0.017\\
-\hspace{1em} & se = 0.068 & se = 0.056 & se = 0.078 & se = 0.057\\
-\hspace{1em} & t-value = 9.881 & t-value = -9.896 & t-value = 5.651 & t-value = 0.294\\
-\hspace{1em} & p.value = <0.001 & p.value = <0.001 & p.value = <0.001 & p.value = 0.769\\
-\hspace{1em} SwehVd & 0.189 & 0.115 & 0.283 & 0.204\\
-\hspace{1em} & se = 0.075 & se = 0.062 & se = 0.086 & se = 0.063\\
-\hspace{1em} & t-value = 2.524 & t-value = 1.856 & t-value = 3.307 & t-value = 3.212\\
-\hspace{1em} & p.value = 0.012 & p.value = 0.064 & p.value = 0.001 & p.value = 0.001\\
-\hspace{1em}SD (Intercept Talker) & 0.189 & 0.156 & 0.212 & 0.160\\
-\hspace{1em}SD (Observations) & 0.091 & 0.046 & 0.139 & 0.071\\
-\addlinespace[0.5em]
-\multicolumn{5}{l}{\textit{}}\\
-\toprule
-  & `r linguisticsdown::cond_cmpl("[ø]")` & `r linguisticsdown::cond_cmpl("[œː]")` & `r linguisticsdown::cond_cmpl("[ɔ]")` & \\
-\midrule \hspace{1em}(Intercept) & -0.276 & -0.470 & -0.376 & \\
-\hspace{1em} & se = 0.072 & se = 0.163 & se = 0.100 & \\
-\hspace{1em} & t-value = -3.830 & t-value = -2.889 & t-value = -3.773 & \\
-\hspace{1em} & p.value = <0.001 & p.value = 0.004 & p.value = <0.001 & \\
-\hspace{1em} SwehVd & 0.249 & 0.756 & 0.457 & \\
-\hspace{1em} & se = 0.079 & se = 0.178 & se = 0.110 & \\
-\hspace{1em} & t-value = 3.163 & t-value = 4.249 & t-value = 4.161 & \\
-\hspace{1em} & p.value = 0.002 & p.value = <0.001 & p.value = <0.001 & \\
-\hspace{1em}SD (Intercept Talker) & 0.189 & 0.426 & 0.271 & \\
-\hspace{1em}SD (Observations) & 0.132 & 0.304 & 0.228 & \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-
-```{r}
-#panels <- list(
-# "first line" = list("A" = m.Y, "B" = m.U, "C" = m.Ä, "D" = m.ÖÖ),
-# "second line" = list("A" = m.Ö, "B" = m.ÖR, "C" = m.Å))
-#modelsummary::modelsummary(panels, output = "latex", title = "LMM predicting orthogonal projection ratio from database", estimate = "{estimate}", statistic = c("se = {std.error}", "t-value = {statistic}", "p.value = {p.value}"), shape = "rbind", gof_map = NA)
-rm(m.Y, m.Ä, m.ÖR, m.U, m.ÖÖ, m.Ö, m.Å)
-```
-```{r subset-data-for-opr}
-#Alternative downsampling approach
-# set.seed(15497221)
-# 
-# d.SwehVd.forStudy.opr <- d.SwehVd.forStudy.long %>%
-#   filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint == 50)
-# 
-# d.SweDia2000.forStudy.opr <- d.SweDia2000.forStudy.long %>%
-#   filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint == 50)
-# 
-# selected_talkers <- d.SwehVd.forStudy.opr %>%
-#   select(Gender, Talker) %>%
-#   distinct() %>%
-#   group_by(Gender) %>%
-#   slice_sample(n = 4, replace = F) %>%
-#   pull(Talker)
-# 
-# d.SwehVd.forStudy.opr %<>%
-#   filter(Talker %in% selected_talkers) %>%
-#   group_by(category, Talker) %>%
-#   slice_sample(n = 5, replace = F)
-# 
-# d.SwehVd.SweDia2000.opr <- rbind(d.SwehVd.forStudy.opr, d.SweDia2000.forStudy.opr)
-# 
-# # Instead sample 36 tokens per category from the entire database of all talkers
-# d.SwehVd.SweDia2000.opr_by_category <- d.SwehVd.forStudy.long %>%
-#   filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint == 50) %>%
-#   group_by(category, Gender) %>%
-#   slice_sample(n = 18, replace = F) %>%
-#   rbind(d.SweDia2000.forStudy.opr)
-# 
-
-# d.SwehVd.SweDia2000.opr.noBootstrap <- rbind(d.SwehVd.forStudy.long %>%
-#                                                filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint == 50), 
-#                                              d.SweDia2000.forStudy.long %>%
-#                                                filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint == 50))
-# 
-# centroids.noBootstrap <- d.SwehVd.SweDia2000.opr.noBootstrap %>%
-#   # choose the anchor vowels
-#   filter(category %in% c("[ɪ]", "[ʏ]", "[yː]", "[ɵ]", "[eː]", "[ɛː]", "[æː]", "[œː]", "[œ]", "[ɑː]", "[a]", "[oː]", "[øː]", "[ø]", "[ʉː]", "[ɔ]")) %>%
-#   # for each speaker and vowel
-#   group_by(Talker, category) %>%
-#   # compute mean F1 and F2
-#   summarise(cenF1 = mean(F1),
-#             cenF2 = mean(F2)) %>%
-#   # rearrange in columns
-#   pivot_wider(names_from = category,
-#               values_from = c(cenF1, cenF2)) %>%
-#   ungroup()
-# 
-# d.SwehVd.SweDia2000.opr.noBootstrap %>%
-#   # add the centroids %>%
-#   left_join(centroids.noBootstrap, by = "Talker")
-# 
-# d.orth.subset.noBootstrap <- d.SwehVd.SweDia2000.opr.noBootstrap %>%
-#   group_by(category, Database) %>%
-#  # for each row i.e. for each observation
-#   rowwise() %>%
-#   # calculate orth.proj.ratio
-#   mutate(orth_proj = case_when(category == "[ʏ]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[ɑː]`, `cenF2_[ɑː]`), c(`cenF1_[ɪ]`, `cenF2_[ɪ]`)),
-#                                category == "[ʉː]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[ɪ]`, `cenF2_[ɪ]`), c(`cenF1_[oː]`, `cenF2_[oː]`)),
-#                                category == "[ɛː]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[eː]`, `cenF2_[eː]`), c(`cenF1_[æː]`, `cenF2_[æː]`)),
-#                                category == "[øː]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[eː]`, `cenF2_[eː]`), c(`cenF1_[ɑː]`, `cenF2_[ɑː]`)),
-#                                category == "[ø]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[yː]`, `cenF2_[yː]`), c(`cenF1_[a]`, `cenF2_[a]`)),
-#                                category == "[œ]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[ɵ]`, `cenF2_[ɵ]`), c(`cenF1_[œː]`, `cenF2_[œː]`)),
-#                                category == "[ɔ]" ~ orthogonal_projection(c(F1, F2), c(`cenF1_[ɑː]`, `cenF2_[ɑː]`), c(`cenF1_[oː]`, `cenF2_[oː]`)),
-#                                TRUE ~ NA)) %>%
-#   ungroup() %>%
-#   filter(category %in% c("[ʏ]", "[ɛː]", "[œ]", "[ʉː]", "[øː]", "[ø]", "[ɔ]"))
-# 
-# p.orth %+%
-#   (d.orth.subset.noBootstrap %>%
-#      group_by(Database, category) %>%
-#      mutate(
-#        # category = factor(category, levels = c("[ʏ]", "[ɛː]", "[œ]", "[ɔ]", "[ʊ]", "[ɵ]"), labels =  c("[ʏ] [ɑː]-[ɪ]", "[ɛː] [eː]-[æː]", "[œ] [ɵ]-[œː]", "[ɔ] [ɑː]-[oː]", "[ʊ] [œː]-[oː]", "[ɵ] [ɛ]-[uː]")),
-#        #median = median(orth_proj),
-#        ci = list(enframe(Hmisc::smean.cl.boot(orth_proj)))) %>%
-#      unnest(ci) %>%
-#      spread(name, value) %>%
-#      group_by(Database, category) %>%
-#      summarise(
-#        mean_CI_lower = mean(Lower),
-#        mean_CI_upper = mean(Upper),
-#        mean = mean(Mean)))
-```
-```{r}
-# d.orth.subset.noBootstrap %>%
-#   ggplot +
-#   aes(y = orth_proj, x = Database) +
-#   geom_boxplot() +
-#   facet_wrap(~category, scales = "free")
-```
-
-```{r}
-# Add code to write csv.file for harrington
-# write.csv(
-#   d.Swedish,
-#   file = "../../../data/phonetic vowel statistics/Swedish/Published databases/Swedish_vowels_Persson2023_Kuronen2000.csv",
-#   row.names = FALSE, quote = FALSE)
-```
-```{r}
-# d.Swedish <- d.Kuronen2000 %>%
-#   rbind(
-#     d.SwehVd %>%
-#       # get only mid-point for comparability to kuronen
-#       filter(timepoint == 50, Transcribed_vowel == "targeted") %>%
-#       select(c(Talker, Age, Gender, category, Quantity, Word, Token, F1, F2)) %>%
-#       mutate(
-#         Database = "Persson2021"),
-#     d.SweDia2000 %>%
-#       # get only mid-point for comparability to kuronen
-#       filter(timepoint == 50) %>%
-#       select(c(Database, Talker, Age, Gender, category, Quantity, Word, Token, F1, F2))) %>%
-#     select(c(Database, Talker, Age, Gender, category, Quantity, Word, Token, F1, F2))
-# 
-# p.db.comparison <- 
-#   d.Swedish %>%
-#   filter(Gender == "male", Database != "SweDia") %>%
-#   ggplot(
-#     aes(
-#       x = F2,
-#       y = F1, 
-#       color = category,
-#   #shape = Gender,
-#   linetype = Database)) +
-#   stat_ellipse() +
-#   # Add between-talker mean
-#   geom_label(
-#     data =
-#       ~ .x %>%
-#       group_by(category, Quantity, Database) %>%
-#       summarise(across(c(F1, F2), ~ mean(.x))),
-#     mapping = aes(
-#       colour = category,
-#       label = category),
-#       #fontface = ifelse(Database == "SweDia", 2, 1)),
-#     alpha = .8,
-#     size = 4,
-#     label.size = NA,
-#     label.padding = unit(.06, "cm")) +
-#   #geom_point(alpha = .4) +
-#   scale_color_manual(name = "category", values = colors.vowel.swe) +
-#   scale_x_reverse() +
-#   scale_y_reverse() +
-#   guides(color = "none") +
-#   facet_grid(Database ~ Quantity)
-# p.db.comparison
-```
-
-```{r}
-# p.vowel.movements %+%
-#   (d.Swedish %>%
-#      filter(Gender == "male", Database != "SweDia") %>%
-#      group_by(Database, Talker, category, Quantity) %>%
-#      summarise(across(c(F2, F1), ~mean(.x))) %>%
-#      group_by(Database, category, Quantity) %>%
-#      summarise(across(c(F2, F1), ~mean(.x)))) +
-#   geom_label(
-#     data =
-#       ~ .x %>%
-#       filter(Database == "Kuronen2000") %>%
-#       group_by(category, Quantity, Database) %>%
-#       summarise(across(c(F1, F2), ~ mean(.x))),
-#     mapping = aes(
-#       colour = category,
-#       label = category),
-#     fontface = 2,
-#     alpha = .4,
-#     size = 4,
-#     label.size = NA,
-#     label.padding = unit(.06, "cm"))
-```
