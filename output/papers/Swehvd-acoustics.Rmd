@@ -60,7 +60,6 @@ header-includes:
  - \usepackage{subfig}
  - \usepackage{lscape}
  - \usepackage{pdflscape}
- - \usepackage{tocloft}
 # - \captionsetup[figure]{textformat=empty}
 
 documentclass     : "apa6"
