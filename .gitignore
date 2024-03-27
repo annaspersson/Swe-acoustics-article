@@ -13,3 +13,8 @@
 .RData
 .Ruserdata
 *_cache*
+*.ttt
+*.fff
+*.aux
+*.out
+*.docx
