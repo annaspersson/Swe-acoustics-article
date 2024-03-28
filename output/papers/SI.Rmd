@@ -1112,24 +1112,24 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
 
 ```{r SI-m-F1-paired, message=FALSE, fig.width=base.width*4, fig.height=base.height*1.5, fig.align='center', fig.pos="ht", fig.cap="(ref:SI-m-F1-paired)"}
 par(mfrow=c(1,2))
-itsadug::plot_smooth(m.F1.paired, view = "timepoint", plot_all = "category", cond = list(category = c("[iː]", "[ɪ]", "[yː]", "[ʏ]", "[ʉː]", "[ɵ]", "[eː]", "[ɛ]", "[oː]", "[ɔ]", "[uː]", "[ʊ]")), col = c("#66C2A5", "#1B9E77", "#FC8D62", "#D95F02", "#8DA0CB", "#7570B3", "#FB9A99", "#E78AC3", "#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C"), print.summary = FALSE)
-itsadug::plot_smooth(m.F1.paired, view = "timepoint", plot_all = "category", cond = list(category = c("[ɛː]", "[æː]", "[æ]", "[øː]", "[ø]", "[œː]", "[œ]", "[ɑː]", "[a]")), col = c("#E7298A", "#A6D854", "#66A61E", "#FFD92F", "#E6AB02", "#E5C494", "#A6761D", "#B3B3B3", "#666666"), print.summary = FALSE)
+itsadug::plot_smooth(m.F1.paired, view = "timepoint", plot_all = "category", cond = list(category = c("[iː]", "[ɪ]", "[yː]", "[ʏ]", "[ʉː]", "[ɵ]", "[eː]", "[ɛ]", "[oː]", "[ɔ]", "[uː]", "[ʊ]")), col = c("#66C2A5", "#1B9E77", "#FC8D62", "#D95F02", "#8DA0CB", "#7570B3", "#FB9A99", "#E78AC3", "#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C"), print.summary = FALSE, hide.label = T)
+itsadug::plot_smooth(m.F1.paired, view = "timepoint", plot_all = "category", cond = list(category = c("[ɛː]", "[æː]", "[æ]", "[øː]", "[ø]", "[œː]", "[œ]", "[ɑː]", "[a]")), col = c("#E7298A", "#A6D854", "#66A61E", "#FFD92F", "#E6AB02", "#E5C494", "#A6761D", "#B3B3B3", "#666666"), print.summary = FALSE, hide.label = T)
 ```
 
 (ref:SI-m-F2-paired) Fitted smooths of GAMM for predicting F2 and 95% confidence intervals for all vowel pairs. For visualization purposes, the pairs are split into high vowels (**left panel**), and lower-mid vowels (**right panel**).
 
 ```{r SI-m-F2-paired, message=FALSE, fig.width=base.width*4, fig.height=base.height*1.5, fig.align='center', fig.pos="ht", fig.cap="(ref:SI-m-F2-paired)"}
 par(mfrow=c(1,2))
-itsadug::plot_smooth(m.F2.paired, view = "timepoint", plot_all = "category", cond = list(category = c("[iː]", "[ɪ]", "[yː]", "[ʏ]", "[ʉː]", "[ɵ]", "[eː]", "[ɛ]", "[oː]", "[ɔ]", "[uː]", "[ʊ]")), col = c("#66C2A5", "#1B9E77", "#FC8D62", "#D95F02", "#8DA0CB", "#7570B3", "#FB9A99", "#E78AC3", "#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C"), print.summary = FALSE)
-itsadug::plot_smooth(m.F2.paired, view = "timepoint", plot_all = "category", cond = list(category = c("[ɛː]", "[æː]", "[æ]", "[øː]", "[ø]", "[œː]", "[œ]", "[ɑː]", "[a]")), col = c("#E7298A", "#A6D854", "#66A61E", "#FFD92F", "#E6AB02", "#E5C494", "#A6761D", "#B3B3B3", "#666666"), print.summary = FALSE)
+itsadug::plot_smooth(m.F2.paired, view = "timepoint", plot_all = "category", cond = list(category = c("[iː]", "[ɪ]", "[yː]", "[ʏ]", "[ʉː]", "[ɵ]", "[eː]", "[ɛ]", "[oː]", "[ɔ]", "[uː]", "[ʊ]")), col = c("#66C2A5", "#1B9E77", "#FC8D62", "#D95F02", "#8DA0CB", "#7570B3", "#FB9A99", "#E78AC3", "#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C"), print.summary = FALSE, hide.label = T)
+itsadug::plot_smooth(m.F2.paired, view = "timepoint", plot_all = "category", cond = list(category = c("[ɛː]", "[æː]", "[æ]", "[øː]", "[ø]", "[œː]", "[œ]", "[ɑː]", "[a]")), col = c("#E7298A", "#A6D854", "#66A61E", "#FFD92F", "#E6AB02", "#E5C494", "#A6761D", "#B3B3B3", "#666666"), print.summary = FALSE, hide.label = T)
 ```
 
 (ref:SI-m-F3-paired) Fitted smooths of GAMM for predicting F3 and 95% confidence intervals for all vowel pairs. For visualization purposes, the pairs are split into high vowels (**left panel**), and lower-mid vowels (**right panel**).
 
 ```{r SI-m-F3-paired, message=FALSE, fig.width=base.width*4, fig.height=base.height*1.5, fig.align='center', fig.pos="ht", fig.cap="(ref:m-F3-paired)"}
 par(mfrow=c(1,2))
-itsadug::plot_smooth(m.F3.paired, view = "timepoint", plot_all = "category", cond = list(category = c("[iː]", "[ɪ]", "[yː]", "[ʏ]", "[ʉː]", "[ɵ]", "[eː]", "[ɛ]", "[oː]", "[ɔ]", "[uː]", "[ʊ]")), col = c("#66C2A5", "#1B9E77", "#FC8D62", "#D95F02", "#8DA0CB", "#7570B3", "#FB9A99", "#E78AC3", "#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C"), print.summary = FALSE)
-itsadug::plot_smooth(m.F3.paired, view = "timepoint", plot_all = "category", cond = list(category = c("[ɛː]", "[æː]", "[æ]", "[øː]", "[ø]", "[œː]", "[œ]", "[ɑː]", "[a]")), col = c("#E7298A", "#A6D854", "#66A61E", "#FFD92F", "#E6AB02", "#E5C494", "#A6761D", "#B3B3B3", "#666666"), print.summary = FALSE)
+itsadug::plot_smooth(m.F3.paired, view = "timepoint", plot_all = "category", cond = list(category = c("[iː]", "[ɪ]", "[yː]", "[ʏ]", "[ʉː]", "[ɵ]", "[eː]", "[ɛ]", "[oː]", "[ɔ]", "[uː]", "[ʊ]")), col = c("#66C2A5", "#1B9E77", "#FC8D62", "#D95F02", "#8DA0CB", "#7570B3", "#FB9A99", "#E78AC3", "#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C"), print.summary = FALSE, hide.label = T)
+itsadug::plot_smooth(m.F3.paired, view = "timepoint", plot_all = "category", cond = list(category = c("[ɛː]", "[æː]", "[æ]", "[øː]", "[ø]", "[œː]", "[œ]", "[ɑː]", "[a]")), col = c("#E7298A", "#A6D854", "#66A61E", "#FFD92F", "#E6AB02", "#E5C494", "#A6761D", "#B3B3B3", "#666666"), print.summary = FALSE, hide.label = T)
 ```
 ```{r}
 # Code kept for reproducibility
