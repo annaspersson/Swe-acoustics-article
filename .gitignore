@@ -7,7 +7,7 @@
 *.tex
 *.png
 *.jpeg
-*.pdf
+.pdf
 .Rproj.user
 .Rhistory
 .RData
