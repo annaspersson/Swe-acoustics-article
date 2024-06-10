@@ -423,6 +423,158 @@ rm(m.sep.IIYY, m.sep.EEYY, m.sep.IY, m.sep.YYUU, m.sep.ÅÅOO, m.sep.ÅO)
 rm(m.sep.I, m.sep.Y, m.sep.U, m.sep.E, m.sep.Ä, m.sep.ÄR, m.sep.Ö, m.sep.ÖR, m.sep.A, m.sep.Å, m.sep.O)
 ```
 
+### Category separability including F0 {#sec:SI-F0-separability}
+While F0 is not considered an important cue to vowel identity in itself, it is known to have an indirect effect of vowel perception. To assess the effect of including F0 for the distinction of long and short vowel pairs, a category separability index including F0 was calculated alongside F1-F2. Figure XX suggests that ...
+
+```{r}
+#Calculate the category separability based on Xie & Jaeger 2020
+d.SwehVd.cat.separability.F0 <- rbind(
+  # Get category separability of i: from y:
+  d.SwehVd.forStudy.long.static %>%
+  get_category_separability(category_A = "[iː]", category_B = "[ɪ]", data_means = d.SwehVd.centroids) %>%
+    # label the same pairwise comparison as there are no differences between the categories for these contrasts
+    mutate(comparison = "iː - ɪ"),
+  # and then y: from i:
+  d.SwehVd.forStudy.long.static %>%
+  get_category_separability(category_A = "[ɪ]", category_B = "[iː]", data_means = d.SwehVd.centroids) %>%
+    mutate(comparison = "iː - ɪ"),
+  d.SwehVd.forStudy.long.static %>%
+    get_category_separability(category_A = "[yː]", category_B = "[ʏ]", data_means = d.SwehVd.centroids) %>%
+    mutate(comparison = "yː - ʏ"),
+  d.SwehVd.forStudy.long.static %>%
+  get_category_separability(category_A = "[ʏ]", category_B = "[yː]", data_means = d.SwehVd.centroids) %>%
+    mutate(comparison = "yː - ʏ"),
+  d.SwehVd.forStudy.long.static %>%
+  get_category_separability(category_A = "[ʉː]", category_B = "[ɵ]", data_means = d.SwehVd.centroids) %>%
+    mutate(comparison = "ʉː - ɵ"),
+  d.SwehVd.forStudy.long.static %>%
+  get_category_separability(category_A = "[ɵ]", category_B = "[ʉː]", data_means = d.SwehVd.centroids) %>%
+    mutate(comparison = "ʉː - ɵ"),
+  d.SwehVd.forStudy.long.static %>%
+    get_category_separability(category_A = "[eː]", category_B = "[ɛ]", data_means = d.SwehVd.centroids) %>%
+    mutate(comparison = "eː - ɛ"),
+  d.SwehVd.forStudy.long.static %>%
+  get_category_separability(category_A = "[ɛ]", category_B = "[eː]", data_means = d.SwehVd.centroids) %>%
+    mutate(comparison = "eː - ɛ"),
+  d.SwehVd.forStudy.long.static %>%
+  get_category_separability(category_A = "[ɛː]", category_B = "[ɛ]", data_means = d.SwehVd.centroids) %>%
+    mutate(comparison = "ɛː - ɛ"),
+  d.SwehVd.forStudy.long.static %>%
+  get_category_separability(category_A = "[ɛ]", category_B = "[ɛː]", data_means = d.SwehVd.centroids) %>%
+    mutate(comparison = "ɛː - ɛ"),
+  d.SwehVd.forStudy.long.static %>%
+  get_category_separability(category_A = "[æː]", category_B = "[æ]", data_means = d.SwehVd.centroids) %>%
+    mutate(comparison = "æː - æ"),
+  d.SwehVd.forStudy.long.static %>%
+  get_category_separability(category_A = "[æ]", category_B = "[æː]", data_means = d.SwehVd.centroids) %>%
+    mutate(comparison = "æː - æ"),
+    d.SwehVd.forStudy.long.static %>%
+  get_category_separability(category_A = "[øː]", category_B = "[ø]", data_means = d.SwehVd.centroids) %>%
+    mutate(comparison = "øː - ø"),
+  d.SwehVd.forStudy.long.static %>%
+  get_category_separability(category_A = "[ø]", category_B = "[øː]", data_means = d.SwehVd.centroids) %>%
+    mutate(comparison = "øː - ø"),
+  d.SwehVd.forStudy.long.static %>%
+    get_category_separability(category_A = "[œː]", category_B = "[œ]", data_means = d.SwehVd.centroids) %>%
+    mutate(comparison = "œː - œ"),
+  d.SwehVd.forStudy.long.static %>%
+  get_category_separability(category_A = "[œ]", category_B = "[œː]", data_means = d.SwehVd.centroids) %>%
+    mutate(comparison = "œː - œ"),
+  d.SwehVd.forStudy.long.static %>%
+    get_category_separability(category_A = "[ɑː]", category_B = "[a]", data_means = d.SwehVd.centroids) %>%
+    mutate(comparison = "ɑː - a"),
+  d.SwehVd.forStudy.long.static %>%
+  get_category_separability(category_A = "[a]", category_B = "[ɑː]", data_means = d.SwehVd.centroids) %>%
+    mutate(comparison = "ɑː - a"),
+  d.SwehVd.forStudy.long.static %>%
+  get_category_separability(category_A = "[oː]", category_B = "[ɔ]", data_means = d.SwehVd.centroids) %>%
+    mutate(comparison = "oː - ɔ"),
+  d.SwehVd.forStudy.long.static %>%
+  get_category_separability(category_A = "[ɔ]", category_B = "[oː]", data_means = d.SwehVd.centroids) %>%
+    mutate(comparison = "oː - ɔ"),
+  d.SwehVd.forStudy.long.static %>%
+  get_category_separability(category_A = "[uː]", category_B = "[ʊ]", data_means = d.SwehVd.centroids) %>%
+    mutate(comparison = "uː - ʊ"),
+  d.SwehVd.forStudy.long.static %>%
+  get_category_separability(category_A = "[ʊ]", category_B = "[uː]", data_means = d.SwehVd.centroids) %>%
+    mutate(comparison = "uː - ʊ")) %>%
+  #average across the tokens from each talker
+  group_by(Talker, comparison, category) %>%
+  summarise(
+    F0F1 = mean(category_separabilityF0F1, na.rm = T),
+    F1F2 = mean(category_separabilityF1F2, na.rm = T),
+    F0F2 = mean(category_separabilityF0F2, na.rm = T),
+    F0F1F2 = mean(category_separabilityF0F1F2, na.rm = T)) %>%
+  pivot_longer(
+    cols = starts_with("F"),
+    names_to = "cue_dimension",
+    values_to = "separability") %>%
+  group_by(Talker, comparison, cue_dimension) %>%
+  mutate(cue_dimension = factor(cue_dimension, levels = c("F1F2", "F0F1", "F0F2", "F0F1F2")),
+         category = factor(category, levels = levels.vowel.IPA.swe),
+         Talker = factor(Talker),
+         #Gender = factor(Gender),
+         pairwise_separability = mean(separability))
+
+p.category.separability.long.short %+%
+  (d.SwehVd.cat.separability.F0 %>%
+group_by(cue_dimension, comparison) %>%
+  mutate(
+    comparison = factor(comparison, levels = c("iː - ɪ",  "yː - ʏ", "ʉː - ɵ", "eː - ɛ", "oː - ɔ", "uː - ʊ", "ɛː - ɛ", "æː - æ", "øː - ø", "œː - œ", "ɑː - a")),
+    height = ifelse(comparison %in% c("iː - ɪ",  "yː - ʏ", "ʉː - ɵ", "eː - ɛ", "oː - ɔ", "uː - ʊ"), "high vowels", "lower-mid vowels"),
+    ci = list(enframe(Hmisc::smean.cl.boot(separability)))) %>%
+    unnest(ci) %>%
+    spread(name, value) %>%
+  group_by(cue_dimension, comparison, height) %>%
+    summarise(
+      mean_CI_lower = mean(Lower),
+      mean_CI_upper = mean(Upper),
+      mean = mean(Mean, na.rm = T)))
+```
+
+```{r}
+contrasts(d.SwehVd.cat.separability.F0$cue_dimension) <- contr.treatment(5)
+
+# Rename contrast labels
+d.SwehVd.cat.separability.F0$cue_dimension <- factor(d.SwehVd.cat.separability.F0$cue_dimension, labels = c("F1F2", "F1F3", "F2F3", "F1F2F3", "F0F1F2F3"))
+
+m.sep.I.F0 <- lmerTest::lmer(pairwise_separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability.F0 %>% filter(comparison == "iː - ɪ"))
+
+m.sep.Y.F0 <- lmerTest::lmer(pairwise_separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability.F0 %>% filter(comparison == "yː - ʏ"))
+
+m.sep.U.F0 <- lmerTest::lmer(pairwise_separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability.F0 %>% filter(comparison == "ʉː - ɵ"))
+
+m.sep.E.F0 <- lmerTest::lmer(pairwise_separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability.F0 %>% filter(comparison == "eː - ɛ"))
+
+m.sep.Ä.F0 <- lmerTest::lmer(pairwise_separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability.F0 %>% filter(comparison == "ɛː - ɛ"))
+
+m.sep.ÄR.F0 <- lmerTest::lmer(pairwise_separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability.F0 %>% filter(comparison == "æː - æ"))
+
+m.sep.Ö.F0 <- lmerTest::lmer(pairwise_separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability.F0 %>% filter(comparison == "øː - ø"))
+
+m.sep.ÖR.F0 <- lmerTest::lmer(pairwise_separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability.F0 %>% filter(comparison == "œː - œ"))
+
+m.sep.A.F0 <- lmerTest::lmer(pairwise_separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability.F0 %>% filter(comparison == "ɑː - a"))
+
+m.sep.Å.F0 <- lmerTest::lmer(pairwise_separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability.F0 %>% filter(comparison == "oː - ɔ"))
+
+m.sep.O.F0 <- lmerTest::lmer(pairwise_separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability.F0 %>% filter(comparison == "uː - ʊ"))
+```
+
+```{r}
+rm(d.SwehVd.centroids)
+```
 ### Summary tables of GAMMs {#sec:SI-GAMMs}
 Tables \@ref(tab:m-F1-long), \@ref(tab:m.F1.front.short), \@ref(tab:m.F2.front.long), \@ref(tab:m.F2.front.short), \@ref(tab:m.F3.front.long), \@ref(tab:m.F3.front.short)    summarize the results of the GAMMs fit to neighboring contrasts.
 
