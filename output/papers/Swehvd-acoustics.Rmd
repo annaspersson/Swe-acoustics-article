@@ -681,40 +681,94 @@ The LMMs fit to the data (presented in Section \@ref(sec:method-static)) indicat
 
 ```{r}
 #Calculate the category separability based on Xie & Jaeger 2020
+get_category_separability <- function(data, category_A, category_B, cues) {
+  
+  # Calculate the mean G1 and G2 for the reference category
+  A_means <- data %>%
+    filter(category == category_A) %>%
+    summarise(across(all_of(cues), mean, .names = "mean_{col}"))
+  
+  # Calculate the mean G1 and G2 for the target category
+  B_means <- data %>%
+    filter(category == category_B) %>%
+    summarise(across(all_of(cues), mean, .names = "mean_{col}"))
+  
+  # Extract means for the reference and target categories
+  A_means_vec <- as.numeric(A_means)
+  B_means_vec <- as.numeric(B_means)
+  
+  # Calculate distances from reference to target means
+  A_to_B_distances <- data %>%
+    filter(category == category_A) %>%
+    mutate(distance = sqrt(rowSums((select(., all_of(cues)) - B_means_vec)^2))) %>%
+    pull(distance)
+  
+  # Calculate distances from target to reference means
+  B_to_A_distances <- data %>%
+    filter(category == category_B) %>%
+    mutate(distance = sqrt(rowSums((select(., all_of(cues)) - A_means_vec)^2))) %>%
+    pull(distance)
+  
+  # Compute separability and standard error for both directions
+  separability_A_to_B <- sum(A_to_B_distances) / length(A_to_B_distances)
+  separability_B_to_A <- sum(B_to_A_distances) / length(B_to_A_distances)
+  SE_A_to_B <- sd(A_to_B_distances) / sqrt(length(A_to_B_distances))
+  SE_B_to_A <- sd(B_to_A_distances) / sqrt(length(B_to_A_distances))
+    
+  # Calculate the average separability and standard error
+  separability <- mean(c(separability_A_to_B, separability_B_to_A))
+  SE <- geometric.mean(c(SE_A_to_B, SE_B_to_A))
+  
+  return(tibble(
+    separability = separability,
+    SE = SE
+  ))
+
+}
+
 get_category_separability <- function(
     data,
     data_means,
     category_A, 
-    category_B) {
+    category_B) 
+  {
   data %>% 
-    filter(Normalization.Type == "Nearey's uniform scaling (log)", category == category_A) %>%
+    filter(Normalization.Type == "Nearey's uniform scaling (log)", category %in% c(category_A, category_B)) %>%
     left_join(data_means %>% 
-                filter(category == category_B),
-              #by = "Normalization.Type") %>%
-              by = "Talker") %>%
+                filter(category %in% c(category_A, category_B)),
+              by = "Normalization.Type") %>%
      rename(category = category.x, mean_category = category.y) %>%
-    group_by(Talker) %>%
     mutate(
-      category_separabilityF0F1 = sum(sqrt((F0 - F0_mean)^2 + (F1 - F1_mean)^2)) / n(),
-      category_separabilityF1F2 = sum(sqrt((F1 - F1_mean)^2 + (F2 - F2_mean)^2)) / n(),
-      category_separabilityF0F2 = sum(sqrt((F0 - F0_mean)^2 + (F2 - F2_mean)^2)) / n(),
-      category_separabilityF1F3 = sum(sqrt((F1 - F1_mean)^2 + (F3 - F3_mean)^2)) / n(),
-      category_separabilityF2F3 = sum(sqrt((F2 - F2_mean)^2 + (F3 - F3_mean)^2)) / n(),
-      category_separabilityF1F2F3 = sum(sqrt((F1 - F1_mean)^2 + (F2 - F2_mean)^2 + (F3 - F3_mean)^2)) / n(),
-      category_separabilityF0F1F2 = sum(sqrt((F0 - F0_mean)^2 + (F1 - F1_mean)^2 + (F2 - F2_mean)^2)) / n(),
-      category_separabilityF0F1F2F3 = sum(sqrt((F0 - F0_mean)^2 + (F1 - F1_mean)^2 + (F2 - F2_mean)^2 + (F3 - F3_mean)^2)) / n(),
-      category_separabilityF0F1F2F3duration = sum(sqrt((F0 - F0_mean)^2 + (F1 - F1_mean)^2 + (F2 - F2_mean)^2 + (F3 - F3_mean)^2 + (Duration - Duration_mean)^2)) / n())
-}
+      distance_F1F2 = sqrt((F1 - F1_mean)^2 + (F2 - F2_mean)^2),
+      distance_F0F1F2 = sqrt((F0 - F0_mean)^2 + (F1 - F1_mean)^2 + (F2 - F2_mean)^2),
+      distance_F1F2F3 = sqrt((F1 - F1_mean)^2 + (F2 - F2_mean)^2 + (F3 - F3_mean)^2),
+      distance_F1F2duration = sqrt((F1 - F1_mean)^2 + (F2 - F2_mean)^2 + (Duration - Duration_mean)^2),
+      distance_F1F2F3duration = sqrt((F0 - F0_mean)^2 + (F1 - F1_mean)^2 + (F2 - F2_mean)^2 + (F3 - F3_mean)^2),
+      distance_F0F1F2F3duration = sqrt((F0 - F0_mean)^2 + (F1 - F1_mean)^2 + (F2 - F2_mean)^2 + (F3 - F3_mean)^2 + (Duration - Duration_mean)^2),
+      SE_F1F2 = sd(distance_F1F2) / sqrt(length(distance_F1F2)),
+      SE_F0F1F2 = sd(distance_F0F1F2) / sqrt(length(distance_F0F1F2)),
+      SE_F1F2F3 = sd(distance_F1F2F3) / sqrt(length(distance_F1F2F3)),
+      SE_F1F2duration = sd(distance_F1F2duration) / sqrt(length(distance_F1F2duration)),
+      SE_F1F2F3duration = sd(distance_F1F2F3duration) / sqrt(length(distance_F1F2F3duration)),
+      SE_F0F1F2F3duration = sd(distance_F0F1F2F3duration) / sqrt(length(distance_F0F1F2F3duration)),
+      category_separabilityF1F2 = sum(distance_F1F2) / n(),
+      category_separabilityF0F1F2 = sum(distance_F0F1F2) / n(),
+      category_separabilityF1F2F3 = sum(distance_F1F2F3) / n(),
+      category_separabilityF1F2duration = sum(distance_F1F2duration) / n(),
+      category_separabilityF1F2F3duration = sum(distance_F1F2F3duration) / n(),
+      category_separabilityF0F1F2F3duration = sum(distance_F0F1F2F3duration) / n())
+  }
+
+
+# Calculate the separability for additional categories explored further down in dynamic analysis
+d.SwehVd.for.cat.separability <- d.SwehVd.forStudy.long.static %>% 
+  filter(Normalization.Type == "Nearey's uniform scaling (log)")
 
 d.SwehVd.centroids <- d.SwehVd.forStudy.long.static %>% 
       filter(Normalization.Type == "Nearey's uniform scaling (log)") %>%
       #group_by(Normalization.Type, category) %>%
       group_by(Talker, category) %>%
       summarise(across(c(starts_with("F"), "Duration"), ~ mean(.x), .names = '{col}_mean'))
-
-# Calculate the separability for additional categories explored further down in dynamic analysis
-d.SwehVd.for.cat.separability <- d.SwehVd.forStudy.long.static %>% 
-  filter(Normalization.Type == "Nearey's uniform scaling (log)")
 
 d.SwehVd.cat.separability <- rbind(
   # Get category separability of i: from y:
@@ -725,7 +779,7 @@ d.SwehVd.cat.separability <- rbind(
   # and then y: from i:
   d.SwehVd.forStudy.long.static %>%
   get_category_separability(category_A = "[yː]", category_B = "[iː]", data_means = d.SwehVd.centroids) %>%
-    mutate(comparison = "iː - yː"),
+  mutate(comparison = "iː - yː"),
   d.SwehVd.forStudy.long.static %>%
     get_category_separability(category_A = "[yː]", category_B = "[ʉː]", data_means = d.SwehVd.centroids) %>%
     mutate(comparison = "yː - ʉː"),
@@ -786,74 +840,251 @@ d.SwehVd.cat.separability <- rbind(
   d.SwehVd.forStudy.long.static %>%
   get_category_separability(category_A = "[ʊ]", category_B = "[ɔ]", data_means = d.SwehVd.centroids) %>%
     mutate(comparison = "ɔ - ʊ")) %>%
-  #average across the tokens from each talker
-  group_by(Talker, comparison, category) %>%
+  #average the separability across the two distances
+  group_by(comparison) %>%
   summarise(
-    F1F2 = mean(category_separabilityF1F2, na.rm = T),
-    F1F2F3 = mean(category_separabilityF1F2F3, na.rm = T)) %>%
-    # F1F2F3 = mean(category_separabilityF1F2F3, na.rm = T),
-    # F0F1F2 = mean(category_separabilityF0F1F2),
-    # F0F1F2F3duration = mean(category_separabilityF0F1F2F3duration)) %>%
+      F1F2_SE = geometric.mean(SE_F1F2),
+      F0F1F2_SE = geometric.mean(SE_F0F1F2),
+      F1F2F3_SE = geometric.mean(SE_F1F2F3),
+      F1F2duration_SE = geometric.mean(SE_F1F2duration),
+      F1F2F3duration_SE = geometric.mean(SE_F1F2F3duration),
+      F0F1F2F3duration_SE = geometric.mean(SE_F0F1F2F3duration),
+      F1F2_separability = mean(category_separabilityF1F2),
+      F0F1F2_separability = mean(category_separabilityF0F1F2),
+      F1F2F3_separability = mean(category_separabilityF1F2F3),
+      F1F2duration_separability = mean(category_separabilityF1F2duration),
+      F1F2F3duration_separability = mean(category_separabilityF1F2F3duration),
+      F0F1F2F3duration_separability = mean(category_separabilityF0F1F2F3duration))
+
   pivot_longer(
     cols = starts_with("F"),
-    names_to = "cue_dimension",
-    values_to = "separability") %>%
+    names_sep = "_",
+    names_to = c("cue_dimension", "SE"),
+    values_to = "separability") #%>%
   group_by(Talker, comparison, cue_dimension) %>%
   mutate(cue_dimension = factor(cue_dimension, levels = c("F1F2", "F1F2F3")),
   #mutate(cue_dimension = factor(cue_dimension, levels = c("F1F2", "F0F1F2", "F1F2F3", "F0F1F2F3duration")),
          category = factor(category, levels = levels.vowel.IPA.swe),
          Talker = factor(Talker),
          pairwise_separability = mean(separability))
+
+
+# # Define the cues to be used
+# cues_list <- list(c("F1", "F2"), 
+#                   c("F1", "F2", "F3"), 
+#                   c("F0", "F1", "F2"),
+#                   c("F1", "F2", "Duration"),
+#                   c("F1", "F2", "F3", "Duration"), 
+#                   c("F0", "F1", "F2", "F3", "Duration"))
+# 
+# # Use purrr::map_dfr to iterate over the cues_list and apply the function
+# d.SwehVd.cat.separability <- rbind(
+#   tibble(
+#     map_dfr(cues_list, function(cues) {
+#       separability <- get_category_separability(d.SwehVd.for.cat.separability, category_A = "[iː]", category_B = "[yː]", cues)
+#       data.frame(
+#         combination = paste(cues, collapse = "-"),
+#         avg_separability = separability$avg_separability,
+#         avg_SE = separability$avg_SE
+#       )
+#     })) %>%
+#     mutate(comparison = "iː - yː"),
+#   tibble(
+#     map_dfr(cues_list, function(cues) {
+#       separability <- get_category_separability(d.SwehVd.for.cat.separability, category_A = "[eː]", category_B = "[yː]", cues)
+#       data.frame(
+#         combination = paste(cues, collapse = "-"),
+#         avg_separability = separability$avg_separability,
+#         avg_SE = separability$avg_SE
+#       )
+#     }) %>%
+#       mutate(comparison = "eː - yː")),
+#   tibble(
+#     map_dfr(cues_list, function(cues) {
+#       separability <- get_category_separability(d.SwehVd.for.cat.separability, category_A = "[iː]", category_B = "[eː]", cues)
+#       data.frame(
+#         combination = paste(cues, collapse = "-"),
+#         avg_separability = separability$avg_separability,
+#         avg_SE = separability$avg_SE
+#       )
+#     }) %>%
+#       mutate(comparison = "iː - eː")),
+#   tibble(
+#     map_dfr(cues_list, function(cues) {
+#       separability <- get_category_separability(d.SwehVd.for.cat.separability, category_A = "[ɪ]", category_B = "[ʏ]", cues)
+#       data.frame(
+#         combination = paste(cues, collapse = "-"),
+#         avg_separability = separability$avg_separability,
+#         avg_SE = separability$avg_SE
+#       )
+#     }) %>%
+#       mutate(comparison = "ɪ - ʏ")),
+#   tibble(
+#     map_dfr(cues_list, function(cues) {
+#       separability <- get_category_separability(d.SwehVd.for.cat.separability, category_A = "[yː]", category_B = "[ʉː]", cues)
+#       data.frame(
+#         combination = paste(cues, collapse = "-"),
+#         avg_separability = separability$avg_separability,
+#         avg_SE = separability$avg_SE
+#       )
+#     }) %>%
+#       mutate(comparison = "yː - ʉː")),
+#   tibble(
+#     map_dfr(cues_list, function(cues) {
+#       separability <- get_category_separability(d.SwehVd.for.cat.separability, category_A = "[ɛː]", category_B = "[æː]", cues)
+#       data.frame(
+#         combination = paste(cues, collapse = "-"),
+#         avg_separability = separability$avg_separability,
+#         avg_SE = separability$avg_SE
+#       )
+#     }) %>%
+#       mutate(comparison = "ɛː - æː")),
+#   tibble(
+#     map_dfr(cues_list, function(cues) {
+#       separability <- get_category_separability(d.SwehVd.for.cat.separability, category_A = "[øː]", category_B = "[œː]", cues)
+#       data.frame(
+#         combination = paste(cues, collapse = "-"),
+#         avg_separability = separability$avg_separability,
+#         avg_SE = separability$avg_SE
+#       )
+#     }) %>%
+#       mutate(comparison = "øː - œː")),
+#   tibble(
+#     map_dfr(cues_list, function(cues) {
+#       separability <- get_category_separability(d.SwehVd.for.cat.separability, category_A = "[ø]", category_B = "[œ]", cues)
+#       data.frame(
+#         combination = paste(cues, collapse = "-"),
+#         avg_separability = separability$avg_separability,
+#         avg_SE = separability$avg_SE
+#       )
+#     }) %>%
+#       mutate(comparison = "ø - œ")),
+#   tibble(
+#     map_dfr(cues_list, function(cues) {
+#       separability <- get_category_separability(d.SwehVd.for.cat.separability, category_A = "[oː]", category_B = "[uː]", cues)
+#       data.frame(
+#         combination = paste(cues, collapse = "-"),
+#         avg_separability = separability$avg_separability,
+#         avg_SE = separability$avg_SE
+#       )
+#     }) %>%
+#       mutate(comparison = "oː - uː")),
+#   tibble(
+#     map_dfr(cues_list, function(cues) {
+#       separability <- get_category_separability(d.SwehVd.for.cat.separability, category_A = "[ɔ]", category_B = "[ʊ]", cues)
+#       data.frame(
+#         combination = paste(cues, collapse = "-"),
+#         avg_separability = separability$avg_separability,
+#         avg_SE = separability$avg_SE
+#       )
+#     }) %>%
+#       mutate(comparison = "ɔ - ʊ"))) %>%
+#   mutate(
+#     combination = factor(combination, levels = c("F1-F2", "F1-F2-F3", "F0-F1-F2", "F1-F2-Duration", "F1-F2-F3-Duration", "F0-F1-F2-F3-Duration")))
+#     #mutate(cue_dimension = factor(cue_dimension, levels = c("F1F2", "F0F1F2", "F1F2F3", "F0F1F2F3duration")),
+#     #category = factor(category, levels = levels.vowel.IPA.swe),
+#     #Talker = factor(Talker))
 ```
 
 (ref:cat-sep-F3) The effect of including F3 in measures of category separability for the distinction between neighboring unrounded vs. outrounded vowels (**left panel**), and outrounded vs. inrounded vowels (**right panel**). Pointranges indicate mean and 95% bootstrapped CIs of the category separability summarized across talkers for each cue combination.
 
 ```{r cat-sep-F3, fig.width=base.width*3, fig.height=base.height*1.75, out.width='90%', fig.align='center', fig.cap="(ref:cat-sep-F3)", message=FALSE}
-colors.comparison <- c("#FC8D62", "#FB9A99", "#1B9E77", "#8DA0CB", "#A6CEE3", "#33A02C")
-names(colors.comparison) <- c("iː - yː",  "eː - yː", "ɪ - ʏ", "yː - ʉː", "oː - uː", "ɔ - ʊ")
+# colors.comparison <- c("#FC8D62", "#FB9A99", "#1B9E77", "#8DA0CB", "#A6CEE3", "#33A02C")
+# names(colors.comparison) <- c("iː - yː",  "eː - yː", "ɪ - ʏ", "yː - ʉː", "oː - uː", "ɔ - ʊ")
 
-p.category.separability <- d.SwehVd.cat.separability %>% 
-  filter(comparison %in% c("iː - yː",  "eː - yː", "ɪ - ʏ", "yː - ʉː", "oː - uː", "ɔ - ʊ")) %>%
-group_by(cue_dimension, comparison) %>%
+p.category.separability.unrounded <- d.SwehVd.cat.separability %>% 
+  filter(comparison %in% c("iː - yː",  "eː - yː", "ɪ - ʏ")) %>%
+  # mutate(
+  #   baselineF3 = `avg_separability_F1-F2-F3` - `avg_separability_F1-F2`,
+  #   baselineF0 = `avg_separability_F0-F1-F2` - `avg_separability_F1-F2`,
+  #   baselineDuration = `avg_separability_F1-F2-Duration` - `avg_separability_F1-F2`) %>%
   mutate(
-    comparison = factor(comparison, levels = c("iː - yː",  "eː - yː", "ɪ - ʏ", "yː - ʉː", "oː - uː", "ɔ - ʊ")),
-    rounding = ifelse(comparison %in% c("iː - yː",  "eː - yː", "ɪ - ʏ"), "unrounded vs. outrounded", "outrounded vs. inrounded"),
-    # group = case_when(comparison %in% c("iː to yː",  "yː to iː") ~ "iː - yː",
-    #                   comparison %in% c("eː to yː", "yː to eː") ~ "eː - yː",
-    #                   comparison %in% c("ɪ to ʏ", "ʏ to ɪ") ~ "ɪ - ʏ",
-    #                   comparison %in% c("yː to ʉː", "ʉː to yː") ~ "yː - ʉː",
-    #                   comparison %in% c("oː to uː", "uː to oː") ~ "oː - uː",
-    #                   comparison %in% c("ɔ to ʊ", "ʊ to ɔ") ~ "ɔ - ʊ"),
-    ci = list(enframe(Hmisc::smean.cl.boot(pairwise_separability)))) %>%
-    unnest(ci) %>%
-    spread(name, value) %>%
-  group_by(cue_dimension, comparison, rounding) %>%
-    summarise(
-      mean_CI_lower = mean(Lower),
-      mean_CI_upper = mean(Upper),
-      mean = mean(Mean)) %>%
+    comparison = factor(comparison, levels = c("iː - yː",  "eː - yː", "ɪ - ʏ")),
+    rounding = "unrounded vs. outrounded") %>%
+  pivot_longer(
+    cols = -c(comparison, rounding),
+    names_to = c("cues", "measure"),
+    names_sep = "_") %>%
+  pivot_wider(
+    names_from = "measure",
+    values_from = "value") %>%
   ggplot(
-    aes(x = cue_dimension,
-        y = mean,
-        ymin = mean_CI_lower,
-        ymax = mean_CI_upper,
-        color = comparison)) +
+    aes(x = comparison,
+        y = separability,
+        ymin = separability - SE,
+        ymax = separability + SE,
+        color = cues)) +
   geom_pointrange(
-    position = position_dodge2(width = 0.3),
-    fatten = 2.5,
-    size = .8) +
-  geom_line(aes(group = comparison), position = position_dodge(width = 0.3), linetype = "dashed") +
-  #scale_shape_manual(values = 1:7) +
-  scale_color_manual(name = "comparison", values = colors.comparison) + 
-  scale_x_discrete("Cues") +
+    position = position_dodge2(.2),
+    size = .6) +
   scale_y_continuous("Category separability index") +
   guides(shape = "none", color = guide_legend(ncol = 2)) +
   myGplot.defaults() +
   theme(axis.text.x = ggtext::element_markdown(angle = 60, vjust = 1, hjust = 1),
         axis.title.x = element_blank())
 
-p.category.separability +
-  facet_grid(~ factor(rounding, levels = c("unrounded vs. outrounded", "outrounded vs. inrounded")))
+p.category.separability.unrounded.overall <- d.SwehVd.cat.separability %>% 
+     filter(comparison %in% c("iː - yː",  "eː - yː", "ɪ - ʏ")) %>%
+     summarise(
+       F1F2_overall = mean(F1F2_separability),
+       F0F1F2_overall = mean(F0F1F2_separability),
+       F1F2F3_overall = mean(F1F2F3_separability),
+       F1F2duration_overall = mean(F1F2duration_separability),
+       F1F2_SE = mean(F1F2_SE),
+       F0F1F2_SE = mean(F0F1F2_SE),
+       F1F2F3_SE = mean(F1F2F3_SE),
+       F1F2duration_SE = mean(F1F2duration_SE)) %>%
+     pivot_longer(
+       cols = starts_with("F"),
+       names_to = c("cues", "measure"),
+       names_sep = "_") %>%
+     pivot_wider(
+       names_from = "measure",
+       values_from = "value") %>%
+  mutate(
+    x = "overall") %>%
+    ggplot(
+    aes(x = x,
+        y = overall,
+        ymin = overall - SE,
+        ymax = overall + SE,
+        color = cues)) +
+  geom_pointrange(
+    position = position_dodge2(.2),
+    size = .6) +
+  scale_y_continuous("Category separability index") +
+  guides(shape = "none", color = guide_legend(ncol = 2)) +
+  myGplot.defaults() +
+  theme(axis.text.x = ggtext::element_markdown(angle = 60, vjust = 1, hjust = 1),
+        axis.title.x = element_blank())
+
+p.category.separability.inrounded <- p.category.separability.unrounded %+%
+  (d.SwehVd.cat.separability %>% 
+  filter(comparison %in% c("yː - ʉː", "oː - uː", "ɔ - ʊ")) %>%
+  # mutate(
+  #   baselineF3 = `avg_separability_F1-F2-F3` - `avg_separability_F1-F2`,
+  #   baselineF0 = `avg_separability_F0-F1-F2` - `avg_separability_F1-F2`,
+  #   baselineDuration = `avg_separability_F1-F2-Duration` - `avg_separability_F1-F2`) %>%
+  mutate(
+    comparison = factor(comparison, levels = c("yː - ʉː", "oː - uː", "ɔ - ʊ")),
+    rounding = "outrounded vs. inrounded") %>%
+  pivot_longer(
+    cols = -c(comparison, rounding),
+    names_to = c("cues", "measure"),
+    names_sep = "_") %>%
+  pivot_wider(
+    names_from = "measure",
+    values_from = "value"))
+
+p.category.separability.overall <- p.category.separability %+%
+  (d.SwehVd.cat.separability %>% 
+     filter(comparison %in% c("iː - yː",  "eː - yː", "ɪ - ʏ", "yː - ʉː", "oː - uː", "ɔ - ʊ")) %>%
+     group_by(rounding) %>%
+     mutate(
+       F1F2_overall = mean(F1F2),
+       F0F1F2_overall = mean(F0F1F2),
+       F1F2F3_overall = mean(F1F2F3),
+       F1F2duration_overall = mean(F1F2duration)))
 #ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=1200)
 ```
 ```{r}
