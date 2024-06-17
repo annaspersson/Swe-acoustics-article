@@ -431,95 +431,7 @@ For the F1-F3 and F2-F3 cue spaces, there seems to be two main groups for which 
 For the other comparisons, F1-F2 vs. F1-F3, and F1-F2 vs. F2-F3, the LMMs indicated significant negative changes for both comparisons for all but three vowel pairs: for the [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("ɪ")`], there was a significant effect of cue combination in the F1-F2 vs. F1-F3 comparison only ($\hat\beta = -1.02, SE = .007, p < .0001$), for the [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʏ")`] and [`r linguisticsdown::cond_cmpl("æː")`] - [`r linguisticsdown::cond_cmpl("æ")`] vowel pairs, there was a significant effect in the F1-F2 vs. F2-F3 comparison only (for [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʏ")`], $\hat\beta = .023, SE = .006, p < .0002$; for [`r linguisticsdown::cond_cmpl("æː")`] - [`r linguisticsdown::cond_cmpl("æ")`], $\hat\beta = -.014, SE = .005, p < .011$).<!--check this-->
 
 ```{r}
-#Calculate the category separability based on Xie & Jaeger 2020
-d.SwehVd.cat.separability.F0 <- rbind(
-  # Get category separability of i: from y:
-  d.SwehVd.forStudy.long.static %>%
-  get_category_separability(category_A = "[iː]", category_B = "[ɪ]", data_means = d.SwehVd.centroids) %>%
-    # label the same pairwise comparison as there are no differences between the categories for these contrasts
-    mutate(comparison = "iː - ɪ"),
-  # and then y: from i:
-  d.SwehVd.forStudy.long.static %>%
-  get_category_separability(category_A = "[ɪ]", category_B = "[iː]", data_means = d.SwehVd.centroids) %>%
-    mutate(comparison = "iː - ɪ"),
-  d.SwehVd.forStudy.long.static %>%
-    get_category_separability(category_A = "[yː]", category_B = "[ʏ]", data_means = d.SwehVd.centroids) %>%
-    mutate(comparison = "yː - ʏ"),
-  d.SwehVd.forStudy.long.static %>%
-  get_category_separability(category_A = "[ʏ]", category_B = "[yː]", data_means = d.SwehVd.centroids) %>%
-    mutate(comparison = "yː - ʏ"),
-  d.SwehVd.forStudy.long.static %>%
-  get_category_separability(category_A = "[ʉː]", category_B = "[ɵ]", data_means = d.SwehVd.centroids) %>%
-    mutate(comparison = "ʉː - ɵ"),
-  d.SwehVd.forStudy.long.static %>%
-  get_category_separability(category_A = "[ɵ]", category_B = "[ʉː]", data_means = d.SwehVd.centroids) %>%
-    mutate(comparison = "ʉː - ɵ"),
-  d.SwehVd.forStudy.long.static %>%
-    get_category_separability(category_A = "[eː]", category_B = "[ɛ]", data_means = d.SwehVd.centroids) %>%
-    mutate(comparison = "eː - ɛ"),
-  d.SwehVd.forStudy.long.static %>%
-  get_category_separability(category_A = "[ɛ]", category_B = "[eː]", data_means = d.SwehVd.centroids) %>%
-    mutate(comparison = "eː - ɛ"),
-  d.SwehVd.forStudy.long.static %>%
-  get_category_separability(category_A = "[ɛː]", category_B = "[ɛ]", data_means = d.SwehVd.centroids) %>%
-    mutate(comparison = "ɛː - ɛ"),
-  d.SwehVd.forStudy.long.static %>%
-  get_category_separability(category_A = "[ɛ]", category_B = "[ɛː]", data_means = d.SwehVd.centroids) %>%
-    mutate(comparison = "ɛː - ɛ"),
-  d.SwehVd.forStudy.long.static %>%
-  get_category_separability(category_A = "[æː]", category_B = "[æ]", data_means = d.SwehVd.centroids) %>%
-    mutate(comparison = "æː - æ"),
-  d.SwehVd.forStudy.long.static %>%
-  get_category_separability(category_A = "[æ]", category_B = "[æː]", data_means = d.SwehVd.centroids) %>%
-    mutate(comparison = "æː - æ"),
-    d.SwehVd.forStudy.long.static %>%
-  get_category_separability(category_A = "[øː]", category_B = "[ø]", data_means = d.SwehVd.centroids) %>%
-    mutate(comparison = "øː - ø"),
-  d.SwehVd.forStudy.long.static %>%
-  get_category_separability(category_A = "[ø]", category_B = "[øː]", data_means = d.SwehVd.centroids) %>%
-    mutate(comparison = "øː - ø"),
-  d.SwehVd.forStudy.long.static %>%
-    get_category_separability(category_A = "[œː]", category_B = "[œ]", data_means = d.SwehVd.centroids) %>%
-    mutate(comparison = "œː - œ"),
-  d.SwehVd.forStudy.long.static %>%
-  get_category_separability(category_A = "[œ]", category_B = "[œː]", data_means = d.SwehVd.centroids) %>%
-    mutate(comparison = "œː - œ"),
-  d.SwehVd.forStudy.long.static %>%
-    get_category_separability(category_A = "[ɑː]", category_B = "[a]", data_means = d.SwehVd.centroids) %>%
-    mutate(comparison = "ɑː - a"),
-  d.SwehVd.forStudy.long.static %>%
-  get_category_separability(category_A = "[a]", category_B = "[ɑː]", data_means = d.SwehVd.centroids) %>%
-    mutate(comparison = "ɑː - a"),
-  d.SwehVd.forStudy.long.static %>%
-  get_category_separability(category_A = "[oː]", category_B = "[ɔ]", data_means = d.SwehVd.centroids) %>%
-    mutate(comparison = "oː - ɔ"),
-  d.SwehVd.forStudy.long.static %>%
-  get_category_separability(category_A = "[ɔ]", category_B = "[oː]", data_means = d.SwehVd.centroids) %>%
-    mutate(comparison = "oː - ɔ"),
-  d.SwehVd.forStudy.long.static %>%
-  get_category_separability(category_A = "[uː]", category_B = "[ʊ]", data_means = d.SwehVd.centroids) %>%
-    mutate(comparison = "uː - ʊ"),
-  d.SwehVd.forStudy.long.static %>%
-  get_category_separability(category_A = "[ʊ]", category_B = "[uː]", data_means = d.SwehVd.centroids) %>%
-    mutate(comparison = "uː - ʊ")) %>%
-  #average across the tokens from each talker
-  group_by(Talker, comparison, category) %>%
-  summarise(
-    F0F1 = mean(category_separabilityF0F1, na.rm = T),
-    F1F2 = mean(category_separabilityF1F2, na.rm = T),
-    F0F2 = mean(category_separabilityF0F2, na.rm = T),
-    F0F1F2 = mean(category_separabilityF0F1F2, na.rm = T)) %>%
-  pivot_longer(
-    cols = starts_with("F"),
-    names_to = "cue_dimension",
-    values_to = "separability") %>%
-  group_by(Talker, comparison, cue_dimension) %>%
-  mutate(cue_dimension = factor(cue_dimension, levels = c("F1F2", "F0F1", "F0F2", "F0F1F2")),
-         category = factor(category, levels = levels.vowel.IPA.swe),
-         Talker = factor(Talker),
-         #Gender = factor(Gender),
-         pairwise_separability = mean(separability))
-
+# Plot category separability with confidence intervals
 p.category.separability.long.short %+%
   (d.SwehVd.cat.separability.F0 %>%
 group_by(cue_dimension, comparison) %>%
@@ -534,6 +446,49 @@ group_by(cue_dimension, comparison) %>%
       mean_CI_lower = mean(Lower),
       mean_CI_upper = mean(Upper),
       mean = mean(Mean, na.rm = T)))
+
+colors.comparison <- c("#66C2A5", "#FC8D62", "#8DA0CB", "#FB9A99", "#E7298A", "#A6D854", "#FFD92F", "#E5C494", "#B3B3B3", "#A6CEE3", "#33A02C")
+names(colors.comparison) <- c("iː - ɪ",  "yː - ʏ", "ʉː - ɵ", "eː - ɛ", "ɛː - ɛ", "æː - æ", "øː - ø", "œː - œ", "ɑː - a",  "oː - ɔ", "uː - ʊ")
+
+p.category.separability.long.short <- d.SwehVd.cat.separability.long.short %>% 
+  #filter(comparison %in% c("iː - yː",  "eː - yː", "ɪ - ʏ", "yː - ʉː", "oː - uː", "ɔ - ʊ")) %>%
+group_by(cue_dimension, comparison) %>%
+  mutate(
+    comparison = factor(comparison, levels = c("iː - ɪ",  "yː - ʏ", "ʉː - ɵ", "eː - ɛ", "oː - ɔ", "uː - ʊ", "ɛː - ɛ", "æː - æ", "øː - ø", "œː - œ", "ɑː - a")),
+    height = ifelse(comparison %in% c("iː - ɪ",  "yː - ʏ", "ʉː - ɵ", "eː - ɛ", "oː - ɔ", "uː - ʊ"), "high vowels", "lower-mid vowels"),
+    #group = case_when(comparison %in% c("iː to yː",  "yː to iː") ~ "iː - yː",
+                      # comparison %in% c("eː to yː", "yː to eː") ~ "eː - yː",
+                      # comparison %in% c("ɪ to ʏ", "ʏ to ɪ") ~ "ɪ - ʏ",
+                      # comparison %in% c("yː to ʉː", "ʉː to yː") ~ "yː - ʉː",
+                      # comparison %in% c("oː to uː", "uː to oː") ~ "oː - uː",
+                      # comparison %in% c("ɔ to ʊ", "ʊ to ɔ") ~ "ɔ - ʊ"),
+    ci = list(enframe(Hmisc::smean.cl.boot(separability)))) %>%
+    unnest(ci) %>%
+    spread(name, value) %>%
+  group_by(cue_dimension, comparison, height) %>%
+    summarise(
+      mean_CI_lower = mean(Lower),
+      mean_CI_upper = mean(Upper),
+      mean = mean(Mean, na.rm = T)) %>%
+  ggplot(
+    aes(x = cue_dimension,
+        y = mean,
+        ymin = mean_CI_lower,
+        ymax = mean_CI_upper,
+        color = comparison)) +
+  geom_pointrange(
+    position = position_dodge2(width = 0.3),
+    fatten = 2.5,
+    size = .8) +
+  geom_line(aes(group = comparison), position = position_dodge(width = 0.3), linetype = "dashed") +
+  #scale_shape_manual(values = 1:7) +
+  scale_color_manual(name = "comparison", values = colors.comparison) + 
+  scale_x_discrete("Cues") +
+  scale_y_continuous("Category separability index") +
+  guides(shape = "none", color = guide_legend(ncol = 2)) +
+  myGplot.defaults() +
+  facet_grid(~height)
+p.category.separability.long.short
 ```
 
 ```{r}
@@ -579,6 +534,280 @@ m.sep.O.F0 <- lmerTest::lmer(pairwise_separability ~ cue_dimension + (1|Talker),
 ```{r}
 rm(d.SwehVd.centroids)
 ```
+
+### GAMMs evaluating non-linear patterns
+Figures XXX to XXX visualize GAMMs evaluating non-linear patterns in the data. Here, separate smooths were fit to each category, to assess whether all investigated categories displayed non-linear patterns.
+
+```{r}
+# Difference code the vowel variable
+contrasts(d.model.front.long$category) <- contr.treatment(4)
+contrasts(d.model.front.short$category) <- contr.treatment(2)
+contrasts(d.model.back.long$category) <- contr.treatment(2)
+contrasts(d.model.back.long$category) <- contr.treatment(2)
+contrasts(d.model.center.short$category) <- contr.treatment(2)
+contrasts(d.model.center.short$category) <- contr.treatment(2)
+contrasts(d.model.mid.long$category) <- contr.treatment(2)
+contrasts(d.model.mid.short$category) <- contr.treatment(2)
+
+d.model.back.long$categoryO <- as.ordered(d.model.back.long$category)
+contrasts(d.model.back.long$categoryO) <- contr.treatment(2)
+
+# Rename contrast labels
+d.model.front.long$category <- factor(d.model.front.long$category, labels = c("[iː]", "[yː]", "[ʉː]", "[eː]"))
+d.model.front.short$category <- factor(d.model.front.short$category, labels = c("[ɪ]", "[ʏ]"))
+d.model.back.long$category <- factor(d.model.back.long$category, labels = c("[oː]", "[uː]"))
+d.model.back.short$category <- factor(d.model.back.short$category, labels = c("[ɔ]", "[ʊ]"))
+d.model.center.long$category <- factor(d.model.center.long$category, labels = c("[ɛː]", "[æː]"))
+d.model.center.short$category <- factor(d.model.center.short$category, labels = c("[ɛ]", "[æ]"))
+d.model.mid.long$category <- factor(d.model.mid.long$category, labels = c("[øː]", "[œː]"))
+d.model.mid.short$category <- factor(d.model.mid.short$category, labels = c("[ø]", "[œ]"))
+
+# Run all gamms for front vowels
+
+m.F1.front.long <- mgcv::bam(F1 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                       + s(Talker, bs = "re")  
+                       + s(Talker, category, bs = "re"),
+                       # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                       data = d.model.front.long)
+
+m.F2.front.long <- mgcv::bam(F2 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                       + s(Talker, bs = "re")  
+                       + s(Talker, category, bs = "re"),
+                       # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                       data = d.model.front.long)
+
+m.F3.front.long <- mgcv::bam(F3 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                       + s(Talker, bs = "re")  
+                       + s(Talker, category, bs = "re"),
+                       # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                       data = d.model.front.long)
+
+m.F1.front.short <- mgcv::bam(F1 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                        + s(Talker, bs = "re")  
+                        + s(Talker, category, bs = "re"),
+                        # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                        data = d.model.front.short)
+
+m.F2.front.short <- mgcv::bam(F2 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                        + s(Talker, bs = "re")  
+                        + s(Talker, category, bs = "re"),
+                        # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                        data = d.model.front.short)
+
+m.F3.front.short <- mgcv::bam(F3 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                        + s(Talker, bs = "re")  
+                        + s(Talker, category, bs = "re"),
+                        # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                        data = d.model.front.short)
+```
+```{r}
+# Run all gamms for back vowels
+m.F1.back.long <- mgcv::bam(F1 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                       + s(Talker, bs = "re")  
+                       + s(Talker, category, bs = "re"),
+                       # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                       data = d.model.back.long)
+
+m.F2.back.long <- mgcv::bam(F2 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                       + s(Talker, bs = "re")  
+                       + s(Talker, category, bs = "re"),
+                       # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                       data = d.model.back.long)
+
+m.F3.back.long <- mgcv::bam(F3 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                       + s(Talker, bs = "re")  
+                       + s(Talker, category, bs = "re"),
+                       # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                       data = d.model.back.long)
+
+m.F1.back.short <- mgcv::bam(F1 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                        + s(Talker, bs = "re")  
+                        + s(Talker, category, bs = "re"),
+                        # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                        data = d.model.back.short)
+
+m.F2.back.short <- mgcv::bam(F2 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                        + s(Talker, bs = "re")  
+                        + s(Talker, category, bs = "re"),
+                        # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                        data = d.model.back.short)
+
+m.F3.back.short <- mgcv::bam(F3 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                        + s(Talker, bs = "re")  
+                        + s(Talker, category, bs = "re"),
+                        # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                        data = d.model.back.short)
+```
+```{r}
+# Run all gamms for center vowels
+m.F1.center.long <- mgcv::bam(F1 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                       + s(Talker, bs = "re")  
+                       + s(Talker, category, bs = "re"),
+                       # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                       data = d.model.center.long)
+
+m.F2.center.long <- mgcv::bam(F2 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                       + s(Talker, bs = "re")  
+                       + s(Talker, category, bs = "re"),
+                       # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                       data = d.model.center.long)
+
+m.F3.center.long <- mgcv::bam(F3 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                       + s(Talker, bs = "re")  
+                       + s(Talker, category, bs = "re"),
+                       # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                       data = d.model.center.long)
+
+m.F1.center.short <- mgcv::bam(F1 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                        + s(Talker, bs = "re")  
+                        + s(Talker, category, bs = "re"),
+                        # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                        data = d.model.center.short)
+
+m.F2.center.short <- mgcv::bam(F2 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                        + s(Talker, bs = "re")  
+                        + s(Talker, category, bs = "re"),
+                        # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                        data = d.model.center.short)
+
+m.F3.center.short <- mgcv::bam(F3 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                        + s(Talker, bs = "re")  
+                        + s(Talker, category, bs = "re"),
+                        # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                        data = d.model.center.short)
+```
+```{r}
+# Run all gamms for center vowels
+m.F1.mid.long <- mgcv::bam(F1 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                       + s(Talker, bs = "re")  
+                       + s(Talker, category, bs = "re"),
+                       # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                       data = d.model.mid.long)
+
+m.F2.mid.long <- mgcv::bam(F2 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                       + s(Talker, bs = "re")  
+                       + s(Talker, category, bs = "re"),
+                       # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                       data = d.model.mid.long)
+
+m.F3.mid.long <- mgcv::bam(F3 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                       + s(Talker, bs = "re")  
+                       + s(Talker, category, bs = "re"),
+                       # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                       data = d.model.mid.long)
+
+m.F1.mid.short <- mgcv::bam(F1 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                        + s(Talker, bs = "re")  
+                        + s(Talker, category, bs = "re"),
+                        # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                        data = d.model.mid.short)
+
+m.F2.mid.short <- mgcv::bam(F2 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                        + s(Talker, bs = "re")  
+                        + s(Talker, category, bs = "re"),
+                        # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                        data = d.model.mid.short)
+
+m.F3.mid.short <- mgcv::bam(F3 ~ category + Gender + s(timepoint, by = category, k = 5) 
+                        + s(Talker, bs = "re")  
+                        + s(Talker, category, bs = "re"),
+                        # + s(timepoint, Talker,  by = category, bs = "fs", k = 5, m=1)
+                        data = d.model.mid.short)
+```
+
+(ref:m-high-front) Fitted smooths of GAMM for predicting F1 (**upper row**), F2 (**mid row**), F3 (**bottom row**) and 95% confidence intervals for the long vowels [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("ʉː")`], and [`r linguisticsdown::cond_cmpl("eː")`] (**left**), and the short vowels [`r linguisticsdown::cond_cmpl("ɪ")`] and [`r linguisticsdown::cond_cmpl("ʏ")`] (**right**).
+
+```{r m-high-front, message=FALSE, fig.width=base.width*4.5, fig.height=base.height*4.5, fig.align='center', fig.cap="(ref:m-high-front)"}
+par(mfrow=c(3,2))
+itsadug::plot_smooth(m.F1.front.long, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#8DA0CB", "#FB9A99"), print.summary = FALSE, ylim = c(-1.4, -.75), hide.label = T, main = "A")
+itsadug::plot_smooth(m.F1.front.short, view = "timepoint", plot_all = "category", col = c("#1B9E77", "#D95F02"), print.summary = FALSE, ylim = c(-1.4, -.75), hide.label = T, main = "B")
+itsadug::plot_smooth(m.F2.front.long, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#8DA0CB", "#FB9A99"), print.summary = FALSE, ylim = c(.2, .75), hide.label = T, main = "C")
+itsadug::plot_smooth(m.F2.front.short, view = "timepoint", plot_all = "category", col = c("#1B9E77", "#D95F02"), print.summary = FALSE, ylim = c(.2, .75), hide.label = T, main = "D")
+itsadug::plot_smooth(m.F3.front.long, view = "timepoint", plot_all = "category", col = c("#66C2A5", "#FC8D62", "#8DA0CB", "#FB9A99"), print.summary = FALSE, ylim = c(.5, 1), hide.label = T, main = "E")
+itsadug::plot_smooth(m.F3.front.short, view = "timepoint", plot_all = "category", col = c("#1B9E77", "#D95F02"), print.summary = FALSE, ylim = c(.5, 1), hide.label = T, main = "F")
+#plot_diff(m.F1.front.long, view = "timepoint", comp = list(category = c("[iː]", "[yː]")))
+#ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=1200)
+```
+
+(ref:m-high-back) Fitted smooths of GAMM for predicting F1 (**upper row**), F2 (**mid row**), F3 (**bottom row**) and 95% confidence intervals for the long vowels [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("uː")`] (**left**), and the short vowels [`r linguisticsdown::cond_cmpl("ɔ")`] - [`r linguisticsdown::cond_cmpl("ʊ")`] (**right**).
+
+```{r m-high-back, message=FALSE, fig.width=base.width*4.5, fig.height=base.height*4.5, fig.align='center', fig.cap="(ref:m-high-back)"}
+par(mfrow=c(3,2))
+itsadug::plot_smooth(m.F1.back.long, view = "timepoint", plot_all = "category", col = c("#A6CEE3", "#B2DF8A"), print.summary = FALSE, ylim = c(-1.4, -.8), hide.label = T, main = "A")
+itsadug::plot_smooth(m.F1.back.short, view = "timepoint", plot_all = "category", col = c("#1F78B4", "#33A02C"), print.summary = FALSE, ylim = c(-1.4, -.8), hide.label = T, main = "B")
+itsadug::plot_smooth(m.F2.back.long, view = "timepoint", plot_all = "category", col = c("#A6CEE3", "#B2DF8A"), print.summary = FALSE, ylim = c(-.75 -.3), hide.label = T, main = "C")
+itsadug::plot_smooth(m.F2.back.short, view = "timepoint", plot_all = "category", col = c("#1F78B4", "#33A02C"), print.summary = FALSE, ylim = c(-.75 -.3), hide.label = T, main = "D")
+itsadug::plot_smooth(m.F3.back.long, view = "timepoint", plot_all = "category", col = c("#A6CEE3", "#B2DF8A"), print.summary = FALSE, ylim = c(.7, 1), hide.label = T, main = "E")
+itsadug::plot_smooth(m.F3.back.short, view = "timepoint", plot_all = "category", col = c("#1F78B4", "#33A02C"), print.summary = FALSE, ylim = c(.7, 1), hide.label = T, main = "F")
+#ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=1200)
+```
+
+(ref:m-center) Fitted smooths of GAMM for predicting F1 (**upper row**), F2 (**mid row**), F3 (**bottom row**) and 95% confidence intervals for the long vowels [`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("æː")`] (**left**), and the short vowels [`r linguisticsdown::cond_cmpl("ɛ")`] - [`r linguisticsdown::cond_cmpl("æ")`] (**right**).
+
+```{r m-center, message=FALSE, fig.width=base.width*4.5, fig.height=base.height*4.5, fig.align='center', fig.cap="(ref:m-center)"}
+par(mfrow=c(3,2))
+itsadug::plot_smooth(m.F1.center.long, view = "timepoint", plot_all = "category", col = c("#E78AC3", "#A6D854"), print.summary = FALSE, ylim = c(-.95, -.3), hide.label = T, main = "A")
+itsadug::plot_smooth(m.F1.center.short, view = "timepoint", plot_all = "category", col = c("#E7298A", "#66A61E"), print.summary = FALSE, ylim = c(-.95, -.3), hide.label = T, main = "B")
+itsadug::plot_smooth(m.F2.center.long, view = "timepoint", plot_all = "category", col = c("#E78AC3", "#A6D854"), print.summary = FALSE, ylim = c(.2, .5), hide.label = T, main = "C")
+itsadug::plot_smooth(m.F2.center.short, view = "timepoint", plot_all = "category", col = c("#E7298A", "#66A61E"), print.summary = FALSE, ylim = c(.2, .5), hide.label = T, main = "D")
+itsadug::plot_smooth(m.F3.center.long, view = "timepoint", plot_all = "category", col = c("#E78AC3", "#A6D854"), print.summary = FALSE, ylim = c(.65, .85), hide.label = T, main = "E")
+itsadug::plot_smooth(m.F3.center.short, view = "timepoint", plot_all = "category", col = c("#E7298A", "#66A61E"), print.summary = FALSE, ylim = c(.65, .85), hide.label = T, main = "F")
+```
+(ref:m-mid) Fitted smooths of GAMM for predicting F1 (**upper row**), F2 (**mid row**), F3 (**bottom row**) and 95% confidence intervals for the long vowels [`r linguisticsdown::cond_cmpl("øː")`] - [`r linguisticsdown::cond_cmpl("œː")`] (**left**), and the short vowels [`r linguisticsdown::cond_cmpl("ø")`] - [`r linguisticsdown::cond_cmpl("œ")`] (**right**).
+
+```{r m-mid, message=FALSE, fig.width=base.width*4.5, fig.height=base.height*4.5, fig.align='center', fig.cap="(ref:m-mid)"}
+par(mfrow=c(3,2))
+itsadug::plot_smooth(m.F1.mid.long, view = "timepoint", plot_all = "category", col = c("#FFD92F", "#E5C494"), print.summary = FALSE, ylim = c(-1, -.6), hide.label = T, main = "A")
+itsadug::plot_smooth(m.F1.mid.short, view = "timepoint", plot_all = "category", col = c("#E6AB02", "#A6761D"), print.summary = FALSE, ylim = c(-1, -.6), hide.label = T, main = "B")
+itsadug::plot_smooth(m.F2.mid.long, view = "timepoint", plot_all = "category", col = c("#FFD92F", "#E5C494"), print.summary = FALSE, ylim = c(-.1, .3), hide.label = T, main = "C")
+itsadug::plot_smooth(m.F2.mid.short, view = "timepoint", plot_all = "category", col = c("#E6AB02", "#A6761D"), print.summary = FALSE, ylim = c(-.1, .3), hide.label = T, main = "D")
+itsadug::plot_smooth(m.F3.mid.long, view = "timepoint", plot_all = "category", col = c("#FFD92F", "#E5C494"), print.summary = FALSE, ylim = c(.65, .8), hide.label = T, main = "E")
+itsadug::plot_smooth(m.F3.mid.short, view = "timepoint", plot_all = "category", col = c("#E6AB02", "#A6761D"), print.summary = FALSE, ylim = c(.65, .8), hide.label = T, main = "F")
+#ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=1200)
+```
+```{r}
+# Dataframe for running GAMMs on all 21 vowels grouped by pair
+d.model.paired <- d.SwehVd.vowel_pairs %>%
+  filter(Normalization.Type == "Nearey's uniform scaling (log)", vowel_pair != "ɛ - eː, ɛː") %>%
+  mutate(
+    #Reorder vowel_pairs to match the levels in category
+    vowel_pair = factor(vowel_pair, 
+                        levels = c("ɪ - iː", "ʏ - yː", "ɵ - ʉː", "ɛ - eː", "ɛ - ɛː", "æ - æː", "ø - øː", "œ - œː", "a - ɑː", "ɔ - oː", "ʊ - uː")),
+    category = factor(category, levels = levels.vowel.IPA.swe)) %>%
+  mutate(across(c(Talker, Quantity, Gender), ~ factor(.x)))
+
+# Difference code the vowel pair variable
+contrasts(d.model.paired$category) <- MASS::contr.sdif(21)
+
+# Rename contrast labels
+d.model.paired$category <- factor(d.model.paired$category, labels = c("[iː]", "[ɪ]", "[yː]", "[ʏ]", "[ʉː]", "[ɵ]", "[eː]", "[ɛ]", "[ɛː]", "[æː]", "[æ]", "[øː]", "[ø]", "[œː]", "[œ]", "[ɑː]", "[a]", "[oː]", "[ɔ]", "[uː]", "[ʊ]"))
+
+m.F1.paired <- mgcv::bam(F1 ~ category + Gender + 
+                           s(timepoint, by = category, k = 5) + 
+                           s(Talker, bs = "re") +
+                           s(Talker, category, bs = "re"),
+                         data = d.model.paired)
+
+# m.1 <- brms::bf(category ~ t2(F1, F2, F3, timepoint) + (1 + F1 | Talker),
+#                   family = multinomial,
+#                   data = d.model.paired)
+# 
+# m1 <- glm(category ~ F1 + F2 + F3, family = "binomial",
+#           data = d.model.paired %>% filter(category %in% c("[iː]", "[ɪ]", "[yː]", "[ʏ]", "[ʉː]", "[ɵ]")))
+
+m.F2.paired <- mgcv::bam(F2 ~ category + Gender + 
+                           s(timepoint, by = category, k = 5) + 
+                           s(Talker, bs = "re") +
+                           s(Talker, category, bs = "re"),
+                         data = d.model.paired)
+
+m.F3.paired <- mgcv::bam(F3 ~ category + Gender + 
+                           s(timepoint, by = category, k = 5) + 
+                           s(Talker, bs = "re") +
+                           s(Talker, category, bs = "re"),
+                         data = d.model.paired)
+```
+
 ### Summary tables of GAMMs {#sec:SI-GAMMs}
 Tables \@ref(tab:m-F1-long), \@ref(tab:m.F1.front.short), \@ref(tab:m.F2.front.long), \@ref(tab:m.F2.front.short), \@ref(tab:m.F3.front.long), \@ref(tab:m.F3.front.short) summarize the results of the GAMMs fit to neighboring contrasts.
 
