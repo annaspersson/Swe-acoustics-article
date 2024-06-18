@@ -524,9 +524,9 @@ Formant measurements at all five time-points were used in the dynamic analysis t
 
 In the second part of the dynamic analysis, the hypothesized contribution of formant dynamics to category information was modeled using generalized additive mixed-effects models (GAMMs) [@baayen2017]. GAMMs were employed to assess what cues carry information about vowel quality once formant dynamics were inspected. GAMMs are increasingly used in phonetic research, due to their suitability in modeling the non-monotonic complex phonetic patterns found in formants without assuming linearity or having to rely on the simplifying assumption that vowels can be reduced to a single F1-F2 point estimate [e.g., @chuang2021; @soskuthy2021; @wieling2018]. GAMMs have been used in studies on vowels in different English varieties, e.g., on /u/-fronting in Derby English [@soskuthy2018] and on the front vowel system of Southern American English [@renwick-stanley2020] but to the best of my knowledge, they have not been implemented in studies of Swedish vowels. The use of GAMMs thus complements previous work on Central Swedish that has primarily used visual inspection, formant measurements and linear models (Table \@ref(tab:previous-work)).
 
-Two main groups of GAMMs were fit in the dynamic analysis. In the first group, GAMMs were fit to 4 subsets of neighboring contrasts, hypothesized to differ primarily in formant dynamics: [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʉː")`] - [`r linguisticsdown::cond_cmpl("eː")`], [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("uː")`], [`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("æː")`] [@fant1971; @kuronen2000; @pelzer-boersma2019]. Given the directionality in formant trajectories found for [`r linguisticsdown::cond_cmpl("øː")`]-[`r linguisticsdown::cond_cmpl("œː")`] (Figure \@ref(fig:trajectories)), this contrast was also included. To explore potential effects of dynamics in the corresponding short vowels, an additional 4 contrasts were modeled. These were not entirely identical to the long subsets, for reasons of evident separability in F1-F2 space: [`r linguisticsdown::cond_cmpl("ɪ")`] - [`r linguisticsdown::cond_cmpl("ʏ")`], [`r linguisticsdown::cond_cmpl("ɔ")`] - [`r linguisticsdown::cond_cmpl("ʊ")`], [`r linguisticsdown::cond_cmpl("ɛ")`] - [`r linguisticsdown::cond_cmpl("æ")`] and [`r linguisticsdown::cond_cmpl("ø")`]-[`r linguisticsdown::cond_cmpl("œ")`]. The general model formulation was as follows $formant \sim category + Gender + s(timepoint, by = category, k = 5) + s(Talker, bs = "re") + s(Talker, category, bs = "re")$. The GAMMs were treatment coded with [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("oː")`], [`r linguisticsdown::cond_cmpl("ɛː")`], [`r linguisticsdown::cond_cmpl("ɪ")`], [`r linguisticsdown::cond_cmpl("ɔ")`], [`r linguisticsdown::cond_cmpl("ɛ")`], and [`r linguisticsdown::cond_cmpl("ø")`] as reference categories in respective set.
+Two main groups of GAMMs were fit in the dynamic analysis. In the first group, GAMMs were fit to 4 subsets of neighboring contrasts, hypothesized to differ primarily in formant dynamics: [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʉː")`] - [`r linguisticsdown::cond_cmpl("eː")`], [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("uː")`], [`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("æː")`] [@fant1971; @kuronen2000; @pelzer-boersma2019]. Given the directionality in formant trajectories found for [`r linguisticsdown::cond_cmpl("øː")`]-[`r linguisticsdown::cond_cmpl("œː")`] (Figure \@ref(fig:trajectories)), this contrast was also included. To explore potential effects of dynamics in the corresponding short vowels, an additional 4 contrasts were modeled. These were not entirely identical to the long subsets, for reasons of evident separability in F1-F2 space: [`r linguisticsdown::cond_cmpl("ɪ")`] - [`r linguisticsdown::cond_cmpl("ʏ")`], [`r linguisticsdown::cond_cmpl("ɔ")`] - [`r linguisticsdown::cond_cmpl("ʊ")`], [`r linguisticsdown::cond_cmpl("ɛ")`] - [`r linguisticsdown::cond_cmpl("æ")`] and [`r linguisticsdown::cond_cmpl("ø")`]-[`r linguisticsdown::cond_cmpl("œ")`]. The general model formulation was as follows $formant \sim categoryO + Gender + s(timepoint) + s(timepoint, by = categoryO, k = 5) + s(Talker, bs = "re") + s(Talker, categoryO, bs = "re")$. The GAMMs thus used an ordered factor predictor (= categoryO) that were treatment coded with [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("oː")`], [`r linguisticsdown::cond_cmpl("ɛː")`], [`r linguisticsdown::cond_cmpl("ɪ")`], [`r linguisticsdown::cond_cmpl("ɔ")`], [`r linguisticsdown::cond_cmpl("ɛ")`], and [`r linguisticsdown::cond_cmpl("ø")`] as reference categories in respective set.
 
-The second group consisted of GAMMs predicting cues from all 21 categories, aiming for an evaluation of differences between categories within vowel pairs. Vowel was backwards difference coded, with [`r linguisticsdown::cond_cmpl("iː")`] as reference vowel. The vowel variable was ordered alternating long and short vowels by the pair, so the short vowels were compared against their preceding long counterpart.
+The second group consisted of 11 GAMMs fit to each of the long-short vowel pairs, aiming for an evaluation of differences between categories within pairs. In each set, vowel was treatment coded, with the long vowel in each pair as reference vowel.
 
 All GAMMs were fit separately for each of the three formants, which necessarily meant committing to the simplifying assumption of cue independence. Previous work has shown that acoustic cues tend to co-vary [for a review, see @schertz-clare2019]. For vowels, this is the case for F1 and F2, as shown by the shape and orientation of ellipses in Figure \@ref(fig:swe-vowels-by-quantity).
 
@@ -1344,7 +1344,7 @@ m.F2.front.long.ord <- mgcv::bam(F2 ~ categoryO + Gender + s(timepoint, k = 5) +
                                 + s(Talker, categoryO, bs = "re"),
                                 data = d.model.front.long)
 
-m.F3.front.long.ord <- mgcv::bam(F1 ~ categoryO + Gender + s(timepoint, k = 5) + s(timepoint, by = categoryO, k = 5)
+m.F3.front.long.ord <- mgcv::bam(F3 ~ categoryO + Gender + s(timepoint, k = 5) + s(timepoint, by = categoryO, k = 5)
                                 + s(Talker, bs = "re")
                                 + s(Talker, categoryO, bs = "re"),
                                 data = d.model.front.long)
@@ -1359,7 +1359,7 @@ m.F2.front.short.ord <- mgcv::bam(F2 ~ categoryO + Gender + s(timepoint, k = 5) 
                                 + s(Talker, categoryO, bs = "re"),
                                 data = d.model.front.short)
 
-m.F3.front.short.ord <- mgcv::bam(F1 ~ categoryO + Gender + s(timepoint, k = 5) + s(timepoint, by = categoryO, k = 5)
+m.F3.front.short.ord <- mgcv::bam(F3 ~ categoryO + Gender + s(timepoint, k = 5) + s(timepoint, by = categoryO, k = 5)
                                 + s(Talker, bs = "re")
                                 + s(Talker, categoryO, bs = "re"),
                                 data = d.model.front.short)
@@ -1376,7 +1376,7 @@ m.F2.back.long.ord <- mgcv::bam(F2 ~ categoryO + Gender + s(timepoint, k = 5) + 
                                 + s(Talker, categoryO, bs = "re"),
                                 data = d.model.back.long)
 
-m.F3.back.long.ord <- mgcv::bam(F1 ~ categoryO + Gender + s(timepoint, k = 5) + s(timepoint, by = categoryO, k = 5)
+m.F3.back.long.ord <- mgcv::bam(F3 ~ categoryO + Gender + s(timepoint, k = 5) + s(timepoint, by = categoryO, k = 5)
                                 + s(Talker, bs = "re")
                                 + s(Talker, categoryO, bs = "re"),
                                 data = d.model.back.long)
@@ -1391,7 +1391,7 @@ m.F2.back.short.ord <- mgcv::bam(F2 ~ categoryO + Gender + s(timepoint, k = 5) +
                                 + s(Talker, categoryO, bs = "re"),
                                 data = d.model.back.short)
 
-m.F3.back.short.ord <- mgcv::bam(F1 ~ categoryO + Gender + s(timepoint, k = 5) + s(timepoint, by = categoryO, k = 5)
+m.F3.back.short.ord <- mgcv::bam(F3 ~ categoryO + Gender + s(timepoint, k = 5) + s(timepoint, by = categoryO, k = 5)
                                 + s(Talker, bs = "re")
                                 + s(Talker, categoryO, bs = "re"),
                                 data = d.model.back.short)
@@ -1408,7 +1408,7 @@ m.F2.center.long.ord <- mgcv::bam(F2 ~ categoryO + Gender + s(timepoint, k = 5) 
                                 + s(Talker, categoryO, bs = "re"),
                                 data = d.model.center.long)
 
-m.F3.center.long.ord <- mgcv::bam(F1 ~ categoryO + Gender + s(timepoint, k = 5) + s(timepoint, by = categoryO, k = 5)
+m.F3.center.long.ord <- mgcv::bam(F3 ~ categoryO + Gender + s(timepoint, k = 5) + s(timepoint, by = categoryO, k = 5)
                                 + s(Talker, bs = "re")
                                 + s(Talker, categoryO, bs = "re"),
                                 data = d.model.center.long)
@@ -1423,7 +1423,7 @@ m.F2.center.short.ord <- mgcv::bam(F2 ~ categoryO + Gender + s(timepoint, k = 5)
                                 + s(Talker, categoryO, bs = "re"),
                                 data = d.model.center.short)
 
-m.F3.center.short.ord <- mgcv::bam(F1 ~ categoryO + Gender + s(timepoint, k = 5) + s(timepoint, by = categoryO, k = 5)
+m.F3.center.short.ord <- mgcv::bam(F3 ~ categoryO + Gender + s(timepoint, k = 5) + s(timepoint, by = categoryO, k = 5)
                                 + s(Talker, bs = "re")
                                 + s(Talker, categoryO, bs = "re"),
                                 data = d.model.center.short)
@@ -1440,7 +1440,7 @@ m.F2.mid.long.ord <- mgcv::bam(F2 ~ categoryO + Gender + s(timepoint, k = 5) + s
                                 + s(Talker, categoryO, bs = "re"),
                                 data = d.model.mid.long)
 
-m.F3.mid.long.ord <- mgcv::bam(F1 ~ categoryO + Gender + s(timepoint, k = 5) + s(timepoint, by = categoryO, k = 5)
+m.F3.mid.long.ord <- mgcv::bam(F3 ~ categoryO + Gender + s(timepoint, k = 5) + s(timepoint, by = categoryO, k = 5)
                                 + s(Talker, bs = "re")
                                 + s(Talker, categoryO, bs = "re"),
                                 data = d.model.mid.long)
@@ -1455,39 +1455,53 @@ m.F2.mid.short.ord <- mgcv::bam(F2 ~ categoryO + Gender + s(timepoint, k = 5) + 
                                 + s(Talker, categoryO, bs = "re"),
                                 data = d.model.mid.short)
 
-m.F3.mid.short.ord <- mgcv::bam(F1 ~ categoryO + Gender + s(timepoint, k = 5) + s(timepoint, by = categoryO, k = 5)
+m.F3.mid.short.ord <- mgcv::bam(F3 ~ categoryO + Gender + s(timepoint, k = 5) + s(timepoint, by = categoryO, k = 5)
                                 + s(Talker, bs = "re")
                                 + s(Talker, categoryO, bs = "re"),
                                 data = d.model.mid.short)
 ```
 
-The GAMMs fit to the high front vowel contrasts suggested an effect of vowel on all cues for all vowels (all $ps < .0025$), except for [`r linguisticsdown::cond_cmpl("yː")`] predicting F3 ($\hat\beta = .0007, SE = .013, p > .95$), and for [`r linguisticsdown::cond_cmpl("ʏ")`] predicting F1 ($\hat\beta = .01, SE = .01, p > .32$). The long [`r linguisticsdown::cond_cmpl("yː")`] predicting F2 was also close to insignificant ($p > .046$). This suggests that there are no differences in [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] predicting F3 or in [`r linguisticsdown::cond_cmpl("ɪ")`] and [`r linguisticsdown::cond_cmpl("ʏ")`] predicting F1 when formant dynamics is considered. These results would thus overall seem to suggest that while F3 increases separability between [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] under static analysis, the *dynamics* in F3 does not seem to add information about vowel quality for this contrast. For the [`r linguisticsdown::cond_cmpl("ɪ")`] - [`r linguisticsdown::cond_cmpl("ʏ")`] contrast, F3 is likely more informative, while the F1-dynamics does not contribute to distinguishing between the two. Figure \@ref(fig:m-high-front) panels A and E demonstrate the importance of formant dynamics for the high front long vowels in F1 and F3, as several vowels are overlapping at some time-points, but never along the entire segment. 
+The GAMMs fit to the high front vowels contrasts suggested an effect of vowel on all cues for all vowels (all $ps < .0025$), except for [`r linguisticsdown::cond_cmpl("yː")`] predicting F3 ($\hat\beta = .0007, SE = .013, p > .95$), and for [`r linguisticsdown::cond_cmpl("ʏ")`] predicting F1 ($\hat\beta = .01, SE = .01, p > .32$). The long [`r linguisticsdown::cond_cmpl("yː")`] predicting F2 was also close to insignificant ($p > .046$). This suggests that there are no differences in [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] predicting F3 or in [`r linguisticsdown::cond_cmpl("ɪ")`] and [`r linguisticsdown::cond_cmpl("ʏ")`] predicting F1 when formant dynamics is considered. These results would thus overall seem to suggest that while F3 increases separability between [`r linguisticsdown::cond_cmpl("iː")`] and [`r linguisticsdown::cond_cmpl("yː")`] under static analysis, the *dynamics* in F3 does not seem to add information about vowel quality for this contrast. For the [`r linguisticsdown::cond_cmpl("ɪ")`] - [`r linguisticsdown::cond_cmpl("ʏ")`] contrast, F3 is likely more informative, while the F1-dynamics does not contribute to distinguishing between the two. Figure \@ref(fig:m-high-front) panels A and E demonstrate the importance of formant dynamics for the high front long vowels in F1 and F3, as several vowels are overlapping at some time-points, but never along the entire segment. 
 
-(ref:m-high-front) Fitted smooths of GAMM for predicting F1 (**upper row**), F2 (**mid row**), F3 (**bottom row**) and 95% confidence intervals for the long vowels [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("ʉː")`], and [`r linguisticsdown::cond_cmpl("eː")`] (**left**), and the short vowels [`r linguisticsdown::cond_cmpl("ɪ")`] and [`r linguisticsdown::cond_cmpl("ʏ")`] (**right**).
+(ref:m-high-front-I-Y) Fitted smooths of GAMM for predicting F1 (**upper row**), F2 (**mid row**), F3 (**bottom row**) and 95% confidence intervals for the long vowels [`r linguisticsdown::cond_cmpl("iː")`], [`r linguisticsdown::cond_cmpl("yː")`], [`r linguisticsdown::cond_cmpl("ʉː")`], and [`r linguisticsdown::cond_cmpl("eː")`] (**left**), and the short vowels [`r linguisticsdown::cond_cmpl("ɪ")`] and [`r linguisticsdown::cond_cmpl("ʏ")`] (**right**).
 
 ```{r m-high-front, message=FALSE, fig.width=base.width*4.5, fig.height=base.height*4.5, fig.align='center', fig.cap="(ref:m-high-front)"}
 par(mfrow=c(3,2))
-plot_diff(m.F1.front.long.ord, view = "timepoint", comp = list(categoryO = c("[iː]", "[yː]")), print.summary = F, col = "#1B9E77", hide.label = T, main = "A")
-plot_diff(m.F1.front.short.ord, view = "timepoint", comp = list(categoryO = c("[ɪ]", "[ʏ]")), print.summary = F, col = "#1B9E77", hide.label = T, main = "B")
-plot_diff(m.F2.front.long.ord, view = "timepoint", comp = list(categoryO = c("[iː]", "[yː]")), print.summary = F, col = "#1B9E77",hide.label = T, main = "C")
-plot_diff(m.F2.front.short.ord, view = "timepoint", comp = list(categoryO = c("[ɪ]", "[ʏ]")), print.summary = F, col = "#1B9E77", hide.label = T, main = "D")
-plot_diff(m.F3.front.long.ord, view = "timepoint", comp = list(categoryO = c("[iː]", "[yː]")), print.summary = F, col = "#1B9E77", hide.label = T, main = "E")
-plot_diff(m.F3.front.short.ord, view = "timepoint", comp = list(categoryO = c("[ɪ]", "[ʏ]")), print.summary = F, col = "#1B9E77", hide.label = T, main = "F")
+plot_diff(m.F1.front.long.ord, view = "timepoint", comp = list(categoryO = c("[iː]", "[yː]")), print.summary = F, col = "#1B9E77", hide.label = T, main = "A", col.diff = "black")
+plot_diff(m.F1.front.short.ord, view = "timepoint", comp = list(categoryO = c("[ɪ]", "[ʏ]")), print.summary = F, col = "#1B9E77", hide.label = T, main = "B", col.diff = "black")
+plot_diff(m.F2.front.long.ord, view = "timepoint", comp = list(categoryO = c("[iː]", "[yː]")), print.summary = F, col = "#1B9E77",hide.label = T, main = "C", col.diff = "black")
+plot_diff(m.F2.front.short.ord, view = "timepoint", comp = list(categoryO = c("[ɪ]", "[ʏ]")), print.summary = F, col = "#1B9E77", hide.label = T, main = "D", col.diff = "black")
+plot_diff(m.F3.front.long.ord, view = "timepoint", comp = list(categoryO = c("[iː]", "[yː]")), print.summary = F, col = "#1B9E77", hide.label = T, main = "E", col.diff = "black")
+plot_diff(m.F3.front.short.ord, view = "timepoint", comp = list(categoryO = c("[ɪ]", "[ʏ]")), print.summary = F, col = "#1B9E77", hide.label = T, main = "F", col.diff = "black")
 #plot_diff(m.F1.front.long, view = "timepoint", comp = list(category = c("[iː]", "[yː]")))
 #ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=1200)
 ```
+(ref:m-high-front-I-U) Fitted smooths of GAMM for predicting F1 (**upper row**), F2 (**mid row**), F3 (**bottom row**) and 95% confidence intervals for the long vowels [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("ʉː")`] (**left**), and [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("eː")`] (**right**).
+
+```{r m-high-front, message=FALSE, fig.width=base.width*4.5, fig.height=base.height*4.5, fig.align='center', fig.cap="(ref:m-high-front)"}
+par(mfrow=c(3,2))
+plot_diff(m.F1.front.long.ord, view = "timepoint", comp = list(categoryO = c("[iː]", "[ʉː]")), print.summary = F, col = "#8DA0CB", hide.label = T, main = "A", col.diff = "black")
+plot_diff(m.F1.front.long.ord, view = "timepoint", comp = list(categoryO = c("[iː]", "[eː]")), print.summary = F, col = "#FB9A99", hide.label = T, main = "B", col.diff = "black")
+plot_diff(m.F2.front.long.ord, view = "timepoint", comp = list(categoryO = c("[iː]", "[ʉː]")), print.summary = F, col = "#8DA0CB",hide.label = T, main = "C", col.diff = "black")
+plot_diff(m.F2.front.long.ord, view = "timepoint", comp = list(categoryO = c("[iː]", "[eː]")), print.summary = F, col = "#FB9A99", hide.label = T, main = "D", col.diff = "black")
+plot_diff(m.F3.front.long.ord, view = "timepoint", comp = list(categoryO = c("[iː]", "[ʉː]")), print.summary = F, col = "#8DA0CB", hide.label = T, main = "E", col.diff = "black")
+plot_diff(m.F3.front.long.ord, view = "timepoint", comp = list(categoryO = c("[iː]", "[eː]")), print.summary = F, col = "#FB9A99", hide.label = T, main = "F", col.diff = "black")
+#plot_diff(m.F1.front.long, view = "timepoint", comp = list(category = c("[iː]", "[yː]")))
+#ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=1200)
+```
+
 An effect of category on all three cues was found in all GAMMs fit to the high back long and short contrasts (all $ps < .0006$). These results suggest that all three cues contribute to distinguishing between these vowels also when formant dynamics are considered (Figure \@ref(fig:m-high-back)).^[An effect of gender was found for the high back vowels predicting F1 for the long and short vowels (both $ps < .022$), which suggests that the normalization approach likely reduced some talker-specific differences related to anatomical differences, but not all. An alternative explanation is that the overall difference in height for these vowels when formant dynamics is considered could be attributed to a real pronunciation difference, driven by sociolinguistic factors [for research on young female talkers driving language change, see e.g., @boberg2019; @labov1990; for a review, see e.g., @woods1997].] Figures \@ref(fig:m-high-front) and \@ref(fig:m-high-back) further highlight the presumable diphthongization in [`r linguisticsdown::cond_cmpl("eː")`] and [`r linguisticsdown::cond_cmpl("oː")`], as indicated by the steepness of the fitted curve.
 
 (ref:m-high-back) Fitted smooths of GAMM for predicting F1 (**upper row**), F2 (**mid row**), F3 (**bottom row**) and 95% confidence intervals for the long vowels [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("uː")`] (**left**), and the short vowels [`r linguisticsdown::cond_cmpl("ɔ")`] - [`r linguisticsdown::cond_cmpl("ʊ")`] (**right**).
 
 ```{r m-high-back, message=FALSE, fig.width=base.width*4.5, fig.height=base.height*4.5, fig.align='center', fig.cap="(ref:m-high-back)"}
 par(mfrow=c(3,2))
-plot_diff(m.F1.back.long.ord, view = "timepoint", comp = list(categoryO = c("[oː]", "[uː]")), print.summary = F, col = "#A6CEE3", hide.label = T, main = "A")
-plot_diff(m.F1.back.short.ord, view = "timepoint", comp = list(categoryO = c("[ɔ]", "[ʊ]")), print.summary = F, col = "#1F78B4", hide.label = T, main = "B")
-plot_diff(m.F2.back.long.ord, view = "timepoint", comp = list(categoryO = c("[oː]", "[uː]")), print.summary = F, col = "#A6CEE3", hide.label = T, main = "C")
-plot_diff(m.F2.back.short.ord, view = "timepoint", comp = list(categoryO = c("[ɔ]", "[ʊ]")), print.summary = F, col = "#1F78B4", hide.label = T, main = "D")
-plot_diff(m.F3.back.long.ord, view = "timepoint", comp = list(categoryO = c("[oː]", "[uː]")), print.summary = F, col = "#A6CEE3", hide.label = T, main = "E")
-plot_diff(m.F3.back.short.ord, view = "timepoint", comp = list(categoryO = c("[ɔ]", "[ʊ]")), print.summary = F, col = "#1F78B4", hide.label = T, main = "F")
+plot_diff(m.F1.back.long.ord, view = "timepoint", comp = list(categoryO = c("[oː]", "[uː]")), print.summary = F, col = "#A6CEE3", hide.label = T, main = "A", col.diff = "black")
+plot_diff(m.F1.back.short.ord, view = "timepoint", comp = list(categoryO = c("[ɔ]", "[ʊ]")), print.summary = F, col = "#1F78B4", hide.label = T, main = "B", col.diff = "black")
+plot_diff(m.F2.back.long.ord, view = "timepoint", comp = list(categoryO = c("[oː]", "[uː]")), print.summary = F, col = "#A6CEE3", hide.label = T, main = "C", col.diff = "black")
+plot_diff(m.F2.back.short.ord, view = "timepoint", comp = list(categoryO = c("[ɔ]", "[ʊ]")), print.summary = F, col = "#1F78B4", hide.label = T, main = "D", col.diff = "black")
+plot_diff(m.F3.back.long.ord, view = "timepoint", comp = list(categoryO = c("[oː]", "[uː]")), print.summary = F, col = "#A6CEE3", hide.label = T, main = "E", col.diff = "black")
+plot_diff(m.F3.back.short.ord, view = "timepoint", comp = list(categoryO = c("[ɔ]", "[ʊ]")), print.summary = F, col = "#1F78B4", hide.label = T, main = "F", col.diff = "black")
 #ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=1200)
 ```
 The GAMMs fit to the lower-mid front long and short vowel contrasts suggested an effect of vowel on F1 and F2 (all $ps < .0001$), but not on F3 (for [`r linguisticsdown::cond_cmpl("æː")`], $\hat\beta = -.012, SE = .01, p > .25$; for [`r linguisticsdown::cond_cmpl("æ")`], $\hat\beta = .012, SE = .008, p > .14$). Figure \@ref(fig:m-center) demonstrates how these vowels overlap in F3-dynamics, but are distinguished for larger parts of the segment along F1 and F2.
@@ -1496,12 +1510,12 @@ The GAMMs fit to the lower-mid front long and short vowel contrasts suggested an
 
 ```{r m-center, message=FALSE, fig.width=base.width*4.5, fig.height=base.height*4.5, fig.align='center', fig.cap="(ref:m-center)"}
 par(mfrow=c(3,2))
-plot_diff(m.F1.center.long.ord, view = "timepoint", comp = list(categoryO = c("[ɛː]", "[æː]")), print.summary = F, col = "#E78AC3", hide.label = T, main = "A")
-plot_diff(m.F1.center.short.ord, view = "timepoint", comp = list(categoryO = c("[ɛ]", "[æ]")), print.summary = F, col = "#E7298A", hide.label = T, main = "B")
-plot_diff(m.F2.center.long.ord, view = "timepoint", comp = list(categoryO = c("[ɛː]", "[æː]")), print.summary = F, col = "#E78AC3", hide.label = T, main = "C")
-plot_diff(m.F2.center.short.ord, view = "timepoint", comp = list(categoryO = c("[ɛ]", "[æ]")), print.summary = F, col = "#E7298A", hide.label = T, main = "D")
-plot_diff(m.F3.center.long.ord, view = "timepoint", comp = list(categoryO = c("[ɛː]", "[æː]")), print.summary = F, col = "#E78AC3", hide.label = T, main = "E")
-plot_diff(m.F3.center.short.ord, view = "timepoint", comp = list(categoryO = c("[ɛ]", "[æ]")), print.summary = F, col = "#E7298A", hide.label = T, main = "F")
+plot_diff(m.F1.center.long.ord, view = "timepoint", comp = list(categoryO = c("[ɛː]", "[æː]")), print.summary = F, col = "#E78AC3", hide.label = T, main = "A", col.diff = "black")
+plot_diff(m.F1.center.short.ord, view = "timepoint", comp = list(categoryO = c("[ɛ]", "[æ]")), print.summary = F, col = "#E7298A", hide.label = T, main = "B", col.diff = "black")
+plot_diff(m.F2.center.long.ord, view = "timepoint", comp = list(categoryO = c("[ɛː]", "[æː]")), print.summary = F, col = "#E78AC3", hide.label = T, main = "C", col.diff = "black")
+plot_diff(m.F2.center.short.ord, view = "timepoint", comp = list(categoryO = c("[ɛ]", "[æ]")), print.summary = F, col = "#E7298A", hide.label = T, main = "D", col.diff = "black")
+plot_diff(m.F3.center.long.ord, view = "timepoint", comp = list(categoryO = c("[ɛː]", "[æː]")), print.summary = F, col = "#E78AC3", hide.label = T, main = "E", col.diff = "black")
+plot_diff(m.F3.center.short.ord, view = "timepoint", comp = list(categoryO = c("[ɛ]", "[æ]")), print.summary = F, col = "#E7298A", hide.label = T, main = "F", col.diff = "black")
 ```
 
 Finally, for the GAMMs fitted to the mid center vowels, there was an effect of category on all cue evaluations for both long and short vowels, with the exception of the long vowels fit to F1 (for [`r linguisticsdown::cond_cmpl("øː")`] - [`r linguisticsdown::cond_cmpl("œː")`], $\hat\beta = -.017, SE = .01, p > .12$). For several of the other evaluations, the effect was relatively small, however significant (all $ps < .044$; Figure \@ref(fig:m-mid)). These results would seem to suggest that when formant dynamics are considered, F1 does not carry information about vowel quality for the [`r linguisticsdown::cond_cmpl("øː")`] - [`r linguisticsdown::cond_cmpl("œː")`] contrast.
@@ -1510,12 +1524,12 @@ Finally, for the GAMMs fitted to the mid center vowels, there was an effect of c
 
 ```{r m-mid, message=FALSE, fig.width=base.width*4.5, fig.height=base.height*4.5, fig.align='center', fig.cap="(ref:m-mid)"}
 par(mfrow=c(3,2))
-plot_diff(m.F1.mid.long.ord, view = "timepoint", comp = list(categoryO = c("[øː]", "[œː]")), print.summary = F, col = "#FFD92F", hide.label = T, main = "A")
-plot_diff(m.F1.mid.short.ord, view = "timepoint", comp = list(categoryO = c("[ø]", "[œ]")), print.summary = F, col = "#E6AB02", hide.label = T, main = "B")
-plot_diff(m.F2.mid.long.ord, view = "timepoint", comp = list(categoryO = c("[øː]", "[œː]")), print.summary = F, col = "#FFD92F", hide.label = T, main = "A")
-plot_diff(m.F2.mid.short.ord, view = "timepoint", comp = list(categoryO = c("[ø]", "[œ]")), print.summary = F, col = "#E6AB02", hide.label = T, main = "B")
-plot_diff(m.F3.mid.long.ord, view = "timepoint", comp = list(categoryO = c("[øː]", "[œː]")), print.summary = F, col = "#FFD92F", hide.label = T, main = "A")
-plot_diff(m.F3.mid.short.ord, view = "timepoint", comp = list(categoryO = c("[ø]", "[œ]")), print.summary = F, col = "#E6AB02", hide.label = T, main = "B")
+plot_diff(m.F1.mid.long.ord, view = "timepoint", comp = list(categoryO = c("[øː]", "[œː]")), print.summary = F, col = "#FFD92F", hide.label = T, main = "A", col.diff = "black")
+plot_diff(m.F1.mid.short.ord, view = "timepoint", comp = list(categoryO = c("[ø]", "[œ]")), print.summary = F, col = "#E6AB02", hide.label = T, main = "B", col.diff = "black")
+plot_diff(m.F2.mid.long.ord, view = "timepoint", comp = list(categoryO = c("[øː]", "[œː]")), print.summary = F, col = "#FFD92F", hide.label = T, main = "C", col.diff = "black")
+plot_diff(m.F2.mid.short.ord, view = "timepoint", comp = list(categoryO = c("[ø]", "[œ]")), print.summary = F, col = "#E6AB02", hide.label = T, main = "D", col.diff = "black")
+plot_diff(m.F3.mid.long.ord, view = "timepoint", comp = list(categoryO = c("[øː]", "[œː]")), print.summary = F, col = "#FFD92F", hide.label = T, main = "E", col.diff = "black")
+plot_diff(m.F3.mid.short.ord, view = "timepoint", comp = list(categoryO = c("[ø]", "[œ]")), print.summary = F, col = "#E6AB02", hide.label = T, main = "F", col.diff = "black")
 #ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=1200)
 ```
 
