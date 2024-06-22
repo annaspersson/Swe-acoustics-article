@@ -423,112 +423,90 @@ rm(m.sep.IIYY, m.sep.EEYY, m.sep.IY, m.sep.YYUU, m.sep.ÅÅOO, m.sep.ÅO)
 rm(m.sep.I, m.sep.Y, m.sep.U, m.sep.E, m.sep.Ä, m.sep.ÄR, m.sep.Ö, m.sep.ÖR, m.sep.A, m.sep.Å, m.sep.O)
 ```
 
-### Category separability including F0 {#sec:SI-separability}
-While F0 is not considered an important cue to vowel identity in itself, it is known to have an indirect effect of vowel perception. To assess the effect of including F0 for the distinction of long and short vowel pairs, a category separability index including F0 was calculated alongside F1-F2. Figure XX suggests that ...
-
+### Category separability indices for additional cue combinations {#sec:SI-separability}
 For the F1-F3 and F2-F3 cue spaces, there seems to be two main groups for which either cue combination generates the lowest separability index. For the [`r linguisticsdown::cond_cmpl("ʉː")`] - [`r linguisticsdown::cond_cmpl("ɵ")`], [`r linguisticsdown::cond_cmpl("ɑː")`] - [`r linguisticsdown::cond_cmpl("a")`], [`r linguisticsdown::cond_cmpl("oː")`] - [`r linguisticsdown::cond_cmpl("ɔ")`], [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("ɪ")`], and [`r linguisticsdown::cond_cmpl("uː")`] - [`r linguisticsdown::cond_cmpl("ʊ")`] vowel pairs, the F1-F3 cue combination generates the lowest separability, which would seem to suggest the informativity of F2 for distinguishing between these pairs. For the second group, mainly consisting of allophones to /`r linguisticsdown::cond_cmpl("ɛ")`/ and /`r linguisticsdown::cond_cmpl("ø")`/: [`r linguisticsdown::cond_cmpl("eː")`] - [`r linguisticsdown::cond_cmpl("ɛ")`], [`r linguisticsdown::cond_cmpl("ɛː")`] - [`r linguisticsdown::cond_cmpl("ɛ")`], [`r linguisticsdown::cond_cmpl("æː")`] - [`r linguisticsdown::cond_cmpl("æ")`], [`r linguisticsdown::cond_cmpl("øː")`] - [`r linguisticsdown::cond_cmpl("ø")`] and [`r linguisticsdown::cond_cmpl("œː")`] - [`r linguisticsdown::cond_cmpl("œ")`], the F2-F3 cue combination produces the lowest separability, presumably highlighting the importance of F1. Interestingly, the [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʏ")`] pair generates almost identical separability indices in F1-F2 and F1-F3 spaces, and increased separability for both F2-F3 and F1-F2-F3, which seems to signal the importance of all three cues.
 
 For the other comparisons, F1-F2 vs. F1-F3, and F1-F2 vs. F2-F3, the LMMs indicated significant negative changes for both comparisons for all but three vowel pairs: for the [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("ɪ")`], there was a significant effect of cue combination in the F1-F2 vs. F1-F3 comparison only ($\hat\beta = -1.02, SE = .007, p < .0001$), for the [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʏ")`] and [`r linguisticsdown::cond_cmpl("æː")`] - [`r linguisticsdown::cond_cmpl("æ")`] vowel pairs, there was a significant effect in the F1-F2 vs. F2-F3 comparison only (for [`r linguisticsdown::cond_cmpl("yː")`] - [`r linguisticsdown::cond_cmpl("ʏ")`], $\hat\beta = .023, SE = .006, p < .0002$; for [`r linguisticsdown::cond_cmpl("æː")`] - [`r linguisticsdown::cond_cmpl("æ")`], $\hat\beta = -.014, SE = .005, p < .011$).<!--check this-->
 
 ```{r}
-# Plot category separability with confidence intervals
-p.category.separability.long.short %+%
-  (d.SwehVd.cat.separability.F0 %>%
-group_by(cue_dimension, comparison) %>%
+d.SwehVd.cat.separability.for.longshort.SI %<>%
   mutate(
-    comparison = factor(comparison, levels = c("iː - ɪ",  "yː - ʏ", "ʉː - ɵ", "eː - ɛ", "oː - ɔ", "uː - ʊ", "ɛː - ɛ", "æː - æ", "øː - ø", "œː - œ", "ɑː - a")),
-    height = ifelse(comparison %in% c("iː - ɪ",  "yː - ʏ", "ʉː - ɵ", "eː - ɛ", "oː - ɔ", "uː - ʊ"), "high vowels", "lower-mid vowels"),
-    ci = list(enframe(Hmisc::smean.cl.boot(separability)))) %>%
-    unnest(ci) %>%
-    spread(name, value) %>%
-  group_by(cue_dimension, comparison, height) %>%
-    summarise(
-      mean_CI_lower = mean(Lower),
-      mean_CI_upper = mean(Upper),
-      mean = mean(Mean, na.rm = T)))
+    cue_dimension = factor(cue_dimension, levels = c("F1F2", "F1F3", "F2F3", "F1F2F3", "F1Duration", "F2Duration", "F1F2Duration")))
 
-colors.comparison <- c("#66C2A5", "#FC8D62", "#8DA0CB", "#FB9A99", "#E7298A", "#A6D854", "#FFD92F", "#E5C494", "#B3B3B3", "#A6CEE3", "#33A02C")
-names(colors.comparison) <- c("iː - ɪ",  "yː - ʏ", "ʉː - ɵ", "eː - ɛ", "ɛː - ɛ", "æː - æ", "øː - ø", "œː - œ", "ɑː - a",  "oː - ɔ", "uː - ʊ")
-
-p.category.separability.long.short <- d.SwehVd.cat.separability.long.short %>% 
-  #filter(comparison %in% c("iː - yː",  "eː - yː", "ɪ - ʏ", "yː - ʉː", "oː - uː", "ɔ - ʊ")) %>%
-group_by(cue_dimension, comparison) %>%
+# Calculate the relative increase of including F3 and duration for the quantity contrasts
+d.SwehVd.cat.separability.comparison.longshort.SI <- d.SwehVd.cat.separability.long.short %>%
+  group_by(comparison) %>%
   mutate(
-    comparison = factor(comparison, levels = c("iː - ɪ",  "yː - ʏ", "ʉː - ɵ", "eː - ɛ", "oː - ɔ", "uː - ʊ", "ɛː - ɛ", "æː - æ", "øː - ø", "œː - œ", "ɑː - a")),
-    height = ifelse(comparison %in% c("iː - ɪ",  "yː - ʏ", "ʉː - ɵ", "eː - ɛ", "oː - ɔ", "uː - ʊ"), "high vowels", "lower-mid vowels"),
-    #group = case_when(comparison %in% c("iː to yː",  "yː to iː") ~ "iː - yː",
-                      # comparison %in% c("eː to yː", "yː to eː") ~ "eː - yː",
-                      # comparison %in% c("ɪ to ʏ", "ʏ to ɪ") ~ "ɪ - ʏ",
-                      # comparison %in% c("yː to ʉː", "ʉː to yː") ~ "yː - ʉː",
-                      # comparison %in% c("oː to uː", "uː to oː") ~ "oː - uː",
-                      # comparison %in% c("ɔ to ʊ", "ʊ to ɔ") ~ "ɔ - ʊ"),
-    ci = list(enframe(Hmisc::smean.cl.boot(separability)))) %>%
-    unnest(ci) %>%
-    spread(name, value) %>%
-  group_by(cue_dimension, comparison, height) %>%
-    summarise(
-      mean_CI_lower = mean(Lower),
-      mean_CI_upper = mean(Upper),
-      mean = mean(Mean, na.rm = T)) %>%
-  ggplot(
-    aes(x = cue_dimension,
-        y = mean,
-        ymin = mean_CI_lower,
-        ymax = mean_CI_upper,
-        color = comparison)) +
-  geom_pointrange(
-    position = position_dodge2(width = 0.3),
-    fatten = 2.5,
-    size = .8) +
-  geom_line(aes(group = comparison), position = position_dodge(width = 0.3), linetype = "dashed") +
-  #scale_shape_manual(values = 1:7) +
-  scale_color_manual(name = "comparison", values = colors.comparison) + 
-  scale_x_discrete("Cues") +
-  scale_y_continuous("Category separability index") +
-  guides(shape = "none", color = guide_legend(ncol = 2)) +
-  myGplot.defaults() +
-  facet_grid(~height)
-p.category.separability.long.short
+    separabilityDifference_F1F3 = (F1F3_separability - F1F2_separability) / F1F2_separability,
+    separabilityDifference_F2F3 = (F2F3_separability - F1F2_separability) / F1F2_separability,
+    separabilityDifference_F3 = (F1F2F3_separability - F1F2_separability) / F1F2_separability,
+    separabilityDifference_F1Duration = (F1Duration_separability - F1F2_separability) / F1F2_separability,
+    separabilityDifference_F2Duration = (F2Duration_separability - F1F2_separability) / F1F2_separability,
+    separabilityDifference_Duration = (F1F2Duration_separability - F1F2_separability) / F1F2_separability)
+
+p.category.separability.diff.SI <- p.category.separability.diff.unrounded %+%
+  (d.SwehVd.cat.separability.comparison.longshort.SI %>%
+     select(comparison, separabilityDifference_F1F3, separabilityDifference_F2F3, separabilityDifference_F3, separabilityDifference_F1Duration, separabilityDifference_F2Duration, separabilityDifference_Duration) %>%
+     pivot_longer(
+       cols = starts_with("separabilityDifference"),
+       names_to = "cue_difference") %>%
+     mutate(
+        cue_difference = factor(cue_difference, levels = c("separabilityDifference_F1F3", "separabilityDifference_F2F3", "separabilityDifference_F3", "separabilityDifference_F1Duration", "separabilityDifference_F2Duration", "separabilityDifference_Duration"), labels = c("F1-F3", "F2-F3", "F1-F2-F3", "F1-duration", "F2-duration", "F1-F2-duration"))) %>%
+     rename(separability_diff = value) %>%
+     group_by(comparison, cue_difference) %>%
+     mutate(
+       ci = list(enframe(Hmisc::smean.cl.boot(separability_diff)))) %>%
+     unnest(ci) %>%
+     spread(name, value) %>%
+     group_by(cue_difference, comparison) %>%
+     summarise(
+       mean_CI_lower = mean(Lower),
+       mean_CI_upper = mean(Upper),
+       mean = mean(Mean)) %>%
+     mutate(comparison = factor(comparison, levels = c("iː - ɪ",  "yː - ʏ", "ʉː - ɵ", "eː - ɛ", "oː - ɔ", "uː - ʊ", "ɛː - ɛ", "æː - æ", "øː - ø", "œː - œ", "ɑː - a")))) +
+  scale_y_continuous("Increase in category separability relative to F1-F2", limits = c(-.7, 1)) +
+  theme(legend.title = element_blank())
+p.category.separability.diff.SI
 ```
 
 ```{r}
-contrasts(d.SwehVd.cat.separability.F0$cue_dimension) <- contr.treatment(5)
+contrasts(d.SwehVd.cat.separability.for.longshort.SI$cue_dimension) <- contr.treatment(7)
 
 # Rename contrast labels
-d.SwehVd.cat.separability.F0$cue_dimension <- factor(d.SwehVd.cat.separability.F0$cue_dimension, labels = c("F1F2", "F1F3", "F2F3", "F1F2F3", "F0F1F2F3"))
+d.SwehVd.cat.separability.for.longshort.SI$cue_dimension <- factor(d.SwehVd.cat.separability.for.longshort.SI$cue_dimension, labels = c("F1F2", "F1F3", "F2F3", "F1F2F3", "F1F2Duration", "F1Duration", "F2Duration"))
 
-m.sep.I.F0 <- lmerTest::lmer(pairwise_separability ~ cue_dimension + (1|Talker),
-                      data = d.SwehVd.cat.separability.F0 %>% filter(comparison == "iː - ɪ"))
+m.sep.I.SI <- lmerTest::lmer(separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability.for.longshort.SI %>% filter(comparison == "iː - ɪ"))
 
-m.sep.Y.F0 <- lmerTest::lmer(pairwise_separability ~ cue_dimension + (1|Talker),
-                      data = d.SwehVd.cat.separability.F0 %>% filter(comparison == "yː - ʏ"))
+m.sep.Y.SI <- lmerTest::lmer(separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability.for.longshort.SI %>% filter(comparison == "yː - ʏ"))
 
-m.sep.U.F0 <- lmerTest::lmer(pairwise_separability ~ cue_dimension + (1|Talker),
-                      data = d.SwehVd.cat.separability.F0 %>% filter(comparison == "ʉː - ɵ"))
+m.sep.U.SI <- lmerTest::lmer(separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability.for.longshort.SI %>% filter(comparison == "ʉː - ɵ"))
 
-m.sep.E.F0 <- lmerTest::lmer(pairwise_separability ~ cue_dimension + (1|Talker),
-                      data = d.SwehVd.cat.separability.F0 %>% filter(comparison == "eː - ɛ"))
+m.sep.E.SI <- lmerTest::lmer(separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability.for.longshort.SI %>% filter(comparison == "eː - ɛ"))
 
-m.sep.Ä.F0 <- lmerTest::lmer(pairwise_separability ~ cue_dimension + (1|Talker),
-                      data = d.SwehVd.cat.separability.F0 %>% filter(comparison == "ɛː - ɛ"))
+m.sep.Ä.SI <- lmerTest::lmer(separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability.for.longshort.SI %>% filter(comparison == "ɛː - ɛ"))
 
-m.sep.ÄR.F0 <- lmerTest::lmer(pairwise_separability ~ cue_dimension + (1|Talker),
-                      data = d.SwehVd.cat.separability.F0 %>% filter(comparison == "æː - æ"))
+m.sep.ÄR.SI <- lmerTest::lmer(separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability.for.longshort.SI %>% filter(comparison == "æː - æ"))
 
-m.sep.Ö.F0 <- lmerTest::lmer(pairwise_separability ~ cue_dimension + (1|Talker),
-                      data = d.SwehVd.cat.separability.F0 %>% filter(comparison == "øː - ø"))
+m.sep.Ö.SI <- lmerTest::lmer(separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability.for.longshort.SI %>% filter(comparison == "øː - ø"))
 
-m.sep.ÖR.F0 <- lmerTest::lmer(pairwise_separability ~ cue_dimension + (1|Talker),
-                      data = d.SwehVd.cat.separability.F0 %>% filter(comparison == "œː - œ"))
+m.sep.ÖR.SI <- lmerTest::lmer(separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability.for.longshort.SI %>% filter(comparison == "œː - œ"))
 
-m.sep.A.F0 <- lmerTest::lmer(pairwise_separability ~ cue_dimension + (1|Talker),
-                      data = d.SwehVd.cat.separability.F0 %>% filter(comparison == "ɑː - a"))
+m.sep.A.SI <- lmerTest::lmer(separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability.for.longshort.SI %>% filter(comparison == "ɑː - a"))
 
-m.sep.Å.F0 <- lmerTest::lmer(pairwise_separability ~ cue_dimension + (1|Talker),
-                      data = d.SwehVd.cat.separability.F0 %>% filter(comparison == "oː - ɔ"))
+m.sep.Å.SI <- lmerTest::lmer(separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability.for.longshort.SI %>% filter(comparison == "oː - ɔ"))
 
-m.sep.O.F0 <- lmerTest::lmer(pairwise_separability ~ cue_dimension + (1|Talker),
-                      data = d.SwehVd.cat.separability.F0 %>% filter(comparison == "uː - ʊ"))
+m.sep.O.SI <- lmerTest::lmer(separability ~ cue_dimension + (1|Talker),
+                      data = d.SwehVd.cat.separability.for.longshort.SI %>% filter(comparison == "uː - ʊ"))
 ```
 
 ```{r}
