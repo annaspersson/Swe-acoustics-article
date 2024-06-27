@@ -116,7 +116,6 @@ p.50_80 <- p %+%
 The overall mean cue values for the long and short vowels are presented in Tables \@ref(tab:SI-cue-values-long) and \@ref(tab:SI-cue-values-short), respectively.
 
 \begin{landscape}
-
 \begin{table}
 \centering
 \caption{\label{tab:SI-cue-values-long}The spectral and temporal properties of the long vowels (averaged across talkers, by gender)}
@@ -124,7 +123,7 @@ The overall mean cue values for the long and short vowels are presented in Table
 \fontsize{6}{8}\selectfont
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{.7cm}>{\raggedright\arraybackslash}p{.7cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}}
 \toprule
-Cue & Gender & {}[iː] & {}[yː] & {}[ʉː] & {}[eː] & {}[ɛː] & {}[æː] & {}[øː] & {}[œː] & {}[ɑː] & {}[oː] & {}[uː]\\
+Cue & Gender & [`r linguisticsdown::cond_cmpl("iː")`]  & [`r linguisticsdown::cond_cmpl("yː")`] & [`r linguisticsdown::cond_cmpl("ʉː")`] & [`r linguisticsdown::cond_cmpl("eː")`] & [`r linguisticsdown::cond_cmpl("ɛː")`] & [`r linguisticsdown::cond_cmpl("æː")`] & [`r linguisticsdown::cond_cmpl("øː")`] & [`r linguisticsdown::cond_cmpl("œː")`]& [`r linguisticsdown::cond_cmpl("ɑː")`] & [`r linguisticsdown::cond_cmpl("oː")`] & [`r linguisticsdown::cond_cmpl("uː")`]\\
 \midrule
 Duration & F & 0.22 (SD=0.05) & 0.24 (SD=0.04) & 0.23 (SD=0.05) & 0.25 (SD=0.05) & 0.25 (SD=0.04) & 0.25 (SD=0.05) & 0.25 (SD=0.04) & 0.25 (SD=0.05) & 0.23 (SD=0.05) & 0.25 (SD=0.05) & 0.23 (SD=0.05)\\
  & M & 0.2 (SD=0.05) & 0.21 (SD=0.05) & 0.22 (SD=0.06) & 0.23 (SD=0.05) & 0.23 (SD=0.05) & 0.25 (SD=0.06) & 0.23 (SD=0.05) & 0.23 (SD=0.06) & 0.23 (SD=0.06) & 0.24 (SD=0.05) & 0.21 (SD=0.05)\\
@@ -140,6 +139,7 @@ F3 & F & 3148.44 (SD=360.71) & 3273.13 (SD=139.43) & 2658.86 (SD=173.38) & 3063.
 \bottomrule
 \end{tabular}
 \end{table}
+\end{landscape}
 
 ```{r SI-cue-values-long}
 # Keep code for reproducibility
@@ -180,7 +180,6 @@ F3 & F & 3148.44 (SD=360.71) & 3273.13 (SD=139.43) & 2658.86 (SD=173.38) & 3063.
 ```
 
 \begin{landscape}
-
 \begin{table}
 \centering
 \caption{\label{tab:SI-cue-values-short}The spectral and temporal properties of the short vowels (averaged across the female and male talkers)}
@@ -188,7 +187,7 @@ F3 & F & 3148.44 (SD=360.71) & 3273.13 (SD=139.43) & 2658.86 (SD=173.38) & 3063.
 \fontsize{6}{8}\selectfont
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{.7cm}>{\raggedright\arraybackslash}p{.7cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}}
 \toprule
-Cue & Gender & {}[ɪ] & {}[ʏ] & {}[ɵ] & {}[ɛ] & {}[æ] & {}[ø] & {}[œ] & {}[a] & {}[ɔ] & {}[ʊ]\\
+Cue & Gender & [`r linguisticsdown::cond_cmpl("ɪ")`] & [`r linguisticsdown::cond_cmpl("ʏ")`] & [`r linguisticsdown::cond_cmpl("ɵ")`] & [`r linguisticsdown::cond_cmpl("ɛ")`] & [`r linguisticsdown::cond_cmpl("æ")`] & [`r linguisticsdown::cond_cmpl("ø")`] & [`r linguisticsdown::cond_cmpl("œ")`] & [`r linguisticsdown::cond_cmpl("a")`] & [`r linguisticsdown::cond_cmpl("ɔ")`] & [`r linguisticsdown::cond_cmpl("ʊ")`]\\
 \midrule
 Duration & F & 0.12 (SD=0.02) & 0.12 (SD=0.02) & 0.13 (SD=0.02) & 0.12 (SD=0.02) & 0.16 (SD=0.03) & 0.12 (SD=0.03) & 0.17 (SD=0.03) & 0.13 (SD=0.03) & 0.13 (SD=0.02) & 0.13 (SD=0.03)\\
  & M & 0.11 (SD=0.02) & 0.11 (SD=0.03) & 0.13 (SD=0.02) & 0.12 (SD=0.02) & 0.13 (SD=0.03) & 0.12 (SD=0.03) & 0.14 (SD=0.03) & 0.13 (SD=0.02) & 0.12 (SD=0.02) & 0.12 (SD=0.03)\\
@@ -204,9 +203,7 @@ F3 & F & 3081.21 (SD=171.41) & 2804.95 (SD=166.88) & 2780.03 (SD=197.87) & 2735 
 \bottomrule
 \end{tabular}
 \end{table}
-
 \end{landscape}
-
 
 ```{r SI-cue-values-short}
 # Keep code for reproducibility
@@ -242,7 +239,7 @@ Figure \@ref(fig:SI-swe-merge) visualizes two example talkers that differ in the
 
 (ref:SI-swe-merge) The effect of including F3 for the [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] distinction, illustrated in a reduced vowel space. **Panel A** shows two example talkers with overlapping [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] in F1-F2 space. **Panel B** shows how considering F3 affects the space: for talker SW_028, there is very little effect of F3, thus maintained [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] overlap, while for talker SW_027, separability increases.
 
-```{r SI-swe-merge, fig.width=base.width*3, fig.height=base.height*3, out.width='80%', fig.align='center', fig.cap="(ref:SI-swe-merge)", message=FALSE}
+```{r SI-swe-merge, fig.width=base.width*3, fig.height=base.height*3, out.width='80%', fig.align='center', fig.cap="(ref:SI-swe-merge)", fig.pos="ht", message=FALSE}
 p.merge <- d.SwehVd.forStudy.long.static %>%
   filter(Normalization.Type == "Nearey's uniform scaling (log)", Quantity == "long", Talker %in% c("SW_028", "SW_027"), category %in% c("[iː]", "[yː]", "[æː]", "[ɑː]", "[oː]", "[uː]")) %>%
   ggplot(
@@ -311,7 +308,6 @@ p.merge / p.merge.F3 + theme(axis.title.x = element_blank()) +
 ```
 
 ### Summary tables of LMMs predicting category separability from cue space {#sec:SI-LMMs-study1}
-#### Investigating separability in rounded vs. unrounded neighboring categories
 
 \begin{table}
 \caption{LMMs predicting category separability from cue space}
@@ -358,8 +354,6 @@ p.merge / p.merge.F3 + theme(axis.title.x = element_blank()) +
 # modelsummary::modelsummary(panels, output = "latex", title = "LMM predicting category separability from cue space for all long-short contrasts", estimate = "{estimate}", statistic = c("se = {std.error}", "t-value = {statistic}", "p.value = {p.value}"), shape = "rbind", gof_map = NA)
 rm(m.sep.IIYY, m.sep.EEYY, m.sep.IY, m.sep.YYUU, m.sep.ÅÅOO, m.sep.ÅO)
 ```
-
-#### Investigating separability in long vs. short categories
 
 \begin{landscape}
 \begin{table}
@@ -924,7 +918,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 37.2811 & 79.0000 & 22.0717 & 0.0987 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F1.front.long.Y.ord}
 \end{table}
 
 
@@ -945,7 +938,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 38.4339 & 79.0000 & 69.9332 & 0.3622 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F2.front.long.Y.ord}
 \end{table}
 
 
@@ -966,7 +958,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 68.0168 & 79.0000 & 347.3984 & $<$ 0.0001 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F3.front.long.Y.ord}
 \end{table}
 
 \begin{table}[ht]
@@ -986,7 +977,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 47.3292 & 79.0000 & 121.4009 & 0.0251 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F1.front.long.U.ord}
 \end{table}
 
 
@@ -1007,7 +997,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 58.5627 & 79.0000 & 1071.5104 & 0.0019 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F2.front.long.U.ord}
 \end{table}
 
 
@@ -1028,7 +1017,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 77.4959 & 79.0000 & 54.7815 & $<$ 0.0001 \\
    \hline
 \end{tabular}
-\label{tab:m.F3.front.long.U.ord}
 \end{table}
 
 \begin{table}[ht]
@@ -1048,7 +1036,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 67.0920 & 79.0000 & 162.7500 & $<$ 0.0001 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F1.front.long.E.ord}
 \end{table}
 
 
@@ -1069,7 +1056,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 77.3206 & 79.0000 & 52.8965 & $<$ 0.0001 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F2.front.long.E.ord}
 \end{table}
 
 
@@ -1090,7 +1076,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 59.3862 & 79.0000 & 225.6487 & $<$ 0.0001 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F3.front.long.E.ord}
 \end{table}
 
 ```{r}
@@ -1113,7 +1098,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 47.9833 & 79.0000 & 90.8256 & 0.0206 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F1.front.short}
 \end{table}
 
 \begin{table}[ht]
@@ -1133,7 +1117,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 71.1834 & 79.0000 & 263.8538 & $<$ 0.0001 \\
    \hline
 \end{tabular}
-\label{tab:m.F2.front.short}
 \end{table}
 
 \begin{table}[ht]
@@ -1153,7 +1136,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 48.8674 & 79.0000 & 133.6283 & 0.0486 \\
    \hline
 \end{tabular}
-\label{tab:m.F3.front.short}
 \end{table}
 
 ```{r}
@@ -1176,7 +1158,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 57.6310 & 79.0000 & 63.2542 & $<$ 0.0001 \\
    \hline
 \end{tabular}
-\label{tab:m.F1.back.long}
 \end{table}
 
 \begin{table}[ht]
@@ -1196,7 +1177,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 48.6357 & 79.0000 & 36.1400 & 0.0058 \\
    \hline
 \end{tabular}
-\label{tab:m.F2.back.long}
 \end{table}
 
 \begin{table}[ht]
@@ -1216,7 +1196,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 43.8638 & 79.0000 & 89.2372 & 0.1221 \\  
    \hline
 \end{tabular}
-\label{tab:m.F3.back.long}
 \end{table}
 
 \begin{table}[ht]
@@ -1236,7 +1215,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 64.8352 & 78.0000 & 148.9877 & $<$ 0.0001 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F1.back.short}
 \end{table}
 
 \begin{table}[ht]
@@ -1256,7 +1234,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 48.0521 & 78.0000 & 66.7823 & 0.0096 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F2.back.short}
 \end{table}
 
 \begin{table}[ht]
@@ -1276,7 +1253,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 47.3171 & 78.0000 & 374.0028 & 0.0998 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F3.back.short}
 \end{table}
 
 ```{r}
@@ -1299,7 +1275,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 43.1275 & 79.0000 & 89.3690 & 0.0311 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F1.center.long}
 \end{table}
 
 \begin{table}[ht]
@@ -1319,7 +1294,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 55.3558 & 79.0000 & 410.4479 & 0.0004 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F2.center.long}
 \end{table}
 
 \begin{table}[ht]
@@ -1340,7 +1314,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 44.5499 & 79.0000 & 99.2827 & 0.0933 \\ 
    \hline
 \end{tabular} 
-\label{tab:m.F3.center.long}
 \end{table}
 
 \begin{table}[ht]
@@ -1361,7 +1334,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 63.7164 & 79.0000 & 177.0030 & $<$ 0.0001 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F1.center.short}
 \end{table}
 
 \begin{table}[ht]
@@ -1382,7 +1354,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 59.5197 & 79.0000 & 269.1815 & $<$ 0.0001 \\  
    \hline
 \end{tabular}
-\label{tab:m.F2.center.short}
 \end{table}
 
 \begin{table}[ht]
@@ -1403,7 +1374,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 41.9894 & 79.0000 & 30.9853 & 0.0725 \\
    \hline
 \end{tabular}
-\label{tab:m.F3.center.short}
 \end{table}
 
 ```{r}
@@ -1427,7 +1397,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 44.6301 & 79.0000 & 145.9365 & 0.0505 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F1.mid.long}
 \end{table}
 
 \begin{table}[ht]
@@ -1447,7 +1416,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 77.3538 & 79.0000 & 254.5904 & $<$ 0.0001 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F2.mid.long}
 \end{table}
 
 \begin{table}[ht]
@@ -1466,8 +1434,7 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker) & 29.6535 & 39.0000 & 1744.4730 & $<$ 0.0001 \\ 
   s(Talker,category) & 47.2299 & 79.0000 & 260.6346 & 0.0391 \\ 
    \hline
-\end{tabular} 
-\label{tab:m.F3.mid.long}
+\end{tabular}
 \end{table}
 
 \begin{table}[ht]
@@ -1488,7 +1455,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 63.1586 & 79.0000 & 279.1835 & $<$ 0.0001 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F1.mid.short}
 \end{table}
 
 \begin{table}[ht]
@@ -1509,7 +1475,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 65.5976 & 79.0000 & 2258.5568 & $<$ 0.0001 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F2.mid.short}
 \end{table}
 
 \begin{table}[ht]
@@ -1530,7 +1495,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 51.4251 & 79.0000 & 345.2444 & 0.0184 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F3.mid.short}
 \end{table}
 
 ```{r}
@@ -1555,7 +1519,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 56.5165 & 79.0000 & 231.1143 & 0.0002 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F1.I}
 \end{table}
 
 \begin{table}[ht]
@@ -1576,7 +1539,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 75.7153 & 79.0000 & 171.1447 & $<$ 0.0001 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F2.I}
 \end{table}
 
 \begin{table}[ht]
@@ -1597,7 +1559,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 57.6016 & 79.0000 & 289.8411 & 0.0001 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F3.I}
 \end{table}
 
 
@@ -1619,7 +1580,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 52.8112 & 79.0000 & 152.3845 & 0.0026 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F1.Y}
 \end{table}
 
 \begin{table}[ht]
@@ -1640,7 +1600,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 74.3386 & 79.0000 & 1645.4089 & $<$ 0.0001 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F2.Y}
 \end{table}
 
 \begin{table}[ht]
@@ -1661,7 +1620,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 51.8369 & 79.0000 & 249.7645 & 0.0314 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F3.Y}
 \end{table}
 
 
@@ -1683,7 +1641,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 52.8094 & 79.0000 & 145.9149 & 0.0019 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F1.U}
 \end{table}
 
 \begin{table}[ht]
@@ -1704,7 +1661,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 62.4428 & 79.0000 & 579.9508 & $<$ 0.0001 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F2.U}
 \end{table}
 
 \begin{table}[ht]
@@ -1725,7 +1681,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 51.3885 & 79.0000 & 377.1923 & 0.0153 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F3.U}
 \end{table}
 
 
@@ -1747,7 +1702,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 67.6617 & 79.0000 & 89.3655 & $<$ 0.0001 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F1.E}
 \end{table}
 
 \begin{table}[ht]
@@ -1768,7 +1722,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 54.5449 & 79.0000 & 145.6635 & 0.0001 \\
    \hline
 \end{tabular}
-\label{tab:m.F2.E}
 \end{table}
 
 \begin{table}[ht]
@@ -1789,7 +1742,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 49.3150 & 79.0000 & 61.7838 & 0.0098 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F3.E}
 \end{table}
 
 
@@ -1811,7 +1763,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 55.9935 & 79.0000 & 305.7499 & 0.0017 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F1.Ä}
 \end{table}
 
 \begin{table}[ht]
@@ -1832,7 +1783,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 53.3979 & 79.0000 & 252.7058 & 0.0014 \\
    \hline
 \end{tabular}
-\label{tab:m.F2.Ä}
 \end{table}
 
 \begin{table}[ht]
@@ -1853,7 +1803,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 41.0810 & 79.0000 & 32.9008 & 0.0589 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F3.Ä}
 \end{table}
 
 \begin{table}[ht]
@@ -1874,7 +1823,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 47.7162 & 79.0000 & 115.2095 & 0.0079 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F1.ÄR}
 \end{table}
 
 \begin{table}[ht]
@@ -1895,7 +1843,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 51.7897 & 79.0000 & 314.6290 & 0.0025 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F2.ÄR}
 \end{table}
 
 \begin{table}[ht]
@@ -1916,7 +1863,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 46.3596 & 79.0000 & 104.4224 & 0.0879 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F3.ÄR}
 \end{table}
 
 ```{r}
@@ -1941,7 +1887,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 51.0366 & 79.0000 & 221.2125 & 0.0176 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F1.Ö}
 \end{table}
 
 \begin{table}[ht]
@@ -1962,7 +1907,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 53.0234 & 79.0000 & 1358.2399 & 0.0109 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F2.Ö}
 \end{table}
 
 \begin{table}[ht]
@@ -1983,7 +1927,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 44.4773 & 79.0000 & 160.7187 & 0.0545 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F3.Ö}
 \end{table}
 
 
@@ -2005,7 +1948,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 52.0699 & 79.0000 & 266.9870 & 0.0088 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F1.ÖR}
 \end{table}
 
 \begin{table}[ht]
@@ -2026,7 +1968,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 54.9619 & 79.0000 & 1835.2586 & 0.0081 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F2.ÖR}
 \end{table}
 
 \begin{table}[ht]
@@ -2047,7 +1988,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 42.3813 & 79.0000 & 109.4314 & 0.1543 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F3.ÖR}
 \end{table}
 
 
@@ -2069,7 +2009,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 45.6542 & 79.0000 & 70.3904 & 0.0658 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F1.A}
 \end{table}
 
 \begin{table}[ht]
@@ -2090,7 +2029,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 54.9854 & 79.0000 & 604.0724 & 0.0016 \\
    \hline
 \end{tabular}
-\label{tab:m.F2.A}
 \end{table}
 
 \begin{table}[ht]
@@ -2111,7 +2049,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 47.0456 & 79.0000 & 122.1371 & 0.0246 \\
    \hline
 \end{tabular}
-\label{tab:m.F3.A}
 \end{table}
 
 
@@ -2133,7 +2070,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 58.3434 & 79.0000 & 81.3096 & 0.0001 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F1.Å}
 \end{table}
 
 \begin{table}[ht]
@@ -2154,7 +2090,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 48.3598 & 79.0000 & 84.9479 & 0.0194 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F2.Å}
 \end{table}
 
 \begin{table}[ht]
@@ -2175,7 +2110,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 43.4334 & 79.0000 & 132.6541 & 0.2583 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F3.Å}
 \end{table}
 
 
@@ -2197,7 +2131,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 42.8163 & 78.0000 & 35.4706 & 0.0246 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F1.O}
 \end{table}
 
 \begin{table}[ht]
@@ -2218,7 +2151,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 41.3514 & 78.0000 & 17.6264 & 0.0200 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F2.O}
 \end{table}
 
 \begin{table}[ht]
@@ -2239,7 +2171,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(Talker,category) & 39.3159 & 78.0000 & 45.0897 & 0.2425 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F3.O}
 \end{table}
 
 
@@ -2247,7 +2178,7 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
 ```
 
 #### Visualizations of GAMMs {#sec:SI-GAMMs-figs}
-Figures \@ref(fig:SI-m-I-Y), \@ref(fig:SI-m-F2-paired), \@ref(fig:SI-m-F3-paired) visualize the GAMMs fit to the long-short vowel pairs.
+Figures \@ref(fig:SI-m-I-Y), \@ref(fig:SI-m-U-E), \@ref(fig:SI-m-Ä-ÄR), \@ref(fig:SI-m-Ö-ÖR), \@ref(fig:SI-m-A-Å), and \@ref(fig:SI-m-O) visualize the GAMMs fit to the long-short vowel pairs.
 
 (ref:SI-m-I-Y) Fitted smooths of GAMM for predicting F1-F2-F3 and 95% confidence intervals for the [`r linguisticsdown::cond_cmpl("iː")`]-[`r linguisticsdown::cond_cmpl("ɪ")`]  (**left**) and [`r linguisticsdown::cond_cmpl("yː")`]-[`r linguisticsdown::cond_cmpl("ʏ")`]  (**right**) vowel pairs.
 
@@ -2319,6 +2250,5 @@ plot_diff(m.F3.O, view = "timepoint", comp = list(categoryO = c("[uː]", "[ʊ]")
 ```
 ```{r}
 # Code kept for reproducibility
-#gamtabs(m.duration.paired, caption='Model summary, coefficients for parametric and smooth terms', label = "tab:m.duration.paired")
 # rm(m.F1.I, m.F2.I, m.F3.I, m.F1.Y, m.F2.Y, m.F3.Y, m.F1.U, m.F2.U, m.F3.U, m.F1.E, m.F2.E, m.F3.E, m.F1.Ä, m.F2.Ä, m.F3.Ä, m.F1.ÄR, m.F2.ÄR, m.F3.ÄR, m.F1.Ö, m.F2.Ö, m.F3.Ö, m.F1.ÖR, m.F2.ÖR, m.F3.ÖR, m.F1.A, m.F2.A, m.F3.A)
 ```
