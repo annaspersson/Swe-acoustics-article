@@ -963,7 +963,7 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(timepoint) & 1.0001 & 1.0002 & 19.2566 & $<$ 0.0001 \\ 
   s(timepoint):category `r linguisticsdown::cond_cmpl("[yː]")` & 2.7282 & 3.2476 & 6.8551 & 0.0001 \\ 
   s(Talker) & 9.5569 & 39.0000 & 216.3509 & 0.0605 \\ 
-  s(Talker,categoryO) & 68.0168 & 79.0000 & 347.3984 & $<$ 0.0001 \\ 
+  s(Talker,category) & 68.0168 & 79.0000 & 347.3984 & $<$ 0.0001 \\ 
    \hline
 \end{tabular}
 \label{tab:m.F3.front.long.Y.ord}
@@ -983,7 +983,7 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(timepoint) & 3.0241 & 3.4728 & 46.6752 & $<$ 0.0001 \\ 
   s(timepoint):category [`r linguisticsdown::cond_cmpl("ʉː")`]  & 3.0198 & 3.4684 & 21.0872 & $<$ 0.0001 \\ 
   s(Talker) & 28.7465 & 39.0000 & 709.6758 & $<$ 0.0001 \\ 
-  s(Talker,categoryO) & 47.3292 & 79.0000 & 121.4009 & 0.0251 \\ 
+  s(Talker,category) & 47.3292 & 79.0000 & 121.4009 & 0.0251 \\ 
    \hline
 \end{tabular}
 \label{tab:m.F1.front.long.U.ord}
@@ -1004,7 +1004,7 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(timepoint) & 1.8214 & 2.2273 & 29.9642 & $<$ 0.0001 \\ 
   s(timepoint):category [`r linguisticsdown::cond_cmpl("ʉː")`]  & 2.9817 & 3.4626 & 81.3483 & $<$ 0.0001 \\ 
   s(Talker) & 19.5350 & 39.0000 & 2205.8452 & 0.0017 \\ 
-  s(Talker,categoryO) & 58.5627 & 79.0000 & 1071.5104 & 0.0019 \\ 
+  s(Talker,category) & 58.5627 & 79.0000 & 1071.5104 & 0.0019 \\ 
    \hline
 \end{tabular}
 \label{tab:m.F2.front.long.U.ord}
@@ -1025,7 +1025,7 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(timepoint) & 1.6940 & 2.0710 & 8.8735 & 0.0001 \\ 
   s(timepoint):category [`r linguisticsdown::cond_cmpl("ʉː")`] & 2.9234 & 3.4138 & 10.9632 & $<$ 0.0001 \\ 
   s(Talker) & 0.0001 & 39.0000 & 0.0000 & 0.7681 \\ 
-  s(Talker,categoryO) & 77.4959 & 79.0000 & 54.7815 & $<$ 0.0001 \\
+  s(Talker,category) & 77.4959 & 79.0000 & 54.7815 & $<$ 0.0001 \\
    \hline
 \end{tabular}
 \label{tab:m.F3.front.long.U.ord}
@@ -1045,7 +1045,7 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(timepoint) & 2.7489 & 3.2572 & 46.3007 & $<$ 0.0001 \\ 
   s(timepoint):category [`r linguisticsdown::cond_cmpl("eː")`] & 3.8695 & 3.9748 & 790.8174 & $<$ 0.0001 \\ 
   s(Talker) & 9.5453 & 39.0000 & 87.1163 & 0.0580 \\ 
-  s(Talker,categoryO) & 67.0920 & 79.0000 & 162.7500 & $<$ 0.0001 \\ 
+  s(Talker,category) & 67.0920 & 79.0000 & 162.7500 & $<$ 0.0001 \\ 
    \hline
 \end{tabular}
 \label{tab:m.F1.front.long.E.ord}
@@ -1066,7 +1066,7 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(timepoint) & 1.2386 & 1.4340 & 16.9517 & $<$ 0.0001 \\ 
   s(timepoint):category [`r linguisticsdown::cond_cmpl("eː")`] & 3.7960 & 3.9729 & 264.2232 & $<$ 0.0001 \\ 
   s(Talker) & 0.0019 & 39.0000 & 0.0001 & 0.4672 \\ 
-  s(Talker,categoryO) & 77.3206 & 79.0000 & 52.8965 & $<$ 0.0001 \\ 
+  s(Talker,category) & 77.3206 & 79.0000 & 52.8965 & $<$ 0.0001 \\ 
    \hline
 \end{tabular}
 \label{tab:m.F2.front.long.E.ord}
@@ -1087,7 +1087,7 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(timepoint) & 1.0001 & 1.0001 & 14.3112 & 0.0002 \\ 
   s(timepoint):category [`r linguisticsdown::cond_cmpl("eː")`] & 3.5533 & 3.8876 & 63.5281 & $<$ 0.0001 \\ 
   s(Talker) & 17.3913 & 39.0000 & 366.7896 & 0.0004 \\ 
-  s(Talker,categoryO) & 59.3862 & 79.0000 & 225.6487 & $<$ 0.0001 \\ 
+  s(Talker,category) & 59.3862 & 79.0000 & 225.6487 & $<$ 0.0001 \\ 
    \hline
 \end{tabular}
 \label{tab:m.F3.front.long.E.ord}
@@ -1110,7 +1110,7 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(timepoint) & 2.3979 & 2.9060 & 3.3187 & 0.0175 \\ 
   s(timepoint):category [`r linguisticsdown::cond_cmpl("ʏ")`] & 1.0000 & 1.0000 & 4.2695 & 0.0389 \\ 
   s(Talker) & 27.7413 & 39.0000 & 468.5362 & $<$ 0.0001 \\ 
-  s(Talker,categoryO) & 47.9833 & 79.0000 & 90.8256 & 0.0206 \\ 
+  s(Talker,category) & 47.9833 & 79.0000 & 90.8256 & 0.0206 \\ 
    \hline
 \end{tabular}
 \label{tab:m.F1.front.short}
@@ -1130,7 +1130,7 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(timepoint) & 3.3278 & 3.7567 & 13.3047 & $<$ 0.0001 \\ 
   s(timepoint):category [`r linguisticsdown::cond_cmpl("ʏ")`] & 1.0000 & 1.0001 & 3.1409 & 0.0764 \\ 
   s(Talker) & 6.3833 & 39.0000 & 86.6745 & 0.1901 \\ 
-  s(Talker,categoryO) & 71.1834 & 79.0000 & 263.8538 & $<$ 0.0001 \\
+  s(Talker,category) & 71.1834 & 79.0000 & 263.8538 & $<$ 0.0001 \\
    \hline
 \end{tabular}
 \label{tab:m.F2.front.short}
@@ -1150,7 +1150,7 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(timepoint) & 2.7760 & 3.2549 & 65.5966 & $<$ 0.0001 \\ 
   s(timepoint):category [`r linguisticsdown::cond_cmpl("ʏ")`] & 3.0148 & 3.4704 & 52.0579 & $<$ 0.0001 \\ 
   s(Talker) & 27.5301 & 39.0000 & 645.2514 & $<$ 0.0001 \\ 
-  s(Talker,categoryO) & 48.8674 & 79.0000 & 133.6283 & 0.0486 \\
+  s(Talker,category) & 48.8674 & 79.0000 & 133.6283 & 0.0486 \\
    \hline
 \end{tabular}
 \label{tab:m.F3.front.short}
@@ -1173,7 +1173,7 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(timepoint) & 3.7637 & 3.9505 & 416.3048 & $<$ 0.0001 \\ 
   s(timepoint):category [`r linguisticsdown::cond_cmpl("uː")`] & 3.6849 & 3.9255 & 369.2896 & $<$ 0.0001 \\ 
   s(Talker) & 17.3835 & 39.0000 & 94.2355 & 0.0032 \\ 
-  s(Talker,categoryO) & 57.6310 & 79.0000 & 63.2542 & $<$ 0.0001 \\
+  s(Talker,category) & 57.6310 & 79.0000 & 63.2542 & $<$ 0.0001 \\
    \hline
 \end{tabular}
 \label{tab:m.F1.back.long}
@@ -1273,7 +1273,7 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
   s(timepoint) & 1.0001 & 1.0002 & 95.7868 & $<$ 0.0001 \\ 
   s(timepoint):category [`r linguisticsdown::cond_cmpl("ʊ")`] & 1.9991 & 2.4488 & 6.2454 & 0.0015 \\ 
   s(Talker) & 29.1275 & 39.0000 & 2403.7161 & $<$ 0.0001 \\ 
-  s(Talker,categoryO) & 47.3171 & 78.0000 & 374.0028 & 0.0998 \\ 
+  s(Talker,category) & 47.3171 & 78.0000 & 374.0028 & 0.0998 \\ 
    \hline
 \end{tabular}
 \label{tab:m.F3.back.short}
@@ -1288,15 +1288,15 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
 \begin{tabular}{lrrrr}
    \hline
 A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & -0.4989 & 0.0219 & -22.8167 & $<$ 0.0001 \\ 
-  category [`r linguisticsdown::cond_cmpl("æː")`] & 0.0658 & 0.0130 & 5.0547 & $<$ 0.0001 \\ 
-  Gendermale & -0.0346 & 0.0308 & -1.1223 & 0.2618 \\ 
+  (Intercept) & -0.4664 & 0.0205 & -22.7936 & $<$ 0.0001 \\ 
+  category [`r linguisticsdown::cond_cmpl("æː")`] & 0.0460 & 0.0084 & 5.4424 & $<$ 0.0001 \\ 
+  Gendermale & -0.0209 & 0.0286 & -0.7300 & 0.4655 \\ 
    \hline
 B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category [`r linguisticsdown::cond_cmpl("ɛː")`] & 1.4851 & 1.8142 & 7.0119 & 0.0038 \\ 
-  s(timepoint):category [`r linguisticsdown::cond_cmpl("æː")`] & 3.2083 & 3.6706 & 111.7106 & $<$ 0.0001 \\ 
-  s(Talker) & 28.7148 & 35.0000 & 805.9948 & $<$ 0.0001 \\ 
-  s(Talker,category) & 38.9026 & 71.0000 & 86.8982 & 0.0405 \\ 
+  s(timepoint) & 2.3985 & 2.8801 & 5.5492 & 0.0009 \\ 
+  s(timepoint):category [`r linguisticsdown::cond_cmpl("æː")`] & 2.9271 & 3.4029 & 42.2298 & $<$ 0.0001 \\ 
+  s(Talker) & 32.1863 & 39.0000 & 852.9541 & $<$ 0.0001 \\ 
+  s(Talker,category) & 43.1275 & 79.0000 & 89.3690 & 0.0311 \\ 
    \hline
 \end{tabular}
 \label{tab:m.F1.center.long}
@@ -1308,15 +1308,15 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
 \begin{tabular}{lrrrr}
    \hline
 A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & 0.3202 & 0.0113 & 28.2110 & $<$ 0.0001 \\ 
-  category [`r linguisticsdown::cond_cmpl("æː")`] & -0.0846 & 0.0096 & -8.7790 & $<$ 0.0001 \\ 
-  Gendermale & -0.0038 & 0.0152 & -0.2518 & 0.8012 \\ 
+  (Intercept) & 0.2778 & 0.0099 & 28.0182 & $<$ 0.0001 \\ 
+  category [`r linguisticsdown::cond_cmpl("æː")`] & -0.0559 & 0.0065 & -8.6094 & $<$ 0.0001 \\ 
+  Gendermale & -0.0062 & 0.0139 & -0.4452 & 0.6562 \\ 
    \hline
 B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category [`r linguisticsdown::cond_cmpl("ɛː")`]  & 3.3457 & 3.7693 & 239.3935 & $<$ 0.0001 \\ 
-  s(timepoint):category [`r linguisticsdown::cond_cmpl("æː")`] & 3.3336 & 3.7592 & 44.0107 & $<$ 0.0001 \\ 
-  s(Talker) & 20.7802 & 35.0000 & 1200.4655 & $<$ 0.0001 \\ 
-  s(Talker,category) & 48.5959 & 71.0000 & 406.9209 & 0.0016 \\ 
+  s(timepoint) & 3.4254 & 3.7885 & 244.3314 & $<$ 0.0001 \\ 
+  s(timepoint):category [`r linguisticsdown::cond_cmpl("æː")`] & 3.6101 & 3.8806 & 242.5392 & $<$ 0.0001 \\ 
+  s(Talker) & 21.8765 & 39.0000 & 1052.7781 & $<$ 0.0001 \\ 
+  s(Talker,category) & 55.3558 & 79.0000 & 410.4479 & 0.0004 \\ 
    \hline
 \end{tabular}
 \label{tab:m.F2.center.long}
@@ -1329,15 +1329,15 @@ predicting F3}
 \begin{tabular}{lrrrr}
    \hline
 A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & 0.7477 & 0.0171 & 43.8376 & $<$ 0.0001 \\ 
-  category [`r linguisticsdown::cond_cmpl("æː")`] & -0.0119 & 0.0105 & -1.1309 & 0.2582 \\ 
-  Gendermale & 0.0290 & 0.0239 & 1.2118 & 0.2257 \\ 
+  (Intercept) & 0.7418 & 0.0160 & 46.4515 & $<$ 0.0001 \\ 
+  category [`r linguisticsdown::cond_cmpl("æː")`] & -0.0063 & 0.0071 & -0.8957 & 0.3705 \\ 
+  Gendermale & 0.0264 & 0.0223 & 1.1837 & 0.2366 \\ 
    \hline
 B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category [`r linguisticsdown::cond_cmpl("ɛː")`] & 2.5579 & 3.0789 & 16.9912 & $<$ 0.0001 \\ 
-  s(timepoint):category [`r linguisticsdown::cond_cmpl("æː")`] & 1.9849 & 2.4346 & 3.4538 & 0.0236 \\ 
-  s(Talker) & 28.1870 & 35.0000 & 982.4866 & $<$ 0.0001 \\ 
-  s(Talker,category) & 39.8401 & 71.0000 & 101.3499 & 0.1088 \\ 
+  s(timepoint) & 2.5570 & 3.0749 & 18.5927 & $<$ 0.0001 \\ 
+  s(timepoint):category [`r linguisticsdown::cond_cmpl("æː")`] & 1.0000 & 1.0001 & 13.8709 & 0.0002 \\ 
+  s(Talker) & 31.1397 & 39.0000 & 914.4816 & $<$ 0.0001 \\ 
+  s(Talker,category) & 44.5499 & 79.0000 & 99.2827 & 0.0933 \\ 
    \hline
 \end{tabular} 
 \label{tab:m.F3.center.long}
@@ -1350,15 +1350,15 @@ predicting F1}
 \begin{tabular}{lrrrr}
    \hline
 A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & -0.7269 & 0.0151 & -48.0611 & $<$ 0.0001 \\ 
-  category [`r linguisticsdown::cond_cmpl("æ")`] & 0.2512 & 0.0136 & 18.4943 & $<$ 0.0001 \\ 
-  Gendermale & -0.0162 & 0.0199 & -0.8137 & 0.4159 \\ 
+  (Intercept) & -0.6015 & 0.0130 & -46.3345 & $<$ 0.0001 \\ 
+  category [`r linguisticsdown::cond_cmpl("æ")`] & 0.1726 & 0.0104 & 16.5493 & $<$ 0.0001 \\ 
+  Gendermale & -0.0163 & 0.0181 & -0.8991 & 0.3687 \\ 
    \hline
 B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category [`r linguisticsdown::cond_cmpl("ɛ")`] & 3.4131 & 3.8118 & 50.0923 & $<$ 0.0001 \\ 
-  s(timepoint):category [`r linguisticsdown::cond_cmpl("æ")`] & 3.0619 & 3.5569 & 209.1458 & $<$ 0.0001 \\ 
-  s(Talker) & 18.6400 & 35.0000 & 368.7870 & 0.0008 \\ 
-  s(Talker,category) & 50.2350 & 71.0000 & 167.6331 & 0.0024 \\ 
+  s(timepoint) & 3.4917 & 3.8332 & 51.7731 & $<$ 0.0001 \\ 
+  s(timepoint):category [`r linguisticsdown::cond_cmpl("æ")`] & 1.9327 & 2.3680 & 45.2830 & $<$ 0.0001 \\ 
+  s(Talker) & 13.1542 & 39.0000 & 160.7058 & 0.0705 \\ 
+  s(Talker,category) & 63.7164 & 79.0000 & 177.0030 & $<$ 0.0001 \\ 
    \hline
 \end{tabular}
 \label{tab:m.F1.center.short}
@@ -1371,15 +1371,15 @@ predicting F2}
 \begin{tabular}{lrrrr}
    \hline
 A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & 0.4089 & 0.0127 & 32.1002 & $<$ 0.0001 \\ 
-  category [`r linguisticsdown::cond_cmpl("æ")`] & -0.1181 & 0.0124 & -9.5505 & $<$ 0.0001 \\ 
-  Gendermale & -0.0201 & 0.0164 & -1.2217 & 0.2219 \\ 
+  (Intercept) & 0.3499 & 0.0113 & 31.0690 & $<$ 0.0001 \\ 
+  category [`r linguisticsdown::cond_cmpl("æ")`] & -0.0797 & 0.0082 & -9.6873 & $<$ 0.0001 \\ 
+  Gendermale & -0.0123 & 0.0157 & -0.7810 & 0.4349 \\ 
    \hline
 B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category [`r linguisticsdown::cond_cmpl("ɛ")`] & 1.3303 & 1.5854 & 290.5422 & $<$ 0.0001 \\ 
-  s(timepoint):category [`r linguisticsdown::cond_cmpl("æ")`] & 2.4991 & 3.0151 & 57.1634 & $<$ 0.0001 \\ 
-  s(Talker) & 15.0381 & 35.0000 & 352.1814 & 0.0102 \\ 
-  s(Talker,category) & 54.2360 & 71.0000 & 243.0783 & $<$ 0.0001 \\ 
+  s(timepoint) & 1.1719 & 1.3066 & 365.5786 & $<$ 0.0001 \\ 
+  s(timepoint):category [`r linguisticsdown::cond_cmpl("æ")`] & 2.3852 & 2.8844 & 208.8811 & $<$ 0.0001 \\ 
+  s(Talker) & 17.6245 & 39.0000 & 429.5987 & 0.0028 \\ 
+  s(Talker,category) & 59.5197 & 79.0000 & 269.1815 & $<$ 0.0001 \\  
    \hline
 \end{tabular}
 \label{tab:m.F2.center.short}
@@ -1392,15 +1392,15 @@ predicting F3}
 \begin{tabular}{lrrrr}
    \hline
 A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & 0.7458 & 0.0136 & 55.0097 & $<$ 0.0001 \\ 
-  category [`r linguisticsdown::cond_cmpl("æ")`] & 0.0123 & 0.0085 & 1.4409 & 0.1497 \\ 
-  Gendermale & 0.0315 & 0.0190 & 1.6568 & 0.0977 \\ 
+  (Intercept) & 0.7520 & 0.0128 & 58.8018 & $<$ 0.0001 \\ 
+  category [`r linguisticsdown::cond_cmpl("æ")`] & 0.0099 & 0.0055 & 1.7964 & 0.0725 \\ 
+  Gendermale & 0.0297 & 0.0179 & 1.6637 & 0.0963 \\ 
    \hline
 B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category [`r linguisticsdown::cond_cmpl("ɛ")`] & 2.2157 & 2.7079 & 4.4190 & 0.0084 \\ 
-  s(timepoint):category [`r linguisticsdown::cond_cmpl("æ")`] & 2.5770 & 3.0972 & 6.6918 & 0.0001 \\ 
-  s(Talker) & 27.8932 & 35.0000 & 288.5886 & $<$ 0.0001 \\ 
-  s(Talker,category) & 38.4020 & 71.0000 & 32.8884 & 0.0793 \\ 
+  s(timepoint) & 2.7661 & 3.2897 & 4.4730 & 0.0025 \\ 
+  s(timepoint):category [`r linguisticsdown::cond_cmpl("æ")`] & 1.0001 & 1.0001 & 0.8789 & 0.3486 \\ 
+  s(Talker) & 31.6397 & 39.0000 & 296.4814 & $<$ 0.0001 \\ 
+  s(Talker,category) & 41.9894 & 79.0000 & 30.9853 & 0.0725 \\
    \hline
 \end{tabular}
 \label{tab:m.F3.center.short}
@@ -1409,7 +1409,6 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
 ```{r}
 #gamtabs(m.F3.mid.short, caption='Model summary, coefficients for parametric and smooth terms', label = "tab:m.F3.mid.short")
 ```
-Tables \@ref(tab:m.F1.mid.long), \@ref(tab:m.F1.mid.short), \@ref(tab:m.F2.mid.long), \@ref(tab:m.F2.mid.short), \@ref(tab:m.F3.mid.long), \@ref(tab:m.F3.mid.short) summarize the results of the GAMMs fit to mid center neighboring contrasts.
 
 \begin{table}[ht]
 \caption{\label{tab:m.F1.mid.long}Model summary, coefficients for parametric and smooth terms for the mid center long vowels predicting F1}
@@ -1417,15 +1416,15 @@ Tables \@ref(tab:m.F1.mid.long), \@ref(tab:m.F1.mid.short), \@ref(tab:m.F2.mid.l
 \begin{tabular}{lrrrr}
    \hline
 A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & -0.7178 & 0.0177 & -40.5263 & $<$ 0.0001 \\ 
-  category [`r linguisticsdown::cond_cmpl("œː")`] & -0.0171 & 0.0111 & -1.5411 & 0.1234 \\ 
-  Gendermale & -0.0175 & 0.0248 & -0.7054 & 0.4806 \\ 
+  (Intercept) & -0.7265 & 0.0169 & -42.9651 & $<$ 0.0001 \\ 
+  category [`r linguisticsdown::cond_cmpl("œː")`] & -0.0098 & 0.0073 & -1.3412 & 0.1799 \\ 
+  Gendermale & -0.0176 & 0.0236 & -0.7457 & 0.4559 \\ 
    \hline
 B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category [`r linguisticsdown::cond_cmpl("øː")`] & 2.0230 & 2.4847 & 2.0968 & 0.0968 \\ 
-  s(timepoint):category [`r linguisticsdown::cond_cmpl("œː")`] & 2.6059 & 3.1188 & 56.5090 & $<$ 0.0001 \\ 
-  s(Talker) & 27.9922 & 35.0000 & 1639.3603 & $<$ 0.0001 \\ 
-  s(Talker,category) & 40.8306 & 71.0000 & 206.6339 & 0.0475 \\ 
+  s(timepoint) & 2.9469 & 3.4536 & 4.4850 & 0.0033 \\ 
+  s(timepoint):category [`r linguisticsdown::cond_cmpl("œː")`] & 1.0001 & 1.0001 & 39.1344 & $<$ 0.0001 \\ 
+  s(Talker) & 31.5576 & 39.0000 & 1258.5044 & $<$ 0.0001 \\ 
+  s(Talker,category) & 44.6301 & 79.0000 & 145.9365 & 0.0505 \\ 
    \hline
 \end{tabular}
 \label{tab:m.F1.mid.long}
@@ -1437,15 +1436,15 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
 \begin{tabular}{lrrrr}
    \hline
 A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & 0.1620 & 0.0143 & 11.3386 & $<$ 0.0001 \\ 
-  category [`r linguisticsdown::cond_cmpl("œː")`] & -0.1755 & 0.0167 & -10.4903 & $<$ 0.0001 \\ 
-  Gendermale & -0.0040 & 0.0171 & -0.2360 & 0.8135 \\ 
+  (Intercept) & 0.0744 & 0.0117 & 6.3573 & $<$ 0.0001 \\ 
+  category [`r linguisticsdown::cond_cmpl("œː")`] & -0.1171 & 0.0114 & -10.2512 & $<$ 0.0001 \\ 
+  Gendermale & -0.0104 & 0.0163 & -0.6372 & 0.5241 \\ 
    \hline
 B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category [`r linguisticsdown::cond_cmpl("øː")`] & 3.3494 & 3.7708 & 206.3966 & $<$ 0.0001 \\ 
-  s(timepoint):category [`r linguisticsdown::cond_cmpl("œː")`] & 3.8405 & 3.9842 & 264.4796 & $<$ 0.0001 \\ 
-  s(Talker) & 1.2539 & 35.0000 & 17.5588 & 0.4091 \\ 
-  s(Talker,category) & 69.0578 & 71.0000 & 335.5738 & $<$ 0.0001 \\ 
+  s(timepoint) & 3.2941 & 3.7089 & 193.6028 & $<$ 0.0001 \\ 
+  s(timepoint):category [`r linguisticsdown::cond_cmpl("œː")`] & 3.7297 & 3.9282 & 381.5898 & $<$ 0.0001 \\ 
+  s(Talker) & 0.8813 & 39.0000 & 6.9354 & 0.4171 \\ 
+  s(Talker,category) & 77.3538 & 79.0000 & 254.5904 & $<$ 0.0001 \\ 
    \hline
 \end{tabular}
 \label{tab:m.F2.mid.long}
@@ -1457,15 +1456,15 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
 \begin{tabular}{lrrrr}
    \hline
 A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & 0.7238 & 0.0110 & 65.6956 & $<$ 0.0001 \\ 
-  category [`r linguisticsdown::cond_cmpl("œː")`] & 0.0171 & 0.0076 & 2.2335 & 0.0256 \\ 
-  Gendermale & -0.0094 & 0.0153 & -0.6174 & 0.5370 \\ 
+  (Intercept) & 0.7323 & 0.0108 & 67.6613 & $<$ 0.0001 \\ 
+  category [`r linguisticsdown::cond_cmpl("œː")`] & 0.0104 & 0.0052 & 1.9782 & 0.0480 \\ 
+  Gendermale & -0.0025 & 0.0151 & -0.1681 & 0.8665 \\ 
    \hline
 B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category [`r linguisticsdown::cond_cmpl("øː")`] & 3.3171 & 3.7495 & 53.2943 & $<$ 0.0001 \\ 
-  s(timepoint):category [`r linguisticsdown::cond_cmpl("œː")`] & 2.7352 & 3.2497 & 16.0149 & $<$ 0.0001 \\ 
-  s(Talker) & 26.1642 & 35.0000 & 1328.1128 & $<$ 0.0001 \\ 
-  s(Talker,category) & 42.7042 & 71.0000 & 212.7082 & 0.0380 \\ 
+  s(timepoint) & 3.3374 & 3.7227 & 59.1292 & $<$ 0.0001 \\ 
+  s(timepoint):category [`r linguisticsdown::cond_cmpl("œː")`] & 3.4294 & 3.7772 & 67.9323 & $<$ 0.0001 \\ 
+  s(Talker) & 29.6535 & 39.0000 & 1744.4730 & $<$ 0.0001 \\ 
+  s(Talker,category) & 47.2299 & 79.0000 & 260.6346 & 0.0391 \\ 
    \hline
 \end{tabular} 
 \label{tab:m.F3.mid.long}
@@ -1478,15 +1477,15 @@ predicting F1}
 \begin{tabular}{lrrrr}
    \hline
 A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & -0.8401 & 0.0143 & -58.6160 & $<$ 0.0001 \\ 
-  category [`r linguisticsdown::cond_cmpl("œ")`] & -0.0280 & 0.0139 & -2.0198 & 0.0435 \\ 
-  Gendermale & 0.0146 & 0.0185 & 0.7916 & 0.4287 \\ 
+  (Intercept) & -0.8545 & 0.0123 & -69.4714 & $<$ 0.0001 \\ 
+  category [`r linguisticsdown::cond_cmpl("œ")`] & -0.0158 & 0.0097 & -1.6344 & 0.1023 \\ 
+  Gendermale & 0.0125 & 0.0172 & 0.7262 & 0.4678 \\ 
    \hline
 B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category [`r linguisticsdown::cond_cmpl("ø")`] & 3.5157 & 3.8680 & 170.5141 & $<$ 0.0001 \\ 
-  s(timepoint):category [`r linguisticsdown::cond_cmpl("œ")`] & 2.5538 & 3.0669 & 111.0694 & $<$ 0.0001 \\ 
-  s(Talker) & 15.2210 & 35.0000 & 539.6243 & 0.0133 \\ 
-  s(Talker,category) & 54.4128 & 71.0000 & 357.8582 & 0.0001 \\ 
+  s(timepoint) & 3.5796 & 3.8588 & 173.3591 & $<$ 0.0001 \\ 
+  s(timepoint):category [`r linguisticsdown::cond_cmpl("œ")`] & 2.9340 & 3.4113 & 16.0463 & $<$ 0.0001 \\ 
+  s(Talker) & 14.1702 & 39.0000 & 302.4206 & 0.0380 \\ 
+  s(Talker,category) & 63.1586 & 79.0000 & 279.1835 & $<$ 0.0001 \\ 
    \hline
 \end{tabular}
 \label{tab:m.F1.mid.short}
@@ -1499,15 +1498,15 @@ predicting F2}
 \begin{tabular}{lrrrr}
    \hline
 A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & 0.2497 & 0.0162 & 15.4595 & $<$ 0.0001 \\ 
-  category [`r linguisticsdown::cond_cmpl("œ")`] & -0.1809 & 0.0165 & -10.9577 & $<$ 0.0001 \\ 
-  Gendermale & -0.0352 & 0.0205 & -1.7185 & 0.0858 \\ 
+  (Intercept) & 0.1595 & 0.0141 & 11.3009 & $<$ 0.0001 \\ 
+  category [`r linguisticsdown::cond_cmpl("œ")`] & -0.1191 & 0.0114 & -10.4280 & $<$ 0.0001 \\ 
+  Gendermale & -0.0344 & 0.0197 & -1.7436 & 0.0813 \\ 
    \hline
 B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category [`r linguisticsdown::cond_cmpl("ø")`] & 2.3312 & 2.8344 & 41.2673 & $<$ 0.0001 \\ 
-  s(timepoint):category [`r linguisticsdown::cond_cmpl("œ")`] & 3.6083 & 3.9108 & 518.6392 & $<$ 0.0001 \\ 
-  s(Talker) & 12.1043 & 35.0000 & 2648.4818 & 0.0306 \\ 
-  s(Talker,category) & 58.3994 & 71.0000 & 2464.2257 & $<$ 0.0001 \\ 
+  s(timepoint) & 2.2604 & 2.7351 & 34.5559 & $<$ 0.0001 \\ 
+  s(timepoint):category [`r linguisticsdown::cond_cmpl("œ")`] & 3.4647 & 3.8071 & 349.8467 & $<$ 0.0001 \\ 
+  s(Talker) & 12.8319 & 39.0000 & 2243.9486 & 0.0298 \\ 
+  s(Talker,category) & 65.5976 & 79.0000 & 2258.5568 & $<$ 0.0001 \\ 
    \hline
 \end{tabular}
 \label{tab:m.F2.mid.short}
@@ -1520,15 +1519,15 @@ predicting F3}
 \begin{tabular}{lrrrr}
    \hline
 A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & 0.7335 & 0.0109 & 67.1090 & $<$ 0.0001 \\ 
-  category [`r linguisticsdown::cond_cmpl("œ")`] & 0.0192 & 0.0082 & 2.3509 & 0.0188 \\ 
-  Gendermale & 0.0059 & 0.0150 & 0.3955 & 0.6925 \\ 
+  (Intercept) & 0.7432 & 0.0098 & 75.6290 & $<$ 0.0001 \\ 
+  category [`r linguisticsdown::cond_cmpl("œ")`] & 0.0114 & 0.0056 & 2.0340 & 0.0420 \\ 
+  Gendermale & 0.0062 & 0.0137 & 0.4523 & 0.6511 \\ 
    \hline
 B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category [`r linguisticsdown::cond_cmpl("ø")`] & 3.2158 & 3.6784 & 128.8414 & $<$ 0.0001 \\ 
-  s(timepoint):category [`r linguisticsdown::cond_cmpl("œ")`] & 2.5288 & 3.0405 & 7.8057 & $<$ 0.0001 \\ 
-  s(Talker) & 24.5124 & 35.0000 & 1752.1939 & $<$ 0.0001 \\ 
-  s(Talker,category) & 45.0178 & 71.0000 & 354.4428 & 0.0421 \\ 
+  s(timepoint) & 3.2841 & 3.6832 & 149.3740 & $<$ 0.0001 \\ 
+  s(timepoint):category [`r linguisticsdown::cond_cmpl("œ")`] & 3.3298 & 3.7122 & 106.1946 & $<$ 0.0001 \\ 
+  s(Talker) & 25.9119 & 39.0000 & 1422.1973 & $<$ 0.0001 \\ 
+  s(Talker,category) & 51.4251 & 79.0000 & 345.2444 & 0.0184 \\ 
    \hline
 \end{tabular}
 \label{tab:m.F3.mid.short}
@@ -1536,243 +1535,713 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
 
 ```{r}
 ```
-Tables \@ref(tab:m-F1-paired), \@ref(tab:m-F2-paired), \@ref(tab:m-F3-paired), \@ref(tab:m-duration-paired summarize the results of the GAMMs fit to long-short vowel pairs.
+
 
 \begin{table}[ht]
-\small
-\caption{\label{tab:m-F1-paired}Model summary, coefficients for parametric and smooth terms for all 21 vowels predicting F1} 
+\caption{\label{tab:m.F1.I}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("i")`/
+predicting F1}
 \centering
 \begin{tabular}{lrrrr}
    \hline
 A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & -1.2618 & 0.0142 & -89.1177 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɪ]")` & 0.0324 & 0.0157 & 2.0593 & 0.0395 \\ 
-  category `r linguisticsdown::cond_cmpl("[yː]")` & -0.0410 & 0.0157 & -2.6085 & 0.0091 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʏ]")` & 0.0426 & 0.0157 & 2.7044 & 0.0068 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʉː]")` & 0.0456 & 0.0157 & 2.8987 & 0.0037 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɵ]")` & 0.1600 & 0.0157 & 10.1678 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[eː]")` & 0.1794 & 0.0158 & 11.3701 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɛ]")` & 0.5294 & 0.0157 & 33.7688 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɛː]")` & 0.7494 & 0.0158 & 47.5815 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[æː]")` & 0.8138 & 0.0158 & 51.6221 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[æ]")` & 0.7805 & 0.0157 & 49.5770 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[øː]")` & 0.5390 & 0.0157 & 34.2376 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ø]")` & 0.4322 & 0.0157 & 27.4658 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[œː]")` & 0.5222 & 0.0158 & 33.1307 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[œ]")` & 0.4039 & 0.0157 & 25.6634 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɑː]")` & 0.5853 & 0.0157 & 37.1926 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[a]")` & 0.7541 & 0.0157 & 47.9239 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[oː]")` & 0.2189 & 0.0157 & 13.9132 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɔ]")` & 0.3373 & 0.0157 & 21.4318 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[uː]")` & 0.0861 & 0.0157 & 5.4716 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʊ]")` & 0.1406 & 0.0159 & 8.8655 & $<$ 0.0001 \\ 
-  Gendermale & -0.0063 & 0.0134 & -0.4692 & 0.6389 \\ 
+  (Intercept) & -1.2427 & 0.0157 & -78.9328 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[ɪ]")` & 0.0371 & 0.0137 & 2.7134 & 0.0067 \\ 
+  Gendermale & -0.0545 & 0.0198 & -2.7534 & 0.0059 \\ 
    \hline
 B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[iː]")` & 2.9699 & 3.4749 & 60.8984 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɪ]")` & 2.3196 & 2.8202 & 2.7657 & 0.0380 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[yː]")` & 3.1211 & 3.6026 & 75.2795 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʏ]")` & 1.2836 & 1.5107 & 9.6941 & 0.0003 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʉː]")` & 3.4823 & 3.8488 & 192.2389 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɵ]")` & 2.5131 & 3.0207 & 32.6885 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[eː]")` & 3.9160 & 3.9957 & 1083.5453 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛ]")` & 3.6352 & 3.9234 & 92.8670 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛː]")` & 2.0567 & 2.5243 & 7.0863 & 0.0003 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[æː]")` & 3.3827 & 3.7909 & 164.8723 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[æ]")` & 3.0379 & 3.5369 & 199.9285 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[øː]")` & 1.8388 & 2.2686 & 1.5376 & 0.1954 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ø]")` & 3.3342 & 3.7613 & 107.8693 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[œː]")` & 2.3894 & 2.8882 & 43.6960 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[œ]")` & 2.2966 & 2.7874 & 75.0532 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɑː]")` & 2.6751 & 3.1893 & 69.7824 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[a]")` & 3.3890 & 3.7948 & 182.4588 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[oː]")` & 3.8321 & 3.9826 & 575.2500 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɔ]")` & 2.9739 & 3.4744 & 66.6260 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[uː]")` & 2.9624 & 3.4643 & 114.3566 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʊ]")` & 1.9404 & 2.3813 & 52.5447 & $<$ 0.0001 \\ 
-  s(Talker) & 30.3648 & 35.0000 & 7129.7891 & $<$ 0.0001 \\ 
-  s(Talker,category) & 700.8765 & 754.0000 & 82.5811 & $<$ 0.0001 \\ 
+  s(timepoint) & 2.9563 & 3.4642 & 55.3871 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɪ]")` & 1.0000 & 1.0001 & 68.4212 & $<$ 0.0001 \\ 
+  s(Talker) & 20.3749 & 39.0000 & 505.9699 & 0.0001 \\ 
+  s(Talker,category) & 56.5165 & 79.0000 & 231.1143 & 0.0002 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F1.paired}
+\label{tab:m.F1.I}
 \end{table}
 
 \begin{table}[ht]
-\small
-\caption{\label{tab:m-F2-paired}Model summary, coefficients for parametric and smooth terms for all 21 vowels predicting F2} 
+\caption{\label{tab:m.F2.I}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("i")`/
+predicting F2}
 \centering
 \begin{tabular}{lrrrr}
    \hline
 A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & 0.4831 & 0.0135 & 35.8530 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɪ]")` & 0.1793 & 0.0170 & 10.5309 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[yː]")` & -0.0338 & 0.0170 & -1.9831 & 0.0474 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʏ]")` & 0.0995 & 0.0170 & 5.8417 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʉː]")` & -0.1643 & 0.0170 & -9.6510 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɵ]")` & -0.4735 & 0.0170 & -27.8011 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[eː]")` & 0.1209 & 0.0171 & 7.0847 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[ɛ]")` & -0.0824 & 0.0170 & -4.8503 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɛː]")` & -0.1641 & 0.0170 & -9.6292 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[æː]")` & -0.2473 & 0.0171 & -14.5034 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[æ]")` & -0.1997 & 0.0170 & -11.7242 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[øː]")` & -0.3210 & 0.0170 & -18.8458 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ø]")` & -0.2480 & 0.0170 & -14.5610 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[œː]")` & -0.4977 & 0.0171 & -29.1877 & $<$ 0.0001 \\
-  category `r linguisticsdown::cond_cmpl("[œ]")` & -0.4302 & 0.0170 & -25.2542 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[ɑː]")` & -0.7165 & 0.0170 & -42.0672 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[a]")` & -0.4597 & 0.0170 & -26.9935 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[oː]")` & -1.0077 & 0.0170 & -59.1781 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɔ]")` & -0.8391 & 0.0170 & -49.2613 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[uː]")` & -0.9441 & 0.0170 & -55.4250 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[ʊ]")` & -0.9004 & 0.0172 & -52.4751 & $<$ 0.0001 \\
-  Gendermale & -0.0030 & 0.0097 & -0.3103 & 0.7563 \\ 
+  (Intercept) & 0.4737 & 0.0174 & 27.1554 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[ɪ]")` & 0.1704 & 0.0196 & 8.6881 & $<$ 0.0001 \\ 
+  Gendermale & 0.0327 & 0.0202 & 1.6233 & 0.1046 \\ 
    \hline
 B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[iː]")` & 1.0015 & 1.0029 & 25.5650 & $<$ 0.0001 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɪ]")` & 3.3221 & 3.7528 & 8.6397 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[yː]")` & 1.6674 & 2.0543 & 21.7906 & $<$ 0.0001 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʏ]")` & 2.5259 & 3.0445 & 10.5300 & $<$ 0.0001 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʉː]")` & 2.4654 & 2.9713 & 145.9897 & $<$ 0.0001 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɵ]")` & 3.3562 & 3.7716 & 135.6853 & $<$ 0.0001 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[eː]")` & 3.8051 & 3.9774 & 494.3527 & $<$ 0.0001 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛ]")` & 1.7680 & 2.1855 & 278.9595 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛː]")` & 2.9022 & 3.4184 & 98.6021 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[æː]")` & 2.8558 & 3.3707 & 17.9822 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[æ]")` & 2.2613 & 2.7546 & 42.0383 & $<$ 0.0001 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[øː]")` & 2.5127 & 3.0298 & 91.1535 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ø]")` & 1.1352 & 1.2570 & 29.5323 & $<$ 0.0001 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[œː]")` & 3.6238 & 3.9165 & 95.8035 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[œ]")` & 3.2293 & 3.6851 & 184.8442 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɑː]")` & 3.4899 & 3.8515 & 25.4819 & $<$ 0.0001 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[a]")` & 1.7816 & 2.1970 & 42.6025 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[oː]")` & 3.9594 & 3.9990 & 2902.3723 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɔ]")` & 3.5890 & 3.9014 & 111.6825 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[uː]")` & 3.9363 & 3.9974 & 420.6330 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʊ]")` & 3.7607 & 3.9653 & 524.5672 & $<$ 0.0001 \\ 
-  s(Talker) & 24.6716 & 35.0000 & 3703.0200 & $<$ 0.0001 \\ 
-  s(Talker,category) & 711.8453 & 754.0000 & 111.1971 & $<$ 0.0001 \\ 
+  s(timepoint) & 1.3830 & 1.6530 & 18.0138 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɪ]")` & 3.2796 & 3.7133 & 6.7933 & 0.0001 \\ 
+  s(Talker) & 2.0415 & 39.0000 & 11.9241 & 0.4174 \\ 
+  s(Talker,category) & 75.7153 & 79.0000 & 171.1447 & $<$ 0.0001 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F2.paired}
+\label{tab:m.F2.I}
 \end{table}
 
 \begin{table}[ht]
-\small
-\caption{\label{tab:m-F3-paired}Model summary, coefficients for parametric and smooth terms for all 21 vowels predicting F3} 
+\caption{\label{tab:m.F3.I}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("i")`/
+predicting F3}
 \centering
 \begin{tabular}{lrrrr}
    \hline
 A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & 0.8994 & 0.0116 & 77.7339 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɪ]")` & -0.0413 & 0.0119 & -3.4809 & 0.0005 \\
-  category `r linguisticsdown::cond_cmpl("[yː]")` & 0.0007 & 0.0118 & 0.0576 & 0.9541 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʏ]")` & -0.1432 & 0.0119 & -12.0801 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʉː]")` & -0.1924 & 0.0118 & -16.2359 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɵ]")` & -0.1555 & 0.0119 & -13.1199 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[eː]")` & -0.0588 & 0.0119 & -4.9460 & $<$ 0.0001 \\
-  category `r linguisticsdown::cond_cmpl("[ɛ]")` & -0.1459 & 0.0118 & -12.3596 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɛː]")` & -0.1450 & 0.0119 & -12.2203 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[æː]")` & -0.1572 & 0.0119 & -13.2361 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[æ]")` & -0.1340 & 0.0119 & -11.2963 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[øː]")` & -0.1875 & 0.0119 & -15.8153 & $<$ 0.0001 \\
-  category `r linguisticsdown::cond_cmpl("[ø]")` & -0.1709 & 0.0119 & -14.4191 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[œː]")` & -0.1698 & 0.0119 & -14.3056 & $<$ 0.0001 \\
-  category `r linguisticsdown::cond_cmpl("[œ]")` & -0.1511 & 0.0119 & -12.7489 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[ɑː]")` & -0.0996 & 0.0119 & -8.4030 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[a]")` & -0.1003 & 0.0119 & -8.4656 & $<$ 0.0001 \\
-  category `r linguisticsdown::cond_cmpl("[oː]")` & -0.0921 & 0.0119 & -7.7723 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɔ]")` & -0.0580 & 0.0119 & -4.8932 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[uː]")` & -0.1210 & 0.0119 & -10.2044 & $<$ 0.0001 \\
-  category `r linguisticsdown::cond_cmpl("[ʊ]")` & -0.0974 & 0.0119 & -8.1535 & $<$ 0.0001 \\
-  Gendermale & 0.0155 & 0.0121 & 1.2866 & 0.1982 \\ 
+  (Intercept) & 0.8922 & 0.0147 & 60.5368 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[ɪ]")` & -0.0441 & 0.0130 & -3.3795 & 0.0007 \\ 
+  Gendermale & 0.0337 & 0.0185 & 1.8258 & 0.0680 \\ 
    \hline
 B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[iː]")` & 2.3877 & 2.8890 & 10.2860 & $<$ 0.0001 \\   
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɪ]")`  & 2.5706 & 3.0908 & 42.4087 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[yː]")` & 2.7213 & 3.2404 & 6.5528 & 0.0001 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʏ]")` & 2.0793 & 2.5501 & 4.1808 & 0.0088 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʉː]")` & 3.1212 & 3.6017 & 14.7398 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɵ]")` & 1.0007 & 1.0013 & 124.4234 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[eː]")` & 3.6630 & 3.9345 & 96.5489 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛ]")` & 3.0119 & 3.5168 & 12.8402 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛː]")` & 2.8123 & 3.3344 & 24.2192 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[æː]")` & 2.2083 & 2.6896 & 5.0740 & 0.0028 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[æ]")` & 3.0922 & 3.5819 & 10.8873 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[øː]")` & 3.0677 & 3.5614 & 32.2446 & $<$ 0.0001 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ø]")` & 2.8947 & 3.4110 & 68.1325 & $<$ 0.0001 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[œː]")` & 2.4586 & 2.9632 & 9.8438 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[œ]")` & 2.1449 & 2.6169 & 4.3514 & 0.0095 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɑː]")` & 1.0002 & 1.0003 & 17.7578 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[a]")` & 2.4811 & 2.9927 & 7.9447 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[oː]")` & 3.0203 & 3.5151 & 14.4622 & $<$ 0.0001 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɔ]")` & 1.0001 & 1.0003 & 38.5056 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[uː]")` & 2.6925 & 3.2065 & 15.8756 & $<$ 0.0001 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʊ]")` & 1.2141 & 1.3948 & 7.2875 & 0.0023 \\ 
-  s(Talker) & 31.7596 & 35.0000 & 11782.6492 & $<$ 0.0001 \\ 
-  s(Talker,category) & 699.8265 & 754.0000 & 88.8884 & 0.0001 \\ 
+  s(timepoint) & 1.0001 & 1.0003 & 15.5226 & 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɪ]")` & 2.3498 & 2.8529 & 35.7660 & $<$ 0.0001 \\ 
+  s(Talker) & 19.5361 & 39.0000 & 568.5014 & 0.0003 \\ 
+  s(Talker,category) & 57.6016 & 79.0000 & 289.8411 & 0.0001 \\ 
    \hline
 \end{tabular}
-\label{tab:m.F3.paired}
+\label{tab:m.F3.I}
 \end{table}
 
+
 \begin{table}[ht]
-\small
-\caption{\label{tab:m-duration-paired}Model summary, coefficients for parametric and smooth terms for all 21 vowels predicting duration} 
+\caption{\label{tab:m.F1.Y}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("y")`/
+predicting F1}
 \centering
 \begin{tabular}{lrrrr}
    \hline
 A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & 0.2247 & 0.0075 & 29.7842 & $<$ 0.0001 \\ 
-    category `r linguisticsdown::cond_cmpl("[ɪ]")` & -0.1035 & 0.0051 & -20.3505 & $<$ 0.0001 \\
-  category `r linguisticsdown::cond_cmpl("[yː]")` & 0.0147 & 0.0051 & 2.8873 & 0.0039 \\
-  category `r linguisticsdown::cond_cmpl("[ʏ]")` & -0.1047 & 0.0051 & -20.5962 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʉː]")` & 0.0124 & 0.0051 & 2.4408 & 0.0147 \\  
-  category `r linguisticsdown::cond_cmpl("[ɵ]")` & -0.0904 & 0.0051 & -17.7653 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[eː]")` & 0.0271 & 0.0051 & 5.3302 & $<$ 0.0001 \\
-  category `r linguisticsdown::cond_cmpl("[ɛ]")` & -0.0970 & 0.0051 & -19.1206 & $<$ 0.0001 \\
-  category `r linguisticsdown::cond_cmpl("[ɛː]")` & 0.0249 & 0.0051 & 4.8883 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[æː]")` & 0.0309 & 0.0051 & 6.0607 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[æ]")` & -0.0673 & 0.0051 & -13.2361 & $<$ 0.0001 \\
-  category `r linguisticsdown::cond_cmpl("[øː]")` & 0.0220 & 0.0051 & 4.3213 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ø]")` & -0.0954 & 0.0051 & -18.7537 & $<$ 0.0001 \\   
-  category `r linguisticsdown::cond_cmpl("[œː]")` & 0.0254 & 0.0051 & 4.9813 & $<$ 0.0001 \\
-  category `r linguisticsdown::cond_cmpl("[œ]")` & -0.0630 & 0.0051 & -12.3867 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[ɑː]")` & 0.0137 & 0.0051 & 2.6987 & 0.0070 \\  
-  category `r linguisticsdown::cond_cmpl("[a]")` & -0.0876 & 0.0051 & -17.2311 & $<$ 0.0001 \\
-  category `r linguisticsdown::cond_cmpl("[oː]")` & 0.0278 & 0.0051 & 5.4724 & $<$ 0.0001 \\  
-  category `r linguisticsdown::cond_cmpl("[ɔ]")` & -0.0907 & 0.0051 & -17.8292 & $<$ 0.0001 \\ 
-  category `r linguisticsdown::cond_cmpl("[uː]")` & 0.0072 & 0.0051 & 1.4083 & 0.1590 \\ 
-  category `r linguisticsdown::cond_cmpl("[ʊ]")` & -0.0898 & 0.0051 & -17.5237 & $<$ 0.0001 \\ 
-  Gendermale & -0.0158 & 0.0099 & -1.5985 & 0.1099 \\ 
+  (Intercept) & -1.2862 & 0.0149 & -86.2412 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[ʏ]")` & 0.0889 & 0.0120 & 7.4271 & $<$ 0.0001 \\ 
+  Gendermale & -0.0502 & 0.0191 & -2.6311 & 0.0085 \\ 
    \hline
 B. smooth terms & edf & Ref.df & F-value & p-value \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[iː]")` & 1.0003 & 1.0005 & 0.4070 & 0.5235 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɪ]")`  & 1.0001 & 1.0002 & 0.0001 & 0.9953 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[yː]")` & 1.0002 & 1.0003 & 0.3187 & 0.5725 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʏ]")` & 1.0001 & 1.0002 & 0.0123 & 0.9121 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʉː]")` & 1.0001 & 1.0002 & 2.3733 & 0.1234 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɵ]")` & 1.0001 & 1.0003 & 0.0859 & 0.7696 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[eː]")` & 1.0002 & 1.0004 & 0.0092 & 0.9244 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛ]")` & 1.0002 & 1.0005 & 0.5153 & 0.4730 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛː]")` & 1.0002 & 1.0004 & 1.0377 & 0.3084 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[æː]")` & 1.0001 & 1.0003 & 0.1511 & 0.6976 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[æ]")` & 1.0002 & 1.0003 & 0.0611 & 0.8052 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[øː]")` & 1.0001 & 1.0002 & 0.1833 & 0.6686 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ø]")` & 1.0002 & 1.0004 & 1.1941 & 0.2746 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[œː]")` & 1.0001 & 1.0003 & 0.2322 & 0.6300 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[œ]")` & 1.0001 & 1.0002 & 0.1012 & 0.7504 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɑː]")` & 1.0002 & 1.0004 & 0.4794 & 0.4888 \\
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[a]")` & 1.0001 & 1.0002 & 0.1999 & 0.6549 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[oː]")` & 1.0001 & 1.0002 & 0.0503 & 0.8228 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɔ]")` & 1.0001 & 1.0002 & 0.0442 & 0.8337 \\ 
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[uː]")` & 1.0004 & 1.0008 & 0.8059 & 0.3692 \\  
-  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʊ]")` & 1.0001 & 1.0002 & 0.0110 & 0.9169 \\ 
-  s(Talker) & 34.1047 & 35.0000 & 127803.3103 & $<$ 0.0001 \\ 
-  s(Talker,category) & 705.9825 & 754.0000 & 147.2948 & 0.0251 \\ 
+  s(timepoint) & 3.1766 & 3.6029 & 65.3943 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʏ]")` & 2.5556 & 3.0388 & 19.2641 & $<$ 0.0001 \\ 
+  s(Talker) & 23.6319 & 39.0000 & 469.8048 & $<$ 0.0001 \\ 
+  s(Talker,category) & 52.8112 & 79.0000 & 152.3845 & 0.0026 \\ 
    \hline
-\end{tabular} 
-\label{tab:m.duration.paired}
+\end{tabular}
+\label{tab:m.F1.Y}
 \end{table}
+
+\begin{table}[ht]
+\caption{\label{tab:m.F2.Y}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("y")`/
+predicting F2}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & 0.4507 & 0.0144 & 31.2079 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[ʏ]")` & 0.1242 & 0.0159 & 7.8100 & $<$ 0.0001 \\ 
+  Gendermale & 0.0062 & 0.0168 & 0.3656 & 0.7147 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 2.9464 & 3.4178 & 47.4311 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʏ]")` & 2.3870 & 2.8642 & 3.4414 & 0.0162 \\ 
+  s(Talker) & 4.2101 & 39.0000 & 365.6413 & 0.3015 \\ 
+  s(Talker,category) & 74.3386 & 79.0000 & 1645.4089 & $<$ 0.0001 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F2.Y}
+\end{table}
+
+\begin{table}[ht]
+\caption{\label{tab:m.F3.Y}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("y")`/
+predicting F3}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & 0.9134 & 0.0086 & 106.0065 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[ʏ]")` & -0.1439 & 0.0066 & -21.8142 & $<$ 0.0001 \\ 
+  Gendermale & -0.0130 & 0.0111 & -1.1686 & 0.2427 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 3.2360 & 3.6465 & 17.5977 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʏ]")` & 3.3754 & 3.7403 & 16.9235 & $<$ 0.0001 \\ 
+  s(Talker) & 25.2775 & 39.0000 & 949.5166 & $<$ 0.0001 \\ 
+  s(Talker,category) & 51.8369 & 79.0000 & 249.7645 & 0.0314 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F3.Y}
+\end{table}
+
+
+\begin{table}[ht]
+\caption{\label{tab:m.F1.U}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("ʉ")`/
+predicting F1}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & -1.2142 & 0.0147 & -82.7945 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[ɵ]")` & 0.1134 & 0.0118 & 9.6084 & $<$ 0.0001 \\ 
+  Gendermale & -0.0200 & 0.0188 & -1.0662 & 0.2864 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 3.5016 & 3.8160 & 173.2009 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɵ]")` & 3.0360 & 3.4928 & 43.2258 & $<$ 0.0001 \\ 
+  s(Talker) & 23.5404 & 39.0000 & 442.8618 & $<$ 0.0001 \\ 
+  s(Talker,category) & 52.8094 & 79.0000 & 145.9149 & 0.0019 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F1.U}
+\end{table}
+
+\begin{table}[ht]
+\caption{\label{tab:m.F2.U}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("ʉ")`/
+predicting F2}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & 0.3157 & 0.0122 & 25.9013 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[ɵ]")` & -0.3064 & 0.0116 & -26.3315 & $<$ 0.0001 \\ 
+  Gendermale & 0.0068 & 0.0150 & 0.4535 & 0.6502 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 2.9953 & 3.4585 & 298.3962 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɵ]")` & 3.4809 & 3.8035 & 584.4777 & $<$ 0.0001 \\ 
+  s(Talker) & 15.3919 & 39.0000 & 773.9038 & 0.0152 \\ 
+  s(Talker,category) & 62.4428 & 79.0000 & 579.9508 & $<$ 0.0001 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F2.U}
+\end{table}
+
+\begin{table}[ht]
+\caption{\label{tab:m.F3.U}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("ʉ")`/
+predicting F3}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & 0.7145 & 0.0106 & 67.3415 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[ɵ]")` & 0.0352 & 0.0079 & 4.4349 & $<$ 0.0001 \\ 
+  Gendermale & 0.0033 & 0.0137 & 0.2431 & 0.8079 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 3.4854 & 3.8067 & 27.2527 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɵ]")` & 3.0080 & 3.4685 & 59.1125 & $<$ 0.0001 \\ 
+  s(Talker) & 25.9963 & 39.0000 & 1478.7326 & $<$ 0.0001 \\ 
+  s(Talker,category) & 51.3885 & 79.0000 & 377.1923 & 0.0153 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F3.U}
+\end{table}
+
+
+\begin{table}[ht]
+\caption{\label{tab:m.F1.E}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("e")`/
+predicting F1}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & -1.0969 & 0.0134 & -81.6369 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[ɛ]")` & 0.3621 & 0.0141 & 25.6152 & $<$ 0.0001 \\ 
+  Gendermale & 0.0082 & 0.0160 & 0.5169 & 0.6053 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 3.9225 & 3.9937 & 1197.4189 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛ]")` & 3.8937 & 3.9906 & 921.5105 & $<$ 0.0001 \\ 
+  s(Talker) & 8.3683 & 39.0000 & 39.6280 & 0.1113 \\ 
+  s(Talker,category) & 67.6617 & 79.0000 & 89.3655 & $<$ 0.0001 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F1.E}
+\end{table}
+
+\begin{table}[ht]
+\caption{\label{tab:m.F2.E}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("e")`/
+predicting F2}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & 0.6114 & 0.0163 & 37.4577 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[ɛ]")` & -0.2070 & 0.0138 & -14.9844 & $<$ 0.0001 \\ 
+  Gendermale & -0.0066 & 0.0207 & -0.3172 & 0.7511 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 3.8022 & 3.9591 & 425.7994 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛ]")` & 3.6306 & 3.9048 & 123.7554 & $<$ 0.0001 \\ 
+  s(Talker) & 21.5500 & 39.0000 & 365.0006 & $<$ 0.0001 \\ 
+  s(Talker,category) & 54.5449 & 79.0000 & 145.6635 & 0.0001 \\
+   \hline
+\end{tabular}
+\label{tab:m.F2.E}
+\end{table}
+
+\begin{table}[ht]
+\caption{\label{tab:m.F3.E}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("e")`/
+predicting F3}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & 0.8436 & 0.0116 & 72.5287 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[ɛ]")` & -0.0916 & 0.0088 & -10.3843 & $<$ 0.0001 \\ 
+  Gendermale & 0.0157 & 0.0150 & 1.0448 & 0.2962 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 3.5769 & 3.8592 & 82.3482 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛ]")` & 3.4562 & 3.7990 & 61.6135 & $<$ 0.0001 \\ 
+  s(Talker) & 25.5586 & 39.0000 & 250.4581 & $<$ 0.0001 \\ 
+  s(Talker,category) & 49.3150 & 79.0000 & 61.7838 & 0.0098 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F3.E}
+\end{table}
+
+
+\begin{table}[ht]
+\caption{\label{tab:m.F1.Ä}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("ɛ")`/
+predicting F1}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & -0.4979 & 0.0168 & -29.5536 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[ɛ]")` & -0.2217 & 0.0144 & -15.4139 & $<$ 0.0001 \\ 
+  Gendermale & -0.0221 & 0.0213 & -1.0374 & 0.2996 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 2.8687 & 3.3403 & 8.5123 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛ]")` & 3.0057 & 3.4615 & 14.7926 & $<$ 0.0001 \\ 
+  s(Talker) & 21.1842 & 39.0000 & 753.9500 & $<$ 0.0001 \\ 
+  s(Talker,category) & 55.9935 & 79.0000 & 305.7499 & 0.0017 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F1.Ä}
+\end{table}
+
+\begin{table}[ht]
+\caption{\label{tab:m.F2.Ä}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("ɛ")`/
+predicting F2}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & 0.3201 & 0.0122 & 26.1441 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[ɛ]")` & 0.0857 & 0.0099 & 8.6797 & $<$ 0.0001 \\ 
+  Gendermale & -0.0090 & 0.0157 & -0.5780 & 0.5633 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 3.3495 & 3.7247 & 157.0077 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛ]")` & 2.6391 & 3.1272 & 3.9379 & 0.0076 \\ 
+  s(Talker) & 23.4744 & 39.0000 & 728.9755 & $<$ 0.0001 \\ 
+  s(Talker,category) & 53.3979 & 79.0000 & 252.7058 & 0.0014 \\
+   \hline
+\end{tabular}
+\label{tab:m.F2.Ä}
+\end{table}
+
+\begin{table}[ht]
+\caption{\label{tab:m.F3.Ä}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("ɛ")`/
+predicting F3}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & 0.7461 & 0.0139 & 53.8644 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[ɛ]")` & 0.0003 & 0.0076 & 0.0447 & 0.9643 \\ 
+  Gendermale & 0.0267 & 0.0186 & 1.4333 & 0.1519 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 2.7718 & 3.2960 & 17.0974 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɛ]")` & 1.0000 & 1.0001 & 8.1519 & 0.0043 \\ 
+  s(Talker) & 32.4840 & 39.0000 & 382.3264 & $<$ 0.0001 \\ 
+  s(Talker,category) & 41.0810 & 79.0000 & 32.9008 & 0.0589 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F3.Ä}
+\end{table}
+
+\begin{table}[ht]
+\caption{\label{tab:m.F1.ÄR}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("æ")`/
+predicting F1}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & -0.4389 & 0.0196 & -22.3632 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[æ]")` & -0.0430 & 0.0136 & -3.1549 & 0.0016 \\ 
+  Gendermale & -0.0151 & 0.0257 & -0.5872 & 0.5571 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 3.3641 & 3.7547 & 108.3002 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[æ]")` & 1.8893 & 2.3113 & 1.9999 & 0.1150 \\ 
+  s(Talker) & 28.0353 & 39.0000 & 586.8502 & $<$ 0.0001 \\ 
+  s(Talker,category) & 47.7162 & 79.0000 & 115.2095 & 0.0079 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F1.ÄR}
+\end{table}
+
+\begin{table}[ht]
+\caption{\label{tab:m.F2.ÄR}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("æ")`/
+predicting F2}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & 0.2405 & 0.0119 & 20.2467 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[æ]")` & 0.0521 & 0.0091 & 5.7258 & $<$ 0.0001 \\ 
+  Gendermale & -0.0093 & 0.0153 & -0.6040 & 0.5459 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 3.3987 & 3.7515 & 43.0948 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[æ]")` & 2.7770 & 3.2571 & 8.0074 & $<$ 0.0001 \\ 
+  s(Talker) & 25.2241 & 39.0000 & 1125.4241 & $<$ 0.0001 \\ 
+  s(Talker,category) & 51.7897 & 79.0000 & 314.6290 & 0.0025 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F2.ÄR}
+\end{table}
+
+\begin{table}[ht]
+\caption{\label{tab:m.F3.ÄR}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("æ")`/
+predicting F3}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & 0.7357 & 0.0163 & 45.2652 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[æ]")` & 0.0233 & 0.0106 & 2.2046 & 0.0276 \\ 
+  Gendermale & 0.0297 & 0.0215 & 1.3819 & 0.1671 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 2.3374 & 2.8366 & 3.2304 & 0.0391 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[æ]")` & 1.0001 & 1.0001 & 2.8277 & 0.0927 \\ 
+  s(Talker) & 29.5293 & 39.0000 & 739.5767 & $<$ 0.0001 \\ 
+  s(Talker,category) & 46.3596 & 79.0000 & 104.4224 & 0.0879 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F3.ÄR}
+\end{table}
+
+```{r}
+```
+
+
+\begin{table}[ht]
+\caption{\label{tab:m.F1.Ö}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("ø")`/
+predicting F1}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & -0.7103 & 0.0156 & -45.5354 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[ø]")` & -0.1058 & 0.0117 & -9.0252 & $<$ 0.0001 \\ 
+  Gendermale & -0.0351 & 0.0202 & -1.7397 & 0.0820 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 2.3099 & 2.7827 & 1.6642 & 0.1254 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[ø]")` & 3.2258 & 3.6473 & 75.5103 & $<$ 0.0001 \\ 
+  s(Talker) & 25.8634 & 39.0000 & 911.2704 & $<$ 0.0001 \\ 
+  s(Talker,category) & 51.0366 & 79.0000 & 221.2125 & 0.0176 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F1.Ö}
+\end{table}
+
+\begin{table}[ht]
+\caption{\label{tab:m.F2.Ö}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("ø")`/
+predicting F2}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & 0.1670 & 0.0152 & 10.9938 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[ø]")` & 0.0734 & 0.0117 & 6.2872 & $<$ 0.0001 \\ 
+  Gendermale & -0.0267 & 0.0196 & -1.3656 & 0.1721 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 3.2560 & 3.6754 & 207.5789 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[ø]")` & 2.1014 & 2.5558 & 64.4651 & $<$ 0.0001 \\ 
+  s(Talker) & 25.1208 & 39.0000 & 4944.0262 & $<$ 0.0001 \\ 
+  s(Talker,category) & 53.0234 & 79.0000 & 1358.2399 & 0.0109 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F2.Ö}
+\end{table}
+
+\begin{table}[ht]
+\caption{\label{tab:m.F3.Ö}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("ø")`/
+predicting F3}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & 0.7172 & 0.0109 & 65.8742 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[ø]")` & 0.0141 & 0.0062 & 2.2891 & 0.0221 \\ 
+  Gendermale & 0.0105 & 0.0146 & 0.7168 & 0.4736 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 3.4723 & 3.8446 & 75.4970 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[ø]")` & 1.0001 & 1.0002 & 41.4930 & $<$ 0.0001 \\ 
+  s(Talker) & 32.0273 & 39.0000 & 1485.3644 & $<$ 0.0001 \\ 
+  s(Talker,category) & 44.4773 & 79.0000 & 160.7187 & 0.0545 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F3.Ö}
+\end{table}
+
+
+\begin{table}[ht]
+\caption{\label{tab:m.F1.ÖR}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("œ")`/
+predicting F1}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & -0.7590 & 0.0157 & -48.2066 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[œ]")` & -0.1173 & 0.0122 & -9.6135 & $<$ 0.0001 \\ 
+  Gendermale & 0.0300 & 0.0203 & 1.4771 & 0.1397 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 2.9969 & 3.4959 & 37.6112 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[œ]")` & 1.0000 & 1.0001 & 20.8779 & $<$ 0.0001 \\ 
+  s(Talker) & 24.8639 & 39.0000 & 927.1593 & $<$ 0.0001 \\ 
+  s(Talker,category) & 52.0699 & 79.0000 & 266.9870 & 0.0088 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F1.ÖR}
+\end{table}
+
+\begin{table}[ht]
+\caption{\label{tab:m.F2.ÖR}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("œ")`/
+predicting F2}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & -0.0023 & 0.0171 & -0.1343 & 0.8931 \\ 
+  category `r linguisticsdown::cond_cmpl("[œ]")` & 0.0721 & 0.0139 & 5.2018 & $<$ 0.0001 \\ 
+  Gendermale & -0.0181 & 0.0218 & -0.8276 & 0.4079 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 3.8523 & 3.9696 & 266.9332 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[œ]")` & 3.4298 & 3.8031 & 44.3554 & $<$ 0.0001 \\ 
+  s(Talker) & 23.2700 & 39.0000 & 5567.4541 & $<$ 0.0001 \\ 
+  s(Talker,category) & 54.9619 & 79.0000 & 1835.2586 & 0.0081 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F2.ÖR}
+\end{table}
+
+\begin{table}[ht]
+\caption{\label{tab:m.F3.ÖR}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("œ")`/
+predicting F3}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & 0.7415 & 0.0117 & 63.5705 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[œ]")` & 0.0160 & 0.0059 & 2.7304 & 0.0064 \\ 
+  Gendermale & -0.0065 & 0.0158 & -0.4126 & 0.6799 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 2.9308 & 3.4371 & 19.7617 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[œ]")` & 1.0000 & 1.0001 & 4.4916 & 0.0341 \\ 
+  s(Talker) & 33.5974 & 39.0000 & 1500.4023 & $<$ 0.0001 \\ 
+  s(Talker,category) & 42.3813 & 79.0000 & 109.4314 & 0.1543 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F3.ÖR}
+\end{table}
+
+
+\begin{table}[ht]
+\caption{\label{tab:m.F1.A}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("ɑ")`/
+predicting F1}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & -0.6845 & 0.0176 & -38.8058 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[a]")` & 0.1755 & 0.0114 & 15.4202 & $<$ 0.0001 \\ 
+  Gendermale & -0.0061 & 0.0233 & -0.2621 & 0.7933 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 2.9673 & 3.4347 & 41.8548 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[a]")` & 2.2977 & 2.7647 & 22.1895 & $<$ 0.0001 \\ 
+  s(Talker) & 29.7089 & 39.0000 & 488.5858 & $<$ 0.0001 \\ 
+  s(Talker,category) & 45.6542 & 79.0000 & 70.3904 & 0.0658 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F1.A}
+\end{table}
+
+\begin{table}[ht]
+\caption{\label{tab:m.F2.A}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("ɑ")`/
+predicting F2}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & -0.2110 & 0.0134 & -15.7262 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[a]")` & 0.2581 & 0.0110 & 23.3829 & $<$ 0.0001 \\ 
+  Gendermale & -0.0598 & 0.0171 & -3.4988 & 0.0005 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 3.7570 & 3.9380 & 61.3738 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[a]")` & 3.3958 & 3.7743 & 56.2100 & $<$ 0.0001 \\ 
+  s(Talker) & 22.7061 & 39.0000 & 1721.6117 & $<$ 0.0001 \\ 
+  s(Talker,category) & 54.9854 & 79.0000 & 604.0724 & 0.0016 \\
+   \hline
+\end{tabular}
+\label{tab:m.F2.A}
+\end{table}
+
+\begin{table}[ht]
+\caption{\label{tab:m.F3.A}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("ɑ")`/
+predicting F3}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & 0.7854 & 0.0152 & 51.7589 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[a]")` & -0.0043 & 0.0101 & -0.4226 & 0.6726 \\ 
+  Gendermale & 0.0569 & 0.0200 & 2.8485 & 0.0044 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 1.0000 & 1.0001 & 14.9221 & 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[a]")` & 2.0927 & 2.5609 & 1.6685 & 0.1931 \\ 
+  s(Talker) & 29.0459 & 39.0000 & 743.3069 & $<$ 0.0001 \\ 
+  s(Talker,category) & 47.0456 & 79.0000 & 122.1371 & 0.0246 \\
+   \hline
+\end{tabular}
+\label{tab:m.F3.A}
+\end{table}
+
+
+\begin{table}[ht]
+\caption{\label{tab:m.F1.Å}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("o")`/
+predicting F1}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & -1.0655 & 0.0137 & -77.5512 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[ɔ]")` & 0.1012 & 0.0127 & 7.9773 & $<$ 0.0001 \\ 
+  Gendermale & 0.0554 & 0.0170 & 3.2524 & 0.0012 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 3.8116 & 3.9665 & 520.6087 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɔ]")` & 3.7159 & 3.9400 & 428.5582 & $<$ 0.0001 \\ 
+  s(Talker) & 17.3746 & 39.0000 & 126.5860 & 0.0095 \\ 
+  s(Talker,category) & 58.3434 & 79.0000 & 81.3096 & 0.0001 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F1.Å}
+\end{table}
+
+\begin{table}[ht]
+\caption{\label{tab:m.F2.Å}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("o")`/
+predicting F2}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & -0.5081 & 0.0180 & -28.2486 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[ɔ]")` & 0.1549 & 0.0129 & 11.9984 & $<$ 0.0001 \\ 
+  Gendermale & 0.0006 & 0.0235 & 0.0273 & 0.9782 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 3.9347 & 3.9940 & 1679.1649 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɔ]")` & 3.8070 & 3.9740 & 512.5442 & $<$ 0.0001 \\ 
+  s(Talker) & 27.1884 & 39.0000 & 408.4524 & $<$ 0.0001 \\ 
+  s(Talker,category) & 48.3598 & 79.0000 & 84.9479 & 0.0194 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F2.Å}
+\end{table}
+
+\begin{table}[ht]
+\caption{\label{tab:m.F3.Å}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("o")`/
+predicting F3}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & 0.8060 & 0.0127 & 63.3878 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[ɔ]")` & 0.0339 & 0.0067 & 5.0600 & $<$ 0.0001 \\ 
+  Gendermale & 0.0244 & 0.0171 & 1.4220 & 0.1551 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 3.3570 & 3.7273 & 19.6656 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[ɔ]")` & 2.9268 & 3.3935 & 26.7933 & $<$ 0.0001 \\ 
+  s(Talker) & 33.0410 & 39.0000 & 1704.5743 & $<$ 0.0001 \\ 
+  s(Talker,category) & 43.4334 & 79.0000 & 132.6541 & 0.2583 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F3.Å}
+\end{table}
+
+
+\begin{table}[ht]
+\caption{\label{tab:m.F1.O}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("u")`/
+predicting F1}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & -1.1881 & 0.0139 & -85.1839 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[ʊ]")` & 0.0563 & 0.0089 & 6.3124 & $<$ 0.0001 \\ 
+  Gendermale & 0.0000 & 0.0185 & 0.0017 & 0.9986 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 2.5083 & 3.0028 & 85.9692 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʊ]")` & 1.6891 & 2.0617 & 7.9543 & 0.0004 \\ 
+  s(Talker) & 29.9150 & 39.0000 & 253.4452 & $<$ 0.0001 \\ 
+  s(Talker,category) & 42.8163 & 78.0000 & 35.4706 & 0.0246 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F1.O}
+\end{table}
+
+\begin{table}[ht]
+\caption{\label{tab:m.F2.O}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("u")`/
+predicting F2}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & -0.4820 & 0.0187 & -25.8430 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[ʊ]")` & 0.0378 & 0.0123 & 3.0855 & 0.0020 \\ 
+  Gendermale & 0.0581 & 0.0247 & 2.3574 & 0.0185 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 3.7956 & 3.9618 & 140.2768 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʊ]")` & 1.9794 & 2.4184 & 10.1612 & $<$ 0.0001 \\ 
+  s(Talker) & 29.3475 & 39.0000 & 119.5479 & $<$ 0.0001 \\ 
+  s(Talker,category) & 41.3514 & 78.0000 & 17.6264 & 0.0200 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F2.O}
+\end{table}
+
+\begin{table}[ht]
+\caption{\label{tab:m.F3.O}Model summary, coefficients for parametric and smooth terms for /`r linguisticsdown::cond_cmpl("u")`/
+predicting F3}
+\centering
+\begin{tabular}{lrrrr}
+   \hline
+A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
+  (Intercept) & 0.7765 & 0.0125 & 62.3403 & $<$ 0.0001 \\ 
+  category `r linguisticsdown::cond_cmpl("[ʊ]")` & 0.0239 & 0.0058 & 4.1451 & $<$ 0.0001 \\ 
+  Gendermale & 0.0169 & 0.0169 & 0.9999 & 0.3175 \\ 
+   \hline
+B. smooth terms & edf & Ref.df & F-value & p-value \\ 
+  s(timepoint) & 2.8207 & 3.3106 & 19.9309 & $<$ 0.0001 \\ 
+  s(timepoint):category `r linguisticsdown::cond_cmpl("[ʊ]")` & 2.0381 & 2.4777 & 2.5524 & 0.0505 \\ 
+  s(Talker) & 34.4885 & 39.0000 & 721.2592 & $<$ 0.0001 \\ 
+  s(Talker,category) & 39.3159 & 78.0000 & 45.0897 & 0.2425 \\ 
+   \hline
+\end{tabular}
+\label{tab:m.F3.O}
+\end{table}
+
 
 ```{r}
 ```
