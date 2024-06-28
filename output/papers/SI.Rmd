@@ -29,9 +29,7 @@ The following R packages were used to create this document: `r cite_r("latex-stu
 #knitr::write_bib(file = 'latex-stuff/packages.bib')
 ```
 
-## Additional information on Study 1
-
-### Neutralization of short /e/ and /`r linguisticsdown::cond_cmpl("ɛ")`/ {#sec:SI-hedd-hädd}
+## Neutralization of short /e/ and /`r linguisticsdown::cond_cmpl("ɛ")`/ {#sec:SI-hedd-hädd}
 Figure \@ref(fig:SI-hedd) demonstrates that the short allophones of /`r linguisticsdown::cond_cmpl("e")`/ and /`r linguisticsdown::cond_cmpl("ɛ")`/ neutralize as [`r linguisticsdown::cond_cmpl("ɛ")`] in Central Swedish.
 
 (ref:SI-hedd) The *hedd* and *hädd* words in the SwehVd vowel data in F1-F2 space. Points show recordings of the *hedd* and *hädd* words ([`r linguisticsdown::cond_cmpl("ɛ")`]) by 44 native talkers in the database, averaged across the five measurement points within each vowel segment. Word labels indicate word means across talkers. Since *hädd* and *hedd* resulted in the same allophone, all *hädd* words are excluded from the subset used in this study. This facilitates comparison of, for example, densities across vowels (see diagonal of Figure \@ref(fig:swe-vowels-all-cues)).
@@ -67,7 +65,7 @@ d.SwehVd %>%
   theme(legend.position = "top")
 ```
 
-### The effect of different measurement points {#sec:SI-measurement-points}
+## The effect of different measurement points {#sec:SI-measurement-points}
 Figure \@ref(fig:SI-time-points) visualizes the SwehVd vowel space under four different assumptions about measurement points. The figure suggests that the use of different measurement points primarily affects vowels for which formant dynamics are particularly important, e.g., [`r linguisticsdown::cond_cmpl("eː")`] and [`r linguisticsdown::cond_cmpl("oː")`]. 
 
 (ref:SI-time-points) The SwehVd vowel data in F1-F2 space, faceted by the time points used for measuring formants: averaging across the first three time-points (at 20, 35, and 50% into the vowel; **panel A**), averaging across the mid three time-points (at 35, 50, and 65% into the vowel; **panel B**), taking the mid time-point (at 50%; **panel C**), and averaging across the final three mid-points (at 50, 65, and 80% into the vowel; **panel D**). Points show recordings of each of the 21 Central Swedish vowels by the 44 L1 talkers in the database. Vowel labels indicate vowel means across talkers. Long vowels are boldfaced. Vowels that mismatched intended label are excluded (`r signif((d.SwehVd %>% filter(Transcribed_vowel != "targeted") %>% nrow() / d.SwehVd %>% nrow()) * 100)`% of all recordings).
@@ -112,7 +110,7 @@ p.50_80 <- p %+%
         plot.tag = element_text(face = "bold"))
 ```
 
-### Mean cue values across talkers {#sec:SI-mean-cues}
+## Mean cue values across talkers {#sec:SI-mean-cues}
 The overall mean cue values for the long and short vowels are presented in Tables \@ref(tab:SI-cue-values-long) and \@ref(tab:SI-cue-values-short), respectively.
 
 \begin{landscape}
@@ -223,7 +221,7 @@ F3 & F & 3081.21 (SD=171.41) & 2804.95 (SD=166.88) & 2780.03 (SD=197.87) & 2735 
 #itsadug::plot_diff(m.F3.long, view = "timepoint", comp = list(category = c("[yː]", "[iː]")))
 ```
 
-### Cue matrix plot in unnormalized Hertz {#sec:SI-raw}
+## Cue matrix plot in unnormalized Hertz {#sec:SI-raw}
 Figure \@ref(fig:SI-swe-vowels-all-cues-hz) displays the pairwise combinations of the five spectral and temporal cues---F0, F1, F2, F3 and duration---in raw Hertz. For F0, there are two overlapping but separated peaks, reflecting the overall difference in vocal tract size for the two groups of female and male talkers in the database.
 
 (ref:SI-swe-vowels-all-cues-hz) The SwehVd vowels in unnormalized Hertz space. Points show recordings of each of the 21 Central Swedish vowels by the talkers in the database in all five cue spaces, averaged across the three midpoints. Vowel labels indicate vowel means across talkers. Ellipses show bivariate Gaussian 95% confidence interval of vowel means. Note that, unlike in Figure \@ref(fig:swe-vowels), axis directions are not reversed. Vowels that mismatched the intended label are excluded (`r signif((d.SwehVd %>% filter(Transcribed_vowel != "targeted") %>% nrow() / d.SwehVd %>% nrow()) * 100)`% of all recordings).
@@ -234,7 +232,7 @@ p.matrix.cues %+%
      filter(Normalization.Type == "no normalization (Hz)", F0 < 320))
 ```
 
-### Talker differences in the [i:] - [y:] contrast
+## Talker differences in the [i:] - [y:] contrast
 Figure \@ref(fig:SI-swe-merge) visualizes two example talkers that differ in their phonetic realization of [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] when F3 is considered.
 
 (ref:SI-swe-merge) The effect of including F3 for the [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] distinction, illustrated in a reduced vowel space. **Panel A** shows two example talkers with overlapping [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] in F1-F2 space. **Panel B** shows how considering F3 affects the space: for talker SW_028, there is very little effect of F3, thus maintained [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] overlap, while for talker SW_027, separability increases.
@@ -307,6 +305,7 @@ p.merge / p.merge.F3 + theme(axis.title.x = element_blank()) +
 #ggsave(file = "../../figures/p.png", width = 9, height = 5, dpi=1200)
 ```
 
+## Additional information concerning static analyses
 ### Summary tables of LMMs predicting category separability from cue space {#sec:SI-LMMs-study1}
 
 \begin{table}
@@ -607,7 +606,7 @@ d.SwehVd.cat.separability.talkerIndep <- rbind(
       F1F2F3_separability = mean(category_separabilityF1F2F3, na.rm = T))
 ```
 
-```{r SI-cat-sep-F3, fig.align='center', fig.width=base.width*3, fig.height=base.height*1.75, out.width='90%', fig.cap="(ref:SI-cat-sep-F3)", message=FALSE}
+```{r SI-cat-sep-F3, fig.align='center', fig.width=base.width*3.5, fig.height=base.height*4, out.width='90%', fig.cap="(ref:SI-cat-sep-F3)", message=FALSE}
 colors.comparison <- c("#FC8D62", "#FB9A99", "#1B9E77", "#8DA0CB", "#A6CEE3", "#33A02C")
 names(colors.comparison) <- c("iː - yː",  "eː - yː", "ɪ - ʏ", "yː - ʉː", "oː - uː", "ɔ - ʊ")
 
@@ -899,6 +898,7 @@ rm(d.SwehVd.cat.separability.comparison.longshort.talkerIndep, d.SwehVd.cat.sepa
 #gamtabs(m.F3.front.long.Y.ord, caption='Model summary, coefficients for parametric and smooth terms', label = "tab:m.F3.front.long.Y.ord")
 ```
 
+## Additional information concerning dynamic analyses
 ### Summary tables of GAMMs {#sec:SI-GAMMs}
 
 \begin{table}[ht]
@@ -907,7 +907,7 @@ rm(d.SwehVd.cat.separability.comparison.longshort.talkerIndep, d.SwehVd.cat.sepa
 \begin{tabular}{lrrrr}
    \hline
 A. parametric coefficients & Estimate & Std. Error & t-value & p-value \\ 
-  (Intercept) & -1.2505 & 0.0163 & -71.6225 & $<$ 0.0001 \\ 
+  (Intercept) & -1.2505 & 0.0175 & -71.6225 & $<$ 0.0001 \\ 
   category `r linguisticsdown::cond_cmpl("[yː]")` & -0.0290 & 0.0051 & -5.6460 & $<$ 0.0001 \\
   Gendermale & -0.0793 & 0.0244 & -3.2529 & 0.0012 \\ 
    \hline
@@ -2177,7 +2177,7 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
 ```{r}
 ```
 
-#### Visualizations of GAMMs {#sec:SI-GAMMs-figs}
+### Visualizations of GAMMs {#sec:SI-GAMMs-figs}
 Figures \@ref(fig:SI-m-I-Y), \@ref(fig:SI-m-U-E), \@ref(fig:SI-m-Ä-ÄR), \@ref(fig:SI-m-Ö-ÖR), \@ref(fig:SI-m-A-Å), and \@ref(fig:SI-m-O) visualize the GAMMs fit to the long-short vowel pairs.
 
 (ref:SI-m-I-Y) Fitted smooths of GAMM for predicting F1-F2-F3 and 95% confidence intervals for the [`r linguisticsdown::cond_cmpl("iː")`]-[`r linguisticsdown::cond_cmpl("ɪ")`]  (**left**) and [`r linguisticsdown::cond_cmpl("yː")`]-[`r linguisticsdown::cond_cmpl("ʏ")`]  (**right**) vowel pairs.
