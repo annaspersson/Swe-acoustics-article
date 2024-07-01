@@ -32,7 +32,7 @@ The following R packages were used to create this document: `r cite_r("latex-stu
 ## Neutralization of short /e/ and /`r linguisticsdown::cond_cmpl("ɛ")`/ {#sec:SI-hedd-hädd}
 Figure \@ref(fig:SI-hedd) demonstrates that the short allophones of /`r linguisticsdown::cond_cmpl("e")`/ and /`r linguisticsdown::cond_cmpl("ɛ")`/ neutralize as [`r linguisticsdown::cond_cmpl("ɛ")`] in Central Swedish.
 
-(ref:SI-hedd) The *hedd* and *hädd* words in the SwehVd vowel data in F1-F2 space. Points show recordings of the *hedd* and *hädd* words ([`r linguisticsdown::cond_cmpl("ɛ")`]) by 44 native talkers in the database, averaged across the five measurement points within each vowel segment. Word labels indicate word means across talkers. Since *hädd* and *hedd* resulted in the same allophone, all *hädd* words are excluded from the subset used in this study. This facilitates comparison of, for example, densities across vowels (see diagonal of Figure \@ref(fig:swe-vowels-all-cues)).
+(ref:SI-hedd) The *hedd* and *hädd* words in the SwehVd vowel data in F1-F2 space. Points show recordings of the *hedd* and *hädd* words ([`r linguisticsdown::cond_cmpl("ɛ")`]) by 48 native talkers in the database, averaged across the five measurement points within each vowel segment. Word labels indicate word means across talkers. Since *hädd* and *hedd* resulted in the same allophone, all *hädd* words are excluded from the subset used in this study. This facilitates comparison of, for example, densities across vowels (see diagonal of Figure \@ref(fig:swe-vowels-all-cues)).
 
 ```{r SI-hedd, fig.width=base.width*2, fig.height=base.height*2, out.width='50%', fig.align='center', fig.pos="ht", fig.cap="(ref:SI-hedd)"}
 d.SwehVd %>%
@@ -68,7 +68,7 @@ d.SwehVd %>%
 ## The effect of different measurement points {#sec:SI-measurement-points}
 Figure \@ref(fig:SI-time-points) visualizes the SwehVd vowel space under four different assumptions about measurement points. The figure suggests that the use of different measurement points primarily affects vowels for which formant dynamics are particularly important, e.g., [`r linguisticsdown::cond_cmpl("eː")`] and [`r linguisticsdown::cond_cmpl("oː")`]. 
 
-(ref:SI-time-points) The SwehVd vowel data in F1-F2 space, faceted by the time points used for measuring formants: averaging across the first three time-points (at 20, 35, and 50% into the vowel; **panel A**), averaging across the mid three time-points (at 35, 50, and 65% into the vowel; **panel B**), taking the mid time-point (at 50%; **panel C**), and averaging across the final three mid-points (at 50, 65, and 80% into the vowel; **panel D**). Points show recordings of each of the 21 Central Swedish vowels by the 44 L1 talkers in the database. Vowel labels indicate vowel means across talkers. Long vowels are boldfaced. Vowels that mismatched intended label are excluded (`r signif((d.SwehVd %>% filter(Transcribed_vowel != "targeted") %>% nrow() / d.SwehVd %>% nrow()) * 100)`% of all recordings).
+(ref:SI-time-points) The SwehVd vowel data in F1-F2 space, faceted by the time points used for measuring formants: averaging across the first three time-points (at 20, 35, and 50% into the vowel; **panel A**), averaging across the mid three time-points (at 35, 50, and 65% into the vowel; **panel B**), taking the mid time-point (at 50%; **panel C**), and averaging across the final three mid-points (at 50, 65, and 80% into the vowel; **panel D**). Points show recordings of each of the 21 Central Swedish vowels, vowel labels indicate vowel means across talkers. Long vowels are boldfaced. Vowels that mismatched intended label are excluded (`r signif((d.SwehVd %>% filter(Transcribed_vowel != "targeted") %>% nrow() / d.SwehVd %>% nrow()) * 100)`% of all recordings).
 
 ```{r SI-time-points, fig.width=base.width*4.5, fig.height=base.height*4.5+.5, out.width = '100%', fig.pos="ht", fig.align='center', fig.cap="(ref:SI-time-points)"}
 p.20_50 <- p %+%
@@ -116,7 +116,7 @@ The overall mean cue values for the long and short vowels are presented in Table
 \begin{landscape}
 \begin{table}
 \centering
-\caption{\label{tab:SI-cue-values-long}The spectral and temporal properties of the long vowels (averaged across talkers, by gender)}
+\caption{\label{tab:SI-cue-values-long}The spectral and temporal properties of the long vowels (averaged across talkers, by gender\; in Hertz)}
 \centering
 \fontsize{6}{8}\selectfont
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{.7cm}>{\raggedright\arraybackslash}p{.7cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}}
@@ -180,7 +180,7 @@ F3 & F & 3148.44 (SD=360.71) & 3273.13 (SD=139.43) & 2658.86 (SD=173.38) & 3063.
 \begin{landscape}
 \begin{table}
 \centering
-\caption{\label{tab:SI-cue-values-short}The spectral and temporal properties of the short vowels (averaged across the female and male talkers)}
+\caption{\label{tab:SI-cue-values-short}The spectral and temporal properties of the short vowels (averaged across talkers, by gender\; in Hertz)}
 \centering
 \fontsize{6}{8}\selectfont
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{.7cm}>{\raggedright\arraybackslash}p{.7cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{1.4cm}}
@@ -499,7 +499,7 @@ rm(d.SwehVd.centroids)
 ```
 
 ### Category separability assuming talker-independent representations {#sec:SI-separability-talkerIndep}
-The category separability index assumed talker-specific representations. Given that the data is normalized using Nearey's uniform scaling, one might instead argue talker-independent representations. Figures \@ref(fig:SI-cat-sep-F3) and \@ref(fig:SI-cat-sep-long-short) visualize the category separability index for both the rounding and the quantity evaluations while assuming talker-independent representations. While the overall results replicate in both evaluations, a noticeable difference is that the relative increase in category separability for the [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] contrast when including F3, might possibly be driven by between-talker differences in the realizations of these vowels. There is further a smaller relative benefit of including duration comparing to F3 for the [`r linguisticsdown::cond_cmpl("æː")`] - [`r linguisticsdown::cond_cmpl("æ")`] and [`r linguisticsdown::cond_cmpl("øː")`] - [`r linguisticsdown::cond_cmpl("ø")`] contrasts when talker-independent representations are assumed.
+The category separability index presented in the main paper assumed talker-specific category representations. Given that the data is normalized using Nearey's uniform scaling, one might instead argue talker-independent representations. Figures \@ref(fig:SI-cat-sep-F3) and \@ref(fig:SI-cat-sep-long-short) visualize the category separability index for both the rounding and the quantity evaluations while assuming talker-independent representations. As indicated in Figures \@ref(fig:SI-cat-sep-F3) and \@ref(fig:SI-cat-sep-long-short), the overall results replicate in both evaluations. Of note, Figure \@ref(fig:SI-cat-sep-F3) suggests that the relative increase in category separability for the [`r linguisticsdown::cond_cmpl("iː")`] - [`r linguisticsdown::cond_cmpl("yː")`] contrast when including F3 might possibly be driven by between-talker differences in the realizations of these vowels. There is further a smaller relative benefit of including duration comparing to F3 for the [`r linguisticsdown::cond_cmpl("æː")`] - [`r linguisticsdown::cond_cmpl("æ")`] and [`r linguisticsdown::cond_cmpl("øː")`] - [`r linguisticsdown::cond_cmpl("ø")`] contrasts when talker-independent representations are assumed.
 
 (ref:SI-cat-sep-F3) The effect of including F3 in measures of category separability for the distinction between neighboring unrounded vs. outrounded vowels (**top row**), and outrounded vs. inrounded vowels (**bottom row**), under the assumption of talker-independent representations. **Left panels** plot the category separability for F1-F2 and F1-F2-F3 cue combinations. **Right panels** plot the proportional increase in category separability relative to F1-F2-baseline. Axis ranges are held constant across columns.
 
@@ -649,8 +649,10 @@ p.category.separability.unrounded.talkerIndep <- d.SwehVd.cat.separability.for.r
   scale_y_continuous("Category separability index", limits = c(.05, .53)) +
   guides(shape = "none", color = guide_legend(ncol = 2)) +
   myGplot.defaults() +
-  theme(axis.title.x = element_blank(),
-        axis.text.x = ggtext::element_markdown(angle = 60, vjust = 1, hjust = 1))
+  theme(axis.text.x = ggtext::element_markdown(angle = 60, vjust = 1, hjust = 1),
+        axis.title.x = element_blank(),
+        legend.title = element_blank(),
+        legend.position = "bottom")
 
 p.category.separability.inrounded.talkerIndep <- p.category.separability.unrounded.talkerIndep %+%
   (d.SwehVd.cat.separability.for.rounding.talkerIndep %>%
@@ -696,7 +698,9 @@ p.category.separability.diff.unrounded.talkerIndep <- d.SwehVd.cat.separability.
   guides(shape = "none", color = guide_legend(ncol = 2)) +
   myGplot.defaults() +
   theme(axis.text.x = ggtext::element_markdown(angle = 60, vjust = 1, hjust = 1),
-        axis.title.x = element_blank())
+        axis.title.x = element_blank(),
+        legend.title = element_blank(),
+        legend.position = "bottom")
 
 p.category.separability.diff.inrounded.talkerIndep <- p.category.separability.diff.unrounded.talkerIndep %+%
   (d.SwehVd.cat.separability.comparison.talkerIndep %>%
@@ -722,12 +726,7 @@ p.category.separability.diff.inrounded.talkerIndep <- p.category.separability.di
 
 (p.category.separability.unrounded.talkerIndep + facet_wrap(~rounding) + p.category.separability.diff.unrounded.talkerIndep + facet_wrap(~rounding)) /
 (p.category.separability.inrounded.talkerIndep + facet_wrap(~rounding) + p.category.separability.diff.inrounded.talkerIndep + facet_wrap(~rounding)) +
-  plot_annotation(tag_levels = list(c('A', 'B', '', ''))) +
-  plot_layout(guides = "collect") &
-  theme(legend.position = "right",
-        legend.title = element_blank(),
-        #legend.margin = margin(0, 0, 0, 0, unit = "pt"),
-        plot.tag = element_text(face = "bold"))
+  plot_annotation(tag_levels = list(c('A', 'B', '', '')))
 
 ```
 
@@ -834,7 +833,7 @@ d.SwehVd.cat.separability.for.longshort.talkerIndep %<>%
 
 (ref:SI-cat-sep-long-short) The effect of including F3 and duration in measures of category separability for long-short vowel pair distinctions, under the assumption of talker-independent representations. For visualization purposes, the pairs are split into high vowels (**top row**), and lower-mid vowels (**bottom row**). **Left panels** plot the category separability for F1-F2, F1-F2-F3 and F1-F2-duration cue combinations. **Right panels** plot the increase in category separability relative to F1-F2-baseline. Axis ranges are held constant across columns.
 
-```{r SI-cat-sep-long-short, fig.width=base.width*4.5, fig.height=base.height*4, out.width='90%', fig.align='center', fig.cap="(ref:SI-cat-sep-long-short)", message=FALSE}
+```{r SI-cat-sep-long-short, fig.width=base.width*4, fig.height=base.height*4.5, out.width='100%', fig.align='center', fig.cap="(ref:SI-cat-sep-long-short)", message=FALSE}
 colors.comparison <- c("#66C2A5", "#FC8D62", "#8DA0CB", "#FB9A99", "#E7298A", "#A6D854", "#FFD92F", "#E5C494", "#B3B3B3", "#A6CEE3", "#33A02C")
 names(colors.comparison) <- c("iː - ɪ",  "yː - ʏ", "ʉː - ɵ", "eː - ɛ", "ɛː - ɛ", "æː - æ", "øː - ø", "œː - œ", "ɑː - a",  "oː - ɔ", "uː - ʊ")
 
@@ -881,10 +880,10 @@ p.category.separability.diff.lowermid.talkerIndep <- p.category.separability.dif
        cue_difference = factor(cue_difference, levels = c("separabilityDifference_F3", "separabilityDifference_Duration"), labels = c("F3-inclusion", "Duration-inclusion"))))
 
 (p.category.separability.high.talkerIndep + facet_wrap(~height) + p.category.separability.diff.high.talkerIndep + facet_wrap(~height)) /
-(p.category.separability.lowermid.talkerIndep + facet_wrap(~height) + p.category.separability.diff.lowermid.talkerIndep + facet_wrap(~height)) +
-  plot_annotation(tag_levels = list(c('A', 'B', '', ''))) +
+(p.category.separability.lowermid.talkerIndep + facet_wrap(~height) + (p.category.separability.diff.lowermid.talkerIndep + facet_wrap(~height) + theme(legend.position = "none"))) +
+  plot_annotation(tag_levels = list(c('A', 'B', '', ''))) #+
   plot_layout(guides = "collect") &
-  theme(legend.position = "right",
+  theme(legend.position = "bottom",
         legend.title = element_blank(),
         #legend.margin = margin(0, 0, 0, 0, unit = "pt"),
         plot.tag = element_text(face = "bold"))
@@ -2178,11 +2177,11 @@ B. smooth terms & edf & Ref.df & F-value & p-value \\
 ```
 
 ### Visualizations of GAMMs {#sec:SI-GAMMs-figs}
-Figures \@ref(fig:SI-m-I-Y), \@ref(fig:SI-m-U-E), \@ref(fig:SI-m-Ä-ÄR), \@ref(fig:SI-m-Ö-ÖR), \@ref(fig:SI-m-A-Å), and \@ref(fig:SI-m-O) visualize the GAMMs fit to the long-short vowel pairs.
+Figures \@ref(fig:SI-m-I-Y), \@ref(fig:SI-m-U-E), \@ref(fig:SI-m-ER), \@ref(fig:SI-m-OER), \@ref(fig:SI-m-OA), and \@ref(fig:SI-m-O) visualize the GAMMs fit to the long-short vowel pairs.
 
 (ref:SI-m-I-Y) Fitted smooths of GAMM for predicting F1-F2-F3 and 95% confidence intervals for the [`r linguisticsdown::cond_cmpl("iː")`]-[`r linguisticsdown::cond_cmpl("ɪ")`]  (**left**) and [`r linguisticsdown::cond_cmpl("yː")`]-[`r linguisticsdown::cond_cmpl("ʏ")`]  (**right**) vowel pairs.
 
-```{r SI-m-I-Y, message=FALSE, fig.width=base.width*4, fig.height=base.height*1.5, fig.align='center', fig.pos="ht", fig.cap="(ref:SI-m-I-Y)"}
+```{r SI-m-I-Y, message=FALSE, fig.width=base.width*4.5, fig.height=base.height*4.5, fig.align='center', fig.cap="(ref:SI-m-I-Y)"}
 par(mfrow=c(3,2))
 plot_diff(m.F1.I, view = "timepoint", comp = list(categoryO = c("[iː]", "[ɪ]")), print.summary = F, col = "#66C2A5", hide.label = T, main = "A", col.diff = "black")
 plot_diff(m.F1.Y, view = "timepoint", comp = list(categoryO = c("[yː]", "[ʏ]")), print.summary = F, col = "#FC8D62", hide.label = T, main = "B", col.diff = "black")
@@ -2194,7 +2193,7 @@ plot_diff(m.F3.Y, view = "timepoint", comp = list(categoryO = c("[yː]", "[ʏ]")
 
 (ref:SI-m-U-E) Fitted smooths of GAMM for predicting F1-F2-F3 and 95% confidence intervals for the [`r linguisticsdown::cond_cmpl("ʉː")`]-[`r linguisticsdown::cond_cmpl("ɵ")`]  (**left**) and [`r linguisticsdown::cond_cmpl("eː")`]-[`r linguisticsdown::cond_cmpl("ɛ")`]  (**right**) vowel pairs.
 
-```{r SI-m-U-E, message=FALSE, fig.width=base.width*4, fig.height=base.height*1.5, fig.align='center', fig.pos="ht", fig.cap="(ref:SI-m-U-E)"}
+```{r SI-m-U-E, message=FALSE, fig.width=base.width*4.5, fig.height=base.height*4.5, fig.align='center', fig.cap="(ref:SI-m-U-E)"}
 par(mfrow=c(3,2))
 plot_diff(m.F1.U, view = "timepoint", comp = list(categoryO = c("[ʉː]", "[ɵ]")), print.summary = F, col = "#8DA0CB", hide.label = T, main = "A", col.diff = "black")
 plot_diff(m.F1.E, view = "timepoint", comp = list(categoryO = c("[eː]", "[ɛ]")), print.summary = F, col = "#FB9A99", hide.label = T, main = "B", col.diff = "black")
@@ -2204,9 +2203,9 @@ plot_diff(m.F3.U, view = "timepoint", comp = list(categoryO = c("[ʉː]", "[ɵ]"
 plot_diff(m.F3.E, view = "timepoint", comp = list(categoryO = c("[eː]", "[ɛ]")), print.summary = F, col = "#FB9A99", hide.label = T, main = "F", col.diff = "black")
 ```
 
-(ref:SI-m-Ä-ÄR) Fitted smooths of GAMM for predicting F1-F2-F3 and 95% confidence intervals for the [`r linguisticsdown::cond_cmpl("ɛː")`]-[`r linguisticsdown::cond_cmpl("ɛ")`] (**left**) and [`r linguisticsdown::cond_cmpl("æː")`]-[`r linguisticsdown::cond_cmpl("æ")`] (**right**) vowel pairs.
+(ref:SI-m-ER) Fitted smooths of GAMM for predicting F1-F2-F3 and 95% confidence intervals for the [`r linguisticsdown::cond_cmpl("ɛː")`]-[`r linguisticsdown::cond_cmpl("ɛ")`] (**left**) and [`r linguisticsdown::cond_cmpl("æː")`]-[`r linguisticsdown::cond_cmpl("æ")`] (**right**) vowel pairs.
 
-```{r SI-m-Ä-ÄR, message=FALSE, fig.width=base.width*4, fig.height=base.height*1.5, fig.align='center', fig.pos="ht", fig.cap="(ref:SI-m-Ä-ÄR)"}
+```{r SI-m-ER, message=FALSE, fig.width=base.width*4.5, fig.height=base.height*4.5, fig.align='center', fig.cap="(ref:SI-m-ER)"}
 par(mfrow=c(3,2))
 plot_diff(m.F1.Ä, view = "timepoint", comp = list(categoryO = c("[ɛː]", "[ɛ]")), print.summary = F, col = "#E7298A", hide.label = T, main = "A", col.diff = "black")
 plot_diff(m.F1.ÄR, view = "timepoint", comp = list(categoryO = c("[æː]", "[æ]")), print.summary = F, col = "#A6D854", hide.label = T, main = "B", col.diff = "black")
@@ -2216,9 +2215,9 @@ plot_diff(m.F3.Ä, view = "timepoint", comp = list(categoryO = c("[ɛː]", "[ɛ]
 plot_diff(m.F3.ÄR, view = "timepoint", comp = list(categoryO = c("[æː]", "[æ]")), print.summary = F, col = "#A6D854", hide.label = T, main = "F", col.diff = "black")
 ```
 
-(ref:SI-m-Ö-ÖR) Fitted smooths of GAMM for predicting F1-F2-F3 and 95% confidence intervals for the [`r linguisticsdown::cond_cmpl("øː")`]-[`r linguisticsdown::cond_cmpl("ø")`] (**left**) and [`r linguisticsdown::cond_cmpl("œː")`]-[`r linguisticsdown::cond_cmpl("œ")`] (**right**) vowel pairs.
+(ref:SI-m-OER) Fitted smooths of GAMM for predicting F1-F2-F3 and 95% confidence intervals for the [`r linguisticsdown::cond_cmpl("øː")`]-[`r linguisticsdown::cond_cmpl("ø")`] (**left**) and [`r linguisticsdown::cond_cmpl("œː")`]-[`r linguisticsdown::cond_cmpl("œ")`] (**right**) vowel pairs.
 
-```{r SI-m-Ö-ÖR, message=FALSE, fig.width=base.width*4, fig.height=base.height*1.5, fig.align='center', fig.pos="ht", fig.cap="(ref:SI-m-Ö-ÖR)"}
+```{r SI-m-OER, message=FALSE, fig.width=base.width*4.5, fig.height=base.height*4.5, fig.align='center', fig.cap="(ref:SI-m-OER)"}
 par(mfrow=c(3,2))
 plot_diff(m.F1.Ö, view = "timepoint", comp = list(categoryO = c("[øː]", "[ø]")), print.summary = F, col = "#FFD92F", hide.label = T, main = "A", col.diff = "black")
 plot_diff(m.F1.ÖR, view = "timepoint", comp = list(categoryO = c("[œː]", "[œ]")), print.summary = F, col = "#E5C494", hide.label = T, main = "B", col.diff = "black")
@@ -2228,9 +2227,9 @@ plot_diff(m.F3.Ö, view = "timepoint", comp = list(categoryO = c("[øː]", "[ø]
 plot_diff(m.F3.ÖR, view = "timepoint", comp = list(categoryO = c("[œː]", "[œ]")), print.summary = F, col = "#E5C494", hide.label = T, main = "F", col.diff = "black")
 ```
 
-(ref:SI-m-A-Å) Fitted smooths of GAMM for predicting F1-F2-F3 and 95% confidence intervals for the [`r linguisticsdown::cond_cmpl("ɑː")`]-[`r linguisticsdown::cond_cmpl("a")`] (**left**) and [`r linguisticsdown::cond_cmpl("oː")`]-[`r linguisticsdown::cond_cmpl("œ")`] (**right**) vowel pairs.
+(ref:SI-m-OA) Fitted smooths of GAMM for predicting F1-F2-F3 and 95% confidence intervals for the [`r linguisticsdown::cond_cmpl("ɑː")`]-[`r linguisticsdown::cond_cmpl("a")`] (**left**) and [`r linguisticsdown::cond_cmpl("oː")`]-[`r linguisticsdown::cond_cmpl("œ")`] (**right**) vowel pairs.
 
-```{r SI-m-A-Å, message=FALSE, fig.width=base.width*4, fig.height=base.height*1.5, fig.align='center', fig.pos="ht", fig.cap="(ref:SI-m-A-Å)"}
+```{r SI-m-OA, message=FALSE, fig.width=base.width*4.5, fig.height=base.height*4.5, fig.align='center', fig.cap="(ref:SI-m-OA)"}
 par(mfrow=c(3,2))
 plot_diff(m.F1.A, view = "timepoint", comp = list(categoryO = c("[ɑː]", "[a]")), print.summary = F, col = "#B3B3B3", hide.label = T, main = "A", col.diff = "black")
 plot_diff(m.F1.Å, view = "timepoint", comp = list(categoryO = c("[oː]", "[ɔ]")), print.summary = F, col = "#A6CEE3", hide.label = T, main = "B", col.diff = "black")
@@ -2242,7 +2241,7 @@ plot_diff(m.F3.Å, view = "timepoint", comp = list(categoryO = c("[oː]", "[ɔ]"
 
 (ref:SI-m-O) Fitted smooths of GAMM for predicting F1-F2-F3 and 95% confidence intervals for the [`r linguisticsdown::cond_cmpl("uː")`]-[`r linguisticsdown::cond_cmpl("ʊ")`] vowel pair.
 
-```{r SI-m-O, message=FALSE, fig.width=base.width*1.5, fig.height=base.height*2, fig.align='center', fig.pos="ht", fig.cap="(ref:SI-m-O)"}
+```{r SI-m-O, message=FALSE, fig.width=base.width*1.5, fig.height=base.height*2, out.width = '60%', fig.align='center', fig.cap="(ref:SI-m-O)"}
 par(mfrow=c(3,1))
 plot_diff(m.F1.O, view = "timepoint", comp = list(categoryO = c("[uː]", "[ʊ]")), print.summary = F, col = "#B2DF8A", hide.label = T, main = "A", col.diff = "black")
 plot_diff(m.F2.O, view = "timepoint", comp = list(categoryO = c("[uː]", "[ʊ]")), print.summary = F, col = "#B2DF8A", hide.label = T, main = "B", col.diff = "black")
