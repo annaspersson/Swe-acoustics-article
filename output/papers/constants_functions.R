@@ -8,7 +8,9 @@ levels.vowel.IPA = c("[i]", "[ɪ]", "[ɛ]", "[æ]", "[ʌ]", "[ʊ]", "[u]", "[ɑ]
 levels.vowel.Arpabet = c("iy1", "ih1", "eh1", "ae1", "ah1", "uh1", "uw1", "aa1")
 levels.vowel.SweFA = c("ii1", "ih1", "yy1", "yh1", "uu1", "uh1", "ee1", "eh1", "ae1", "{:", "{", "oe1", "oeh1", "9:", "9", "aa1", "ah1", "oa1", "oah1", "oo1", "oh1")
 levels.vowel.IPA.swe = c("[iː]", "[ɪ]", "[yː]", "[ʏ]", "[ʉː]", "[ɵ]", "[eː]", "[ɛ]", "[ɛː]", "[æː]", "[æ]", "[øː]", "[ø]", "[œː]", "[œ]", "[ɑː]", "[a]", "[oː]", "[ɔ]", "[uː]", "[ʊ]")
+levels.vowel.IPA.swe.plot = c("iː", "ɪ", "yː", "ʏ", "ʉː", "ɵ", "eː", "ɛ", "ɛː", "æː", "æ", "øː", "ø", "œː", "œ", "ɑː", "a", "oː", "ɔ", "uː", "ʊ")
 levels.vowel.IPA.swe.long = c("[iː]", "[yː]", "[ʉː]", "[eː]", "[ɛː]", "[æː]", "[øː]", "[œː]", "[ɑː]", "[oː]", "[uː]")
+levels.vowel.IPA.swe.long.plot = c("iː", "yː", "ʉː", "eː", "ɛː", "æː", "øː", "œː", "ɑː", "oː", "uː")
 levels.vowel.IPA.swe.long.noallo = c("[iː]", "[yː]", "[ʉː]", "[eː]", "[ɛː]", "[øː]", "[ɑː]", "[oː]", "[uː]")
 levels.vowel.IPA.swe.short = c("[ɪ]", "[ʏ]", "[ɵ]", "[ɛ]", "[æ]", "[ø]", "[œ]", "[a]", "[ɔ]", "[ʊ]")
 levels.vowel.IPA.swe.short.noallo = c("[ɪ]", "[ʏ]", "[ɵ]", "[ɛ]", "[ø]", "[a]", "[ɔ]", "[ʊ]")
@@ -38,6 +40,8 @@ names(colors.vowel.IO) <- levels.response
 colScale <-   scale_colour_manual(name = "Vowel",values = colors.vowel)
 colors.vowel.swe <- c("#66C2A5", "#1B9E77", "#FC8D62", "#D95F02", "#8DA0CB", "#7570B3", "#FB9A99", "#E78AC3", "#E7298A", "#A6D854", "#66A61E", "#FFD92F", "#E6AB02", "#E5C494", "#A6761D", "#B3B3B3", "#666666", "#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C")
 names(colors.vowel.swe) <- levels.vowel.IPA.swe
+colors.vowel.swe.plot <- c("#66C2A5", "#1B9E77", "#FC8D62", "#D95F02", "#8DA0CB", "#7570B3", "#FB9A99", "#E78AC3", "#E7298A", "#A6D854", "#66A61E", "#FFD92F", "#E6AB02", "#E5C494", "#A6761D", "#B3B3B3", "#666666", "#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C")
+names(colors.vowel.swe.plot) <- levels.vowel.IPA.swe.plot
 
 vowelPlot_components <- list(
   axis = c(scale_x_reverse(), scale_y_reverse()),

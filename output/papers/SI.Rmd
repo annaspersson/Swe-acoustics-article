@@ -73,6 +73,8 @@ Figure \@ref(fig:SI-time-points) visualizes the SwehVd vowel space under four di
 ```{r SI-time-points, fig.width=base.width*4.5, fig.height=base.height*4.5+.5, out.width = '100%', fig.pos="ht", fig.align='center', fig.cap="(ref:SI-time-points)"}
 p.20_50 <- p %+%
   (d.SwehVd.forStudy.long %>%
+  # remove brackets from categories for plotting
+  mutate(category = factor(category, levels = levels.vowel.IPA.swe, labels = levels.vowel.IPA.swe.plot)) %>%
   filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(20,35,50)) %>%
   # Get the geometric mean F1-F2 across the five time points
   group_by(Normalization.Type, Talker, Gender, category, Token, Quantity) %>%
@@ -81,6 +83,8 @@ p.20_50 <- p %+%
 
 p.35_65 <- p %+%
   (d.SwehVd.forStudy.long %>%
+  # remove brackets from categories for plotting
+  mutate(category = factor(category, levels = levels.vowel.IPA.swe, labels = levels.vowel.IPA.swe.plot)) %>%
   filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(35,50,65)) %>%
   # Get the geometric mean F1-F2 across the five time points
   group_by(Normalization.Type, Talker, Gender, category, Token, Quantity) %>%
@@ -89,11 +93,15 @@ p.35_65 <- p %+%
 
 p.50 <- p %+%
   (d.SwehVd.forStudy.long %>%
+  # remove brackets from categories for plotting
+  mutate(category = factor(category, levels = levels.vowel.IPA.swe, labels = levels.vowel.IPA.swe.plot)) %>%
   filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint == 50)) +
   guides(shape = "none")
 
 p.50_80 <- p %+%
   (d.SwehVd.forStudy.long %>%
+  # remove brackets from categories for plotting
+  mutate(category = factor(category, levels = levels.vowel.IPA.swe, labels = levels.vowel.IPA.swe.plot)) %>%
   filter(Normalization.Type == "Nearey's uniform scaling (log)", timepoint %in% c(50,65,80)) %>%
   # Get the geometric mean F1-F2 across the five time points
   group_by(Normalization.Type, Talker, Gender, category, Token, Quantity) %>%
@@ -229,6 +237,8 @@ Figure \@ref(fig:SI-swe-vowels-all-cues-hz) displays the pairwise combinations o
 ```{r SI-swe-vowels-all-cues-hz, fig.width=base.width*4+.5, fig.height=base.height*4+.5, out.width = '100%', fig.align='center', fig.pos="ht", fig.cap="(ref:SI-swe-vowels-all-cues-hz)"}
 p.matrix.cues %+%
   (d.SwehVd.forStudy.long.static %>%
+     # remove brackets from categories for plotting
+     mutate(category = factor(category, levels = levels.vowel.IPA.swe, labels = levels.vowel.IPA.swe.plot)) %>%
      filter(Normalization.Type == "no normalization (Hz)", F0 < 320))
 ```
 
@@ -240,6 +250,8 @@ Figure \@ref(fig:SI-swe-merge) visualizes two example talkers that differ in the
 ```{r SI-swe-merge, fig.width=base.width*3, fig.height=base.height*3, out.width='80%', fig.align='center', fig.cap="(ref:SI-swe-merge)", fig.pos="ht", message=FALSE}
 p.merge <- d.SwehVd.forStudy.long.static %>%
   filter(Normalization.Type == "Nearey's uniform scaling (log)", Quantity == "long", Talker %in% c("SW_028", "SW_027"), category %in% c("[iː]", "[yː]", "[æː]", "[ɑː]", "[oː]", "[uː]")) %>%
+   # remove brackets from categories for plotting
+  mutate(category = factor(category, levels = levels.vowel.IPA.swe, labels = levels.vowel.IPA.swe.plot)) %>%
   ggplot(
     aes(
       x = F2, 
@@ -257,12 +269,12 @@ p.merge <- d.SwehVd.forStudy.long.static %>%
     mapping = aes(
       colour = category,
       label = category,
-      fontface = ifelse(category %in% c("[iː]", "[yː]"), 2, 1)),
+      fontface = ifelse(category %in% c("iː", "yː"), 2, 1)),
     size = 4,
     alpha = .4,
     label.size = NA,
     label.padding = unit(.06, "cm")) +
-  scale_colour_manual(name = "category", values = colors.vowel.swe) +
+  scale_colour_manual(name = "category", values = colors.vowel.swe.plot) +
   scale_x_reverse("F2", position = "top", scales::pretty_breaks(n = 4)) +
   scale_y_reverse("F1", position = "right", scales::pretty_breaks(n = 4)) +
   guides(alpha = "none", color = "none", shape = "none", size = "none") +
@@ -270,6 +282,8 @@ p.merge <- d.SwehVd.forStudy.long.static %>%
 
 p.merge.F3 <-  d.SwehVd.forStudy.long.static %>%
   filter(Normalization.Type == "Nearey's uniform scaling (log)", Quantity == "long", Talker %in% c("SW_028", "SW_027"), category %in% c("[iː]", "[yː]", "[æː]", "[ɑː]", "[oː]", "[uː]")) %>%
+   # remove brackets from categories for plotting
+  mutate(category = factor(category, levels = levels.vowel.IPA.swe, labels = levels.vowel.IPA.swe.plot)) %>%
   ggplot(
     aes(
       x = F2, 
@@ -287,12 +301,12 @@ p.merge.F3 <-  d.SwehVd.forStudy.long.static %>%
     mapping = aes(
       colour = category,
       label = category,
-      fontface = ifelse(category %in% c("[iː]", "[yː]"), 2, 1)),
+      fontface = ifelse(category %in% c("iː", "yː"), 2, 1)),
     size = 4,
     alpha = .4,
     label.size = NA, 
     label.padding = unit(.06, "cm")) +
-  scale_colour_manual(name = "category", values = colors.vowel.swe) +
+  scale_colour_manual(name = "category", values = colors.vowel.swe.plot) +
   scale_x_reverse("F2", position = "top", scales::pretty_breaks(n = 4)) +
   scale_y_reverse("F3", position = "right", scales::pretty_breaks(n = 4)) +
   guides(alpha = "none", color = "none", shape = "none", size = "none") +
@@ -725,9 +739,7 @@ p.category.separability.diff.inrounded.talkerIndep <- p.category.separability.di
        cue_difference = factor(cue_difference, levels = "separabilityDifference_F3", labels = "F3-inclusion")))
 
 (p.category.separability.unrounded.talkerIndep + facet_wrap(~rounding) + p.category.separability.diff.unrounded.talkerIndep + facet_wrap(~rounding)) /
-(p.category.separability.inrounded.talkerIndep + facet_wrap(~rounding) + p.category.separability.diff.inrounded.talkerIndep + facet_wrap(~rounding)) +
-  plot_annotation(tag_levels = list(c('A', 'B', '', '')))
-
+(p.category.separability.inrounded.talkerIndep + facet_wrap(~rounding) + p.category.separability.diff.inrounded.talkerIndep + facet_wrap(~rounding))
 ```
 
 ```{r}
@@ -880,13 +892,13 @@ p.category.separability.diff.lowermid.talkerIndep <- p.category.separability.dif
        cue_difference = factor(cue_difference, levels = c("separabilityDifference_F3", "separabilityDifference_Duration"), labels = c("F3-inclusion", "Duration-inclusion"))))
 
 (p.category.separability.high.talkerIndep + facet_wrap(~height) + p.category.separability.diff.high.talkerIndep + facet_wrap(~height)) /
-(p.category.separability.lowermid.talkerIndep + facet_wrap(~height) + (p.category.separability.diff.lowermid.talkerIndep + facet_wrap(~height) + theme(legend.position = "none"))) +
-  plot_annotation(tag_levels = list(c('A', 'B', '', ''))) #+
-  plot_layout(guides = "collect") &
-  theme(legend.position = "bottom",
-        legend.title = element_blank(),
-        #legend.margin = margin(0, 0, 0, 0, unit = "pt"),
-        plot.tag = element_text(face = "bold"))
+(p.category.separability.lowermid.talkerIndep + facet_wrap(~height) + (p.category.separability.diff.lowermid.talkerIndep + facet_wrap(~height) + theme(legend.position = "none"))) #+
+  #plot_annotation(tag_levels = list(c('A', 'B', '', ''))) #+
+  # plot_layout(guides = "collect") &
+  # theme(legend.position = "bottom",
+  #       legend.title = element_blank(),
+  #       #legend.margin = margin(0, 0, 0, 0, unit = "pt"),
+  #       plot.tag = element_text(face = "bold"))
 ```
 ```{r}
 rm(d.SwehVd.cat.separability.comparison.longshort.talkerIndep, d.SwehVd.cat.separability.for.longshort.talkerIndep, d.SwehVd.cat.separability.comparison.talkerIndep, d.SwehVd.cat.separability.for.rounding.talkerIndep, d.SwehVd.centroids.talkerIndep, d.SwehVd.cat.separability.talkerIndep)
