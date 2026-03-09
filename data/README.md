@@ -1,1 +1,1 @@
-This folder contains phonetic vowel statistics from the SwehVd corpus, from the reference talkers of the SweDia2000 dialect database, as well as formant measurements from Kuronen's (2000) thesis.
+This folder contains phonetic vowel statistics from the SwehVd corpus, from reference talkers of the SweDia2000 dialect database, as well as formant measurements from Kuronen's (2000) thesis. The sub folder Persson-2023/outlier-corrected-data containes csv-files with distributional outliers, and data after exclusions (=data used in study).
