@@ -294,17 +294,21 @@ d.SwehVd.exclusions <-
   group_by(Talker, Gender, category) %>%
   summarise(
     N_tokens_per_category = n_distinct(Token),
-    Transcribed_vowel = Transcribed_vowel) %>%
-  filter(Transcribed_vowel != "targeted") %>%
+    Transcribed_vowel_list = list(Transcribed_vowel),
+    .groups = "drop") %>%
+  unnest(cols = c(Transcribed_vowel_list)) %>%
+  filter(Transcribed_vowel_list != "targeted") %>%
   group_by(Talker, Gender, category, N_tokens_per_category) %>%
   summarise(
-    N_unidentifiable_vowels = length(Transcribed_vowel)) %>%
+    N_unidentifiable_vowels = n(),
+    .groups = "drop") %>%
   group_by(Talker, category, Gender) %>%
   mutate(
     exclude_Talker = case_when(N_tokens_per_category < 6 & N_unidentifiable_vowels > 2 ~ "TRUE",
                                N_tokens_per_category >= 10 & N_unidentifiable_vowels > 7 ~ "TRUE",
                                TRUE ~ "FALSE")) %>%
-  filter(exclude_Talker == TRUE)
+  filter(exclude_Talker == TRUE) %>%
+  ungroup()
 ```
 
 ```{r filter-data-for-study}
@@ -317,6 +321,13 @@ d.SwehVd.forStudy <-
   group_by(Talker, Age, Gender, category, Word, Token, Trial, timepoint, Quantity, Database) %>%
   summarise(across(c(F0, F1, F2, F3, Duration), ~ geometric.mean(.x))) %>%
   ungroup()
+
+# # Write csv file with data used in study
+# write.csv(
+#   d.SwehVd.forStudy,
+#   file = "../../data/phonetic vowel statistics/Swedish/Published databases/Persson-2023/outlier-corrected-vowel-data/Persson_2023_L1_vowels_wExlusions.csv",
+#   row.names = FALSE, quote = FALSE)
+
 ```
 
 ```{r normalize-data}
