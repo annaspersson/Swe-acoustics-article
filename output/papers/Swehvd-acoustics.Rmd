@@ -312,7 +312,7 @@ d.SwehVd.exclusions <-
 ```
 
 ```{r filter-data-for-study}
-# Exclude talkers that failed to produce *hodd* altogether + the mispronounced words by remaining talkers. This approach results in exclusion of an additional two talkers, given that they only did five recordings for each vowel. Also exclude measurements at 20 and 80% into the vowel, and all /hädd/ words since they are a duplicate of "[ɛ]" - the short allophone to /e/ neutralizes with the short allophone to /ɛ/. Also exclude all NAs in F0s.
+# Exclude talkers that failed to produce *hodd* altogether + the mispronounced words by remaining talkers. This approach results in exclusion of an additional two talkers, given that they only did five recordings for each vowel. Also exclude measurements of all /hädd/ words since they are a duplicate of "[ɛ]" - the short allophone to /e/ neutralizes with the short allophone to /ɛ/. Also exclude all NAs in F0s.
 d.SwehVd.forStudy <-
   d.SwehVd %>%
   filter(!Talker %in% d.SwehVd.exclusions$Talker, Transcribed_vowel == "targeted", Word != "hädd", !is.na(F0), Unreliable_measurement == FALSE) %>%
